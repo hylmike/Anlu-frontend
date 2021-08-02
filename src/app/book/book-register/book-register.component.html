@@ -1,0 +1,158 @@
+<div class="container register">
+  <h2 class="register-heading">Book Registration Form</h2>
+  <form class="needs-validation" [formGroup]="bookRegisterForm" (ngSubmit)="bookRegisterForm.valid&&bookRegister()"
+    novalidate>
+    <div class="row register-form">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingBookTitle" placeholder="Title of Book *"
+            formControlName="bookTitle" required />
+          <label for="floatingBookTitle">Title of Book</label>
+          <div class="invalid-feedback">
+            Please provide unique book title.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingISBN" placeholder="ISBN of Book *" formControlName="isbnCode" />
+          <label for="floatingISBN">ISBN Code of Book</label>
+          <div class="invalid-feedback">
+            Please provide book ISBN Code.
+          </div>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" formControlName="category" id="floatingCategory" aria-label="Category of book"
+            required>
+            <option selected>Romance</option>
+            <option>Politics</option>
+            <option>Press</option>
+            <option>Essay_sociology</option>
+            <option>Essay_philosophy</option>
+            <option>Essay_anthropology</option>
+            <option>Essay_ethnology</option>
+            <option>Information Technology</option>
+            <option>Comic</option>
+            <option>History</option>
+            <option>Geography</option>
+            <option>Dissertation</option>
+            <option>Art_theatre</option>
+            <option>Art_music</option>
+            <option>Art_plastic</option>
+            <option>Art_design</option>
+            <option>Sport_football</option>
+            <option>Sport_basketball</option>
+            <option>Sport_handball</option>
+            <option>Sport_tennis</option>
+            <option>Sport_boxing</option>
+          </select>
+          <label for="floatingCategory">Category of Book</label>
+          <div class="invalid-feedback">
+            Please select book category.
+          </div>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" formControlName="style" id="floatingStyle" aria-label="Style of book" required>
+            <option selected>e-Book</option>
+            <option>Audio-Book</option>
+          </select>
+          <label for="floatingStyle">Style of book</label>
+          <div class="invalid-feedback">
+            Please select book style.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingPublisher" placeholder="Book Publisher"
+            formControlName="publisher" value="" />
+          <label for="floatingPublisher">Book Publisher</label>
+          <div class="invalid-feedback">
+            Please provide book publisher.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="date" class="form-control" id="floatingPublishDate" placeholder="Book Published Date"
+            formControlName="publishDate" value="" />
+          <label for="floatingPublishDate">Book Published Date</label>
+          <div class="invalid-feedback">
+            Please provide book publish date.
+          </div>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" id="floatingDesc" formControlName="desc"
+            aria-label="Brief Book Description"></textarea>
+          <label for="floatingDesc">Book Brief Description</label>
+          <div class="invalid-feedback">
+            Please provide book brief description.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingAuthor" placeholder="Author of Book *"
+            formControlName="author" value="" required />
+          <label for="floatingAuthor">Author of Book, comma seperate multi-author </label>
+          <div class="invalid-feedback">
+            Please provide author of book.
+          </div>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" id="floatingLang" formControlName="language" aria-label="language of book"
+            required>
+            <option selected>English</option>
+            <option>French</option>
+            <option>Spanish</option>
+            <option>Other</option>
+          </select>
+          <label for="floatingLang">Language of Book</label>
+          <div class="invalid-feedback">
+            Please select language of book.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="date" class="form-control" id="floatingPurchaseDate" placeholder="Book Purchased Date"
+            formControlName="purchaseDate" value="" />
+          <label for="floatingPurchaseDate">Book Purchased Date</label>
+          <div class="invalid-feedback">
+            Please provide book purchase date.
+          </div>
+        </div>
+
+        <div class="form-floating">
+          <input type="file" class="form-control" id="floatingCover" placeholder="Book Cover Picture"
+            formControlName="coverPic" (change)="onCoverSelect($event)" required />
+          <label for="floatingCover">Book Cover Picture</label>
+          <div class="invalid-feedback">
+            Please select book cover picture.
+          </div>
+          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadCoverProgress"></mat-progress-bar>
+        </div>
+
+        <div class="form-floating">
+          <input type="file" class="form-control" id="floatingBook" placeholder="Book file" formControlName="bookFile"
+            (change)="onBookSelect($event)" required />
+          <label for="floatingBook">Book File (eg. PDF)</label>
+          <div class="invalid-feedback">
+            Please provide book file (eg. PDF).
+          </div>
+          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadBookProgress"></mat-progress-bar>
+        </div>
+
+        <div class="form-floating">
+          <input type="number" class="form-control" id="floatingPrice" placeholder="Price of Book"
+            formControlName="price" value="" />
+          <label for="floatingPrice">Price of Book</label>
+          <div class="invalid-feedback">
+            Please provide unique ISBN number.
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingKeyword" placeholder="Keywords of Book"
+              formControlName="keyword" value="" />
+            <label for="floatingKeyword">Keywords of book, comma to seperate</label>
+            <div class="invalid-feedback">
+              Please provide keywords of book.
+            </div>
+          </div>
+        </div>
+        <input type="submit" class="btnRegister" value="Register" />
+      </div>
+    </div>
+  </form>
+</div>

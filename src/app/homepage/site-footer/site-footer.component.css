@@ -1,0 +1,34 @@
+footer.container {
+  max-width: 960px;
+  text-align: center;
+  font-size: medium;
+  margin-top: 50px;
+}
+
+img.footer-logo {
+  margin-top: -30px;
+  width: 80px;
+  height: 75px;
+}
+
+hr.logo {
+  margin-top: 0px;
+}
+
+.padding {
+  padding-top: 20px;
+}
+
+a.social-icon {
+  margin-left: 10px;
+  margin-right: 20px;
+  font-size: 1.5em;
+}
+
+a.link-donate {
+  margin-left: 30px;
+}
+
+h3.footer-title {
+  font-size: large;
+}

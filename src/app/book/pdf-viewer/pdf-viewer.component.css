@@ -1,0 +1,28 @@
+#control-panel{
+  margin: auto;
+  margin-top: 70px;
+  width: 80%;
+}
+#navigation-control{
+  float: left;
+  font-size: large;
+}
+#scale-control{
+  float: right;
+  font-size: large;
+}
+button{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#cavas-container{
+  width: 80%;
+  overflow: auto;
+  margin: auto;
+  background-color: black;
+  text-align: center;
+  border: 3px solid black;
+}
+#autoscale{
+  margin-right: 10px;
+}

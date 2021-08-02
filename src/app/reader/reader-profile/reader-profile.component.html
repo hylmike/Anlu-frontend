@@ -1,0 +1,113 @@
+<app-reader-header></app-reader-header>
+<div class="container">
+  <div class="title padding">
+    <h2>My Profile</h2>
+    <a href="/reader/updateprofile" class="btn btn-primary">Update Profile</a>
+  </div>
+  <div class="form">
+    <div class="basic-info">
+      <div class="title padding">
+        <h3>Basic Infomation</h3>
+      </div>
+      <hr class='padding'>
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <p>Username</p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <p>{{reader.username}}</p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <p>Password</p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <p>********
+          <a href="/reader/changepwd" class='change-password btn btn-primary'>Change Password</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <p>Email</p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <p>{{reader.email}}</p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <p>Register Date</p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <p>{{reader.registerDate | date:'longDate'}}</p>
+        </div>
+      </div>
+
+      <div class="reader-profile">
+        <div class="title padding">
+          <h3>Detailed Profile</h3>
+        </div>
+        <hr class="padding">
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <p>First Name</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.firstName}}</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>Last Name</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.lastName}}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <p>Gender</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.gender}}</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>Birthday</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.birthday | date:'longDate'}}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <p>Address</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.address.homeAddress}}</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>Province & PostCode</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.address.province}} / {{reader.readerProfile.address.postcode}}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <p>Security Question</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.securityQuestion}}</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>Security Answer</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.securityAnswer}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-site-footer></app-site-footer>

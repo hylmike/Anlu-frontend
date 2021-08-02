@@ -1,0 +1,115 @@
+<div class="container text-center padding">
+  <div class="logo-img">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+  </div>
+  <h2 class="title padding">Reader Profile Update Form</h2>
+  <hr>
+  <div class="update-form padding">
+    <form class="needs-validation" [formGroup]="updateForm" (ngSubmit)="updateForm.valid&&register()" novalidate>
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="uname">Username</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="uname" formControlName="username" readonly />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="email">Email</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+        <input type="email" class="form-control" id="email" formControlName="email" required />
+        <div class="invalid-feedback">
+          Please provide valid email address.
+        </div>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="fname" formControlName="firstName" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="lname">Last Name</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+        <input type="text" class="form-control" id="lname" formControlName="lastName" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="bday">Birthday</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="date" class="form-control" id="bday" formControlName="birthday" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="gender">Gender</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <select class="form-control" formControlName="gender" id="gender">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="pnumber">Phone Number</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="pnumber" formControlName="phoneNumber" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="address">Home Address</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+        <input type="text" class="form-control" id="address" formControlName="homeAddress" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="province">Province</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="province" formControlName="province" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="postcode">Postcode</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+        <input type="text" class="form-control" id="postcode" formControlName="postcode" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="squestion">Security Question</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="squestion" formControlName="securityQuestion" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="sanswer">Security Answer</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+        <input type="text" class="form-control" id="sanswer" formControlName="securityAnswer" />
+        </div>
+      </div>
+
+      <div class="submit-button">
+      <input type="submit" class="btnupdate" value="Update" />
+      </div>
+      <div class="home-link">
+        <a href="/">Return Homepage</a>
+      </div>
+
+    </form>
+  </div>
+</div>

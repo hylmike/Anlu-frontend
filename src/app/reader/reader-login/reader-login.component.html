@@ -1,0 +1,23 @@
+<main class="form-signin">
+  <form [formGroup]="readerLoginForm" (ngSubmit)="readerLogin()">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png" alt="" width="120" height="120">
+    <h1 class="h3 mb-3 fw-normal">Reader Sign In</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" formControlName="username" placeholder="User Name">
+      <label for="floatingInput">User Name</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" formControlName="password"
+        placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!readerLoginForm.valid">Sign in</button>
+  </form>
+</main>

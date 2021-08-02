@@ -1,0 +1,15 @@
+.homeportal{
+  margin: auto;
+}
+.homeportal p{
+  position: absolute;
+  margin-top: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: xxx-large;
+  color:lightgray;
+}
+.homeportal img{
+  float: center;
+  width: 100%;
+}
