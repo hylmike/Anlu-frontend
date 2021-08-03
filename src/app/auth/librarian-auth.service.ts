@@ -45,9 +45,9 @@ export class LibrarianAuthService {
   }
 
   signIn(username: string, password: string): Observable<any> {
-    return this.http.post<AccessToken>('/api/librarian/login', { username: username, password: password }).pipe(
+    return this.http.post<AccessToken>('/api/lib/liblogin', { username: username, password: password }).pipe(
       //retry(3),
-      catchError(this.handleError('signIn')), shareReplay()
+      catchError(this.handleError('libLogin')), shareReplay()
     )
   }
 
@@ -63,9 +63,11 @@ export class LibrarianAuthService {
   }
 
   isLoggedIn(): boolean {
+    const libInd = this.tokenService.getUsername().slice(0,3) || '';
     if (
       this.tokenService.getToken() &&
-      moment().isBefore(this.tokenService.getExpiration())
+      moment().isBefore(this.tokenService.getExpiration()) &&
+      libInd==='$L_'
     ) {
       return true;
     }

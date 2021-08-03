@@ -44,8 +44,8 @@ export class ReaderAuthService {
     );
   }
 
-  updatePwd(changePwd: ChangePwdDto): Observable<any> {
-    return this.http.patch('api/reader/changpwd', changePwd).pipe(
+  changePwd(changePwd: ChangePwdDto): Observable<any> {
+    return this.http.patch('api/reader/changepwd', changePwd).pipe(
       catchError(this.handleError('updateReaderPassword')), shareReplay()
     );
   }

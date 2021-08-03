@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 
 import { LibrarianAuthService } from '../../auth/librarian-auth.service';
 import { TokenStorageService } from '../../auth/token-storage.service';
@@ -10,10 +11,10 @@ import { AdminAuthService } from '../../auth/admin-auth.service';
 
 @Component({
   selector: 'app-librarian-login',
-  templateUrl: './librarian-login.component.html',
-  styleUrls: ['./librarian-login.component.css']
+  templateUrl: './lib-login.component.html',
+  styleUrls: ['./lib-login.component.css']
 })
-export class LibrarianLoginComponent implements OnInit {
+export class LibLoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +23,7 @@ export class LibrarianLoginComponent implements OnInit {
     private adminAuthService: AdminAuthService,
     private tokenStorageService: TokenStorageService,
     private commonService: CommonService,
+    private logger: NGXLogger,
   ) { }
 
   libLoginForm = this.fb.group({
@@ -41,12 +43,17 @@ export class LibrarianLoginComponent implements OnInit {
           .subscribe((data: AccessToken) => {
             const access_token = data.token_info ? data.token_info : '';
             if (access_token) {
-              console.log(`${val.username} is logged in.`);
+              this.logger.info(`Librarian ${val.username} success logged in.`);
               this.tokenStorageService.saveToken(data, `$L_${val.username}`);
               this.commonService.setSubject(val.username);
-              this.configLogin()
+              if (this.libAuthService.redirectUrl) {
+                this.router.navigateByUrl(this.libAuthService.redirectUrl);
+              } else {
+                this.router.navigateByUrl('/lib/lib-portal');
+              }
             } else {
-              console.log('Librarian login failed.');
+              this.logger.warn('Role mismatch, librarian login failed.');
+              window.alert(`No librarian authentication, login failed`);
             }
           })
       } else if (val.role === 'Admin') {
@@ -54,34 +61,19 @@ export class LibrarianLoginComponent implements OnInit {
           .subscribe((data: AccessToken) => {
             const access_token = data.token_info ? data.token_info : '';
             if (access_token) {
-              console.log(`${val.username} is logged in.`);
+              this.logger.info(`Admin ${val.username} success logged in.`);
               this.tokenStorageService.saveToken(data, `$A_${val.username}`);
               this.commonService.setSubject(val.username);
-              this.configLogin()
+              if (this.adminAuthService.redirectUrl) {
+                this.router.navigateByUrl(this.adminAuthService.redirectUrl);
+              } else {
+                this.router.navigateByUrl('/lib/admin-portal');
+              }
             } else {
-              console.log('Admin login failed.');
+              this.logger.warn('Role mismatch, admin login failed.');
+              window.alert(`No admin authentication, login failed`);
             }
           })
-      }
-    }
-  }
-
-  configLogin() {
-    const val = this.libLoginForm.value;
-    this.router.navigateByUrl('/');
-    const loginLink = document.querySelector('#link_signin');
-    const logoutLink = document.querySelector('#link_signout');
-    if (loginLink && logoutLink) {
-      loginLink.className = 'nav-link disabled';
-      logoutLink.className = 'dropdown-item';
-    }
-    if (val.role === 'Librarian') {
-      if (this.libAuthService.redirectUrl) {
-        this.router.navigateByUrl(this.libAuthService.redirectUrl);
-      } else {
-        if (this.adminAuthService.redirectUrl) {
-          this.router.navigateByUrl(this.libAuthService.redirectUrl);
-        }
       }
     }
   }

@@ -6,9 +6,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const appRoutes: Routes = [
   {
-    path: 'librarian',
-    loadChildren: () => import('./librarian/librarian.module')
-      .then(m => m.LibrarianModule)
+    path: 'lib',
+    loadChildren: () => import('./librarian/lib.module')
+      .then(m => m.LibModule)
   },
   {
     path: '',

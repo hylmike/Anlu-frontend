@@ -24,18 +24,18 @@ export class AdminAuthService {
   }
 
   signIn(username: string, password: string): Observable<any> {
-    return this.http.post<AccessToken>('/api/admin/login', { username: username, password: password }).pipe(
+    return this.http.post<AccessToken>('/api/lib/adminlogin', { username: username, password: password }).pipe(
       //retry(3),
-      catchError(this.handleError('signIn')), shareReplay()
+      catchError(this.handleError('adminLogin')), shareReplay()
     )
   }
 
   isLoggedIn(): boolean {
-    const adminInd = this.tokenService.getUsername().slice(0,3) || '';
+    const libInd = this.tokenService.getUsername().slice(0,3) || '';
     if (
       this.tokenService.getToken() &&
       moment().isBefore(this.tokenService.getExpiration()) &&
-      adminInd==='$A_'
+      libInd==='$A_'
     ) {
       return true;
     }

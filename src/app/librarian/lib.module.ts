@@ -1,24 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LibrarianRoutingModule } from './librarian-routing.module';
+import { LibRoutingModule } from './lib-routing.module';
 import { LibrarianPortalComponent } from './librarian-portal/librarian-portal.component';
-import { LibrarianLoginComponent } from './librarian-login/librarian-login.component';
+import { LibLoginComponent } from './lib-login/lib-login.component';
 import { LibrarianRegisterComponent } from './librarian-register/librarian-register.component';
 import { LibrarianUpdateComponent } from './librarian-update/librarian-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LibrarianHeaderComponent } from './librarian-header/librarian-header.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { LibProfileComponent } from './lib-profile/lib-profile.component';
 
 @NgModule({
   declarations: [
-    LibrarianLoginComponent,
+    LibLoginComponent,
     LibrarianPortalComponent,
     LibrarianRegisterComponent,
-    LibrarianUpdateComponent
+    LibrarianUpdateComponent,
+    LibrarianHeaderComponent,
+    AdminHeaderComponent,
+    LibProfileComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    LibrarianRoutingModule,
+    LibRoutingModule,
   ]
 })
-export class LibrarianModule { }
+export class LibModule { }

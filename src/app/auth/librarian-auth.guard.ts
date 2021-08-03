@@ -38,6 +38,6 @@ export class LibrarianAuthGuard implements CanActivate, CanActivateChild, CanLoa
     }
 
     this.librarianAuthService.redirectUrl = url;
-    return this.router.parseUrl('/librarian/login');
+    return this.router.parseUrl('/lib/login');
   }
 }

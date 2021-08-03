@@ -3,19 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LibrarianAuthGuard } from '../auth/librarian-auth.guard';
 import { LibrarianRegisterComponent } from './librarian-register/librarian-register.component';
-import { LibrarianLoginComponent } from './librarian-login/librarian-login.component';
+import { LibLoginComponent } from './lib-login/lib-login.component';
 import { LibrarianUpdateComponent } from './librarian-update/librarian-update.component';
 import { AdminAuthGuard } from '../auth/admin-auth.guard';
 import { LibrarianPortalComponent } from './librarian-portal/librarian-portal.component';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 
-const librarianRoutes: Routes = [
+const libRoutes: Routes = [
   {
     path: '',
     children: [
       {
         path: 'login',
-        component: LibrarianLoginComponent,
+        component: LibLoginComponent,
       },
       {
         path: 'register',
@@ -33,19 +33,31 @@ const librarianRoutes: Routes = [
         component: AdminPortalComponent,
       },
       {
-        path: '',
+        path: 'lib-portal',
         canActivate: [LibrarianAuthGuard],
         component: LibrarianPortalComponent,
+      },
+      {
+        path: 'profile/:id',
+        canActivate: [AdminAuthGuard],
+        component: LibrarianPortalComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: '',
+        canActivate: [LibrarianAuthGuard],
+        redirectTo: 'lib-portal',
+        pathMatch: 'full',
       },
     ]
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(librarianRoutes)],
+  imports: [RouterModule.forChild(libRoutes)],
   exports: [RouterModule]
 })
 
-export class LibrarianRoutingModule { }
+export class LibRoutingModule { }
 
 

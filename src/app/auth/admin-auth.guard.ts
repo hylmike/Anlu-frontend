@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { LibrarianAuthService } from '../auth/librarian-auth.service';
+import { AdminAuthService } from '../auth/admin-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminAuthGuard implements CanActivate, CanLoad {
   constructor(
-    private readonly librarianAuthService: LibrarianAuthService,
+    private readonly adminAuthService: AdminAuthService,
     private readonly router: Router,
   ){}
 
@@ -32,10 +32,10 @@ export class AdminAuthGuard implements CanActivate, CanLoad {
   }
 
   checkLogin(url: string): true | UrlTree {
-    if (this.librarianAuthService.isLoggedIn()) {
+    if (this.adminAuthService.isLoggedIn()) {
       return true;
     }
-    this.librarianAuthService.redirectUrl = url;
-    return this.router.parseUrl('/admin/login');
+    this.adminAuthService.redirectUrl = url;
+    return this.router.parseUrl('/lib/login');
   }
 }
