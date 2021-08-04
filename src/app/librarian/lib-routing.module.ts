@@ -45,7 +45,6 @@ const libRoutes: Routes = [
       },
       {
         path: '',
-        canActivate: [LibrarianAuthGuard],
         redirectTo: 'lib-portal',
         pathMatch: 'full',
       },

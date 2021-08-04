@@ -15,7 +15,6 @@ export interface Librarian {
 export interface AccessToken{
   token_info: string;
   expireIn: string;
-  role: string;
 }
 
 export interface RegisterLibDto {

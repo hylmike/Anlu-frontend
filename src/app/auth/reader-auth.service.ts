@@ -69,13 +69,16 @@ export class ReaderAuthService {
   }
 
   isLoggedIn(): boolean {
-    if (
-      this.tokenService.getToken() &&
-      moment().isBefore(this.tokenService.getExpiration())
-    ) {
-      return true;
+    if (this.tokenService.getToken()) {
+      const roleInd = this.tokenService.getUsername().slice(0,3);
+      if (roleInd === '$A_' || roleInd === '$L_') {
+        return false
+      } else if (moment().isBefore(this.tokenService.getExpiration())) {
+        return true;
+      }
+    } else {
+      return false;
     }
-    return false;
   }
 
   getReaderID(): string {

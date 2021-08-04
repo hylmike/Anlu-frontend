@@ -41,8 +41,8 @@ export class LibLoginComponent implements OnInit {
       if (val.role === 'Librarian') {
         this.libAuthService.signIn(val.username, val.password)
           .subscribe((data: AccessToken) => {
-            const access_token = data.token_info ? data.token_info : '';
-            if (access_token) {
+            if (data) {
+              const access_token = data.token_info ? data.token_info : '';
               this.logger.info(`Librarian ${val.username} success logged in.`);
               this.tokenStorageService.saveToken(data, `$L_${val.username}`);
               this.commonService.setSubject(val.username);
@@ -53,14 +53,14 @@ export class LibLoginComponent implements OnInit {
               }
             } else {
               this.logger.warn('Role mismatch, librarian login failed.');
-              window.alert(`No librarian authentication, login failed`);
+              window.alert(`User does not have librarian authentication, login failed`);
             }
           })
       } else if (val.role === 'Admin') {
         this.adminAuthService.signIn(val.username, val.password)
           .subscribe((data: AccessToken) => {
-            const access_token = data.token_info ? data.token_info : '';
-            if (access_token) {
+            if (data) {
+              const access_token = data.token_info ? data.token_info : '';
               this.logger.info(`Admin ${val.username} success logged in.`);
               this.tokenStorageService.saveToken(data, `$A_${val.username}`);
               this.commonService.setSubject(val.username);
@@ -71,7 +71,7 @@ export class LibLoginComponent implements OnInit {
               }
             } else {
               this.logger.warn('Role mismatch, admin login failed.');
-              window.alert(`No admin authentication, login failed`);
+              window.alert(`User does not have admin authentication, login failed`);
             }
           })
       }

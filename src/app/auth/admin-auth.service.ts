@@ -31,15 +31,16 @@ export class AdminAuthService {
   }
 
   isLoggedIn(): boolean {
-    const libInd = this.tokenService.getUsername().slice(0,3) || '';
-    if (
-      this.tokenService.getToken() &&
-      moment().isBefore(this.tokenService.getExpiration()) &&
-      libInd==='$A_'
-    ) {
-      return true;
+    if (this.tokenService.getToken()) {
+      const adminInd = this.tokenService.getUsername().slice(0,3);
+      if (moment().isBefore(this.tokenService.getExpiration()) && adminInd==='$A_') {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
-    return false;
   }
 
 }

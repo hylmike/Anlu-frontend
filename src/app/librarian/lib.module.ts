@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LibrarianHeaderComponent } from './librarian-header/librarian-header.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { LibProfileComponent } from './lib-profile/lib-profile.component';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,12 @@ import { LibProfileComponent } from './lib-profile/lib-profile.component';
     LibrarianUpdateComponent,
     LibrarianHeaderComponent,
     AdminHeaderComponent,
-    LibProfileComponent
+    LibProfileComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    ShareModule,
     LibRoutingModule,
   ]
 })

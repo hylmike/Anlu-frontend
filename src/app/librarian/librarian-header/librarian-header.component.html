@@ -12,14 +12,14 @@
             <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Book Management</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Manage Book</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="#">Register Book</a></li>
               <li><a class="dropdown-item" href="#">Update Book Info</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Workshop Management</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Manage Workshop</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown02">
               <li><a class="dropdown-item" href="#">Create Workshop</a></li>
               <li><a class="dropdown-item" href="#">Update Workshop</a></li>
@@ -27,21 +27,15 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Blog Management</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Blog</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown03">
               <li><a class="dropdown-item" href="#">Create Blog</a></li>
               <li><a class="dropdown-item" href="#">Update Blog</a></li>
               <li><a class="dropdown-item" href="#">Delete Blog</a></li>
             </ul>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Workshop Management</a>
+            <a class="nav-link" (click)="logout()">Logout</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog Management</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="link_signin" href="/reader/login">Logout</a>
         </ul>
         <form class="d-flex">
           <label class="label_welcome">Welcome! {{libName}}</label>

@@ -11,9 +11,9 @@ import { AuthModule } from '../auth/auth.module';
 import { ReaderPortalComponent } from './reader-portal/reader-portal.component';
 import { ReaderHeaderComponent } from './reader-header/reader-header.component';
 import { ReaderSignedComponent } from './reader-signed/reader-signed.component';
-import { SiteFooterComponent } from '../homepage/site-footer/site-footer.component';
 import { ReaderProfileComponent } from './reader-profile/reader-profile.component';
 import { ReaderChangePwdComponent } from './reader-change-pwd/reader-change-pwd.component';
+import { ShareModule } from '../share/share.module';
 
 
 @NgModule({
@@ -25,13 +25,13 @@ import { ReaderChangePwdComponent } from './reader-change-pwd/reader-change-pwd.
     ReaderPortalComponent,
     ReaderHeaderComponent,
     ReaderSignedComponent,
-    SiteFooterComponent,
     ReaderProfileComponent,
     ReaderChangePwdComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    ShareModule,
     AuthModule,
     ReaderRoutingModule,
   ],
