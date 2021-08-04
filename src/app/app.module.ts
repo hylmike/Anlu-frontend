@@ -17,6 +17,8 @@ import { LibrarianAuthService } from './auth/librarian-auth.service';
 import { AdminAuthService } from './auth/admin-auth.service';
 import { environment } from 'src/environments/environment';
 import { ShareModule } from './share/share.module';
+import { WorkshopModule } from './workshop/workshop.module';
+import { BlogModule } from './blog/blog.module';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { ShareModule } from './share/share.module';
     HttpClientModule,
     ReaderModule,
     BookModule,
+    WorkshopModule,
+    BlogModule,
     ShareModule,
     AppRoutingModule,
     BrowserAnimationsModule,

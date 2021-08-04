@@ -10,6 +10,7 @@ import { BookPortalComponent } from './book-portal/book-portal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,10 @@ import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    BookRoutingModule,
     MatProgressBarModule,
     MatDialogModule,
+    ShareModule,
+    BookRoutingModule
   ]
 })
 export class BookModule { }

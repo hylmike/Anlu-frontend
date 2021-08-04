@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminAuthGuard } from '../auth/admin-auth.guard';
-import { LibrarianAuthGuard } from '../auth/librarian-auth.guard';
+import { LibAuthGuard } from '../auth/lib-auth.guard';
 import { ReaderAuthGuard } from '../auth/reader-auth.guard';
 import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
 import { BookRegisterComponent } from './book-register/book-register.component';
@@ -13,17 +13,17 @@ import { BookPortalComponent } from './book-portal/book-portal.component';
 const bookRoutes: Routes = [
   {
     path: 'book/register',
-    //canActivate: [LibrarianAuthGuard],
+    canActivate: [LibAuthGuard],
     component: BookRegisterComponent,
   },
   {
     path: 'book/update',
-    canActivate: [LibrarianAuthGuard],
+    canActivate: [LibAuthGuard],
     component: BookUpdateComponent,
   },
   {
     path: 'book/read/:id/:num',
-    //canActivate: [ReaderAuthGuard],
+    canActivate: [ReaderAuthGuard],
     component: PdfViewerComponent,
   },
   {
@@ -32,10 +32,15 @@ const bookRoutes: Routes = [
     component: BookDeleteComponent,
   },
   {
-    path: 'book/',
+    path: 'book',
     canActivate: [ReaderAuthGuard],
     component: BookPortalComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'book/dashboard',
+    canActivate: [LibAuthGuard],
+    component: BookPortalComponent,
   },
 ];
 

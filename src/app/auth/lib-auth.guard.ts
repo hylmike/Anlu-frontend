@@ -3,14 +3,16 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, 
 import { Observable } from 'rxjs';
 
 import { LibrarianAuthService } from './librarian-auth.service';
+import { AdminAuthService } from './admin-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LibrarianAuthGuard implements CanActivate, CanActivateChild, CanLoad {
+export class LibAuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   constructor(
-    private readonly librarianAuthService: LibrarianAuthService,
+    private librarianAuthService: LibrarianAuthService,
+    private adminAuthService: AdminAuthService,
     private router: Router,
   ) { }
 
@@ -33,7 +35,7 @@ export class LibrarianAuthGuard implements CanActivate, CanActivateChild, CanLoa
   }
 
   checkLogin(url: string): true | UrlTree {
-    if (this.librarianAuthService.isLoggedIn()) {
+    if (this.librarianAuthService.isLoggedIn() || this.adminAuthService.isLoggedIn()) {
       return true;
     }
 

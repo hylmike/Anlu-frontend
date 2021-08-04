@@ -9,29 +9,30 @@
       <div class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+            <a class="nav-link active" aria-current="page" href="/lib/lib-portal">Dashboard</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Manage Book</a>
+            <a class="nav-link dropdown-toggle" href="/book" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Manage Book</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">Register Book</a></li>
-              <li><a class="dropdown-item" href="#">Update Book Info</a></li>
+              <li><a class="dropdown-item" href="/book">Dashboard</a></li>
+              <li><a class="dropdown-item" href="/book/register">Register Book</a></li>
+              <li><a class="dropdown-item" href="/book/update">Update Book Info</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Manage Workshop</a>
+            <a class="nav-link dropdown-toggle" href="/workshop" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Manage Workshop</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown02">
-              <li><a class="dropdown-item" href="#">Create Workshop</a></li>
-              <li><a class="dropdown-item" href="#">Update Workshop</a></li>
-              <li><a class="dropdown-item" href="#">Delete Workshop</a></li>
+              <li><a class="dropdown-item" href="/workshop">Summary</a></li>
+              <li><a class="dropdown-item" href="/workshop/create">Create Workshop</a></li>
+              <li><a class="dropdown-item" href="/workshop/update">Update Workshop</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Blog</a>
+            <a class="nav-link dropdown-toggle" href="/blog" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Blog</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown03">
-              <li><a class="dropdown-item" href="#">Create Blog</a></li>
-              <li><a class="dropdown-item" href="#">Update Blog</a></li>
-              <li><a class="dropdown-item" href="#">Delete Blog</a></li>
+              <li><a class="dropdown-item" href="/blog">Summary</a></li>
+              <li><a class="dropdown-item" href="/blog/create">Create Blog</a></li>
+              <li><a class="dropdown-item" href="/blog/update">Update Blog</a></li>
             </ul>
           <li class="nav-item">
             <a class="nav-link" (click)="logout()">Logout</a>

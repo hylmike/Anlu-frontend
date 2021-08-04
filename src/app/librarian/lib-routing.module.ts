@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LibrarianAuthGuard } from '../auth/librarian-auth.guard';
+import { LibAuthGuard } from '../auth/lib-auth.guard';
 import { LibrarianRegisterComponent } from './librarian-register/librarian-register.component';
 import { LibLoginComponent } from './lib-login/lib-login.component';
 import { LibrarianUpdateComponent } from './librarian-update/librarian-update.component';
@@ -34,7 +34,7 @@ const libRoutes: Routes = [
       },
       {
         path: 'lib-portal',
-        canActivate: [LibrarianAuthGuard],
+        canActivate: [LibAuthGuard],
         component: LibrarianPortalComponent,
       },
       {
