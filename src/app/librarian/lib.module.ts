@@ -11,6 +11,7 @@ import { LibrarianHeaderComponent } from './librarian-header/librarian-header.co
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { LibProfileComponent } from './lib-profile/lib-profile.component';
 import { ShareModule } from '../share/share.module';
+import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ShareModule } from '../share/share.module';
     LibrarianUpdateComponent,
     LibrarianHeaderComponent,
     AdminHeaderComponent,
+    AdminPortalComponent,
     LibProfileComponent,
   ],
   imports: [
