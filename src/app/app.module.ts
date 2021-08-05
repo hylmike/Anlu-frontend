@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { ShareModule } from './share/share.module';
 import { WorkshopModule } from './workshop/workshop.module';
 import { BlogModule } from './blog/blog.module';
+import { OperationLogModule } from './operation-log/operation-log.module';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { BlogModule } from './blog/blog.module';
     BookModule,
     WorkshopModule,
     BlogModule,
+    OperationLogModule,
     ShareModule,
     AppRoutingModule,
     BrowserAnimationsModule,

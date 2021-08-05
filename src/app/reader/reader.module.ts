@@ -14,6 +14,8 @@ import { ReaderSignedComponent } from './reader-signed/reader-signed.component';
 import { ReaderProfileComponent } from './reader-profile/reader-profile.component';
 import { ReaderChangePwdComponent } from './reader-change-pwd/reader-change-pwd.component';
 import { ShareModule } from '../share/share.module';
+import { ReaderDeleteComponent } from './reader-delete/reader-delete.component';
+import { AccountManageComponent } from './account-manage/account-manage.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { ShareModule } from '../share/share.module';
     ReaderSignedComponent,
     ReaderProfileComponent,
     ReaderChangePwdComponent,
+    ReaderDeleteComponent,
+    AccountManageComponent,
   ],
   imports: [
     CommonModule,

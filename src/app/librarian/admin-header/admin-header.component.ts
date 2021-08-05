@@ -41,7 +41,7 @@ export class AdminHeaderComponent implements OnInit {
         this.router.navigateByUrl('/lib/login');
       } else {
         this.logger.warn(`Something happen in server, admin logout failed`);
-        window.alert('Logout failed, please try again');
+        window.alert('Logout failed, please try again later');
       }
     });
   }

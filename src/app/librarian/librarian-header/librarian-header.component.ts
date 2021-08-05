@@ -40,7 +40,7 @@ export class LibrarianHeaderComponent implements OnInit {
         this.router.navigateByUrl('/lib/login');
       } else {
         this.logger.warn(`Something happen in server, librarian logout failed`);
-        window.alert('Logout failed, please try again');
+        window.alert('Logout failed, please try again later');
       }
     });
   }

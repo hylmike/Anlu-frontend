@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LibrarianUpdateComponent } from './librarian-update.component';
+import { LibRegisterComponent } from './lib-register.component';
 
-describe('LibrarianUpdateComponent', () => {
-  let component: LibrarianUpdateComponent;
-  let fixture: ComponentFixture<LibrarianUpdateComponent>;
+describe('LibRegisterComponent', () => {
+  let component: LibRegisterComponent;
+  let fixture: ComponentFixture<LibRegisterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LibrarianUpdateComponent ]
+      declarations: [ LibRegisterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LibrarianUpdateComponent);
+    fixture = TestBed.createComponent(LibRegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

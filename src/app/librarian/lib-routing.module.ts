@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LibAuthGuard } from '../auth/lib-auth.guard';
-import { LibrarianRegisterComponent } from './librarian-register/librarian-register.component';
+import { LibRegisterComponent } from './lib-register/lib-register.component';
 import { LibLoginComponent } from './lib-login/lib-login.component';
-import { LibrarianUpdateComponent } from './librarian-update/librarian-update.component';
+import { LibUpdateComponent } from './lib-update/lib-update.component';
 import { AdminAuthGuard } from '../auth/admin-auth.guard';
 import { LibrarianPortalComponent } from './librarian-portal/librarian-portal.component';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
+import { AccountManageComponent } from './account-manage/account-manage.component';
+import { LibProfileComponent } from './lib-profile/lib-profile.component';
 
 const libRoutes: Routes = [
   {
@@ -20,12 +22,12 @@ const libRoutes: Routes = [
       {
         path: 'register',
         canActivate: [AdminAuthGuard],
-        component: LibrarianRegisterComponent,
+        component: LibRegisterComponent,
       },
       {
-        path: 'update',
+        path: 'update/:id',
         canActivate: [AdminAuthGuard],
-        component: LibrarianUpdateComponent,
+        component: LibUpdateComponent,
       },
       {
         path: 'admin-portal',
@@ -38,10 +40,14 @@ const libRoutes: Routes = [
         component: LibrarianPortalComponent,
       },
       {
+        path: 'account-manage',
+        canActivate: [AdminAuthGuard],
+        component: AccountManageComponent,
+      },
+      {
         path: 'profile/:id',
         canActivate: [AdminAuthGuard],
-        component: LibrarianPortalComponent,
-        pathMatch: 'full',
+        component: LibProfileComponent,
       },
       {
         path: '',

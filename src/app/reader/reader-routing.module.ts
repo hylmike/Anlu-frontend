@@ -10,6 +10,9 @@ import { ReaderAuthGuard } from '../auth/reader-auth.guard';
 import { ReaderSignedComponent } from './reader-signed/reader-signed.component';
 import { ReaderProfileComponent } from './reader-profile/reader-profile.component';
 import { ReaderChangePwdComponent } from './reader-change-pwd/reader-change-pwd.component';
+import { AdminAuthGuard } from '../auth/admin-auth.guard';
+import { ReaderDeleteComponent } from './reader-delete/reader-delete.component';
+import { AccountManageComponent } from './account-manage/account-manage.component';
 
 const readerRoutes: Routes = [
   {
@@ -45,6 +48,11 @@ const readerRoutes: Routes = [
     canActivate: [ReaderAuthGuard],
     component: ReaderSignedComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'reader/account-manage',
+    canActivate: [AdminAuthGuard],
+    component: AccountManageComponent,
   },
   {
     path: 'reader',

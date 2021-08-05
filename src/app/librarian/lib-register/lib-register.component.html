@@ -1,0 +1,63 @@
+<div class="register text-center">
+  <div class="logo-img">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+  </div>
+  <h2 class="register-heading">Librarian/Admin Registration Form</h2>
+  <form class="needs-validation" [formGroup]="libRegisterForm" (ngSubmit)="libRegisterForm.valid&&libRegister()" novalidate>
+    <div class="row register-form">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username *" formControlName="username" required minlength="3" />
+          <div class="invalid-feedback">
+            Username must have 3 chars or more, start with letter/number/'_'
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password *" formControlName="password" 
+            required minlength="5" />
+          <div class="invalid-feedback">
+            Password length must be 5 or longer.
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Confirm Password *" formControlName="confirmPassword" required minlength="5" />
+        </div>
+        <div class="form-group">
+          <select class="form-control" formControlName="role" required>
+            <option value="" class="hidden" selected disabled>Please select role *</option>
+            <option>Librarian</option>
+            <option>Admin</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select role input.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Your Email *" formControlName="email" value="" required />
+          <div class="invalid-feedback">
+            Please provide valid email address.
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" />
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
+        </div>
+        <div class="form-group">
+          <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Phone Number"/>
+        </div>
+
+        <input type="submit" class="btnRegister" value="Register" />
+        <div class="home-link">
+          <a href="/lib/admin-portal">Return Admin Portal</a>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+</div>

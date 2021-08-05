@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LogReviewComponent } from './log-review/log-review.component';
 
+import { OperationLogRoutingModule } from './operation-log-routing.module';
+import { LogReviewComponent } from './log-review/log-review.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { LogReviewComponent } from './log-review/log-review.component';
     LogReviewComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    OperationLogRoutingModule
   ]
 })
 export class OperationLogModule { }

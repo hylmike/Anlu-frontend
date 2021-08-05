@@ -32,16 +32,37 @@ export class LibrarianAuthService {
     );
   }
 
+  //Only admin can review the librarian profile
+  getProfile(libID: string): Observable<any> {
+    return this.http.get(`api/lib/${libID}`).pipe(
+      catchError(this.handleError('getLibProfile')), shareReplay()
+    );
+  }
+
+  //Only admin can manage the admin account info
+  getAllAdmin(): Observable<any> {
+    return this.http.get('api/lib/getalladmin').pipe(
+      catchError(this.handleError('getLibProfile')), shareReplay()
+    );
+  }
+
+  //Only admin can manage the librarian account info
+  getAllLib(): Observable<any> {
+    return this.http.get('api/lib/getalllib').pipe(
+      catchError(this.handleError('getLibProfile')), shareReplay()
+    );
+  }
+
   //Only admin can update the librarian profile, including password
   updateProfile(updateProfile: UpdateLibDto): Observable<any> {
-    return this.http.post('api/lib/update', updateProfile).pipe(
+    return this.http.patch('api/lib/update', updateProfile).pipe(
       catchError(this.handleError('updateProfile')), shareReplay()
     );
   }
 
   //Only admin can update the librarian profile, including password
   changePwd(changePwd: ChangePwdDto): Observable<any> {
-    return this.http.post('api/lib/changepwd', changePwd).pipe(
+    return this.http.patch('api/lib/changepwd', changePwd).pipe(
       catchError(this.handleError('updatePassword')), shareReplay()
     );
   }
@@ -61,7 +82,13 @@ export class LibrarianAuthService {
   getTokenWithRefresh(): Observable<any> {
     return this.http.post<AccessToken>('/api/lib/refresh', {}).pipe(
       catchError(this.handleError('getTokenWithRefresh')), shareReplay()
-    )
+    );
+  }
+
+  deleteLib(libID: string): Observable<any> {
+    return this.http.delete(`/api/lib/delete/${libID}`, ).pipe(
+      catchError(this.handleError('deleteLib')), shareReplay()
+    );
   }
 
   isLoggedIn(): boolean {
