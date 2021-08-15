@@ -1,0 +1,79 @@
+.brief-container {
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  word-spacing: 5px;
+  line-height: 120%;
+}
+
+div.section {
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+.section-title {
+  font-size: large;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2.book-title {
+  font-size: x-large;
+  font-weight: 600;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 2%;
+}
+
+div.profile-left {
+  text-align: center;
+}
+
+button {
+  border-radius: 5px;
+  margin-right: 20px;
+  padding: 5px 10px 5px 10px;
+}
+
+button:hover {
+  background: skyblue;
+}
+
+div.profile-right {
+  position: relative;
+}
+
+button.book-read {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+button.add-favorites {
+  position: absolute;
+  bottom: 5px;
+  left: 100px;
+}
+
+img.book-cover {
+  width: 300px;
+}
+
+p.desc, p.comment-item {
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  word-spacing: 5px;
+  line-height: 120%;
+}
+
+div.existing-comment, div.new-comment {
+  margin-top: 2%;
+}
+
+div.comment-item {
+  padding-bottom: 10px;
+  font-size: large;
+}
+
+input.comment-title, textarea.comment-content {
+  width: 80%;
+  padding: 5px;
+}

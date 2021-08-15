@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { CommonService } from '../../common/common.service';
 import { NGXLogger } from 'ngx-logger';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
 
 @Component({

@@ -1,0 +1,80 @@
+<app-reader-header></app-reader-header>
+<div class="container-fluid container">
+  <div class="portal-header">
+    <img src="/assets/media/pic/library_logo.png" alt="logo-img" class="logo">
+    <h2 class="title">eBook Library</h2>
+  </div>
+  <div class="book-container">
+    <ul class="nav nav-tabs" id="bookTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" data-bs-toggle="tab" href="#home">Category</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" href="#search">Search</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="bookTab-content">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="link-area">
+          <button class="book-category btn btn-link" id="allLink" (click)="setBookList('All')">All</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Romance')">Romance</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Politics')">Politics</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Press')">Press</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Essay')">Essay</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Information Technology')">Information_Technology</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Comic')">Comic</button>
+          <button class="book-category btn btn-link" (click)="setBookList('History')">History</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Geography')">Geography</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Dissertation')">Dissertation</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Art')">Art</button>
+          <button class="book-category btn btn-link" (click)="setBookList('Sport')">Sport</button>
+        </div>
+        <div class="list-area">
+          <app-book-list [bookList]="ebookList"></app-book-list>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="search-tab">
+        <div class="search-area">
+          <form class="book-search" [formGroup]="searchForm" (ngSubmit)="searchBookList()">
+            <label class="search-label" for="category">Book Category</label>
+            <select class="select-input" formControlName="category" id="category" class="search-item">
+              <option value="" selected>Null</option>
+              <option>Romance</option>
+              <option>Politics</option>
+              <option>Press</option>
+              <option>Essay_sociology</option>
+              <option>Essay_philosophy</option>
+              <option>Essay_anthropology</option>
+              <option>Essay_ethnology</option>
+              <option>Information Technology</option>
+              <option>Comic</option>
+              <option>History</option>
+              <option>Geography</option>
+              <option>Dissertation</option>
+              <option>Art_theatre</option>
+              <option>Art_music</option>
+              <option>Art_plastic</option>
+              <option>Art_design</option>
+              <option>Sport_football</option>
+              <option>Sport_basketball</option>
+              <option>Sport_handball</option>
+              <option>Sport_tennis</option>
+              <option>Sport_boxing</option>
+            </select>
+            <label class="search-label" for="bookTitle">& Book Title</label>
+            <input class="search-input" type="text" formControlName="bookTitle" id="bookTitle" placeholder="Null" />
+            <label class="search-label" for="author">& Author</label>
+            <input class="search-input" type="text" formControlName="author" id="author" placeholder="Null" />
+            <label class="search-label" for="year">& Publish Year</label>
+            <input class="search-input" type="text" formControlName="publishYear" id="year" placeholder="Null" />
+            <button class="book-search" type="submit">Search</button>
+          </form>
+        </div>
+        <div class="list-area">
+          <app-book-list [bookList]="ebookList"></app-book-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-site-footer></app-site-footer>

@@ -1,18 +1,21 @@
-export class RegisterBook {
-  bookTitle!: string;
+export interface RegisterBook {
+  bookTitle: string;
   isbnCode: string;
-  categry!: string;
-  author!: string;
-  language!: string;
-  style!: string;     //eBook or audioBook
+  categry: string;
+  author: string;
+  language: string;
+  format: string;     //eBook or audioBook
   publisher: string;
-  publishDate: Date;
-  purchaseDate: Date;
-  price: number;
+  publishDate: string;
+  purchaseDate: string;
+  price: string;
   coverPic: string;
   bookFile: string;
   description: string;
   keyword: string;
+  initialScore: string;
+  creator: string;
+  isActive: string;
 }
 
 export interface Book {
@@ -20,7 +23,7 @@ export interface Book {
   bookTitle: string;
   isbnCode: string;
   category: string;
-  bookType: string;
+  format: string;
   author: string;
   language: string;
   publisher: string;
@@ -40,4 +43,48 @@ export interface Book {
   popularScore: number;
   comments: [string];
   readHistory: [string];
+}
+
+export interface SearchBookDto {
+  format: string;
+  category: string;
+  bookTitle: string;
+  author: string;
+  publishYear: string;
+}
+
+export interface BookComment {
+  _id: string;
+  book: string;
+  readerName: string;
+  title: string;
+  comment: string;
+  createTime: Date;
+}
+
+export interface BookWishList {
+  _id: string;
+  bookTitle: string;
+  readerID: string;
+  language: string;
+  createTime: Date;
+  status: string;
+}
+
+export interface BookCommentDto {
+  bookID: string;
+  readerName: string;
+  title: string;
+  comment: string;
+}
+
+export interface CreateBookWishDto {
+  bookTitle: string;
+  readerID: string;
+  language: string;
+}
+
+export interface UpdateWishStatusDto {
+  WishID: string;
+  status: string;
 }

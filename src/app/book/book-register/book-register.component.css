@@ -1,7 +1,18 @@
-.register {
+img.logo {
+  width: 120px;
+  margin-top: 1%;
+}
+
+.register-heading {
+  text-align: center;
+  font-size: 35px;
+  margin-top: -20px;
+  color: #495057;
+}
+
+div.register {
   background: lightgray;
-  width: 75%;
-  margin-top: 5%;
+  width: 80%;
   padding: 2%;
   border-radius: 5px;
 }
@@ -24,11 +35,6 @@
   }
 }
 
-.register .register-form {
-  padding: 5%;
-  margin-top: 12%;
-}
-
 input.form-control {
   margin-top: 10px;
 }
@@ -42,9 +48,21 @@ textarea.form-control {
   height: 10%;
 }
 
+button#bookUpload {
+  margin-top: 10px;
+  width: 100%;
+  height: 85%;
+}
+
+button#coverUpload {
+  margin-top: 10px;
+  width: 100%;
+  height: 85%;
+}
+
 .btnRegister {
   float: right;
-  margin-top: 10%;
+  margin-top: 5%;
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
@@ -54,20 +72,16 @@ textarea.form-control {
   width: 50%;
   cursor: pointer;
 }
-.register-heading {
-  text-align: center;
-  font-size: 30px;
-  margin-top: 2%;
-  margin-bottom: -15%;
-  color: #495057;
+
+div.button-floating {
+  clear: both;
+  float: right;
+  margin-top: 5%;
+  padding-right: 5%;
 }
-button#bookUpload{
-  margin-top: 10px;
-  width: 100%;
-  height: 85%;
-}
-button#coverUpload{
-  margin-top: 10px;
-  width: 100%;
-  height: 85%;
+
+a.goPortal {
+  font-size: large;
+  font-weight: 600;
+  cursor: pointer;
 }

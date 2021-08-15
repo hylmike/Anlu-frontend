@@ -4,17 +4,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminAuthGuard } from '../auth/admin-auth.guard';
 import { LibAuthGuard } from '../auth/lib-auth.guard';
 import { ReaderAuthGuard } from '../auth/reader-auth.guard';
-import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
+import { BookViewerComponent } from './book-viewer/book-viewer.component';
 import { BookRegisterComponent } from './book-register/book-register.component';
 import { BookDeleteComponent } from './book-delete/book-delete.component';
 import { BookUpdateComponent } from './book-update/book-update.component';
-import { BookPortalComponent } from './book-portal/book-portal.component';
+import { AudiobookPlayComponent } from './audiobook-play/audiobook-play.component';
+import { EbookPortalComponent } from './ebook-portal/ebook-portal.component';
+import { AudiobookPortalComponent } from './audiobook-portal/audiobook-portal.component';
+import { BookDashboardComponent } from './book-dashboard/book-dashboard.component';
+import { BookProfileComponent } from './book-profile/book-profile.component';
 
 const bookRoutes: Routes = [
   {
     path: 'book/register',
     canActivate: [LibAuthGuard],
     component: BookRegisterComponent,
+  },
+  {
+    path: 'book/profile/:id',
+    canActivate: [ReaderAuthGuard],
+    component: BookProfileComponent,
   },
   {
     path: 'book/update',
@@ -24,7 +33,12 @@ const bookRoutes: Routes = [
   {
     path: 'book/read/:id/:num',
     canActivate: [ReaderAuthGuard],
-    component: PdfViewerComponent,
+    component: BookViewerComponent,
+  },
+  {
+    path: 'book/play/:id/:time',
+    canActivate: [ReaderAuthGuard],
+    component: AudiobookPlayComponent,
   },
   {
     path: 'book/remove',
@@ -32,15 +46,21 @@ const bookRoutes: Routes = [
     component: BookDeleteComponent,
   },
   {
-    path: 'book',
+    path: 'book/dashboard',
+    canActivate: [LibAuthGuard],
+    component: BookDashboardComponent,
+  },
+  {
+    path: 'ebook',
     canActivate: [ReaderAuthGuard],
-    component: BookPortalComponent,
+    component: EbookPortalComponent,
     pathMatch: 'full',
   },
   {
-    path: 'book/dashboard',
-    canActivate: [LibAuthGuard],
-    component: BookPortalComponent,
+    path: 'audiobook',
+    canActivate: [ReaderAuthGuard],
+    component: AudiobookPortalComponent,
+    pathMatch: 'full',
   },
 ];
 

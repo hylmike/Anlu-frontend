@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { NGXLogger } from 'ngx-logger';
 
 import { BookService } from '../book.service';
 import { RegisterBook } from '../../common/book-dto';
 import { HttpEventType } from '@angular/common/http';
 import { ThemePalette } from '@angular/material/core';
-import { AlertDialog } from '../../common/message-dialog/message-dialog.component';
+import { TokenStorageService } from 'src/app/auth/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-register',
@@ -15,9 +16,11 @@ import { AlertDialog } from '../../common/message-dialog/message-dialog.componen
 })
 export class BookRegisterComponent implements OnInit {
   constructor(
+    private logger: NGXLogger,
     private fb: FormBuilder,
     private bookService: BookService,
-    private dialog: MatDialog,
+    private tokenService: TokenStorageService,
+    private router: Router,
   ) { }
 
   uploadCoverProgress: number;
@@ -32,15 +35,18 @@ export class BookRegisterComponent implements OnInit {
     category: [''],
     author: [''],
     language: [''],
-    style: [''],
+    format: [''],
     publisher: [''],
-    publishDate: [new Date()],
-    purchaseDate: [new Date()],
+    publishDate: [''],
+    purchaseDate: [''],
     price: [''],
     coverPic: [''],
     bookFile: [''],
     desc: [''],
     keyword: [''],
+    initialScore: [''],
+    creator: [this.tokenService.getUsername().slice(3,)],
+    isActive: ['True'],
   })
 
   ngOnInit(): void {
@@ -76,7 +82,7 @@ export class BookRegisterComponent implements OnInit {
           console.log("Book cover uploaded successfully");
           this.coverUploadUrl = event.body['fileUrl'];
           console.log(this.coverUploadUrl);
-          const coverFileInput = document.querySelector("#floatingCover");
+          const coverFileInput = document.querySelector("#cover");
           coverFileInput.className = 'form-control is-valid';
         }
       })
@@ -95,7 +101,7 @@ export class BookRegisterComponent implements OnInit {
         if (event.type === HttpEventType.Response && event.status === 201) {
           console.log("Book file uploaded successfully");
           this.bookUploadUrl = event.body['fileUrl'];
-          const coverFileInput = document.querySelector("#floatingBook");
+          const coverFileInput = document.querySelector("#bookFile");
           coverFileInput.className = 'form-control is-valid';
         }
       })
@@ -106,17 +112,6 @@ export class BookRegisterComponent implements OnInit {
     //Check if both cover and book already uploaded
     if (this.bookUploadUrl === '' || this.bookUploadUrl === '') {
       window.alert('Please upload book cover picture and book file first.');
-      /*
-      const dialogRef = this.dialog.open(AlertDialog, {
-        width: '30%',
-        height: '20%',
-        data: {
-          title: 'Notice',
-          message: 'Please upload book cover picture and book file first.',
-        }
-      });
-      dialogRef.afterClosed().subscribe(() => console.log('Notice dialog closed'))
-      */
       return null;
     }
     const bookInfo: RegisterBook = this.bookRegisterForm.value;
@@ -125,30 +120,22 @@ export class BookRegisterComponent implements OnInit {
     this.bookService.register(bookInfo).subscribe((data) => {
       //Check if book already exist in database, return null means existed
       if (!data) {
-        const dialogRef = this.dialog.open(AlertDialog, {
-          width: '30%',
-          height: '20%',
-          data: {
-            title: 'Notice',
-            message: 'The book already exist, please register new one.',
-          }
-        });
-        dialogRef.afterClosed().subscribe(() => console.log('Notice dialog window closed'))
+        this.logger.warn(`The book ${bookInfo.bookTitle} already exist`),
+          window.alert(`The book ${bookInfo.bookTitle} already exists, register another one`)
         return null;
       }
-      console.log(`Book ${data.bookTitle} already successfully registered in system.`);
-      const dialogRef = this.dialog.open(AlertDialog, {
-        width: '30%',
-        height: '20%',
-        data: {
-          title: 'Notice',
-          message: `Book ${data.bookTitle} already successfully registered in system.`,
-        }
-      });
-      dialogRef.afterClosed().subscribe(() =>
-        console.log('Notice dialog window closed')
-      );
-      window.location.reload();
+      this.logger.info(`Book ${data.bookTitle} already successfully registered in system.`);
+      window.alert(`Success registered Book ${data.bookTitle} in system.`),
+        window.location.reload();
     })
+  }
+
+  goPortal() {
+    const role = this.tokenService.getUsername().slice(0, 3) === '$A_' ? 'Admin' : 'Librarian';
+    if (role === 'Admin') {
+      this.router.navigateByUrl('/lib/admin-portal');
+    } else {
+      this.router.navigateByUrl('/lib/lib-portal');
+    }
   }
 }

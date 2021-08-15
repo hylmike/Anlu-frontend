@@ -83,3 +83,7 @@ export interface UpdateReaderDto {
   securityAnswer: string;
 }
 
+export interface FavorBookDto {
+  bookID: string;
+}
+

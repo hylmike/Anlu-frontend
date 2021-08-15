@@ -16,6 +16,7 @@ import { ReaderChangePwdComponent } from './reader-change-pwd/reader-change-pwd.
 import { ShareModule } from '../share/share.module';
 import { ReaderDeleteComponent } from './reader-delete/reader-delete.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
+import { ReaderService } from './reader.service';
 
 
 @NgModule({
@@ -39,6 +40,9 @@ import { AccountManageComponent } from './account-manage/account-manage.componen
     AuthModule,
     ReaderRoutingModule,
   ],
-  providers: [],
+  providers: [ReaderService],
+  exports: [
+    ReaderHeaderComponent,
+  ]
 })
 export class ReaderModule { }

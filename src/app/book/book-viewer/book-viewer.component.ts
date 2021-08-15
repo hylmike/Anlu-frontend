@@ -7,11 +7,11 @@ import { BookService } from '../book.service';
 import { Book }  from '../../common/book-dto';
 
 @Component({
-  selector: 'app-pdf-viewer',
-  templateUrl: './pdf-viewer.component.html',
-  styleUrls: ['./pdf-viewer.component.css']
+  selector: 'app-book-viewer',
+  templateUrl: './book-viewer.component.html',
+  styleUrls: ['./book-viewer.component.css']
 })
-export class PdfViewerComponent implements OnInit {
+export class BookViewerComponent implements OnInit {
   pdfPara = {
     pdf: null,
     currentPage: 1,

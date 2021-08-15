@@ -1,0 +1,13 @@
+<div class="container-fluid text-center">
+  <h2 class="book-title">{{audioBook.bookTitle}}</h2>
+  <img src={{audioBook.coverPic}} alt="cover-img" class="cover-img">
+  <figure>{{audioBook.author}}</figure>
+  <div class="audio-play">
+    <audio controls preload="auto" id="book-audio">
+      <source src={{audioBook.bookFile}} type="audio/mpeg">
+      <source src={{audioBook.bookFile}} type="audio/wav">
+      <p>Your browser doesn't support HTML5 audio. Here is
+        a <a href={{audioBook.bookFile}}>link to the audio</a> instead.</p>
+    </audio>
+  </div>
+</div>
