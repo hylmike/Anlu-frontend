@@ -126,7 +126,20 @@ export class BookProfileComponent implements OnInit {
   }
 
   playBook() {
-    
+    const bookID = this.book._id;
+    const readerID = this.readerAuthService.getReaderID();
+    let currentPage = 0;
+    this.readerService.getReadHistory(readerID).subscribe((data: ReaderReadHistory[]) => {
+      if (data) {
+        for (const item of data) {
+          if (item.bookID === bookID) {
+            currentPage = item.currentPage;
+            break;
+          }
+        }
+      }
+      this.router.navigateByUrl(`/book/play/${bookID}/${currentPage}`);
+    });
   }
 
   addFavorBook() {
