@@ -92,7 +92,7 @@ export class AccountManageComponent implements OnInit, OnDestroy {
             rowDiv.appendChild(colDiv6);
 
             //Add account delete link for non-self or non-rootuser (Admin)
-            if (item.username !== adminName && item.username !== 'Admin') {
+            if (item.username !== adminName && item.username.toLowerCase() !== 'admin') {
               let colDiv7 = document.createElement('div');
               colDiv7.className = 'col-md-1';
               let a3 = document.createElement('a');

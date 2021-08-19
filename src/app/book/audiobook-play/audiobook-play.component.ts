@@ -25,8 +25,10 @@ export class AudiobookPlayComponent implements OnInit {
     this.bookService.getBook(bookID).subscribe((data: Book) => {
       if (data && data.format==='Audiobook') {
         this.audioBook = data;
-        const bookAudio = document.getElementById('book-audio') as HTMLAudioElement;
-        bookAudio.currentTime = currentTime;
+        this.audioBook.coverPic = this.audioBook.coverPic.slice(2,);
+        this.audioBook.bookFile = this.audioBook.bookFile.slice(2,);
+        //const bookAudio = document.getElementById('book-audio') as HTMLAudioElement;
+        //bookAudio.currentTime = currentTime;
       } else {
         this.logger.warn(`Server can not find Audiobook ${bookID}`);
       }

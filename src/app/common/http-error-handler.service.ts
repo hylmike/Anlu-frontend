@@ -43,7 +43,7 @@ export class HttpErrorHandler {
           if (serviceName.toLowerCase().indexOf('reader') != -1) {
             this.router.navigateByUrl('/reader/login');
           } else {
-            this.router.navigateByUrl('/librarian/login');
+            this.router.navigateByUrl('/lib/login');
           }
 
         }

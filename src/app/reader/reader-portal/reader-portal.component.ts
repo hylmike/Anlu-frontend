@@ -21,7 +21,7 @@ export class ReaderPortalComponent implements OnInit {
   ngOnInit(): void {
     if (this.readerAuthService.isLoggedIn()) {
       const readerID = this.readerAuthService.getReaderID();
-      this.router.navigateByUrl(`/reader/${readerID}`);
+      this.router.navigateByUrl(`/reader/signed/${readerID}`);
     } else {
       this.logger.info('Success load reader portal for un-signed reader');
     }

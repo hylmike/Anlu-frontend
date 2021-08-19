@@ -49,7 +49,7 @@ export class ReaderLoginComponent implements OnInit {
             } else {
               this.logger.info(`${val.username} now is redirected to signed reader portal`);
               const readerID = this.readerAuthService.getReaderID();
-              this.router.navigateByUrl(`/reader/${readerID}`);
+              this.router.navigateByUrl(`/reader/signed/${readerID}`);
             }
           } else {
             this.logger.warn('${val.username} Login failed.');

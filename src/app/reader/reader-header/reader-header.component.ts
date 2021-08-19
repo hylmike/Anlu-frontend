@@ -30,7 +30,7 @@ export class ReaderHeaderComponent implements OnInit {
     this.isSignedIn = this.readerAuthService.isLoggedIn();
     if (this.isSignedIn) {
       const readerID = this.readerAuthService.getReaderID();
-      this.profileUrl = `/reader/${readerID}/profile`;
+      this.profileUrl = `/reader/profile/${readerID}`;
     }
   }
 

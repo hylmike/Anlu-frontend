@@ -24,7 +24,7 @@ const readerRoutes: Routes = [
     component: ReaderLoginComponent,
   },
   {
-    path: 'reader/:id/profile',
+    path: 'reader/profile/:id',
     canActivate: [ReaderAuthGuard],
     component: ReaderProfileComponent,
   },
@@ -44,10 +44,9 @@ const readerRoutes: Routes = [
     component: ReaderLogoutComponent,
   },
   {
-    path: 'reader/:id',
+    path: 'reader/signed/:id',
     canActivate: [ReaderAuthGuard],
     component: ReaderSignedComponent,
-    pathMatch: 'full',
   },
   {
     path: 'reader/account-manage',

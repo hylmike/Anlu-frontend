@@ -1,11 +1,12 @@
 <div class="container-fluid text-center">
-  <h2 class="book-title">{{audioBook.bookTitle}}</h2>
-  <img src={{audioBook.coverPic}} alt="cover-img" class="cover-img">
-  <figure>{{audioBook.author}}</figure>
-  <div class="audio-play">
+  <h2 *ngIf="audioBook" class="book-title">{{audioBook.bookTitle}}</h2>
+  <img *ngIf="audioBook" src={{audioBook.coverPic}} alt="cover-img" class="cover-img">
+  <figure *ngIf="audioBook">{{audioBook.author}}</figure>
+  <div *ngIf="audioBook" class="audio-play">
     <audio controls preload="auto" id="book-audio">
       <source src={{audioBook.bookFile}} type="audio/mpeg">
       <source src={{audioBook.bookFile}} type="audio/wav">
+      <source src={{audioBook.bookFile}} type="audio/ogg">
       <p>Your browser doesn't support HTML5 audio. Here is
         a <a href={{audioBook.bookFile}}>link to the audio</a> instead.</p>
     </audio>

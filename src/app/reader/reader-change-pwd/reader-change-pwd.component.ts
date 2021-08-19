@@ -46,7 +46,7 @@ export class ReaderChangePwdComponent implements OnInit {
   cancel() {
     const readerID = this.readerAuthService.getReaderID();
     this.logger.info(`Reader ${readerID} cancelled password change`);
-    this.router.navigateByUrl(`reader/${readerID}/profile`);
+    this.router.navigateByUrl(`reader/profile/${readerID}`);
   }
 
 }

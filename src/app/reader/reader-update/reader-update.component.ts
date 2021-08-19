@@ -85,7 +85,7 @@ export class ReaderUpdateComponent implements OnInit {
           return null;
         }
         this.logger.info(`Success updated reader ${data} profile.`);
-        this.router.navigateByUrl(`/reader/${data}/profile`);
+        this.router.navigateByUrl(`/reader/profile/${data}`);
       })
     } else {
       window.alert('You have not update anything yet!');
