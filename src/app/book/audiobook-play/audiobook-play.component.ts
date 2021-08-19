@@ -22,13 +22,13 @@ export class AudiobookPlayComponent implements OnInit {
   ngOnInit(): void {
     const bookID = this.route.snapshot.paramMap.get('id');
     const currentTime = Number(this.route.snapshot.paramMap.get('time'));
-    this.bookService.getBook(bookID).subscribe((data) => {
-      if (data) {
+    this.bookService.getBook(bookID).subscribe((data: Book) => {
+      if (data && data.format==='Audiobook') {
         this.audioBook = data;
         const bookAudio = document.getElementById('book-audio') as HTMLAudioElement;
         bookAudio.currentTime = currentTime;
       } else {
-        this.logger.warn(`Server can not find book ${bookID}`);
+        this.logger.warn(`Server can not find Audiobook ${bookID}`);
       }
     });
   }

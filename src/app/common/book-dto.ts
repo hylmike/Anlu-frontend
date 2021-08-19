@@ -71,6 +71,14 @@ export interface BookWishList {
   status: string;
 }
 
+export interface BookReadRecord {
+  _id: string;
+  book: string;
+  readerID: string;
+  startTime: Date;
+  duration: number;
+}
+
 export interface BookCommentDto {
   bookID: string;
   readerName: string;
@@ -87,4 +95,12 @@ export interface CreateBookWishDto {
 export interface UpdateWishStatusDto {
   WishID: string;
   status: string;
+}
+
+export interface ReadRecordDto {
+  bookID: string;
+  readerID: string;
+  startTime: Date;
+  currentPage: number;
+  duration: number;
 }

@@ -7,10 +7,10 @@
   <div class="book-container">
     <ul class="nav nav-tabs" id="bookTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" data-bs-toggle="tab" href="#home">Category</a>
+        <a class="nav-link active" data-bs-toggle="tab" href="#home" (click)="clickHome()">Category</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" href="#search">Search</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#search" (click)="clickSearch()">Search</a>
       </li>
     </ul>
     <div class="tab-content" id="bookTab-content">
@@ -21,16 +21,14 @@
           <button class="book-category btn btn-link" (click)="setBookList('Politics')">Politics</button>
           <button class="book-category btn btn-link" (click)="setBookList('Press')">Press</button>
           <button class="book-category btn btn-link" (click)="setBookList('Essay')">Essay</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Information Technology')">Information_Technology</button>
+          <button class="book-category btn btn-link"
+            (click)="setBookList('Information Technology')">Information_Technology</button>
           <button class="book-category btn btn-link" (click)="setBookList('Comic')">Comic</button>
           <button class="book-category btn btn-link" (click)="setBookList('History')">History</button>
           <button class="book-category btn btn-link" (click)="setBookList('Geography')">Geography</button>
           <button class="book-category btn btn-link" (click)="setBookList('Dissertation')">Dissertation</button>
           <button class="book-category btn btn-link" (click)="setBookList('Art')">Art</button>
           <button class="book-category btn btn-link" (click)="setBookList('Sport')">Sport</button>
-        </div>
-        <div class="list-area">
-          <app-book-list [bookList]="ebookList"></app-book-list>
         </div>
       </div>
       <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="search-tab">
@@ -70,9 +68,9 @@
             <button class="book-search" type="submit">Search</button>
           </form>
         </div>
-        <div class="list-area">
-          <app-book-list [bookList]="ebookList"></app-book-list>
-        </div>
+      </div>
+      <div class="list-area">
+        <app-book-list [bookList]="ebookList"></app-book-list>
       </div>
     </div>
   </div>

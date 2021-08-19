@@ -14,7 +14,7 @@ import { TokenStorageService } from '../../auth/token-storage.service';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  titleName = 'Anlu Library';
+  titleName = 'Anlu Biblio';
 
   adminName = 'Admin';
 

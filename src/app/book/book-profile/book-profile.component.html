@@ -2,7 +2,7 @@
 <div class="container container-fluid">
   <div class="section brief-container row">
     <div class="col-md-5 profile-left">
-      <img src="/bookfiles/ProHTML5Programming-cover.png" alt="book-cover" class="book-cover">
+      <img src={{book.coverPic}} alt="book-cover" class="book-cover">
     </div>
     <div class="col-md-7 profile-right">
       <h2 class="book-title">{{book.bookTitle}}</h2>
@@ -10,7 +10,8 @@
       <p class="book-profile">Publisher: {{book.publisher}}</p>
       <p class="book-profile">Publish Date: {{book.publishDate}}</p>
       <p class="book-profile" *ngIf="book.isbnCode">ISBN: {{book.isbnCode}}</p>
-      <button class="book-read" (click)="readBook()">Read</button>
+      <button class="book-read" *ngIf="book.format=='eBook'" (click)="readBook()">Read</button>
+      <button class="book-play" *ngIf="book.format=='Audiobook'" (click)="playBook()">Play</button>
       <button class="add-favorites" (click)="addFavorBook()"><i class="bi bi-heart-fill">Add to Favorites</i></button>
     </div>
   </div>
@@ -18,35 +19,13 @@
     <h3 class="section-title">Brief Description</h3>
     <hr>
     <p class="desc">
-      HTML goes back a long way. It was first published as an Internet draft in 1993. The ’90s saw an
-      enormous amount of activity around HTML, with version 2.0, versions 3.2, and 4.0 (in the same year!),
-      and finally, in 1999, version 4.01. In the course of its development, the World Wide Web Consortium
-      (W3C) assumed control of the specification.
-      After the rapid delivery of these four versions though, HTML was widely considered a dead-end; the
-      focus of web standards shifted to XML and XHTML, and HTML was put on the back burner. In the meantime, HTML
-      refused to die, and the majority of content on the web continued to be served as
-      HTML. To enable new web applications and address HTML’s shortcomings, new features and specifications were needed
-      for HTML.
-      Wanting to take the web platform to a new level, a small group of people started the Web Hypertext
-      Application Working Group (WHATWG) in 2004. They created the HTML5 specification. They also began
-      working on new features specifically geared to web applications—the area they felt was most lacking. It was around
-      this time that the term Web 2.0 was coined. And it really was like a second new web, as static web sites gave way
-      to more dynamic and social sites that required more features—a lot more features.
-      The W3C became involved with HTML again in 2006 and published the first working draft for HTML5 in 2008, and the
-      XHTML 2 working group stopped in 2009. Another two years passed, and that is where we stand today. Because HTML5
-      solves very practical problems (as you will see later), browser vendors are feverishly implementing its new
-      features, even though the specification has not been completely locked down. Experimentation by the browsers feeds
-      back into and improves the specification. HTML5 is rapidly evolving to address real and practical improvements to
-      the web
-      platform.
+      {{book.desc}}
     </p>
   </div>
   <div class="section book-comments">
     <div class="existing-comments">
       <h3 class="section-title">Comments</h3>
       <hr>
-      <p class="comment-item">Just finished the book, it is really nice book with amazing story. highly recommend!!!</p>
-      <p class="comment-item">---by Adam White</p>
     </div>
     <div class="new-comment">
       <h3 class="section-title">Write your comments</h3>

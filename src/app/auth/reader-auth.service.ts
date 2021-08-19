@@ -52,7 +52,6 @@ export class ReaderAuthService {
 
   signIn(username: string, password: string): Observable<any> {
     return this.http.post<AccessToken>('/api/reader/login', { username: username, password: password }).pipe(
-      //retry(3),
       catchError(this.handleError('readerLogin')), shareReplay()
     )
   }

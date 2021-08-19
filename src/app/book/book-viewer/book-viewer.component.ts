@@ -1,47 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as pdfjs from 'pdfjs-dist/build/pdf';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 
 import { BookService } from '../book.service';
-import { Book }  from '../../common/book-dto';
+import { Book } from '../../common/book-dto';
+import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
 
 @Component({
   selector: 'app-book-viewer',
   templateUrl: './book-viewer.component.html',
   styleUrls: ['./book-viewer.component.css']
 })
-export class BookViewerComponent implements OnInit {
+export class BookViewerComponent implements OnInit, OnDestroy {
   pdfPara = {
     pdf: null,
     currentPage: 1,
     scale: 1,
   }
 
+  readInfo = {
+    startTime: new Date(),
+    endTime: new Date(),
+  }
+
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
     private logger: NGXLogger,
+    private readerAuthService: ReaderAuthService,
   ) { }
 
   async ngOnInit(): Promise<void> {
     const bookID = this.route.snapshot.paramMap.get('id');
     this.pdfPara.currentPage = Number(this.route.snapshot.paramMap.get('num'));
     let book: Book;
-    this.bookService.getBook(bookID).subscribe((ebook) => {
+    this.bookService.getBook(bookID).subscribe(async (ebook) => {
       if (ebook) {
         book = ebook;
+        //This link is just for unit testing purpose
+        //const urlLink = '/bookfile/Pro HTML5 Programming.pdf'
+        const urlLink = book.bookFile.slice(2,);
+        pdfjs.GlobalWorkerOptions.workerSrc = '/assets/pdf.worker.min.js';
+        const pdfLoader = pdfjs.getDocument(urlLink);
+        this.pdfPara.pdf = await pdfLoader.promise;
+        document.querySelector('#total-pages').textContent = this.pdfPara.pdf._pdfInfo.numPages;
+        this.render();
+        this.readInfo.startTime = new Date();
       } else {
         this.logger.warn(`Book ${bookID} does not exist`);
       }
     });
-    //const urlLink = '/assets/books/ubuntu-server-guide 20.4.pdf'
-    const urlLink = book.bookFile;
-    pdfjs.GlobalWorkerOptions.workerSrc = '/assets/pdf.worker.min.js';
-    const pdfLoader = pdfjs.getDocument(urlLink)
-    this.pdfPara.pdf = await pdfLoader.promise;
-    document.querySelector('#total-pages').textContent = this.pdfPara.pdf._pdfInfo.numPages;
-    this.render();
   }
 
   async render() {
@@ -134,5 +143,26 @@ export class BookViewerComponent implements OnInit {
     if (autoscale.checked === true) {
       this.render();
     }
+  }
+
+  ngOnDestroy() {
+    this.readInfo.endTime = new Date();
+    const readTime = (this.readInfo.endTime.valueOf() - this.readInfo.startTime.valueOf())/1000;
+    const bookID = this.route.snapshot.paramMap.get('id');
+    const readerID = this.readerAuthService.getReaderID();
+    const readRecord = {
+      bookID: bookID,
+      readerID: readerID,
+      startTime: this.readInfo.startTime,
+      currentPage: this.pdfPara.currentPage,
+      duration: readTime,
+    }
+    this.bookService.addReadRecord(readRecord).subscribe((record)=>{
+      if (record) {
+        this.logger.info(`Success update read record for book ${bookID}`);
+      } else {
+        this.logger.warn(`Can't find book ${bookID} or read record already exist`);
+      }
+    });
   }
 }

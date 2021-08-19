@@ -54,7 +54,7 @@ export class HttpErrorHandler {
       const errorLog = `HTTP Error in ${serviceName}: ${operation} failed: ${errorMessage}`;
 
       // TODO: send the error to remote logging infrastructure
-      console.error(errorLog);
+      this.logger.error(errorLog);
 
       return of(result);
     };

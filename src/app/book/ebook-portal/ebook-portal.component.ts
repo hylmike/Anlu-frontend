@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 
+import { TokenStorageService } from 'src/app/auth/token-storage.service';
+import { CommonService } from 'src/app/common/common.service';
 import { Book, SearchBookDto } from '../../common/book-dto';
 import { BookService } from '../book.service';
 
@@ -18,8 +19,9 @@ export class EbookPortalComponent implements OnInit {
   constructor(
     private logger: NGXLogger,
     private fb: FormBuilder,
-    private router: Router,
     private bookService: BookService,
+    private tokenService: TokenStorageService,
+    private commonService: CommonService,
   ) { }
 
   searchForm = this.fb.group({
@@ -31,8 +33,9 @@ export class EbookPortalComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.commonService.setSubject(this.tokenService.getUsername());
     const allLink = document.getElementById('allLink') as HTMLButtonElement;
-    //allLink.click();
+    allLink.click();
   }
 
   setBookList(categoryInput: string) {
@@ -40,7 +43,9 @@ export class EbookPortalComponent implements OnInit {
       this.bookService.findAllBook('eBook').subscribe((data: []) => {
         if (data && data.length > 0) {
           this.ebookList = data;
+          this.logger.info('Succes load all eBook list');
         } else if (data && data.length == 0) {
+          this.ebookList = [];
           this.logger.info('No eBook in database');
         } else {
           this.logger.warn('Some abnormal happened in backend server');
@@ -59,6 +64,7 @@ export class EbookPortalComponent implements OnInit {
           this.ebookList = data;
           this.logger.info('Success got eBook list from server');
         } else if (data && data.length == 0) {
+          this.ebookList = [];
           this.logger.info(`Can not find any eBook within ${categoryInput}`);
         } else {
           this.logger.warn('Some abnormal happened in backend server');
@@ -69,12 +75,13 @@ export class EbookPortalComponent implements OnInit {
 
   searchBookList() {
     const searchInfo: SearchBookDto = this.searchForm.value;
-    if (searchInfo.category !== '' || searchInfo.author !== '' || searchInfo.bookTitle !== '') {
+    if (searchInfo.category !== '' || searchInfo.author !== '' || searchInfo.bookTitle !== '' || searchInfo.publishYear !== '') {
       this.bookService.findBookList(searchInfo).subscribe((data) => {
         if (data && data.length > 0) {
           this.ebookList = data;
           this.logger.info('Success got eBook list from server');
         } else if (data && data.length == 0) {
+          this.ebookList = [];
           this.logger.info(`Can not find any eBook with search conditions`);
         } else {
           this.logger.warn('Some abnormal happened in backend server');
@@ -86,4 +93,18 @@ export class EbookPortalComponent implements OnInit {
     }
   }
 
+  clickHome() {
+    const allLink = document.getElementById('allLink') as HTMLButtonElement;
+    allLink.click();
+  }
+
+  clickSearch() {
+    const searchInfo: SearchBookDto = this.searchForm.value;
+    if (searchInfo.category == '' && searchInfo.author == '' && searchInfo.bookTitle == '' && searchInfo.publishYear == '') {
+      this.ebookList = [];
+    } else {
+      const searchButton = document.querySelector('button.book-search') as HTMLButtonElement;
+      searchButton.click();
+    }
+  }
 }

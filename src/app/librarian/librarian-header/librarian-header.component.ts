@@ -13,7 +13,7 @@ import { TokenStorageService } from 'src/app/auth/token-storage.service';
 })
 export class LibrarianHeaderComponent implements OnInit {
 
-  titleName: string = 'Anlu Library';
+  titleName: string = 'Anlu Biblio';
 
   libName: string = 'Librarian';
 

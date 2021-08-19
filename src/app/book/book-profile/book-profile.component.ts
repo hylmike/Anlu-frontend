@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Book, BookCommentDto } from '../../common/book-dto';
+import { Book, BookComment, BookCommentDto } from '../../common/book-dto';
 import { BookService } from '../book.service';
 import { FormBuilder } from '@angular/forms';
-import { TokenStorageService } from 'src/app/auth/token-storage.service';
-import { CommonService } from 'src/app/common/common.service';
-import { ReaderService } from 'src/app/reader/reader.service';
-import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
-import { ReaderReadHistory } from 'src/app/common/reader.dto';
+import { TokenStorageService } from '../../auth/token-storage.service';
+import { CommonService } from '../../common/common.service';
+import { ReaderService } from '../../reader/reader.service';
+import { ReaderAuthService } from '../../auth/reader-auth.service';
+import { ReaderReadHistory } from '../../common/reader.dto';
 
 @Component({
   selector: 'app-book-profile',
@@ -44,40 +44,68 @@ export class BookProfileComponent implements OnInit {
     const readerName = this.tokenService.getUsername();
     this.commonService.setSubject(readerName);
     const readerID = this.readerAuthService.getReaderID();
-    this.bookService.getBook(bookID).subscribe((data: Book) => {
-      if (data && data.bookTitle) {
-        this.book = data;
+    this.bookService.getBook(bookID).subscribe((eBook: Book) => {
+      if (eBook && eBook.bookTitle) {
+        this.book = eBook;
+        this.book.coverPic = this.book.coverPic.slice(2,);
+        this.book.bookFile = this.book.bookFile.slice(2,);
         this.logger.info(`Success load profile of ${bookID}`)
       } else {
         this.logger.warn(`Failed to load ${bookID} profile from server`);
       }
-      //If book is in favor book list, disable add fovoriteBook button
-      let favorInd = false;
-      this.readerService.getFavorList(readerID).subscribe((data) => {
-        if (data && data.length > 0) {
-          for (const item of data) {
-            if (item.bookID === bookID) {
-              favorInd = true;
-              break;
+      //Load the existing comments and display in page
+      const existComments = document.querySelector('div.existing-comments');
+      if (eBook.comments.length > 0) {
+        this.bookService.getBookComments(bookID).subscribe((comments: BookComment[]) => {
+          if (comments && comments.length > 0) {
+            this.logger.info(`Success load comments of book ${bookID}`)
+            for (const item of comments) {
+              let p1 = document.createElement('p');
+              p1.className = 'comment-item';
+              p1.innerHTML = item.comment;
+              p1.style.fontSize = 'large';
+              p1.style.fontFamily = 'Times New Roman';
+              let p2 = document.createElement('p');
+              p2.className = 'comment-item';
+              p2.innerHTML = `---by ${item.readerName}`;
+              p2.style.fontSize = 'large';
+              p2.style.fontFamily = 'Times New Roman';
+              existComments.appendChild(p1);
+              existComments.appendChild(p2);
             }
           }
-          if (favorInd) {
-            const addFavorButton = document.querySelector('button.add-favorites') as HTMLButtonElement;
-            addFavorButton.disabled = true;
-          }
-        }
-      })
-      //Load the existing comments and display in page
-      if (data.comments.length > 0) {
-
+        });
+      } else {
+        let p1 = document.createElement('p');
+        p1.className = 'comment-item';
+        p1.innerHTML = 'Be the first person to write comments!';
+        p1.style.fontSize = 'large';
+        p1.style.fontFamily = 'Times New Roman';
+        existComments.appendChild(p1);
       }
       this.commentForm.setValue({
-        bookID: [data._id],
-        readerName: [readerName],
-        title: [''],
-        comment: [''],
-      })
-    })
+        bookID: bookID,
+        readerName: readerName,
+        title: '',
+        comment: '',
+      });
+    });
+    //If book is in favor book list, disable add fovoriteBook button
+    let favorInd = false;
+    this.readerService.getFavorList(readerID).subscribe((data) => {
+      if (data && data.length > 0) {
+        for (const item of data) {
+          if (item.bookID === bookID) {
+            favorInd = true;
+            break;
+          }
+        }
+        if (favorInd) {
+          const addFavorButton = document.querySelector('button.add-favorites') as HTMLButtonElement;
+          addFavorButton.disabled = true;
+        }
+      }
+    });
   }
 
   readBook() {
@@ -97,11 +125,17 @@ export class BookProfileComponent implements OnInit {
     });
   }
 
+  playBook() {
+    
+  }
+
   addFavorBook() {
     const bookID = this.book._id;
     const readerID = this.readerAuthService.getReaderID();
     this.readerService.addFavorBook(readerID, { bookID: bookID }).subscribe((data) => {
       if (data > 0) {
+        const addFavorButton = document.querySelector('button.add-favorites') as HTMLButtonElement;
+        addFavorButton.disabled = true;
         this.logger.info(`Success add favor book ${bookID} for reader ${readerID}`);
       } else {
         this.logger.warn(`Failed to add favor book ${bookID} for reader ${readerID}`);
@@ -112,9 +146,23 @@ export class BookProfileComponent implements OnInit {
   createComment() {
     const commentInfo: BookCommentDto = this.commentForm.value;
     if (commentInfo.comment) {
-      this.bookService.addBookComment(commentInfo).subscribe((data) => {
+      this.bookService.addBookComment(commentInfo).subscribe((data: BookComment) => {
         if (data) {
+          const existComments = document.querySelector('div.existing-comments');
+          let p1 = document.createElement('p');
+          p1.className = 'comment-item';
+          p1.innerHTML = data.comment;
+          p1.style.fontSize = 'large';
+          p1.style.fontFamily = 'Times New Roman';
+          let p2 = document.createElement('p');
+          p2.className = 'comment-item';
+          p2.innerHTML = `---by ${data.readerName}`;
+          p2.style.fontSize = 'large';
+          p2.style.fontFamily = 'Times New Roman';
+          existComments.appendChild(p1);
+          existComments.appendChild(p2);
           this.logger.info(`Success add comment for book ${this.book._id}`)
+
         } else {
           this.logger.warn(`Failed to add comment for book ${this.book._id}`)
         }

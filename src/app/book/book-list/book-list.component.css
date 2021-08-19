@@ -1,13 +1,15 @@
+div.book-list {
+  text-align: center;
+}
+
+div.column {
+  padding: 0.5rem;
+}
+
 div.book-card {
   background: #f7f7f7;
   text-align: center;
-  margin: 1.2rem;
   padding: 0.5rem;
-  position: relative;
-}
-
-img.book-cover {
-  width: 80%;
 }
 
 h3.book-title {

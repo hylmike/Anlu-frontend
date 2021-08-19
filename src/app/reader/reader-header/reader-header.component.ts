@@ -14,7 +14,7 @@ export class ReaderHeaderComponent implements OnInit {
     private readerAuthService: ReaderAuthService,
     ) { }
 
-  titleName: string = 'Anlu Library';
+  titleName: string = 'Anlu BiBlio';
 
   userName: string = 'Our Guest';
 
