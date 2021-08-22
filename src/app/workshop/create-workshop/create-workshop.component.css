@@ -1,0 +1,72 @@
+img.logo {
+  width: 120px;
+  margin-top: 1%;
+}
+
+.register-heading {
+  text-align: center;
+  font-size: 35px;
+  margin-top: -20px;
+  color: #495057;
+}
+
+div.register {
+  background: lightgray;
+  width: 80%;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+input.form-control {
+  margin-top: 10px;
+}
+
+button#posterUpload {
+  margin-top: 10px;
+  width: 100%;
+  height: 85%;
+}
+
+.btnRegister {
+  float: right;
+  margin-top: 5%;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #0062cc;
+  color: #fff;
+  font-weight: 600;
+  width: 50%;
+  cursor: pointer;
+}
+
+div.button-floating {
+  clear: both;
+  float: right;
+  margin-top: 5%;
+  padding-right: 5%;
+}
+
+a.goPortal {
+  font-size: large;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -3,7 +3,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { HandleError } from '../common/http-error-handler.service';
+import { HandleError, HttpErrorHandler } from '../common/http-error-handler.service';
 import { FavorBookDto, ReaderReadHistory } from '../common/reader.dto';
 
 @Injectable({
@@ -14,23 +14,26 @@ export class ReaderService {
 
   constructor(
     private http: HttpClient,
-  ) { }
+    httpErrorHandler: HttpErrorHandler,
+  ) { 
+    this.handleError = httpErrorHandler.createHandleError('ReaderService');
+  }
 
   getReadHistory(readerID: string): Observable<any> {
     return this.http.get<ReaderReadHistory>(`/api/reader/${readerID}/getreadhistory`).pipe(
-      catchError((err)=>this.handleError('getReadHistory')(err)), shareReplay()
+      catchError(this.handleError('getReadHistory')), shareReplay()
     )
   }
 
   addFavorBook(readerID: string, favorBookDto: FavorBookDto): Observable<any> {
     return this.http.post(`/api/reader/${readerID}/addfavourbook`, favorBookDto).pipe(
-      catchError((err)=>this.handleError('addFavorBook')(err)), shareReplay()
+      catchError(this.handleError('addFavorBook')), shareReplay()
     )
   }
 
   getFavorList(readerID): Observable<any> {
     return this.http.get(`/api/reader/${readerID}/getfavourlist`).pipe(
-      catchError((err)=>this.handleError('getFavorBookList')(err)), shareReplay()
+      catchError(this.handleError('getFavorBookList')), shareReplay()
     )
   }
 }

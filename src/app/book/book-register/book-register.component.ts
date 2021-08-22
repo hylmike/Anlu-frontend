@@ -120,13 +120,13 @@ export class BookRegisterComponent implements OnInit {
     this.bookService.register(bookInfo).subscribe((data) => {
       //Check if book already exist in database, return null means existed
       if (!data) {
-        this.logger.warn(`The book ${bookInfo.bookTitle} already exist`),
-          window.alert(`The book ${bookInfo.bookTitle} already exists, register another one`)
+        this.logger.warn(`The book ${bookInfo.bookTitle} already exist`);
+        window.alert(`The book ${bookInfo.bookTitle} already exists, register another one`);
         return null;
       }
       this.logger.info(`Book ${data.bookTitle} already successfully registered in system.`);
-      window.alert(`Success registered Book ${data.bookTitle} in system.`),
-        window.location.reload();
+      window.alert(`Success registered Book ${data.bookTitle} in system.`);
+      window.location.reload();
     })
   }
 

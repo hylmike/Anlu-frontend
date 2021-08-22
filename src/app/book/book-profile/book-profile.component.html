@@ -1,10 +1,10 @@
 <app-reader-header></app-reader-header>
 <div class="container container-fluid">
   <div class="section brief-container row">
-    <div class="col-md-5 profile-left">
+    <div *ngIf="book" class="col-md-5 profile-left">
       <img src={{book.coverPic}} alt="book-cover" class="book-cover">
     </div>
-    <div class="col-md-7 profile-right">
+    <div *ngIf="book" class="col-md-7 profile-right">
       <h2 class="book-title">{{book.bookTitle}}</h2>
       <p class="book-profile">Author: {{book.author}}</p>
       <p class="book-profile">Publisher: {{book.publisher}}</p>
@@ -18,7 +18,7 @@
   <div class="section book-desc">
     <h3 class="section-title">Brief Description</h3>
     <hr>
-    <p class="desc">
+    <p *ngIf="book" class="desc">
       {{book.desc}}
     </p>
   </div>

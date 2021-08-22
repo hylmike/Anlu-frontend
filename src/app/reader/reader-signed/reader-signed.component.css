@@ -5,6 +5,9 @@
 
 h2.title {
   font-size: x-large;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
 }
 
 .book-topn {
@@ -32,4 +35,25 @@ img.book-cover {
   .flex-md-equal > * {
     flex: 1;
   }
+}
+
+
+img.poster {
+  width: 80%;
+  height: 320px;
+}
+
+div.carousel-caption {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background: lightgray;
+  opacity: 0.8;
+  font-size: medium;
+  font-weight: 600;
+}
+
+h3.title {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: large;
+  color: darkblue;
 }

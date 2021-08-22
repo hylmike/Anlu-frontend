@@ -1,1 +1,65 @@
-<p>create-workshop works!</p>
+<div class="container-fluid text-center">
+  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png">
+  <h2 class="register-heading">Create Workshop</h2>
+</div>
+<div class="container register">
+  <form class="needs-validation" [formGroup]="workshopRegForm" (ngSubmit)="workshopRegForm.valid&&workshopRegister()"
+    novalidate>
+    <div class="row register-form">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="topic" formControlName="topic" required />
+          <label for="topic">Topic of workshop *</label>
+          <div class="invalid-feedback">
+            Please provide the topic of workshop.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="organizer" formControlName="organizer" required />
+          <label for="organizer">Organizer of workshop *</label>
+          <div class="invalid-feedback">
+            Please provide the organizer of workshop.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="duration" formControlName="duration" />
+          <label for="duration">Duration of workshop (unit:Hour)</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="creator" formControlName="creator" readonly />
+          <label for="creator">Creator</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="startTime" formControlName="startTime" onfocus="(this.type='datetime-local')" required />
+          <label for="startTime">Start time of workshop *</label>
+          <div class="invalid-feedback">
+            Please provide the startTime of workshop.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="place" formControlName="place" />
+          <label for="place">Place of workshop </label>
+        </div>
+        <div class="form-floating">
+          <input type="file" class="form-control" id="poster" formControlName="poster" (change)="onPosterSelect($event)"required />
+          <label for="poster">Poster picture of workshop (.png/.jpeg) *</label>
+          <div class="invalid-feedback">
+            Please upload poster picture of workshop.
+          </div>
+          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadPosterProgress"></mat-progress-bar>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="remark" formControlName="remark" />
+          <label for="remark">Remark</label>
+        </div>
+        <input type="submit" class="btnRegister" value="Register" />
+        <div class="button-floating">
+          <a class="goPortal" (click)="goPortal()">Return Portal</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

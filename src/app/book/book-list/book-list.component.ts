@@ -82,6 +82,7 @@ export class BookListComponent implements OnInit, OnChanges {
       coverImg.alt = 'cover-img';
       coverImg.className = 'book-cover';
       coverImg.style.width = '80%';
+      coverImg.style.height = '180px';
       bookLink.appendChild(coverImg);
       let bookTitle = document.createElement('h3');
       bookTitle.className = 'book-title';

@@ -9,5 +9,9 @@
     "pathRewrite": {
       "^/bookfiles": ""
     }
+  },
+  "/otherfiles": {
+    "target": "http://localhost:3000",
+    "secure": false
   }
 }
