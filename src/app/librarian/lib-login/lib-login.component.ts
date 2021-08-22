@@ -41,7 +41,7 @@ export class LibLoginComponent implements OnInit {
       if (val.role === 'Librarian') {
         this.libAuthService.signIn(val.username, val.password)
           .subscribe((data: AccessToken) => {
-            if (data) {
+            if (data && data.token_info) {
               const access_token = data.token_info ? data.token_info : '';
               this.logger.info(`Librarian ${val.username} success logged in.`);
               this.tokenStorageService.saveToken(data, `$L_${val.username}`);
@@ -59,7 +59,7 @@ export class LibLoginComponent implements OnInit {
       } else if (val.role === 'Admin') {
         this.adminAuthService.signIn(val.username, val.password)
           .subscribe((data: AccessToken) => {
-            if (data) {
+            if (data && data.token_info) {
               const access_token = data.token_info ? data.token_info : '';
               this.logger.info(`Admin ${val.username} success logged in.`);
               this.tokenStorageService.saveToken(data, `$A_${val.username}`);

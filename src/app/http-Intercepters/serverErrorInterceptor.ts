@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpEvent, HttpHandler, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-//import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger'
 
 import { ReaderAuthService } from '../auth/reader-auth.service';
 import { LibrarianAuthService } from '../auth/librarian-auth.service';
@@ -18,6 +18,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
     private libAuthService: LibrarianAuthService,
     private adminAuthService: AdminAuthService,
     private tokenService: TokenStorageService,
+    private logger: NGXLogger,
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -37,7 +38,16 @@ export class ServerErrorInterceptor implements HttpInterceptor {
   private handleUnauthError(req: HttpRequest<any>, next: HttpHandler) {
     const accessToken = this.tokenService.getToken();
     //If not login yet, direct process request
-    if (!accessToken) {
+    if (req.url.includes('login') || req.url.includes('refresh')) {
+      if (req.url.includes('refresh')) {
+        this.libAuthService.signOut().subscribe((data)=>{
+          if (data) {
+            this.logger.info('Susscess logout the past user after refresh token failed');
+          } else {
+            this.logger.info('Logout the past user failed after refresh token failed');
+          }
+        });
+      }
       return next.handle(req);
     }
     //If logined but no access token in req, add access token in req
@@ -52,7 +62,8 @@ export class ServerErrorInterceptor implements HttpInterceptor {
     let tokenBearer: string;
     if (roleInd === '$A_' || roleInd === '$L_') {
       this.libAuthService.getTokenWithRefresh().subscribe((data: AccessToken) => {
-        if (data) {
+        if (data && data.token_info) {
+          console.log('refresh success?')
           this.tokenService.saveToken(data, username);
           tokenBearer = `Bearer ${data.token_info}`;
         } else {
@@ -61,7 +72,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
       })
     } else {
       this.readerAuthService.getTokenWithRefresh().subscribe((data: AccessToken) => {
-        if (data) {
+        if (data && data.token_info) {
           this.tokenService.saveToken(data, username);
           tokenBearer = `Bearer ${data.token_info}`;
         } else {
