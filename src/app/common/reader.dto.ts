@@ -55,7 +55,8 @@ export interface RegisterReaderDto {
   gender: string;
   birthday: string;
   phoneNumber: string;
-  address: string;
+  homeAddress: string;
+  province: string;
   postcode: string;
   securityQuestion: string;
   securityAnswer: string;
@@ -63,7 +64,7 @@ export interface RegisterReaderDto {
 
 export interface ChangePwdDto{
   username: string;
-  oldPassword: string;
+  currentPassword: string;
   newPassword: string;
   confirmPassword: string;
 }

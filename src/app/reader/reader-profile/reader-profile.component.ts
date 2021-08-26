@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 
 import { ReaderAuthService } from 'src/app/auth/reader-auth.service';

@@ -37,7 +37,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
 
   private handleUnauthError(req: HttpRequest<any>, next: HttpHandler) {
     const accessToken = this.tokenService.getToken();
-    //If not login yet, direct process request
+    //If last attempt is login or refresh failed, jump to throw error
     if (req.url.includes('login') || req.url.includes('refresh')) {
       if (req.url.includes('refresh')) {
         this.libAuthService.signOut().subscribe((data)=>{

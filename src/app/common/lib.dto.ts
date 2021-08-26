@@ -17,6 +17,14 @@ export interface AccessToken{
   expireIn: string;
 }
 
+export interface OperationLog {
+  _id: string;
+  operator: string;
+  time: Date;
+  operation: string;
+  details: string;
+}
+
 export interface RegisterLibDto {
   username: string;
   password: string;

@@ -21,7 +21,7 @@ export class LibRegisterComponent implements OnInit {
   ) { }
 
   libRegisterForm = this.fb.group({
-    username: ['', [Validators.minLength(3), Validators.pattern('[a-zA-Z0-9_]*')]],
+    username: ['', [Validators.minLength(3), Validators.pattern('[a-zA-Z0-9_.]*')]],
     password: ['', Validators.minLength(5)],
     confirmPassword: ['', Validators.minLength(5)],
     email: ['', [Validators.email, Validators.required]],

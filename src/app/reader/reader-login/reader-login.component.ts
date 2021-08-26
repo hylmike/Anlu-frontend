@@ -20,7 +20,7 @@ export class ReaderLoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private readerAuthService: ReaderAuthService,
-    private tokenStorageService: TokenStorageService,
+    private tokenService: TokenStorageService,
     private commonService: CommonService,
     private logger: NGXLogger,
   ) { }
@@ -41,7 +41,7 @@ export class ReaderLoginComponent implements OnInit {
           const access_token = data.token_info ? data.token_info : '';
           if (access_token) {
             this.logger.info(`${val.username} success logged in.`);
-            this.tokenStorageService.saveToken(data, val.username);
+            this.tokenService.saveToken(data, val.username);
             this.commonService.setSubject(val.username);
             if (this.readerAuthService.redirectUrl) {
               this.logger.info(`${val.username} now is redirected to url before redirecting to login.`);
@@ -57,7 +57,4 @@ export class ReaderLoginComponent implements OnInit {
         });
     }
   }
-
-  //get username() {return this.loginForm.get('username')}
-
 }

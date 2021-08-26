@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { NGXLogger, NGXLogInterface } from 'ngx-logger';
 
 import { ReaderAuthService } from '../../auth/reader-auth.service';
 import { RegisterReaderDto } from '../../common/reader.dto';
-import { AlertDialog } from '../../common/message-dialog/message-dialog.component';
 
 @Component({
   selector: 'app-reader-register',
@@ -18,7 +17,7 @@ export class ReaderRegisterComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private readerAuthService: ReaderAuthService,
-    private dialog: MatDialog,
+    private logger: NGXLogger,
   ) { }
 
   registerForm = this.fb.group({
@@ -63,21 +62,14 @@ export class ReaderRegisterComponent implements OnInit {
     if (val.confirmPassword === val.password) {
       this.readerAuthService.register(val).subscribe((data) => {
         if (!data) {
-          const dialogRef = this.dialog.open(AlertDialog, {
-            width: '30%',
-            height: '20%',
-            data: {
-              title: 'Notice',
-              message: 'The username already exist, please choose another one.',
-            }
-          });
-          dialogRef.afterClosed().subscribe(() => console.log('Notice dialog window closed'))
+          window.alert('The username already exist, please choose another one.');
           return null;
         }
-        console.log(`User ${data.username} already successfully registered in system.`);
+        this.logger.info(`User ${data.username} already successfully registered in system.`);
         this.router.navigateByUrl('/reader/login');
       })
     } else {
+      this.logger.warn('Passwords are not matched, please check')
       window.alert('Passwords are not matched, please check')
     }
   }
