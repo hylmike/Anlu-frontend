@@ -1,18 +1,18 @@
-export interface RegisterBook {
+export interface BookDto {
   bookTitle: string;
   isbnCode: string;
-  categry: string;
+  category: string;
+  format: string; //eBook or audioBook
   author: string;
   language: string;
-  format: string;     //eBook or audioBook
   publisher: string;
   publishDate: string;
   purchaseDate: string;
-  price: string;
   coverPic: string;
   bookFile: string;
-  description: string;
-  keyword: string;
+  price: string;
+  desc: string;
+  keywords: string;
   initialScore: string;
   creator: string;
   isActive: string;
@@ -33,7 +33,7 @@ export interface Book {
   coverPic: string;
   bookFile: string;
   desc: string;
-  keyword: string;
+  keywords: string;
   isActive: boolean;
   createDate: Date;
   creator: string;

@@ -17,6 +17,7 @@ import { BookDashboardComponent } from './book-dashboard/book-dashboard.componen
 import { ReaderModule } from '../reader/reader.module';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookProfileComponent } from './book-profile/book-profile.component';
+import { BookInfoComponent } from './book-info/book-info.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BookProfileComponent } from './book-profile/book-profile.component';
     EbookPortalComponent,
     BookDashboardComponent,
     BookListComponent,
-    BookProfileComponent
+    BookProfileComponent,
+    BookInfoComponent
   ],
   imports: [
     CommonModule,

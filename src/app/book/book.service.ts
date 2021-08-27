@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { RegisterBook, Book, SearchBookDto, BookCommentDto, BookComment, ReadRecordDto, BookReadRecord } from '../common/book-dto';
+import { BookDto, Book, SearchBookDto, BookCommentDto, BookComment, ReadRecordDto, BookReadRecord } from '../common/book-dto';
 import { HttpErrorHandler, HandleError } from '../common/http-error-handler.service';
 
 
@@ -31,7 +31,7 @@ export class BookService {
     );
   }
 
-  register(registerBook: RegisterBook): Observable<any> {
+  register(registerBook: BookDto): Observable<any> {
     return this.http.post<Book>('/api/book/register', registerBook).pipe(
       catchError(this.handleError('register')), shareReplay()
     );
@@ -58,6 +58,12 @@ export class BookService {
   findBookList(searchBookDto: SearchBookDto): Observable<any> {
     return this.http.post<Book[]>(`/api/book/findlist`, searchBookDto).pipe(
       catchError(this.handleError('findBookList')), shareReplay()
+    )
+  }
+
+  updateBookInfo(updateBookDto: BookDto) {
+    return this.http.patch<Book>('/api/book/update', updateBookDto).pipe(
+      catchError(this.handleError('updateBookInfo')), shareReplay()
     )
   }
 

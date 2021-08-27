@@ -75,7 +75,7 @@ export class ReaderUpdateComponent implements OnInit {
     })()
   }
 
-  register() {
+  update() {
     const val: UpdateReaderDto = this.updateForm.value;
     if (this.updateForm.dirty) {
       this.readerAuthService.updateProfile(val).subscribe((data) => {

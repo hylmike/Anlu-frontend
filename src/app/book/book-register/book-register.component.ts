@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { NGXLogger } from 'ngx-logger';
 
 import { BookService } from '../book.service';
-import { RegisterBook } from '../../common/book-dto';
+import { BookDto } from '../../common/book-dto';
 import { HttpEventType } from '@angular/common/http';
 import { ThemePalette } from '@angular/material/core';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
@@ -43,7 +43,7 @@ export class BookRegisterComponent implements OnInit {
     coverPic: [''],
     bookFile: [''],
     desc: [''],
-    keyword: [''],
+    keywords: [''],
     initialScore: [''],
     creator: [this.tokenService.getUsername().slice(3,)],
     isActive: ['True'],
@@ -114,7 +114,7 @@ export class BookRegisterComponent implements OnInit {
       window.alert('Please upload book cover picture and book file first.');
       return null;
     }
-    const bookInfo: RegisterBook = this.bookRegisterForm.value;
+    const bookInfo: BookDto = this.bookRegisterForm.value;
     bookInfo.bookFile = this.bookUploadUrl;
     bookInfo.coverPic = this.coverUploadUrl;
     this.bookService.register(bookInfo).subscribe((data) => {

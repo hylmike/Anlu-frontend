@@ -1,1 +1,186 @@
-<p>book-update works!</p>
+<div class="container text-center padding">
+  <div class="logo-img">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+  </div>
+  <h2 class="title padding">Book Update Form</h2>
+  <hr>
+  <div class="update-form padding">
+    <form class="needs-validation" [formGroup]="bookUpdateForm" (ngSubmit)="bookUpdateForm.valid&&updateBook()"
+      novalidate>
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="title">Book Title</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="title" formControlName="bookTitle" readonly />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="isbn">ISBN Code</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="isbn" formControlName="isbnCode" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="category">Catogory</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <select class="form-select" formControlName="category" id="category" aria-label="Category of book" required>
+            <option value="" class="hidden" selected disabled>Category of book *</option>
+            <option>Romance</option>
+            <option>Politics</option>
+            <option>Press</option>
+            <option>Essay_sociology</option>
+            <option>Essay_philosophy</option>
+            <option>Essay_anthropology</option>
+            <option>Essay_ethnology</option>
+            <option>Information Technology</option>
+            <option>Comic</option>
+            <option>History</option>
+            <option>Geography</option>
+            <option>Dissertation</option>
+            <option>Art_theatre</option>
+            <option>Art_music</option>
+            <option>Art_plastic</option>
+            <option>Art_design</option>
+            <option>Sport_football</option>
+            <option>Sport_basketball</option>
+            <option>Sport_handball</option>
+            <option>Sport_tennis</option>
+            <option>Sport_boxing</option>
+          </select>
+          <div class="invalid-feedback">
+            Please provide valid category input.
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="author">Author</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="author" formControlName="author" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="language">Language</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="language" formControlName="language" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="format">Format</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <select class="form-select" formControlName="format" id="format" aria-label="Format of book" required>
+            <option>eBook</option>
+            <option>Audiobook</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="publisher">Publisher</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="publisher" formControlName="publisher" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="publishDate">Published Date</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="date" class="form-control" id="publishDate" formControlName="publishDate" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="purchaseDate">Purchased Date</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="date" class="form-control" id="purchaseDate" formControlName="purchaseDate" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="price">Price</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="price" formControlName="price" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="cover">Cover Picture - Current</label>
+        </div>
+        <div class="col-sm-6 col-md-3" *ngIf='bookFileInfo.coverPic'>
+          <input type="text" class="form-control" id="cover" value={{bookFileInfo.coverPic}} name="" readonly />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="book">Book File - Current</label>
+        </div>
+        <div class="col-sm-6 col-md-3" *ngIf='bookFileInfo.bookFile'>
+          <input type="text" class="form-control" id="book" value={{bookFileInfo.bookFile}} name="" readonly />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="coverPic">Update Cover Picture =></label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="file" class="form-control" id="coverPic" formControlName="coverPic" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="bookFile">Update Book File =></label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="file" class="form-control" id="bookFile" formControlName="bookFile" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="desc">Book Description</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+        <textarea class="form-control" id="desc" formControlName="desc" aria-label="Brief Book Description"></textarea>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="keywords">Keywords</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="keywords" formControlName="keywords" />
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="initialScore">Initial Score</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="initialScore" formControlName="initialScore" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="isactive">Active Status</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <select class="form-select" id="isactive" formControlName="isActive" aria-label="Active status" required>
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="submit-button">
+        <input type="submit" class="btnupdate" value="Update" />
+      </div>
+      <div class="portal-link">
+        <a href={{portalUrl}}>Return Portal</a>
+      </div>
+
+    </form>
+  </div>
+</div>

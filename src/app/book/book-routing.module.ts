@@ -26,7 +26,7 @@ const bookRoutes: Routes = [
     component: BookProfileComponent,
   },
   {
-    path: 'book/update',
+    path: 'book/update/:id',
     canActivate: [LibAuthGuard],
     component: BookUpdateComponent,
   },
