@@ -15,6 +15,7 @@ import { BookService } from '../book.service';
 export class EbookPortalComponent implements OnInit {
 
   ebookList: Book[];
+  role: string = 'reader';
 
   constructor(
     private logger: NGXLogger,

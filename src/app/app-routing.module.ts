@@ -1,7 +1,10 @@
+import { FullscreenOverlayContainer } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AboutUsComponent } from './share/about-us/about-us.component';
+import { DonateComponent } from './share/donate/donate.component';
 
 const appRoutes: Routes = [
   {
@@ -13,6 +16,16 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: '/reader',
     //component: HomeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'aboutus',
+    component: AboutUsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'donate',
+    component: DonateComponent,
     pathMatch: 'full',
   },
   {

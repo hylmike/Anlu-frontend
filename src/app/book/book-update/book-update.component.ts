@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms'
 import { NGXLogger } from 'ngx-logger';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { BookService } from '../book.service';
-import { Book } from 'src/app/common/book-dto';
+import { Book, BookDto } from 'src/app/common/book-dto';
+import { ThemePalette } from '@angular/material/core';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-book-update',
@@ -19,6 +21,11 @@ export class BookUpdateComponent implements OnInit {
     coverPic: '',
     bookFile: '',
   }
+  uploadCoverProgress: number;
+  uploadBookProgress: number;
+  color: ThemePalette = 'accent';
+  coverUploadUrl = '';
+  bookUploadUrl = '';
 
   portalUrl = '/lib/lib-portal';
 
@@ -29,6 +36,7 @@ export class BookUpdateComponent implements OnInit {
     private tokenService: TokenStorageService,
     private route: ActivatedRoute,
     private datePipe: DatePipe,
+    private router: Router,
   ) { }
 
   bookUpdateForm = this.fb.group({
@@ -105,14 +113,53 @@ export class BookUpdateComponent implements OnInit {
     })()
   }
 
+  //After select the cover picture file, upload file to server and show uploading progress
+  onCoverSelect(event) {
+    const coverFile = event.target.files[0];
+    if (coverFile) {
+      this.bookService.fileUpload(coverFile).subscribe((event) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.uploadCoverProgress = Math.round(100 * (event.loaded / event.total));
+        }
+        if (event.type === HttpEventType.Response && event.status === 201) {
+          this.logger.info("Book cover uploaded successfully");
+          this.coverUploadUrl = event.body['fileUrl'];
+          const coverFileInput = document.querySelector("#cover");
+          coverFileInput.className = 'form-control is-valid';
+        }
+      })
+    }
+  }
+
+  //After select the book file, upload file to server and show uploading progress
+  onBookSelect(event) {
+    const bookFile = event.target.files[0];
+    if (bookFile) {
+      this.bookService.fileUpload(bookFile).subscribe((event) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.uploadBookProgress = Math.round(100 * (event.loaded / event.total));
+        }
+        if (event.type === HttpEventType.Response && event.status === 201) {
+          this.logger.info("Book file uploaded successfully");
+          this.bookUploadUrl = event.body['fileUrl'];
+          const coverFileInput = document.querySelector("#bookFile");
+          coverFileInput.className = 'form-control is-valid';
+        }
+      })
+    }
+  }
+
   updateBook() {
-    const updateInfo = this.bookUpdateForm.value;
+    const updateInfo: BookDto = this.bookUpdateForm.value;
     if (this.bookUpdateForm.dirty) {
+      if (this.coverUploadUrl !== '') updateInfo.coverPic = this.coverUploadUrl;
+      if (this.bookUploadUrl !== '') updateInfo.bookFile = this.bookUploadUrl;
+      //Call bookService to update bookinfo in database
       this.bookService.updateBookInfo(updateInfo).subscribe((book: Book) => {
         if (book && book.bookTitle) {
           this.logger.info(`Success update book ${book.bookTitle}`)
-          window.alert(`Success update book ${book.bookTitle}`);
-
+          //window.alert(`Success update book ${book.bookTitle}`);
+          this.router.navigateByUrl(`/book/reviewinfo/${book._id}`);
         } else {
           this.logger.info(`Update book ${book.bookTitle} failed`)
           window.alert(`Update book ${book.bookTitle} failed, please check and try again`);

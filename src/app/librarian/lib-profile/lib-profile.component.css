@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  padding: 3%;
+}
+
+.title h2 {
+  margin-bottom: 2%;
+  font-size: 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p.title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  font-weight: 600;
+}
+
+a.change-password {
+  margin-left: 30px;
+  font-size: 0.8rem;
+}

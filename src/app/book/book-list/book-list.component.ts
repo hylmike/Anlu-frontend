@@ -1,25 +1,33 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { Book } from '../../common/book-dto';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
-export class BookListComponent implements OnInit, OnChanges {
+export class BookListComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() bookList: Book[] = [];
+  @Input() role: string = 'reader';
 
   constructor(
     private logger: NGXLogger,
+    private bookService: BookService,
   ) { }
 
   ngOnInit(): void {
     const listContainer = document.querySelector('div.book-list');
     const loadButton = document.querySelector('button.load-link') as HTMLButtonElement;
     if (this.bookList && this.bookList.length > 0) {
+      //Befor updating the book list area, clear all the old elements
+      while (listContainer.firstChild) {
+        listContainer.removeChild(listContainer.firstChild);
+      }
+      //Check the load button property and load the book list
       if (loadButton.disabled) loadButton.disabled = false;
       this.loadBook(0);
     } else {
@@ -72,18 +80,23 @@ export class BookListComponent implements OnInit, OnChanges {
       listContainer.appendChild(divCol);
       let divCard = document.createElement('div');
       divCard.className = 'book-card';
+      divCard.style.marginTop = '10px';
       divCol.appendChild(divCard);
-      let bookLink = document.createElement('a');
-      bookLink.className = 'img-link';
-      bookLink.href = `/book/profile/${this.bookList[i]._id}`;
-      divCard.appendChild(bookLink);
       let coverImg = document.createElement('img');
       coverImg.src = this.bookList[i].coverPic;
       coverImg.alt = 'cover-img';
       coverImg.className = 'book-cover';
       coverImg.style.width = '80%';
       coverImg.style.height = '180px';
-      bookLink.appendChild(coverImg);
+      if (this.role === 'reader') {
+        let bookLink = document.createElement('a');
+        bookLink.className = 'img-link';
+        bookLink.href = `/book/profile/${this.bookList[i]._id}`;
+        divCard.appendChild(bookLink);
+        bookLink.appendChild(coverImg);
+      } else {
+        divCard.appendChild(coverImg);
+      }
       let bookTitle = document.createElement('h3');
       bookTitle.className = 'book-title';
       bookTitle.innerHTML = this.bookList[i].bookTitle;
@@ -92,10 +105,67 @@ export class BookListComponent implements OnInit, OnChanges {
       bookAuthor.className = 'book-author';
       bookAuthor.innerHTML = this.bookList[i].author;
       divCard.appendChild(bookAuthor);
+      if (this.role === 'admin' || this.role === 'librarian') {
+        let buttonDiv = document.createElement('div');
+        buttonDiv.className = 'button-section';
+        buttonDiv.style.fontSize = 'small';
+        divCard.appendChild(buttonDiv);
+        let reviewButton = document.createElement('a');
+        reviewButton.className = 'btn btn-primary review-info';
+        reviewButton.href = `/book/reviewinfo/${this.bookList[i]._id}`;
+        reviewButton.innerHTML = 'Review';
+        reviewButton.style.padding = '5px';
+        reviewButton.style.marginRight = '5px';
+        reviewButton.style.marginTop = '5px';
+        let updateButton = document.createElement('a');
+        updateButton.className = 'btn btn-primary update-info';
+        updateButton.href = `/book/update/${this.bookList[i]._id}`
+        updateButton.innerHTML = 'Update';
+        updateButton.style.padding = '5px';
+        updateButton.style.marginRight = '5px';
+        updateButton.style.marginTop = '5px';
+        buttonDiv.appendChild(reviewButton);
+        buttonDiv.appendChild(updateButton);
+        if (this.role === 'admin') {
+          let delButton = document.createElement('button');
+          delButton.className = 'btn btn-primary del-link';
+          delButton.innerHTML = 'Delete';
+          delButton.style.padding = '5px';
+          delButton.style.marginTop = '5px';
+          delButton.addEventListener('click', this.delBook.bind(this, this.bookList[i]._id));
+          buttonDiv.appendChild(delButton);
+        }
+      }
     }
     if (endNum >= this.bookList.length) {
       const loadButton = document.querySelector('button.load-link') as HTMLButtonElement;
       loadButton.disabled = true;
+    }
+  }
+
+  delBook(bookID: string) {
+    if (window.confirm('Please confirm if you want to delete this book')) {
+      this.bookService.delBook(bookID).subscribe((data) => {
+        if (data = bookID) {
+          this.logger.info(`Success delete the book ${bookID}`);
+          window.alert(`Success delete the book ${bookID} from database`);
+          location.reload();
+        } else {
+          this.logger.warn(`Failed to delete book ${bookID} in service side`);
+        }
+      })
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.role === 'admin') {
+      const deleteButtons = document.querySelectorAll('button.del-link');
+      if (deleteButtons && deleteButtons.length > 0) {
+        for (let i = 0; i < deleteButtons.length; i++) {
+          deleteButtons[i].replaceWith(deleteButtons[i].cloneNode(true));
+        }
+      }
+      this.logger.info('Success cleaned all eventListeners added by book-manage component');
     }
   }
 

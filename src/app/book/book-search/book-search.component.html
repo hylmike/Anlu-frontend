@@ -1,0 +1,17 @@
+<div *ngIf="role==='admin'">
+  <app-admin-header></app-admin-header>
+</div>
+<div *ngIf="role==='librarian'">
+  <app-librarian-header></app-librarian-header>
+</div>
+<div *ngIf="role==='reader'">
+  <app-reader-header></app-reader-header>
+</div>
+
+<div class="search-result" *ngIf="bookList">
+  <h3 class="title">Search Results: Total {{bookList.length}} {{bookList.length>1?'books':'book'}} found</h3>
+  <hr>
+  <app-book-list [bookList]="bookList" [role]='role'></app-book-list>
+</div>
+
+<app-site-footer></app-site-footer>

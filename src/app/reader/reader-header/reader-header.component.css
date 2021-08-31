@@ -42,3 +42,7 @@ label.label_welcome{
   font-size: 1.1em;
   text-align: center;
 }
+
+button.search {
+  width: 180px;
+}

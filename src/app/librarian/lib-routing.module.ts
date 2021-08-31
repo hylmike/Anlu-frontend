@@ -10,10 +10,11 @@ import { LibrarianPortalComponent } from './librarian-portal/librarian-portal.co
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
 import { LibProfileComponent } from './lib-profile/lib-profile.component';
+import { ChangePwdComponent } from './change-password/change-password.component';
 
 const libRoutes: Routes = [
   {
-    path: '',
+    path: 'lib',
     children: [
       {
         path: 'login',
@@ -28,6 +29,11 @@ const libRoutes: Routes = [
         path: 'update/:id',
         canActivate: [AdminAuthGuard],
         component: LibUpdateComponent,
+      },
+      {
+        path: 'changepwd',
+        canActivate: [AdminAuthGuard],
+        component: ChangePwdComponent,
       },
       {
         path: 'admin-portal',

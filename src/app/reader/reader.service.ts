@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ErrorHandler, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
+import { Book } from '../common/book-dto';
 
 import { HandleError, HttpErrorHandler } from '../common/http-error-handler.service';
 import { FavorBookDto, ReaderReadHistory } from '../common/reader.dto';

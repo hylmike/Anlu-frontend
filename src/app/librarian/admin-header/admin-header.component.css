@@ -42,3 +42,7 @@
     font-size: 1.1em;
     text-align: center;
   }
+
+  button.search {
+    width: 200px;
+  }

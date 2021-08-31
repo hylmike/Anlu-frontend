@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CommonService } from 'src/app/common/common.service';
 import { LibrarianAuthService } from 'src/app/auth/librarian-auth.service';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-librarian-header',
@@ -21,9 +22,14 @@ export class LibrarianHeaderComponent implements OnInit {
     private commonService: CommonService,
     private tokenService: TokenStorageService,
     private libAuthService: LibrarianAuthService,
+    private fb: FormBuilder,
     private logger: NGXLogger,
     private router: Router,
   ) { }
+
+  searchForm = this.fb.group({
+    searchValue: [''],
+  })
 
   ngOnInit(): void {
     this.commonService.usernameUpdate.subscribe((username) => {
@@ -43,6 +49,13 @@ export class LibrarianHeaderComponent implements OnInit {
         window.alert('Logout failed, please try again later');
       }
     });
+  }
+
+  searchBook() {
+    const val = this.searchForm.value;
+    if (val.searchValue.trim() !== '') {
+      this.router.navigateByUrl(`/book/librarian/search?sval=${val.searchValue.trim()}`);
+    }
   }
 
 }

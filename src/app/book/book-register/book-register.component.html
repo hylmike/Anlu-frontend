@@ -122,8 +122,7 @@
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="purchaseDate" onfocus="(this.type='date')"
-            formControlName="purchaseDate" />
+          <input type="text" class="form-control" id="purchaseDate" onfocus="(this.type='date')" formControlName="purchaseDate" />
           <label for="purchaseDate">Book Purchased Date</label>
           <div class="invalid-feedback">
             Please provide book purchase date.
@@ -133,7 +132,7 @@
         <div class="form-floating">
           <input type="file" class="form-control" id="cover" placeholder="Book Cover Picture *"
             formControlName="coverPic" (change)="onCoverSelect($event)" required />
-          <label for="cover">Book Cover Picture</label>
+          <label for="cover">Book Cover Picture (png or jpeg file)</label>
           <div class="invalid-feedback">
             Please select book cover picture.
           </div>
@@ -143,7 +142,7 @@
         <div class="form-floating">
           <input type="file" class="form-control" id="bookFile" placeholder="Book file *" formControlName="bookFile"
             (change)="onBookSelect($event)" required />
-          <label for="bookFile">Book File (eg. PDF)</label>
+          <label for="bookFile">Book File (pdf for eBook, mp3 for Audiobook)</label>
           <div class="invalid-feedback">
             Please provide book file (eg. PDF/mp3).
           </div>

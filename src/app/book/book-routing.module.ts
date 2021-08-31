@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminAuthGuard } from '../auth/admin-auth.guard';
 import { LibAuthGuard } from '../auth/lib-auth.guard';
 import { ReaderAuthGuard } from '../auth/reader-auth.guard';
 import { BookViewerComponent } from './book-viewer/book-viewer.component';
 import { BookRegisterComponent } from './book-register/book-register.component';
-import { BookDeleteComponent } from './book-delete/book-delete.component';
 import { BookUpdateComponent } from './book-update/book-update.component';
 import { AudiobookPlayComponent } from './audiobook-play/audiobook-play.component';
 import { EbookPortalComponent } from './ebook-portal/ebook-portal.component';
 import { AudiobookPortalComponent } from './audiobook-portal/audiobook-portal.component';
 import { BookDashboardComponent } from './book-dashboard/book-dashboard.component';
 import { BookProfileComponent } from './book-profile/book-profile.component';
+import { BookManageComponent } from './book-manage/book-manage.component';
+import { BookInfoComponent } from './book-info/book-info.component';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 const bookRoutes: Routes = [
   {
@@ -24,6 +25,11 @@ const bookRoutes: Routes = [
     path: 'book/profile/:id',
     canActivate: [ReaderAuthGuard],
     component: BookProfileComponent,
+  },
+  {
+    path: 'book/reviewinfo/:id',
+    canActivate: [LibAuthGuard],
+    component: BookInfoComponent,
   },
   {
     path: 'book/update/:id',
@@ -41,9 +47,14 @@ const bookRoutes: Routes = [
     component: AudiobookPlayComponent,
   },
   {
-    path: 'book/remove',
-    canActivate: [AdminAuthGuard],
-    component: BookDeleteComponent,
+    path: 'book/:role/search',
+    //canActivate: [ReaderAuthGuard],
+    component: BookSearchComponent,
+  },
+  {
+    path: 'book/manage',
+    canActivate: [LibAuthGuard],
+    component: BookManageComponent,
   },
   {
     path: 'book/dashboard',

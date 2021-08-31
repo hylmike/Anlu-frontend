@@ -16,32 +16,30 @@
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="/book/dashboard">Dashboard</a></li>
               <li><a class="dropdown-item" href="/book/register">Register Book</a></li>
-              <li><a class="dropdown-item" href="/book/update">Update Book Info</a></li>
+              <li><a class="dropdown-item" href="/book/manage">Manage Book Info</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/workshop" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Manage Workshop</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown02">
-              <li><a class="dropdown-item" href="/workshop">Summary</a></li>
+              <li><a class="dropdown-item" href="/workshop/manage">Manage Workshop</a></li>
               <li><a class="dropdown-item" href="/workshop/create">Create Workshop</a></li>
-              <li><a class="dropdown-item" href="/workshop/update">Update Workshop</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/blog" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Blog</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown03">
-              <li><a class="dropdown-item" href="/blog">Summary</a></li>
+              <li><a class="dropdown-item" href="/blog/manage">Manage Blog</a></li>
               <li><a class="dropdown-item" href="/blog/create">Create Blog</a></li>
-              <li><a class="dropdown-item" href="/blog/update">Update Blog</a></li>
             </ul>
           <li class="nav-item">
             <a class="nav-link" (click)="logout()">Logout</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="searchForm.valid&&searchBook()" novalidate>
           <label class="label_welcome">Welcome! {{libName}}</label>
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <input class="form-control me-2" type="search" placeholder="Search" formControlName="searchValue">
+          <button class="search btn btn-outline-success" type="submit">Search Book</button>
         </form>
       </div>
     </div>

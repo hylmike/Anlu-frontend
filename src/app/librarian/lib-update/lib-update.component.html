@@ -1,1 +1,70 @@
-<p>lib-update works!</p>
+<div class="container text-center padding">
+  <div class="logo-img">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+  </div>
+  <h2 class="title padding">Librarian/Admin Update Form</h2>
+  <hr>
+  <div class="update-form padding">
+    <form class="needs-validation" [formGroup]="libUpdateForm" (ngSubmit)="libUpdateForm.valid&&updateLib()"
+      novalidate>
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="uname">Username</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="uname" formControlName="username" readonly />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="email">Email</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="email" formControlName="email" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="role">Role</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <select class="form-select" formControlName="role" id="role" aria-label="role">
+            <option>Librarian</option>
+            <option>Admin</option>
+          </select>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="pnumber">Phone Number</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="pnumber" formControlName="phoneNumber" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="fname" formControlName="firstName" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="lname">Last Name</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="lname" formControlName="lastName" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="isactive">Active Status</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <select class="form-select" id="isactive" formControlName="isActive" aria-label="Active status" required>
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="submit-button">
+        <input type="submit" class="btnupdate" value="Update" />
+      </div>
+      <div class="portal-link">
+        <a href="/lib/admin-portal">Return Portal</a>
+      </div>
+
+    </form>
+  </div>
+</div>

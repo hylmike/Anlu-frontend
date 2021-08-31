@@ -12,12 +12,8 @@ import { ChangePwdDto, RegisterReaderDto, UpdateReaderDto } from '../common/read
 
 describe('AuthService', () => {
   let readerAuthService: ReaderAuthService;
-  //let tokenServiceSpy: jasmine.SpyObj<TokenStorageService>;
   let http: HttpClient;
   let httpTestingController: HttpTestingController;
-  //let errorHandlerSpy: jasmine.SpyObj<HttpErrorHandler>;
-  //let handleError: HandleError;
-  //let loggerSpy: jasmine.SpyObj<NGXLogger>;
 
   beforeEach(() => {
     const tokenSpy = jasmine.createSpyObj('TokenStorageService', ['getToken', 'getUsername', 'getExpiration']);
@@ -51,12 +47,8 @@ describe('AuthService', () => {
       ]
     });
     readerAuthService = TestBed.inject(ReaderAuthService);
-    //tokenServiceSpy = TestBed.inject(TokenStorageService) as jasmine.SpyObj<TokenStorageService>;
     http = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
-    //errorHandlerSpy = TestBed.inject(HttpErrorHandler) as jasmine.SpyObj<HttpErrorHandler>;
-    //handleError = errorHandlerSpy.createHandleError('ReaderAuthService');
-    //loggerSpy = TestBed.inject(NGXLogger) as jasmine.SpyObj<NGXLogger>;
   });
 
   afterEach(() => {

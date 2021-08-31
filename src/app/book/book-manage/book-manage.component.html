@@ -1,0 +1,51 @@
+<div *ngIf="isAdmin; else elseBlock">
+  <app-admin-header></app-admin-header>
+</div>
+<ng-template #elseBlock>
+  <app-librarian-header></app-librarian-header>
+</ng-template>
+
+<div class="container-fluid container">
+  <div class="portal-header">
+    <img src="/assets/media/pic/library_logo.png" alt="logo-img" class="logo">
+    <h2 class="title">Book Management</h2>
+  </div>
+  <div class="book-container">
+    <ul class="nav nav-tabs" id="bookTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" data-bs-toggle="tab" href="#ebook" (click)="clickEbook()">eBook</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" href="#audiobook" (click)="clickAudiobook()">Audiobook</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="bookTab-content">
+      <div class="tab-pane fade show active" id="ebook" role="tabpanel" aria-labelledby="ebook-tab">
+        <div class="link-area">
+          <button class="book-dist btn btn-link" id="allebook-link" (click)="setBookList('eBook','All')">All</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('eBook','ABCD')">A - D</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('eBook','EFGH')">E - H</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('eBook','IJKL')">I - L</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('eBook','MNOP')">M - P</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('eBook','QRST')">Q - T</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('eBook','UVWXYZ')">U - Z</button>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="audiobook" role="tabpanel" aria-labelledby="audiobook-tab">
+        <div class="link-area">
+          <button class="book-dist btn btn-link" id="allabook-link" (click)="setBookList('Audiobook','All')">All</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','ABCD')">A - D</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','EFGH')">E - H</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','IJKL')">I - L</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','MNOP')">M - P</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','QRST')">Q - T</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','UVWXYZ')">U - Z</button>
+        </div>
+      </div>
+      <div class="list-area">
+        <app-book-list [bookList]="bookList" [role]="role"></app-book-list>
+      </div>
+    </div>
+  </div>
+</div>
+<app-site-footer></app-site-footer>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 import { HandleError, HttpErrorHandler } from '../common/http-error-handler.service';
-import { RegisterWorkshopDto, Subscriber, SubWorkshopDto, UnsubWorkshopDto, Workshop } from '../common/workshop.dto';
+import { RegisterWorkshopDto, Subscriber, SubWorkshopDto, UnsubWorkshopDto, UpdateWorkshopDto, Workshop } from '../common/workshop.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +35,27 @@ export class WorkshopService {
     );
   }
 
+  getWorkshop(workshopID): Observable<any> {
+    return this.http.get<Workshop>(`api/workshop/profile/${workshopID}`).pipe(
+      catchError(this.handleError('getWorkshop')), shareReplay()
+    );
+  }
+
   getAllWorkshop(): Observable<any> {
     return this.http.get<Workshop[]>('/api/workshop/getall').pipe(
       catchError(this.handleError('getAllWorkshop')), shareReplay()
+    );
+  }
+
+  updateWorkshop(workshopID, updateWsDto: UpdateWorkshopDto): Observable<any> {
+    return this.http.patch<Workshop>(`/api/workshop/update/${workshopID}`, updateWsDto).pipe(
+      catchError(this.handleError('updateWorkshop')), shareReplay()
+    );
+  }
+
+  delWorkshop(workshopID): Observable<any> {
+    return this.http.delete(`/api/workshop/del/${workshopID}`).pipe(
+      catchError(this.handleError('delWorkshop')), shareReplay()
     );
   }
 
@@ -56,6 +74,12 @@ export class WorkshopService {
   getSubList(workshopID): Observable<any> {
     return this.http.get<Subscriber[]>(`/api/workshop/getsublist/${workshopID}`).pipe(
       catchError(this.handleError('getSubList')), shareReplay()
+    );
+  }
+
+  getSubName(subID): Observable<any> {
+    return this.http.get(`/api/workshop/getsubname/${subID}`).pipe(
+      catchError(this.handleError('getSubName')), shareReplay()
     );
   }
 

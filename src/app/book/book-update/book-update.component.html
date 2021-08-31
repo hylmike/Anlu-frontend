@@ -131,13 +131,15 @@
           <label for="coverPic">Update Cover Picture =></label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="file" class="form-control" id="coverPic" formControlName="coverPic" />
+          <input type="file" class="form-control" id="coverPic" formControlName="coverPic" (change)="onCoverSelect($event)" />
+          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadCoverProgress"></mat-progress-bar>
         </div>
         <div class="col-sm-6 col-md-3">
           <label for="bookFile">Update Book File =></label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="file" class="form-control" id="bookFile" formControlName="bookFile" />
+          <input type="file" class="form-control" id="bookFile" formControlName="bookFile" (change)="onBookSelect($event)" />
+          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadBookProgress"></mat-progress-bar>
         </div>
       </div>
 

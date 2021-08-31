@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  padding: 3%;
+}
+
+.title h2 {
+  margin-bottom: 2%;
+  font-size: 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p.field-name {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  font-weight: 600;
+}

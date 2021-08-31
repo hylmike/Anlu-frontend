@@ -1,0 +1,54 @@
+.container {
+  width: 90%;
+}
+
+.logo-img img {
+  margin-top: 5%;
+  width: 10%;
+}
+
+h2.title{
+  font-size: xx-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 2%;
+}
+
+.update-form {
+  width: 100%;
+}
+
+label {
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.form-row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.submit-button {
+  clear:left;
+}
+
+.btnupdate {
+  padding: 5px 30px 5px 30px;
+  background-color: lightskyblue;
+  margin-top: 30px;
+  margin-right: 20px;
+  float: right;
+  border-radius: 0.5rem;
+  font: 1.2em sans-serif;
+}
+
+.btnupdate:hover {
+  color: blue;
+}
+
+.portal-link {
+  clear: both;
+  float: right;
+  margin-top: 30px;
+  margin-right: 10px;
+  font-size: large;
+}

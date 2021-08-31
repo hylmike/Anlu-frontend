@@ -1,1 +1,129 @@
-<p>book-info works!</p>
+<div *ngIf="isAdmin; else elseBlock">
+  <app-admin-header></app-admin-header>
+</div>
+<ng-template #elseBlock>
+  <app-librarian-header></app-librarian-header>
+</ng-template>
+
+<div class="container">
+  <div class="title padding">
+    <h2>Book Information</h2>
+    <a href={{updateBookUrl}} class="btn btn-primary">Update</a>
+  </div>
+  <div class="book-info" *ngIf="book">
+    <hr class='padding'>
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Book Title</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.bookTitle}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">ISBN Code</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.isbnCode}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Category</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.category}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Author</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.author}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Language</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.language}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Format</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.format}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Publisher</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.publisher}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Published Date</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.purchaseDate| date:'longDate'}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Purchase Date</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.purchaseDate| date:'longDate'}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Price</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.price}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Cover Picture</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.coverPic.slice(13,-1)}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Book File</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.bookFile.slice(13,-1)}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Book Description</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.desc}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Keywords</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.keywords}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Initial Score</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.initialScore}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Active Status</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.isActive===true?'Active':'Inactive'}}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">Creator</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{book.creator}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-site-footer></app-site-footer>

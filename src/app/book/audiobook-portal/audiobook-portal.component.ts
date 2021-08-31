@@ -14,6 +14,7 @@ import { BookService } from '../book.service';
 export class AudiobookPortalComponent implements OnInit {
 
   audiobookList: Book[];
+  role: string = 'reader';
 
   constructor(
     private fb: FormBuilder,

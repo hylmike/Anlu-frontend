@@ -13,6 +13,7 @@ import { LibProfileComponent } from './lib-profile/lib-profile.component';
 import { ShareModule } from '../share/share.module';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
+import { ChangePwdComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,17 @@ import { AccountManageComponent } from './account-manage/account-manage.componen
     LibRegisterComponent,
     LibUpdateComponent,
     AccountManageComponent,
+    ChangePwdComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     ShareModule,
     LibRoutingModule,
+  ],
+  exports: [
+    LibrarianHeaderComponent,
+    AdminHeaderComponent,
   ]
 })
 export class LibModule { }

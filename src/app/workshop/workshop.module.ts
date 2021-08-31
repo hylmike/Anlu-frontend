@@ -9,18 +9,26 @@ import { WorkshopPortalComponent } from './workshop-portal/workshop-portal.compo
 import { ShareModule } from '../share/share.module';
 import { ReaderModule } from '../reader/reader.module';
 import { MatProgressBar, MatProgressBarModule } from '@angular/material/progress-bar';
+import { WorkshopManageComponent } from './workshop-manage/workshop-manage.component';
+import { WorkshopInfoComponent } from './workshop-info/workshop-info.component';
+import { WorkshopListComponent } from './workshop-list/workshop-list.component';
+import { LibModule } from '../librarian/lib.module';
 
 @NgModule({
   declarations: [
     CreateWorkshopComponent,
     UpdateWorkshopComponent,
-    WorkshopPortalComponent
+    WorkshopPortalComponent,
+    WorkshopManageComponent,
+    WorkshopInfoComponent,
+    WorkshopListComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MatProgressBarModule,
     ShareModule,
+    LibModule,
     WorkshopRoutingModule,
     ReaderModule,
   ]

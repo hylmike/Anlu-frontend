@@ -44,7 +44,7 @@ export class BookService {
   }
 
   getBook(bookID: string): Observable<any> {
-    return this.http.get<Book>(`/api/book/${bookID}`).pipe(
+    return this.http.get<Book>(`/api/book/info/${bookID}`).pipe(
       catchError(this.handleError('getBook')), shareReplay()
     )
   }
@@ -61,9 +61,21 @@ export class BookService {
     )
   }
 
+  searchBook(searchValue: string): Observable<any> {
+    return this.http.get<Book[]>(`/api/book/searchbook?sval=${searchValue}`).pipe(
+      catchError(this.handleError('searchBook')), shareReplay()
+    )
+  }
+
   updateBookInfo(updateBookDto: BookDto) {
     return this.http.patch<Book>('/api/book/update', updateBookDto).pipe(
       catchError(this.handleError('updateBookInfo')), shareReplay()
+    )
+  }
+
+  delBook(bookID) {
+    return this.http.delete(`/api/book/del/${bookID}`).pipe(
+      catchError(this.handleError('delBook')), shareReplay()
     )
   }
 

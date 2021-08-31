@@ -1,0 +1,8 @@
+h3.title {
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+div.padding {
+  padding-bottom: 20px;
+}

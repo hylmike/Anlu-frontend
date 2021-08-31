@@ -73,15 +73,13 @@ export class BookRegisterComponent implements OnInit {
   onCoverSelect(event) {
     const coverFile = event.target.files[0];
     if (coverFile) {
-      console.log(coverFile);
       this.bookService.fileUpload(coverFile).subscribe((event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.uploadCoverProgress = Math.round(100 * (event.loaded / event.total));
         }
         if (event.type === HttpEventType.Response && event.status === 201) {
-          console.log("Book cover uploaded successfully");
+          this.logger.info("Book cover uploaded successfully");
           this.coverUploadUrl = event.body['fileUrl'];
-          console.log(this.coverUploadUrl);
           const coverFileInput = document.querySelector("#cover");
           coverFileInput.className = 'form-control is-valid';
         }
@@ -93,13 +91,12 @@ export class BookRegisterComponent implements OnInit {
   onBookSelect(event) {
     const bookFile = event.target.files[0];
     if (bookFile) {
-      console.log(bookFile);
       this.bookService.fileUpload(bookFile).subscribe((event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.uploadBookProgress = Math.round(100 * (event.loaded / event.total));
         }
         if (event.type === HttpEventType.Response && event.status === 201) {
-          console.log("Book file uploaded successfully");
+          this.logger.info("Book file uploaded successfully");
           this.bookUploadUrl = event.body['fileUrl'];
           const coverFileInput = document.querySelector("#bookFile");
           coverFileInput.className = 'form-control is-valid';

@@ -1,0 +1,76 @@
+<app-librarian-header></app-librarian-header>
+
+<div class="container container-fluid">
+  <div class="title padding">
+    <h2>Workshop Information</h2>
+    <a href={{wsUpdateUrl}} class="btn btn-primary">Update</a>
+  </div>
+  <div class="form" *ngIf="workshop">
+    <hr class='padding'>
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Topic</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.topic}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Place</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.place}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Start Time</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.startTime | date:'short'}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Duration</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.duration}} {{workshop.duration>1?'Hours':'Hour'}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Organizer</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.organizer}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Poster File</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.poster}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Creator</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.creator}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Create Time</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{workshop.createTime | date:'short'}}</p>
+      </div>
+      <div class="col-sm-3">
+        <p class="title">Remark</p>
+      </div>
+      <div class="col-sm-9">
+        <p>{{workshop.remark}}</p>
+      </div>
+      <div class="col-sm-3">
+        <p class="title">Subscriber List</p>
+      </div>
+      <div class="col-sm-9">
+        <p>{{subList.toString()}}</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<app-site-footer></app-site-footer>

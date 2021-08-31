@@ -1,1 +1,74 @@
-<p>update-workshop works!</p>
+<div class="container text-center padding">
+  <div class="logo-img">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+  </div>
+  <h2 class="title padding">Workshop Update Form</h2>
+  <hr>
+  <div class="update-form padding">
+    <form class="needs-validation" [formGroup]="wsUpdateForm" (ngSubmit)="wsUpdateForm.valid&&updateWorkshop()"
+      novalidate>
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="topic">Topic</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="topic" formControlName="topic" readonly />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="place">Place</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="place" formControlName="place" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="stime">Start Time</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="datetime-local" class="form-control" id="stime" formControlName="startTime" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="organizer">Organizer</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="organizer" formControlName="organizer" />
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <label for="duration">Duration</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="duration" formControlName="duration" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="cposter">Poster Picture</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="cposter" value={{posterFileUrl}} name="" readonly/>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <label for="remark">Remark</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="remark" formControlName="remark" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="postPic">Update Poster here =></label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="file" class="form-control" id="postPic" formControlName="poster"
+            (change)="onPosterSelect($event)" />
+          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadPosterProgress"></mat-progress-bar>
+        </div>
+      </div>
+
+      <div class="submit-button">
+        <input type="submit" class="btnupdate" value="Update" />
+      </div>
+      <div class="portal-link">
+        <a href="/workshop/manage">Return Manage Portal</a>
+      </div>
+
+    </form>
+  </div>
+</div>
