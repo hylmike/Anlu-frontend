@@ -16,6 +16,7 @@ export class BookSearchComponent implements OnInit {
 
   bookList: Book[];
   role = 'reader';
+  listName = 'searchBook';
 
   constructor(
     private logger: NGXLogger,

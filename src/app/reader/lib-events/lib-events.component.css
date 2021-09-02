@@ -10,33 +10,24 @@ h2.title {
   font-weight: 600;
 }
 
-.list-container {
-  border-radius: 10px 10px 10px 10px;
-}
-
 .blog-item, .workshop-item {
   padding: 15px 0 15px 0;
   font-size: 1.5em;
-}
-
-img.book-cover {
-  width: 150px;
-  height: 200px;
 }
 
 /*
  * Extra utilities
  */
 
-.flex-equal > * {
+.flex-equal>* {
   flex: 1;
 }
+
 @media (min-width: 768px) {
-  .flex-md-equal > * {
+  .flex-md-equal>* {
     flex: 1;
   }
 }
-
 
 img.poster {
   width: 80%;

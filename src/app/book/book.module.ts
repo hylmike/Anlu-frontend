@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { BookRoutingModule } from './book-routing.module';
 import { BookRegisterComponent } from './book-register/book-register.component';
@@ -14,7 +14,6 @@ import { AudiobookPortalComponent } from './audiobook-portal/audiobook-portal.co
 import { EbookPortalComponent } from './ebook-portal/ebook-portal.component';
 import { BookDashboardComponent } from './book-dashboard/book-dashboard.component';
 import { ReaderModule } from '../reader/reader.module';
-import { BookListComponent } from './book-list/book-list.component';
 import { BookProfileComponent } from './book-profile/book-profile.component';
 import { BookInfoComponent } from './book-info/book-info.component';
 import { BookManageComponent } from './book-manage/book-manage.component';
@@ -30,7 +29,6 @@ import { BookSearchComponent } from './book-search/book-search.component';
     AudiobookPortalComponent,
     EbookPortalComponent,
     BookDashboardComponent,
-    BookListComponent,
     BookProfileComponent,
     BookInfoComponent,
     BookManageComponent,
@@ -45,6 +43,6 @@ import { BookSearchComponent } from './book-search/book-search.component';
     ReaderModule,
     ShareModule,
     BookRoutingModule
-  ]
+  ],
 })
 export class BookModule { }

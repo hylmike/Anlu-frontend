@@ -6,6 +6,7 @@ import { SiteHeaderComponent } from './site-header/site-header.component';
 import { SiteFooterComponent } from './site-footer/site-footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonateComponent } from './donate/donate.component';
+import { BookListComponent } from './book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DonateComponent } from './donate/donate.component';
     SiteFooterComponent,
     AboutUsComponent,
     DonateComponent,
+    BookListComponent,
   ],
   imports: [
     CommonModule
@@ -21,6 +23,7 @@ import { DonateComponent } from './donate/donate.component';
   exports: [
     HomeComponent,
     SiteFooterComponent,
+    BookListComponent,
   ]
 })
 export class ShareModule { }

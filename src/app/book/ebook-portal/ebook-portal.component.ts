@@ -16,6 +16,7 @@ export class EbookPortalComponent implements OnInit {
 
   ebookList: Book[];
   role: string = 'reader';
+  listName = 'catBook';
 
   constructor(
     private logger: NGXLogger,
@@ -95,11 +96,13 @@ export class EbookPortalComponent implements OnInit {
   }
 
   clickHome() {
+    if (this.listName!=='catBook') this.listName = 'catBook';
     const allLink = document.getElementById('allLink') as HTMLButtonElement;
     allLink.click();
   }
 
   clickSearch() {
+    if (this.listName!=='searchBook') this.listName = 'searchBook';
     const searchInfo: SearchBookDto = this.searchForm.value;
     if (searchInfo.category == '' && searchInfo.author == '' && searchInfo.bookTitle == '' && searchInfo.publishYear == '') {
       this.ebookList = [];

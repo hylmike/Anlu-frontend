@@ -21,7 +21,7 @@ export class ReaderService {
   }
 
   getReadHistory(readerID: string): Observable<any> {
-    return this.http.get<ReaderReadHistory>(`/api/reader/${readerID}/getreadhistory`).pipe(
+    return this.http.get<Book[]>(`/api/reader/${readerID}/getreadhistory`).pipe(
       catchError(this.handleError('getReadHistory')), shareReplay()
     )
   }
@@ -33,7 +33,7 @@ export class ReaderService {
   }
 
   getFavorList(readerID): Observable<any> {
-    return this.http.get(`/api/reader/${readerID}/getfavourlist`).pipe(
+    return this.http.get<Book[]>(`/api/reader/${readerID}/getfavourlist`).pipe(
       catchError(this.handleError('getFavorBookList')), shareReplay()
     )
   }

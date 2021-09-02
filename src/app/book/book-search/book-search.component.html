@@ -11,7 +11,7 @@
 <div class="search-result" *ngIf="bookList">
   <h3 class="title">Search Results: Total {{bookList.length}} {{bookList.length>1?'books':'book'}} found</h3>
   <hr>
-  <app-book-list [bookList]="bookList" [role]='role'></app-book-list>
+  <app-book-list [bookList]="bookList" [role]='role' [listName]="listName"></app-book-list>
 </div>
 
 <app-site-footer></app-site-footer>

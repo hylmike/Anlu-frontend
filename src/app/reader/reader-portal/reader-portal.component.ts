@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ReaderAuthService } from '../../auth/reader-auth.service';
-import { TokenStorageService } from '../../auth/token-storage.service';
 import { Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { LibrarianAuthService } from 'src/app/auth/librarian-auth.service';
+import { BookService } from 'src/app/book/book.service';
+import { Book } from 'src/app/common/book-dto';
 
 @Component({
   selector: 'app-reader-portal',
@@ -12,10 +13,15 @@ import { LibrarianAuthService } from 'src/app/auth/librarian-auth.service';
 })
 export class ReaderPortalComponent implements OnInit {
 
+  hotBookList: Book[];
+  role = 'reader';
+
+  hotBook = 'hotBook';
+
   constructor(
     private readerAuthService: ReaderAuthService,
     private libAuthService: LibrarianAuthService,
-    private tokenService: TokenStorageService,
+    private bookService: BookService,
     private logger: NGXLogger,
     private router: Router,
   ) { }
@@ -26,7 +32,7 @@ export class ReaderPortalComponent implements OnInit {
       this.router.navigateByUrl(`/reader/signed/${readerID}`);
     } else {
       if (this.libAuthService.isLoggedIn()) {
-        this.libAuthService.signOut().subscribe((libID)=>{
+        this.libAuthService.signOut().subscribe((libID) => {
           if (libID) {
             this.logger.info('Success remove previous logged lib info');
           } else {
@@ -36,6 +42,13 @@ export class ReaderPortalComponent implements OnInit {
       }
       this.logger.info('Success load reader portal for un-signed reader');
     }
+    //Generate hot book list
+    this.bookService.findHotBooks(6).subscribe((bookList: Book[]) => {
+      if (bookList && bookList.length > 0) {
+        this.hotBookList = bookList;
+        this.logger.info('Success get hot book list from server');
+      }
+    })
   }
 
 }

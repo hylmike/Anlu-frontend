@@ -1,18 +1,22 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { Book } from '../../common/book-dto';
-import { BookService } from '../book.service';
+import { BookService } from '../../book/book.service';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
-export class BookListComponent implements OnInit, OnChanges, OnDestroy {
+export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   @Input() bookList: Book[] = [];
   @Input() role: string = 'reader';
+  @Input() listName: string = '';
+
+  divID: string = '';
+  buttonID: string = '';
 
   constructor(
     private logger: NGXLogger,
@@ -20,16 +24,25 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    const listContainer = document.querySelector('div.book-list');
-    const loadButton = document.querySelector('button.load-link') as HTMLButtonElement;
+    //Define the id of listContainer and loadButton
+    if (!this.divID) {
+      this.divID = `${this.listName}Div`;
+      this.buttonID = `${this.listName}Button`;
+    }
+  }
+
+  ngAfterViewInit() {
+    const listContainer = document.getElementById(this.divID) as HTMLDivElement;
+    const loadButton = document.getElementById(this.buttonID) as HTMLButtonElement;
     if (this.bookList && this.bookList.length > 0) {
-      //Befor updating the book list area, clear all the old elements
+      //Before updating the book list area, clear all the old elements
       while (listContainer.firstChild) {
         listContainer.removeChild(listContainer.firstChild);
       }
       //Check the load button property and load the book list
       if (loadButton.disabled) loadButton.disabled = false;
       this.loadBook(0);
+      console.log('should load book list');
     } else {
       const p1 = document.createElement('p');
       p1.innerHTML = "Can't find any book ...";
@@ -41,38 +54,39 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges() {
-    const listContainer = document.querySelector('div.book-list');
-    const loadButton = document.querySelector('button.load-link') as HTMLButtonElement;
-    //Befor updating the book list area, clear all the old elements
-    while (listContainer.firstChild) {
-      listContainer.removeChild(listContainer.firstChild);
-    }
-    //Then update the book list area
-    if (this.bookList && this.bookList.length > 0) {
-      if (loadButton.disabled) loadButton.disabled = false;
-      this.loadBook(0);
-    } else {
-      const p1 = document.createElement('p');
-      p1.innerHTML = "Can't find any book ...";
-      p1.className = 'empty-result';
-      p1.style.color = 'gray';
-      p1.style.fontSize = 'xx-large';
-      p1.style.padding = '30px';
-      listContainer.appendChild(p1);
-      const loadButton = document.querySelector('button.load-link') as HTMLButtonElement;
-      if (!loadButton.disabled) loadButton.disabled = true;
-      this.logger.warn("Can't find any book ...");
+    const listContainer = document.getElementById(this.divID) as HTMLDivElement;
+    const loadButton = document.getElementById(this.buttonID) as HTMLButtonElement;
+    if (listContainer) {
+      while (listContainer.firstChild) {
+        listContainer.removeChild(listContainer.firstChild);
+      }
+      //Then update the book list area
+      if (this.bookList && this.bookList.length > 0) {
+        if (loadButton.disabled) loadButton.disabled = false;
+        this.loadBook(0);
+      } else {
+        const p1 = document.createElement('p');
+        p1.innerHTML = "Can't find any book ...";
+        p1.className = 'empty-result';
+        p1.style.color = 'gray';
+        p1.style.fontSize = 'xx-large';
+        p1.style.padding = '30px';
+        listContainer.appendChild(p1);
+        if (!loadButton.disabled) loadButton.disabled = true;
+        this.logger.warn("Can't find any book ...");
+      }
     }
   }
 
   loadMore() {
-    const listContainer = document.querySelector('div.book-list');
+    const listContainer = document.getElementById(this.divID) as HTMLDivElement;
     const currentNum = listContainer.childElementCount;
     this.loadBook(currentNum);
   }
 
   loadBook(startNum: number) {
-    const listContainer = document.querySelector('div.book-list');
+    const listContainer = document.getElementById(this.divID) as HTMLDivElement;
+    const loadButton = document.getElementById(this.buttonID) as HTMLButtonElement;
     const endNum = this.bookList.length - startNum > 12 ? startNum + 12 : this.bookList.length
     for (let i = startNum; i < endNum; i++) {
       let divCol = document.createElement('div');
@@ -138,7 +152,6 @@ export class BookListComponent implements OnInit, OnChanges, OnDestroy {
       }
     }
     if (endNum >= this.bookList.length) {
-      const loadButton = document.querySelector('button.load-link') as HTMLButtonElement;
       loadButton.disabled = true;
     }
   }

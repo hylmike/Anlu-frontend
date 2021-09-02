@@ -17,6 +17,8 @@ import { ShareModule } from '../share/share.module';
 import { ReaderDeleteComponent } from './reader-delete/reader-delete.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
 import { ReaderService } from './reader.service';
+import { LibEventsComponent } from './lib-events/lib-events.component';
+import { BookModule } from '../book/book.module';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { ReaderService } from './reader.service';
     ReaderChangePwdComponent,
     ReaderDeleteComponent,
     AccountManageComponent,
+    LibEventsComponent,
   ],
   imports: [
     CommonModule,

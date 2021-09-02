@@ -67,6 +67,12 @@ export class BookService {
     )
   }
 
+  findHotBooks(num: number): Observable<any> {
+    return this.http.get<Book[]>(`/api/book/findhotbooks/${num}`).pipe(
+      catchError(this.handleError('findHotBooks')), shareReplay()
+    )
+  }
+
   updateBookInfo(updateBookDto: BookDto) {
     return this.http.patch<Book>('/api/book/update', updateBookDto).pipe(
       catchError(this.handleError('updateBookInfo')), shareReplay()
