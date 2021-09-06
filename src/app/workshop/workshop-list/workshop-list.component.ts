@@ -31,7 +31,7 @@ export class WorkshopListComponent implements OnInit, OnDestroy {
       this.readerID = '';
     }
     //create workshop list and render into webpage
-    this.workshopService.getAllWorkshop().subscribe((workshopList: Workshop[]) => {
+    this.workshopService.getWsList(0).subscribe((workshopList: Workshop[]) => {
       const comingWS = document.querySelector('div.coming-workshop') as HTMLDivElement;
       const finishedWS = document.querySelector('div.finished-workshop') as HTMLDivElement;
       if (workshopList && workshopList.length > 0) {

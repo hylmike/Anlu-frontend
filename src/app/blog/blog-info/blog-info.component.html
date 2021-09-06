@@ -1,1 +1,52 @@
-<p>blog-info works!</p>
+<app-librarian-header></app-librarian-header>
+
+<div class="container container-fluid">
+  <div class="title padding">
+    <h2>Blog Information</h2>
+    <a href={{updateUrl}} class="btn btn-primary">Update</a>
+  </div>
+  <div class="form" *ngIf="blog">
+    <hr class='padding'>
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Topic</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{blog.topic}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Category</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{blog.category}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Content</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{blog.content}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Creator</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{blog.creator}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Create Time</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{blog.createTime | date:'short'}}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="title">Keywords</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p>{{blog.keywords}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-site-footer></app-site-footer>
+

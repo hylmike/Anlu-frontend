@@ -28,6 +28,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="/reader/register">Register</a></li>
               <li *ngIf="isSignedIn"><a class="dropdown-item" href={{profileUrl}}>My Profile</a></li>
+              <li *ngIf="isSignedIn"><a class="dropdown-item" href={{favorBookUrl}}>My Favor Book</a></li>
               <li *ngIf="isSignedIn"><a class="dropdown-item" href="/reader/login">Switch Account</a></li>
               <li *ngIf="isSignedIn"><a class="dropdown-item" id="link_signout" href="/reader/logout">Logout</a></li>
             </ul>

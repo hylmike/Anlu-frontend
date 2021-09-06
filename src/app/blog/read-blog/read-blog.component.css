@@ -1,0 +1,24 @@
+div.blog {
+  padding-top: 30px;
+}
+a.home-link {
+  font-size: large;
+}
+h2.blog-title {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: x-large;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+p.sub-title {
+  text-align: center;
+  font-size: medium;
+  margin-bottom: 20px;
+}
+p.blog-content {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  margin-bottom: 50px;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { Blog } from 'src/app/common/blog.dto';
@@ -7,31 +7,29 @@ import { CommonService } from 'src/app/common/common.service';
 import { BlogService } from '../blog.service';
 
 @Component({
-  selector: 'app-blog-info',
-  templateUrl: './blog-info.component.html',
-  styleUrls: ['./blog-info.component.css']
+  selector: 'app-read-blog',
+  templateUrl: './read-blog.component.html',
+  styleUrls: ['./read-blog.component.css']
 })
-export class BlogInfoComponent implements OnInit {
+export class ReadBlogComponent implements OnInit {
 
   blog: Blog;
-  updateUrl: string;
 
   constructor(
     private logger: NGXLogger,
     private blogService: BlogService,
+    private route: ActivatedRoute,
     private tokenService: TokenStorageService,
     private commonService: CommonService,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    const libName = this.tokenService.getUsername().slice(3,);
-    this.commonService.setSubject(libName);
+    const readerName = this.tokenService.getUsername();
+    this.commonService.setSubject(readerName);
     const blogID = this.route.snapshot.paramMap.get('id');
-    this.blogService.getBlog(blogID).subscribe((blog: Blog) => {
+    this.blogService.getBlog(blogID).subscribe((blog: Blog)=>{
       if (blog && blog.topic) {
         this.blog = blog;
-        this.updateUrl = `/blog/update/${blogID}`;
         this.logger.info(`Success get blog ${blogID} from server`);
       } else {
         this.logger.warn(`Failed to get blog ${blogID} from server`);

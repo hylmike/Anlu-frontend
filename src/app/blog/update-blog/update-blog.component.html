@@ -1,1 +1,55 @@
-<p>update-blog works!</p>
+<div class="container text-center padding">
+  <div class="logo-img">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+  </div>
+  <h2 class="title padding">Blog Update Form</h2>
+  <hr>
+  <div class="update-form padding">
+    <form class="needs-validation" [formGroup]="blogUpdateForm" (ngSubmit)="blogUpdateForm.valid&&updateBlog()"
+      novalidate>
+      <div class="row form-row">
+        <div class="col-sm-6 col-md-3">
+          <label for="topic">Topic</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="topic" formControlName="topic" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="category">Category</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <select id="category" class="form-control" formControlName="category">
+            <option>News</option>
+            <option>Information</option>
+            <option>System Notice</option>
+          </select>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="content">Content</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="content" formControlName="content" />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="creator">Creator</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="creator" formControlName="creator" readonly />
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <label for="keywords">Keywords</label>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <input type="text" class="form-control" id="keywords" formControlName="keywords" />
+        </div>
+      </div>
+
+      <div class="submit-button">
+        <input type="submit" class="btnupdate" value="Update" />
+      </div>
+      <div class="portal-link">
+        <a href="/blog/manage">Return Manage Portal</a>
+      </div>
+    </form>
+  </div>
+</div>

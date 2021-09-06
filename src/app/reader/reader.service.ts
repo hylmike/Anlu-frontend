@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ErrorHandler, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 import { Book } from '../common/book-dto';
@@ -21,8 +21,14 @@ export class ReaderService {
   }
 
   getReadHistory(readerID: string): Observable<any> {
-    return this.http.get<Book[]>(`/api/reader/${readerID}/getreadhistory`).pipe(
+    return this.http.get<ReaderReadHistory[]>(`/api/reader/${readerID}/getreadhistory`).pipe(
       catchError(this.handleError('getReadHistory')), shareReplay()
+    )
+  }
+
+  getReadBooks(readerID: string): Observable<any> {
+    return this.http.get<Book[]>(`/api/reader/${readerID}/getreadbooks`).pipe(
+      catchError(this.handleError('getReadBooks')), shareReplay()
     )
   }
 
@@ -35,6 +41,12 @@ export class ReaderService {
   getFavorList(readerID): Observable<any> {
     return this.http.get<Book[]>(`/api/reader/${readerID}/getfavourlist`).pipe(
       catchError(this.handleError('getFavorBookList')), shareReplay()
+    )
+  }
+
+  delFavorBook(readerID: string, favorBookDto: FavorBookDto): Observable<any> {
+    return this.http.patch(`/api/reader/${readerID}/delfavourbook`, favorBookDto).pipe(
+      catchError(this.handleError('delFavorBook')), shareReplay()
     )
   }
 }

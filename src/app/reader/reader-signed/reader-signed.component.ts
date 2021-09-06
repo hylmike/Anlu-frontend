@@ -45,7 +45,7 @@ export class ReaderSignedComponent implements OnInit {
       this.router.navigateByUrl('/**');
     }
     //Generate recent read book list
-    this.readerService.getReadHistory(readerID).subscribe((bList: Book[])=>{
+    this.readerService.getReadBooks(readerID).subscribe((bList: Book[])=>{
       if (bList && bList.length>0) {
         this.readBookList = bList;
         this.logger.info(`Success get read booklist from server for reader ${readerID}`);

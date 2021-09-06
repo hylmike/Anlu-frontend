@@ -15,6 +15,7 @@ export class ReaderHeaderComponent implements OnInit {
   userName: string = 'Our Guest';
   isSignedIn: boolean = false;
   profileUrl: string = '#';
+  favorBookUrl: string = '#';
 
   constructor(
     private commonService: CommonService,
@@ -36,6 +37,7 @@ export class ReaderHeaderComponent implements OnInit {
     if (this.isSignedIn) {
       const readerID = this.readerAuthService.getReaderID();
       this.profileUrl = `/reader/profile/${readerID}`;
+      this.favorBookUrl = `/reader/favorbook/${readerID}`;
     }
   }
 

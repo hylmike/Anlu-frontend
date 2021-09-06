@@ -1,1 +1,53 @@
-<p>create-blog works!</p>
+<div class="container-fluid text-center">
+  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png">
+  <h2 class="create-heading">Create Blog</h2>
+</div>
+<div class="container register">
+  <form class="needs-validation" [formGroup]="blogRegForm" (ngSubmit)="blogRegForm.valid&&createBlog()"
+    novalidate>
+    <div class="row register-form">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="topic" formControlName="topic" required />
+          <label for="topic">Topic of Blog *</label>
+          <div class="invalid-feedback">
+            Please provide the topic of blog.
+          </div>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" formControlName="category" id="category" required >
+            <option>News</option>
+            <option>Information</option>
+            <option>System Notice</option>
+          </select>
+          <label for="category">Categiry of Blog *</label>
+          <div class="invalid-feedback">
+            Please select category of blog.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="creator" formControlName="creator" readonly />
+          <label for="creator">Creator</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-floating">
+          <textarea class="form-control" id="content" formControlName="content" required ></textarea>
+          <label for="content">Content of blog *</label>
+          <div class="invalid-feedback">
+            Please provide the content of blog.
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="keywords" formControlName="keywords" />
+          <label for="keywords">Keywords of blog</label>
+        </div>
+        <input type="submit" class="btnRegister" value="Create Blog" />
+        <div class="button-floating">
+          <a class="goPortal" (click)="goPortal()">Return Portal</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

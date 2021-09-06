@@ -1,0 +1,18 @@
+div.blog-manage {
+  padding: 3%;
+}
+h2.title {
+  font-size: xx-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+div.home-link {
+  float: right;
+  font-size: medium;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+  padding: 10px;
+}

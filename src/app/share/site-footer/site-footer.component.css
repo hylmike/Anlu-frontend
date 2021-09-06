@@ -1,4 +1,5 @@
 footer.container {
+  clear: both;
   max-width: 960px;
   text-align: center;
   font-size: medium;

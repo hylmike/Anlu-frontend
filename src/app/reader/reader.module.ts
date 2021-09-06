@@ -19,6 +19,7 @@ import { AccountManageComponent } from './account-manage/account-manage.componen
 import { ReaderService } from './reader.service';
 import { LibEventsComponent } from './lib-events/lib-events.component';
 import { BookModule } from '../book/book.module';
+import { FavorBookComponent } from './favor-book/favor-book.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { BookModule } from '../book/book.module';
     ReaderDeleteComponent,
     AccountManageComponent,
     LibEventsComponent,
+    FavorBookComponent,
   ],
   imports: [
     CommonModule,

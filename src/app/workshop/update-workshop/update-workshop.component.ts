@@ -44,7 +44,7 @@ export class UpdateWorkshopComponent implements OnInit {
     this.workshopID = this.route.snapshot.paramMap.get('id');
     this.workshopService.getWorkshop(this.workshopID).subscribe((ws: Workshop) => {
       if (ws && ws.topic) {
-        const sTime = this.datePipe.transform(ws.startTime, 'y-MM-ddTHH:mm')
+        const sTime = this.datePipe.transform(ws.startTime, 'y-MM-ddTHH:mm');
         this.wsUpdateForm.setValue({
           topic: ws.topic,
           place: ws.place,

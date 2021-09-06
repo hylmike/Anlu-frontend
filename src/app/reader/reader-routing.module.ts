@@ -13,6 +13,7 @@ import { ReaderChangePwdComponent } from './reader-change-pwd/reader-change-pwd.
 import { AdminAuthGuard } from '../auth/admin-auth.guard';
 import { ReaderDeleteComponent } from './reader-delete/reader-delete.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
+import { FavorBookComponent } from './favor-book/favor-book.component';
 
 const readerRoutes: Routes = [
   {
@@ -47,6 +48,11 @@ const readerRoutes: Routes = [
     path: 'reader/signed/:id',
     canActivate: [ReaderAuthGuard],
     component: ReaderSignedComponent,
+  },
+  {
+    path: 'reader/favorbook/:id',
+    canActivate: [ReaderAuthGuard],
+    component: FavorBookComponent,
   },
   {
     path: 'reader/account-manage',

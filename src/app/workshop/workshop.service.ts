@@ -41,9 +41,9 @@ export class WorkshopService {
     );
   }
 
-  getAllWorkshop(): Observable<any> {
-    return this.http.get<Workshop[]>('/api/workshop/getall').pipe(
-      catchError(this.handleError('getAllWorkshop')), shareReplay()
+  getWsList(num): Observable<any> {
+    return this.http.get<Workshop[]>(`/api/workshop/get/${num}`).pipe(
+      catchError(this.handleError('getWorkshopList')), shareReplay()
     );
   }
 

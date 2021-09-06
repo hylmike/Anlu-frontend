@@ -92,10 +92,10 @@ export class BookProfileComponent implements OnInit {
     });
     //If book is in favor book list, disable add fovoriteBook button
     let favorInd = false;
-    this.readerService.getFavorList(readerID).subscribe((data) => {
+    this.readerService.getFavorList(readerID).subscribe((data: Book[]) => {
       if (data && data.length > 0) {
         for (const item of data) {
-          if (item.bookID === bookID) {
+          if (item._id === bookID) {
             favorInd = true;
             break;
           }

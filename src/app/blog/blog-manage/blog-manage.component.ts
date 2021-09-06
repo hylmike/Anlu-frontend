@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { Blog } from 'src/app/common/blog.dto';
@@ -7,34 +6,32 @@ import { CommonService } from 'src/app/common/common.service';
 import { BlogService } from '../blog.service';
 
 @Component({
-  selector: 'app-blog-info',
-  templateUrl: './blog-info.component.html',
-  styleUrls: ['./blog-info.component.css']
+  selector: 'app-blog-manage',
+  templateUrl: './blog-manage.component.html',
+  styleUrls: ['./blog-manage.component.css']
 })
-export class BlogInfoComponent implements OnInit {
+export class BlogManageComponent implements OnInit {
 
-  blog: Blog;
-  updateUrl: string;
+  blogList: Blog[];
 
   constructor(
     private logger: NGXLogger,
     private blogService: BlogService,
     private tokenService: TokenStorageService,
     private commonService: CommonService,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     const libName = this.tokenService.getUsername().slice(3,);
     this.commonService.setSubject(libName);
-    const blogID = this.route.snapshot.paramMap.get('id');
-    this.blogService.getBlog(blogID).subscribe((blog: Blog) => {
-      if (blog && blog.topic) {
-        this.blog = blog;
-        this.updateUrl = `/blog/update/${blogID}`;
-        this.logger.info(`Success get blog ${blogID} from server`);
+    this.blogService.getLatest(0).subscribe((bList: Blog[]) => {
+      if (bList && bList.length > 0) {
+        this.blogList = bList;
+        this.logger.info('Success to get log list from backend');
+      } else if (bList.length==0) {
+        this.logger.info("Can't find any blog in server");
       } else {
-        this.logger.warn(`Failed to get blog ${blogID} from server`);
+        this.logger.warn('Failed to find blog list from backend');
       }
     })
   }
