@@ -25,7 +25,7 @@ export class ReaderSignedComponent implements OnInit {
 
   constructor(
     private commonService: CommonService,
-    private storageService: TokenStorageService,
+    private tokenService: TokenStorageService,
     private logger: NGXLogger,
     private router: Router,
     private readerAuthService: ReaderAuthService,
@@ -38,7 +38,7 @@ export class ReaderSignedComponent implements OnInit {
     const readerID = this.readerAuthService.getReaderID();
     const idFromUrl = this.route.snapshot.paramMap.get('id');
     if (readerID === idFromUrl) {
-      const readerName = this.storageService.getUsername();
+      const readerName = this.tokenService.getUsername();
       this.commonService.setSubject(readerName);
       this.logger.info(`Success load signed portal page for reader ${readerName}`);
     } else {

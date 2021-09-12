@@ -33,8 +33,14 @@ export class ReaderAuthService {
   }
 
   getReader(readerID: string): Observable<any> {
-    return this.http.get<Reader>(`api/reader/${readerID}`).pipe(
-      catchError(this.handleError('getReader')), shareReplay()
+    return this.http.get<Reader>(`api/reader/get/${readerID}`).pipe(
+      catchError(this.handleError('getReaderProfile')), shareReplay()
+    )
+  }
+
+  getAllReader(): Observable<any> {
+    return this.http.get<Reader[]>(`api/reader/getall`).pipe(
+      catchError(this.handleError('getAllReader')), shareReplay()
     )
   }
 
@@ -50,6 +56,18 @@ export class ReaderAuthService {
     );
   }
 
+  deaReader(readerID: string): Observable<any> {
+    return this.http.patch(`api/reader/dea/${readerID}`, {}).pipe(
+      catchError(this.handleError('deactivateReader')), shareReplay()
+    );
+  }
+
+  actReader(readerID: string): Observable<any> {
+    return this.http.patch(`api/reader/act/${readerID}`, {}).pipe(
+      catchError(this.handleError('activateReader')), shareReplay()
+    );
+  }
+
   signIn(username: string, password: string): Observable<any> {
     return this.http.post<AccessToken>('/api/reader/login', { username: username, password: password }).pipe(
       catchError(this.handleError('readerLogin')), shareReplay()
@@ -59,6 +77,12 @@ export class ReaderAuthService {
   signOut(): Observable<any> {
     return this.http.delete('/api/reader/logout')
       .pipe(catchError(this.handleError('readerLogout')), shareReplay())
+  }
+
+  delReader(readerID: string): Observable<any> {
+    return this.http.delete(`/api/reader/del/${readerID}`).pipe(
+      catchError(this.handleError('delReader')), shareReplay()
+    )
   }
 
   getTokenWithRefresh(): Observable<any> {

@@ -8,7 +8,7 @@ import { LibAuthServiceSpy, LoggerSpy, TokenServiceSpy } from 'src/test/mock.ser
 
 import { AccountManageComponent } from './account-manage.component';
 
-fdescribe('AccountManageComponent', () => {
+describe('AccountManageComponent', () => {
   let component: AccountManageComponent;
   let fixture: ComponentFixture<AccountManageComponent>;
   let getAllAdminSpy: jasmine.Spy;
@@ -46,11 +46,11 @@ fdescribe('AccountManageComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should call LibAuthService.getAllAdmin and .getAllLib to generate list', () => {
+  it('should call LibAuthService.getAllAdmin and .getAllLib to generate list', () => {
     const adminDiv = fixture.nativeElement.querySelector('div.admin-block');
     const libDiv = fixture.nativeElement.querySelector('div.lib-block');
     expect(getAllAdminSpy).toHaveBeenCalled;
@@ -59,7 +59,7 @@ fdescribe('AccountManageComponent', () => {
     expect(libDiv.childElementCount).toBeGreaterThan(1);
   })
 
-  fit('should call LibAuthService.deleteLib when click delete link', () => {
+  it('should call LibAuthService.deleteLib when click delete link', () => {
     const deleteLink = fixture.nativeElement.querySelector('a.delete-link') as HTMLAnchorElement;
     spyOn(window, 'confirm').and.returnValue(false);
     deleteLink.click();

@@ -1,0 +1,29 @@
+div.account-manage {
+  padding: 3%;
+}
+h2.title {
+  font-size: xx-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 1%;
+}
+p.col-title {
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+div.reader-list {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: medium;
+}
+p.list-content {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+div.page-control {
+  text-align: center;
+  padding-top: 30px;
+}
+button.review-link, button.dea-link, button.act-link, button.del-link {
+  text-align: center;
+  margin-top: -5px;
+}

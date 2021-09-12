@@ -18,8 +18,10 @@ import { ReaderDeleteComponent } from './reader-delete/reader-delete.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
 import { ReaderService } from './reader.service';
 import { LibEventsComponent } from './lib-events/lib-events.component';
-import { BookModule } from '../book/book.module';
 import { FavorBookComponent } from './favor-book/favor-book.component';
+import { LibModule } from '../librarian/lib.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -43,6 +45,9 @@ import { FavorBookComponent } from './favor-book/favor-book.component';
     ReactiveFormsModule,
     ShareModule,
     AuthModule,
+    NgxPaginationModule,
+    BrowserModule,
+    LibModule,
     ReaderRoutingModule,
   ],
   providers: [ReaderService],

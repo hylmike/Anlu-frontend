@@ -3,6 +3,7 @@ import { NGXLogger } from 'ngx-logger';
 
 import { LibrarianAuthService } from 'src/app/auth/librarian-auth.service';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
+import { CommonService } from 'src/app/common/common.service';
 import { Librarian } from '../../common/lib.dto';
 
 @Component({
@@ -16,6 +17,7 @@ export class AccountManageComponent implements OnInit, OnDestroy {
     private libAuthService: LibrarianAuthService,
     private logger: NGXLogger,
     private tokenService: TokenStorageService,
+    private commonService: CommonService,
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,7 @@ export class AccountManageComponent implements OnInit, OnDestroy {
     let adminList: Librarian[];
     let libList: Librarian[];
     let adminName = this.tokenService.getUsername().slice(3,);
+    this.commonService.setSubject(adminName);
     this.libAuthService.getAllAdmin().subscribe((data: []) => {
       if (data && data.length > 0) {
         adminList = [].concat(data);
@@ -67,7 +70,7 @@ export class AccountManageComponent implements OnInit, OnDestroy {
             colDiv4.className = 'col-md-1';
             let p4 = document.createElement('p');
             p4.className = 'col-content';
-            p4.innerHTML = item.isActive ? 'True' : 'False';
+            p4.innerHTML = item.isActive ? 'Active' : 'Inactive';
             colDiv4.appendChild(p4);
             rowDiv.appendChild(colDiv4);
 

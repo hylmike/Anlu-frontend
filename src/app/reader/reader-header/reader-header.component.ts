@@ -29,16 +29,17 @@ export class ReaderHeaderComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.commonService.usernameUpdate.subscribe((username) => {
-      this.userName = username;
-    })
-    if (!this.userName) { this.userName = 'Our Guest' }
     this.isSignedIn = this.readerAuthService.isLoggedIn();
     if (this.isSignedIn) {
+      this.commonService.usernameUpdate.subscribe((username) => {
+        this.userName = username;
+      })
       const readerID = this.readerAuthService.getReaderID();
       this.profileUrl = `/reader/profile/${readerID}`;
       this.favorBookUrl = `/reader/favorbook/${readerID}`;
-    }
+    } 
+    if (!this.userName) { this.userName = 'Our Guest' }
+    
   }
 
   searchBook() {

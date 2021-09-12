@@ -38,6 +38,8 @@ export class HttpErrorHandler {
         errorMessage = `Server return ${error.status} with body "${error.error}"`;
         if (error.error.message.includes('Incorrect username or password')) {
           window.alert('Incorrect username or password, please check');
+        } else if (error.error.message.includes('Inactive reader, login rejected')) {
+          window.alert('Inactive reader, need contact support team to activate account first');
         } else {
           window.alert('Need login to access the contents.');
           if (serviceName.toLowerCase().indexOf('reader') != -1) {

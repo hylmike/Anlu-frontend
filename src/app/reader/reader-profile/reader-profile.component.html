@@ -1,8 +1,14 @@
-<app-reader-header></app-reader-header>
+<div *ngIf="isAdmin; else elseBlock">
+  <app-admin-header></app-admin-header>
+</div>
+<ng-template #elseBlock>
+  <app-reader-header></app-reader-header>
+</ng-template>
+
 <div class="container">
   <div class="title padding">
     <h2>My Profile</h2>
-    <a href="/reader/updateprofile" class="btn btn-primary">Update Profile</a>
+    <a *ngIf="!isAdmin" href="/reader/updateprofile" class="btn btn-primary">Update Profile</a>
   </div>
   <div class="form">
     <div class="basic-info">
@@ -22,7 +28,7 @@
         </div>
         <div class="col-sm-6 col-md-3">
           <p>********
-          <a href="/reader/changepwd" class='change-password btn btn-primary'>Change Password</a>
+          <a *ngIf="!isAdmin" href="/reader/changepwd" class='change-password btn btn-primary'>Change Password</a>
           </p>
         </div>
       </div>
@@ -104,6 +110,33 @@
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.securityAnswer}}</p>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="isAdmin">
+          <div class="col-sm-6 col-md-3">
+            <p>Read Times</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.readTimes}}</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>Read Duration</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.readDuration}}</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>Read Score</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.readerProfile.score}}</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>Active Status</p>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <p>{{reader.isActive?'Active':'Inactive'}}</p>
           </div>
         </div>
       </div>

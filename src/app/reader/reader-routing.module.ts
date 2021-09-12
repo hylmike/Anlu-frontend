@@ -30,6 +30,11 @@ const readerRoutes: Routes = [
     component: ReaderProfileComponent,
   },
   {
+    path: 'reader/mprofile/:id',
+    canActivate: [AdminAuthGuard],
+    component: ReaderProfileComponent,
+  },
+  {
     path: 'reader/updateprofile',
     canActivate: [ReaderAuthGuard],
     component: ReaderUpdateComponent,

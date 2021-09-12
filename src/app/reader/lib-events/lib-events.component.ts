@@ -24,11 +24,13 @@ export class LibEventsComponent implements OnInit {
     this.blogService.getLatest(6).subscribe((blogList: Blog[]) => {
       if (blogList && blogList.length > 0) {
         this.renderBlogList(blogList);
+        this.logger.info('Success render blog List');
       }
     });
     this.workshopService.getWsList(3).subscribe((wsList: Workshop[]) => {
       if (wsList && wsList.length > 0) {
         this.renderWsList(wsList);
+        this.logger.info('Success render Workshop List');
       }
     })
   }
