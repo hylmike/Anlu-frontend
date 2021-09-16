@@ -62,7 +62,7 @@ export class LibRegisterComponent implements OnInit {
         }
         this.logger.info(`${val.role} ${data.username} already successfully registered in system.`);
         window.alert(`Success registered ${val.role} ${val.username}`)
-        this.router.navigateByUrl('/lib/admin-portal');
+        this.router.navigateByUrl('/lib/account-manage');
       })
     } else {
       window.alert('Passwords are not matched, please check')

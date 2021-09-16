@@ -16,6 +16,7 @@ export class LibProfileComponent implements OnInit {
 
   libProfile: Librarian;
   libUpdateUrl = '#';
+  libChangePwdUrl = '#';
 
   constructor(
     private logger: NGXLogger,
@@ -28,6 +29,7 @@ export class LibProfileComponent implements OnInit {
   ngOnInit(): void {
     const libID = this.route.snapshot.paramMap.get('id');
     this.libUpdateUrl = `/lib/update/${libID}`;
+    this.libChangePwdUrl = `/lib/changepwd/${libID}`;
     const libName = this.tokenService.getUsername().slice(3,);
     this.commonService.setSubject(libName);
     this.libAuthService.getProfile(libID).subscribe((lib: Librarian)=>{

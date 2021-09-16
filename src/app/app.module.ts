@@ -20,6 +20,7 @@ import { ShareModule } from './share/share.module';
 import { WorkshopModule } from './workshop/workshop.module';
 import { BlogModule } from './blog/blog.module';
 import { OperationLogModule } from './operation-log/operation-log.module';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { OperationLogModule } from './operation-log/operation-log.module';
       serverLoggingUrl: `${environment.apiUrl}api/log`,
       disableConsoleLogging: false,
     }),
+    ChartsModule,
   ],
   providers: [
     httpInterceptorProviders,

@@ -1,1 +1,9 @@
-<p>book-dashboard works!</p>
+<app-librarian-header></app-librarian-header>
+
+<div class="container container-fluid">
+  <div *ngIf="bookSummary && bookSummary.length>0">
+    <app-inventory-summary [bookSummary]="bookSummary"></app-inventory-summary>
+  </div>
+</div>
+
+<app-site-footer></app-site-footer>

@@ -14,6 +14,7 @@ import { ShareModule } from '../share/share.module';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
 import { ChangePwdComponent } from './change-password/change-password.component';
+import { ReaderModule } from '../reader/reader.module';
 
 @NgModule({
   declarations: [

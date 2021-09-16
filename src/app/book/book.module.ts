@@ -42,7 +42,7 @@ import { BookSearchComponent } from './book-search/book-search.component';
     MatDialogModule,
     ReaderModule,
     ShareModule,
-    BookRoutingModule
+    BookRoutingModule,
   ],
 })
 export class BookModule { }

@@ -15,7 +15,7 @@ class LibrarianHeaderComponent {
 class SiteFooterComponent {
 }
 
-fdescribe('LibrarianPortalComponent', () => {
+describe('LibrarianPortalComponent', () => {
   let component: LibrarianPortalComponent;
   let fixture: ComponentFixture<LibrarianPortalComponent>;
   let getNameSpy: jasmine.Spy;
@@ -45,11 +45,11 @@ fdescribe('LibrarianPortalComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should call tokenService to get username', ()=>{
+  it('should call tokenService to get username', ()=>{
     expect(getNameSpy).toHaveBeenCalledWith();
   })
 });

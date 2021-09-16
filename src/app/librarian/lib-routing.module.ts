@@ -31,7 +31,7 @@ const libRoutes: Routes = [
         component: LibUpdateComponent,
       },
       {
-        path: 'changepwd',
+        path: 'changepwd/:id',
         canActivate: [AdminAuthGuard],
         component: ChangePwdComponent,
       },

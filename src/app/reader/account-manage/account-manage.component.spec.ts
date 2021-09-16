@@ -27,7 +27,6 @@ describe('AccountManageComponent', () => {
   let routerSpy: jasmine.SpyObj<Router>;
   let getAllReaderSpy: jasmine.Spy;
   let deaReaderSpy: jasmine.Spy;
-  let actReaderSpy: jasmine.Spy;
   let delReaderSpy: jasmine.Spy;
 
   beforeEach(async () => {

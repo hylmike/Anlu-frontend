@@ -33,7 +33,7 @@
               <li><a class="dropdown-item" href="/blog/create">Create Blog</a></li>
             </ul>
           <li class="nav-item">
-            <a class="nav-link" (click)="logout()">Logout</a>
+            <a class="nav-link logout" (click)="logout()">Logout</a>
           </li>
         </ul>
         <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="searchForm.valid&&searchBook()" novalidate>

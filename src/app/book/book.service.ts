@@ -73,6 +73,12 @@ export class BookService {
     )
   }
 
+  getInventorySum(): Observable<any> {
+    return this.http.get(`/api/book/suminventory`).pipe(
+      catchError(this.handleError('getBookInventorySummary')), shareReplay()
+    )
+  }
+
   updateBookInfo(updateBookDto: BookDto) {
     return this.http.patch<Book>('/api/book/update', updateBookDto).pipe(
       catchError(this.handleError('updateBookInfo')), shareReplay()
