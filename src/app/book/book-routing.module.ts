@@ -14,6 +14,7 @@ import { BookProfileComponent } from './book-profile/book-profile.component';
 import { BookManageComponent } from './book-manage/book-manage.component';
 import { BookInfoComponent } from './book-info/book-info.component';
 import { BookSearchComponent } from './book-search/book-search.component';
+import { PodcastPortalComponent } from './podcast-portal/podcast-portal.component';
 
 const bookRoutes: Routes = [
   {
@@ -71,6 +72,12 @@ const bookRoutes: Routes = [
     path: 'audiobook',
     canActivate: [ReaderAuthGuard],
     component: AudiobookPortalComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'podcast',
+    canActivate: [ReaderAuthGuard],
+    component: PodcastPortalComponent,
     pathMatch: 'full',
   },
 ];

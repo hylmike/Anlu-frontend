@@ -66,6 +66,7 @@ export const ReaderServiceSpy = jasmine.createSpyObj('ReaderService', [
   'addFavorBook',
   'getFavorList',
   'delFavorBook',
+  'getTopN',
 ]);
 
 export const BookServiceSpy = jasmine.createSpyObj('BookService', [
@@ -81,6 +82,7 @@ export const BookServiceSpy = jasmine.createSpyObj('BookService', [
   'addBookComment',
   'getBookComments',
   'addReadRecord',
+  'getInventorySum',
 ]);
 
 export const BlogServiceSpy = jasmine.createSpyObj('BlogService', [
