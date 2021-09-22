@@ -162,12 +162,16 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
         if (data = bookID) {
           this.logger.info(`Success delete the book ${bookID}`);
           window.alert(`Success delete the book ${bookID} from database`);
-          location.reload();
+          this.pageReload();
         } else {
           this.logger.warn(`Failed to delete book ${bookID} in service side`);
         }
       })
     }
+  }
+
+  pageReload() {
+    location.reload();
   }
 
   ngOnDestroy() {

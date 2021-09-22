@@ -11,7 +11,7 @@
       <p class="book-profile">Publish Date: {{book.publishDate}}</p>
       <p class="book-profile" *ngIf="book.isbnCode">ISBN: {{book.isbnCode}}</p>
       <button class="book-read" *ngIf="book.format=='eBook'" (click)="readBook()">Read</button>
-      <button class="book-play" *ngIf="book.format=='Audiobook'" (click)="playBook()">Play</button>
+      <button class="book-play" *ngIf="book.format=='Audiobook'||book.format=='Podcast'" (click)="playBook()">Play</button>
       <button class="add-favorites" (click)="addFavorBook()"><i class="bi bi-heart-fill">Add to Favorites</i></button>
     </div>
   </div>

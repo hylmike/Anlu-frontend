@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonService } from 'src/app/common/common.service';
 
 import { SiteHeaderComponent } from './site-header.component';
 
@@ -8,6 +9,7 @@ describe('SiteHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [CommonService],
       declarations: [ SiteHeaderComponent ]
     })
     .compileComponents();

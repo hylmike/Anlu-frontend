@@ -9,22 +9,22 @@
       <div class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">My Library</a>
+            <a class="nav-link active" id="nav-myLibrary" href="/">My Library</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/ebook">E-Book</a>
+            <a class="nav-link" id="nav-ebook" href="/ebook">E-Book</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/audiobook">Audio Book</a>
+            <a class="nav-link" id="nav-audiobook" href="/audiobook">Audio Book</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/podcast">Podcast</a>
+            <a class="nav-link" id="nav-podcast" href="/podcast">Podcast</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/workshop">Workshop</a>
+            <a class="nav-link" id="nav-workshop" href="/workshop">Workshop</a>
           </li>
           <li class="nav-item" *ngIf="!isSignedIn">
-            <a class="nav-link" id="link_signin" href="/reader/login">Sign In</a>
+            <a class="nav-link" id="nav_signin" href="/reader/login">Sign In</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Manage Account</a>

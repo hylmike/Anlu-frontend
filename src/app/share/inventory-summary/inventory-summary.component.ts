@@ -5,7 +5,7 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { NGXLogger } from 'ngx-logger';
 import { BookService } from '../../book/book.service';
 
-interface bookInventory {
+interface BookInventory {
   category: string;
   count: number;
 }
@@ -17,7 +17,7 @@ interface bookInventory {
 })
 export class InventorySummaryComponent implements OnInit, OnChanges {
 
-  @Input() bookSummary: bookInventory[];
+  @Input() bookSummary: BookInventory[];
 
   //Barchart configuration
   public barChartOptions: ChartOptions = {

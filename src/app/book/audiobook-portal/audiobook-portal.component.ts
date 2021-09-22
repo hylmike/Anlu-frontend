@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { FormBuilder } from '@angular/forms';
 import { Book, SearchBookDto } from 'src/app/common/book-dto';
@@ -11,7 +11,7 @@ import { BookService } from '../book.service';
   templateUrl: './audiobook-portal.component.html',
   styleUrls: ['./audiobook-portal.component.css']
 })
-export class AudiobookPortalComponent implements OnInit {
+export class AudiobookPortalComponent implements OnInit, AfterViewInit {
 
   audiobookList: Book[];
   role: string = 'reader';
@@ -37,6 +37,15 @@ export class AudiobookPortalComponent implements OnInit {
     this.commonService.setSubject(this.tokenService.getUsername());
     const allLink = document.getElementById('allLink') as HTMLButtonElement;
     allLink.click();
+  }
+
+  ngAfterViewInit() {
+    const navAbook = document.getElementById('nav-audiobook');
+    const navHome = document.getElementById('nav-myLibrary')
+    if (!navAbook.className.includes('active')) {
+      navAbook.className += ' active';
+      navHome.className = navHome.className.slice(0,-7);
+    }
   }
 
   setBookList(categoryInput: string) {

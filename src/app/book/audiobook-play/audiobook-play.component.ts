@@ -39,8 +39,14 @@ export class AudiobookPlayComponent implements OnInit, OnDestroy {
         this.audioBook.bookFile = this.audioBook.bookFile.slice(2,);
         const bookAudio = document.getElementById('book-audio') as HTMLAudioElement;
         bookAudio.currentTime = currentTime;
+      } else if (data && data.format === 'Podcast') {
+        this.audioBook = data;
+        this.audioBook.coverPic = this.audioBook.coverPic.slice(2,);
+        this.audioBook.bookFile = this.audioBook.bookFile.slice(2,);
+        const bookAudio = document.getElementById('book-audio') as HTMLAudioElement;
+        bookAudio.currentTime = currentTime;
       } else {
-        this.logger.warn(`Server can not find Audiobook ${bookID}`);
+        this.logger.warn(`Server can not find audiobook/podcast ${bookID}`);
       }
     });
   }

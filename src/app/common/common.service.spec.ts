@@ -13,4 +13,11 @@ describe('CommonService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should call usernameUpdate to send username value', ()=>{
+    service.setSubject('testName');
+    service.usernameUpdate.subscribe((username)=>{
+      expect(username).toEqual('testName');
+    });
+  })
 });

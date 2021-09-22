@@ -12,11 +12,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readerAuthService: ReaderAuthService,
-    private tokenService: TokenStorageService,
   ) { }
 
   ngOnInit(): void {
-    const accessToken = this.tokenService.getToken();
     const loginLink = document.querySelector("#link_signin");
     const logoutLink = document.querySelector("#link_signout")
     if (loginLink && logoutLink) {

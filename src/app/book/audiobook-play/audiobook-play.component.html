@@ -1,4 +1,5 @@
 <div class="container-fluid text-center">
+  <h2 class="book-title">{{audioBook.format}}</h2>
   <h2 *ngIf="audioBook" class="book-title">{{audioBook.bookTitle}}</h2>
   <img *ngIf="audioBook" src={{audioBook.coverPic}} alt="cover-img" class="cover-img">
   <figure *ngIf="audioBook">{{audioBook.author}}</figure>

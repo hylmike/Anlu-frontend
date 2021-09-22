@@ -36,7 +36,7 @@ class BookListComponent {
   @Input() listName;
 }
 
-fdescribe('AdminPortalComponent', () => {
+describe('AdminPortalComponent', () => {
   let component: AdminPortalComponent;
   let fixture: ComponentFixture<AdminPortalComponent>;
   let getNameSpy: jasmine.Spy;
@@ -84,20 +84,20 @@ fdescribe('AdminPortalComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should call getUsername service to set username in header', () => {
+  it('should call getUsername service to set username in header', () => {
     expect(getNameSpy).toHaveBeenCalledWith();
     expect(commonService.setSubject).toHaveBeenCalledWith(libStub().username);
   })
 
-  fit('should call bookService to get inventory summary', ()=>{
+  it('should call bookService to get inventory summary', ()=>{
     expect(getSumSpy).toHaveBeenCalledWith();
   })
 
-  fit('should call bookService to get topN book list', ()=>{
+  it('should call bookService to get topN book list', ()=>{
     expect(findHotListSpy).toHaveBeenCalledWith(10);
   })
 });

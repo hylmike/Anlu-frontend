@@ -52,7 +52,7 @@ export class ReaderService {
 
   getTopN(num): Observable<any> {
     return this.http.get<Book[]>(`/api/reader/gettopn/${num}`).pipe(
-      catchError(this.handleError('getTopNReader')), shareReplay()
+      catchError((err)=>this.handleError('getTopNReader')(err)), shareReplay()
     )
   }
 }

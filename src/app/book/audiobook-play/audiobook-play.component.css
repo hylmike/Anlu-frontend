@@ -1,11 +1,11 @@
 img.cover-img {
   width: 300px;
+  margin-top: 10px;
 }
 
 h2.book-title {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: xx-large;
   font-weight: 600;
-  margin-top: 8%;
-  margin-bottom: 1%;
+  margin-top: 3%;
 }

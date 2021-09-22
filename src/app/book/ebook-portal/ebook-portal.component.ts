@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NGXLogger } from 'ngx-logger';
 
@@ -12,7 +12,7 @@ import { BookService } from '../book.service';
   templateUrl: './ebook-portal.component.html',
   styleUrls: ['./ebook-portal.component.css']
 })
-export class EbookPortalComponent implements OnInit {
+export class EbookPortalComponent implements OnInit, AfterViewInit {
 
   ebookList: Book[];
   role: string = 'reader';
@@ -38,6 +38,15 @@ export class EbookPortalComponent implements OnInit {
     this.commonService.setSubject(this.tokenService.getUsername());
     const allLink = document.getElementById('allLink') as HTMLButtonElement;
     allLink.click();
+  }
+
+  ngAfterViewInit() {
+    const navEbook = document.getElementById('nav-ebook');
+    const navHome = document.getElementById('nav-myLibrary')
+    if (!navEbook.className.includes('active')) {
+      navEbook.className += ' active';
+      navHome.className = navHome.className.slice(0,-7);
+    }
   }
 
   setBookList(categoryInput: string) {
