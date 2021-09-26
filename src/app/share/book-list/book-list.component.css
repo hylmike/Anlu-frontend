@@ -1,26 +1,9 @@
 div.book-list {
   text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  position: relative;
 }
 
-div.column {
-  padding: 0.5rem;
-}
-
-div.book-card {
-  background: #f7f7f7;
-  text-align: center;
-  padding: 0.5rem;
-}
-
-h3.book-title {
-  font-size: medium;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-
-p.book-author {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: small;
-  margin-bottom: 0;
+div.load-more {
+  margin-top: 30px;
 }

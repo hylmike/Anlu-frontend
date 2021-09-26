@@ -47,6 +47,9 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       const p1 = document.createElement('p');
       p1.innerHTML = "Can't find any book ...";
       p1.className = 'empty-result';
+      p1.style.color = 'gray';
+      p1.style.fontSize = 'xx-large';
+      p1.style.padding = '30px';
       listContainer.appendChild(p1);
       if (!loadButton.disabled) loadButton.disabled = true;
       this.logger.warn("Can't find any book ...")
@@ -111,13 +114,27 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       } else {
         divCard.appendChild(coverImg);
       }
+      let titleDiv = document.createElement('div');
+      titleDiv.style.height = '2.5rem';
+      titleDiv.style.overflow = 'hidden';
+      titleDiv.style.paddingTop = '5px';
+      titleDiv.style.paddingBottom = '5px';
+      divCard.appendChild(titleDiv);
       let bookTitle = document.createElement('h3');
       bookTitle.className = 'book-title';
+      bookTitle.style.lineHeight = '1.2';
       bookTitle.innerHTML = this.bookList[i].bookTitle;
-      divCard.appendChild(bookTitle);
+      titleDiv.appendChild(bookTitle);
       let bookAuthor = document.createElement('p');
       bookAuthor.className = 'book-author';
       bookAuthor.innerHTML = this.bookList[i].author;
+      bookAuthor.style.fontSize = 'medium';
+      bookAuthor.style.position = 'absolute';
+      bookAuthor.style.top = '240px';
+      bookAuthor.style.width = '13%';
+      bookAuthor.style.overflow = 'hidden';
+      bookAuthor.style.textOverflow = 'ellipsis';
+      bookAuthor.style.whiteSpace = 'nowrap';
       divCard.appendChild(bookAuthor);
       if (this.role === 'admin' || this.role === 'librarian') {
         let buttonDiv = document.createElement('div');
