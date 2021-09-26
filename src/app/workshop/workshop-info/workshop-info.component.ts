@@ -38,7 +38,6 @@ export class WorkshopInfoComponent implements OnInit {
         if (this.workshop.subscriber.length > 0) {
           for (const item of this.workshop.subscriber) {
             this.workshopService.getSubName(item).subscribe((readerName) => {
-              console.log(readerName);
               if (readerName) this.subList.push(` ${readerName}`);
             })
           }

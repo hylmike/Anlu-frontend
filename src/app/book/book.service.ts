@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { BookDto, Book, SearchBookDto, BookCommentDto, BookComment, ReadRecordDto, BookReadRecord } from '../common/book-dto';
+import { BookDto, Book, SearchBookDto, BookCommentDto, BookComment, ReadRecordDto, BookReadRecord, CreateWishDto, BookWish, GetWishListDto, UpdateWishStatusDto } from '../common/book-dto';
 import { HttpErrorHandler, HandleError } from '../common/http-error-handler.service';
 
 
@@ -39,7 +39,7 @@ export class BookService {
 
   downloadBook(url: string): Observable<any> {
     return this.http.get(url, { responseType: 'blob' }).pipe(
-      catchError(this.handleError('getEBook')), shareReplay()
+      catchError(this.handleError('downloadEBook')), shareReplay()
     )
   }
 
@@ -109,4 +109,33 @@ export class BookService {
     )
   }
 
+  createWish(createWishDto: CreateWishDto): Observable<any> {
+    return this.http.post<BookWish>('/api/book/addbookwish', createWishDto).pipe(
+      catchError(this.handleError('addBookWish')), shareReplay()
+    )
+  }
+
+  getWishList(getWishListDto: GetWishListDto): Observable<any> {
+    return this.http.post<BookWish[]>('/api/book/getwishlist', getWishListDto).pipe(
+      catchError(this.handleError('getWishList')), shareReplay()
+    )
+  }
+
+  getUnfulfilWishList(): Observable<any> {
+    return this.http.get<BookWish[]>('/api/book/getunfulfilwishlist').pipe(
+      catchError(this.handleError('getUnfulfilWishList')), shareReplay()
+    )
+  }
+
+  updateWishStatus(updateWishDto: UpdateWishStatusDto): Observable<any> {
+    return this.http.patch('/api/book/updatewishstatus', updateWishDto).pipe(
+      catchError(this.handleError('updateWishStatus')), shareReplay()
+    )
+  }
+
+  delWish(wishID): Observable<any> {
+    return this.http.delete(`/api/book/delwish/${wishID}`).pipe(
+      catchError(this.handleError('delWish')), shareReplay()
+    )
+  }
 }

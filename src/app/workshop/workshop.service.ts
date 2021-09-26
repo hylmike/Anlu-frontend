@@ -36,7 +36,7 @@ export class WorkshopService {
   }
 
   getWorkshop(workshopID): Observable<any> {
-    return this.http.get<Workshop>(`api/workshop/profile/${workshopID}`).pipe(
+    return this.http.get<Workshop>(`/api/workshop/profile/${workshopID}`).pipe(
       catchError(this.handleError('getWorkshop')), shareReplay()
     );
   }

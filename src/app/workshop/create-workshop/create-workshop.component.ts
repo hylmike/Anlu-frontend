@@ -107,7 +107,7 @@ export class CreateWorkshopComponent implements OnInit {
       }
       this.logger.info(`Workshop ${workshopInfo.topic} already successfully registered in system.`);
       window.alert(`Success registered workshop ${workshopInfo.topic} in system.`);
-      window.location.reload();
+      this.reloadPage();
     })
   }
 
@@ -115,4 +115,7 @@ export class CreateWorkshopComponent implements OnInit {
     this.router.navigateByUrl('/lib/lib-portal');
   }
 
+  reloadPage() {
+    location.reload();
+  }
 }

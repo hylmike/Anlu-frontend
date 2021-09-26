@@ -10,21 +10,15 @@ import { CommonService } from '../../common/common.service';
 })
 export class WorkshopPortalComponent implements OnInit, AfterViewInit {
 
-  readerID = '';
-
   constructor(
-    private readerAuthService: ReaderAuthService,
     private commonService: CommonService,
     private tokenService: TokenStorageService,
   ) { }
 
   ngOnInit(): void {
-    if (this.readerAuthService.isLoggedIn()) {
-      //set the reader name in header
-      const readerName = this.tokenService.getUsername();
-      this.commonService.setSubject(readerName);
-      this.readerID = this.readerAuthService.getReaderID();
-    }
+    //set the reader name in header
+    const readerName = this.tokenService.getUsername();
+    this.commonService.setSubject(readerName);
   }
 
   ngAfterViewInit() {
@@ -32,7 +26,7 @@ export class WorkshopPortalComponent implements OnInit, AfterViewInit {
     const navHome = document.getElementById('nav-myLibrary')
     if (!navWorkshop.className.includes('active')) {
       navWorkshop.className += ' active';
-      navHome.className = navHome.className.slice(0,-7);
+      navHome.className = navHome.className.slice(0, -7);
     }
   }
 

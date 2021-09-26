@@ -15,6 +15,7 @@ import { BookManageComponent } from './book-manage/book-manage.component';
 import { BookInfoComponent } from './book-info/book-info.component';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { PodcastPortalComponent } from './podcast-portal/podcast-portal.component';
+import { BookWishlistComponent } from './book-wishlist/book-wishlist.component';
 
 const bookRoutes: Routes = [
   {
@@ -56,6 +57,11 @@ const bookRoutes: Routes = [
     path: 'book/manage',
     canActivate: [LibAuthGuard],
     component: BookManageComponent,
+  },
+  {
+    path: 'book/wishlist/manage',
+    canActivate: [LibAuthGuard],
+    component: BookWishlistComponent,
   },
   {
     path: 'book/dashboard',

@@ -12,6 +12,9 @@
       <li class="nav-item" role="presentation">
         <a class="nav-link" data-bs-toggle="tab" href="#search" (click)="clickSearch()">Search</a>
       </li> 
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" href="#wish" (click)="clickWish()">My Wish</a>
+      </li>
     </ul>
     <div class="tab-content" id="bookTab-content">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -33,43 +36,123 @@
       </div>
       <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="search-tab">
         <div class="search-area">
-          <form class="book-search" [formGroup]="searchForm" (ngSubmit)="searchBookList()">
-            <label class="search-label" for="category">Book Category</label>
-            <select class="select-input" formControlName="category" id="category" class="search-item">
-              <option value="" selected>Null</option>
-              <option>Romance</option>
-              <option>Politics</option>
-              <option>Press</option>
-              <option>Essay_sociology</option>
-              <option>Essay_philosophy</option>
-              <option>Essay_anthropology</option>
-              <option>Essay_ethnology</option>
-              <option>Information Technology</option>
-              <option>Comic</option>
-              <option>History</option>
-              <option>Geography</option>
-              <option>Dissertation</option>
-              <option>Art_theatre</option>
-              <option>Art_music</option>
-              <option>Art_plastic</option>
-              <option>Art_design</option>
-              <option>Sport_football</option>
-              <option>Sport_basketball</option>
-              <option>Sport_handball</option>
-              <option>Sport_tennis</option>
-              <option>Sport_boxing</option>
-            </select>
-            <label class="search-label" for="bookTitle">& Book Title</label>
-            <input class="search-input" type="text" formControlName="bookTitle" id="bookTitle" placeholder="Null" />
-            <label class="search-label" for="author">& Author</label>
-            <input class="search-input" type="text" formControlName="author" id="author" placeholder="Null" />
-            <label class="search-label" for="year">& Publish Year</label>
-            <input class="search-input" type="text" formControlName="publishYear" id="year" placeholder="Null" />
-            <button class="book-search" type="submit">Search</button>
+          <form class="search-form" [formGroup]="searchForm" (ngSubmit)="searchBookList()">
+            <div class="row">
+              <div class="col-md-3">
+                <label class="col-form-label" for="category">Book Category</label>
+              </div>
+              <div class="col-md-3">
+                <select class="form-control" formControlName="category" id="category">
+                  <option value="" selected>Null</option>
+                  <option>Romance</option>
+                  <option>Politics</option>
+                  <option>Press</option>
+                  <option>Essay_sociology</option>
+                  <option>Essay_philosophy</option>
+                  <option>Essay_anthropology</option>
+                  <option>Essay_ethnology</option>
+                  <option>Information Technology</option>
+                  <option>Comic</option>
+                  <option>History</option>
+                  <option>Geography</option>
+                  <option>Dissertation</option>
+                  <option>Art_theatre</option>
+                  <option>Art_music</option>
+                  <option>Art_plastic</option>
+                  <option>Art_design</option>
+                  <option>Sport_football</option>
+                  <option>Sport_basketball</option>
+                  <option>Sport_handball</option>
+                  <option>Sport_tennis</option>
+                  <option>Sport_boxing</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label class="col-form-label" for="bookTitle">& Book Title</label>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="bookTitle" id="bookTitle" placeholder="Null" />
+              </div>
+              <div class="col-md-2">
+                <label class="col-form-label" for="author">& Author</label>
+              </div>
+              <div class="col-md-2">
+                <input class="form-control" type="text" formControlName="author" id="author" placeholder="Null" />
+              </div>
+              <div class="col-md-3">
+                <label class="col-form-label" for="year">& Publish Year</label>
+              </div>
+              <div class="col-md-2">
+                <input class="form-control" type="text" formControlName="publishYear" id="year" placeholder="Null" />
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary book-search" type="submit">Search</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
-      <div class="list-area">
+      <div class="tab-pane fade" id="wish" role="tabpanel" aria-labelledby="wish-tab">
+        <div class="wish-area">
+          <p class="guide-text">Can't find what you want? Let's submit your wish here!</p>
+          <hr>
+          <form class="wish-form" [formGroup]="wishForm" (ngSubmit)="createWish()">
+            <div class="row">
+              <div class="col-md-2">
+                <label class="col-form-label" for="bookTitle">Book Title</label>
+              </div>
+              <div class="col-md-3">
+                <input class="form-control" type="text" formControlName="bookTitle" id="bookTitle" required />
+              </div>
+              <div class="col-md-1">
+                <label class="col-form-label" for="lang">Language</label>
+              </div>
+              <div class="col-md-2">
+                <select class="form-control" formControlName="language" id="lang">
+                  <option value="English" selected>English</option>
+                  <option>French</option>
+                  <option>Spanish</option>
+                  <option>Germany</option>
+                </select>
+              </div>
+              <div class="col-md-1">
+                <label class="col-form-label" for="creator">Creator</label>
+              </div>
+              <div class="col-md-2">
+                <input class="form-control" type="text" formControlName="creator" id="creator" readonly />
+              </div>
+              <div class="col-md-1">
+                <button class="btn btn-primary book-wish" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
+          <div class="submitted-wish">
+            <h3 class="title">My Existing Book Wish</h3>
+            <hr>
+            <div class="row">
+              <div class="col-md-2">
+                <h4 class="title">Create Time</h4>
+              </div>
+              <div class="col-md-2">
+                <h4 class="title">Book Title</h4>
+              </div>
+              <div class="col-md-2">
+                <h4 class="title">Language</h4>
+              </div>
+              <div class="col-md-2">
+                <h4 class="title">Current Status</h4>
+              </div>
+              <div class="col-md-4 text-center">
+                <h4 class="title">Operation</h4>
+              </div>
+            </div>
+            <div class="row wish-list">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-area" *ngIf="listBlock">
         <app-book-list [bookList]="audiobookList" [role]="role" [listName]="listName"></app-book-list>
       </div>
     </div>

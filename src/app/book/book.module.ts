@@ -20,6 +20,7 @@ import { BookManageComponent } from './book-manage/book-manage.component';
 import { LibModule } from '../librarian/lib.module';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { PodcastPortalComponent } from './podcast-portal/podcast-portal.component';
+import { BookWishlistComponent } from './book-wishlist/book-wishlist.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PodcastPortalComponent } from './podcast-portal/podcast-portal.componen
     BookManageComponent,
     BookSearchComponent,
     PodcastPortalComponent,
+    BookWishlistComponent,
   ],
   imports: [
     CommonModule,

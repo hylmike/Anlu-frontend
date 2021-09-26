@@ -6,7 +6,7 @@ export const workshopData: Workshop = {
   place: 'Our library main meeting room',
   organizer: 'Johnthan',
   subscriber: ['60ec5713bb91d82c72fe91c2', '60ec587c16899e2d1607f3cc'],
-  startTime: new Date('2020-07-20T00:00:00Z'),
+  startTime: new Date('2200-07-20T00:00:00Z'),
   duration: 2,
   poster: 'New book launch event of <My Story>',
   creator: 'michael',

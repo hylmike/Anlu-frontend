@@ -10,6 +10,20 @@ h2.title {
   font-weight: 600;
 }
 
+h3.title {
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  margin-top: 50px;
+}
+
+p.guide-text {
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
 img.logo {
   width: 80px;
   float: left;
@@ -39,31 +53,14 @@ a.book-category {
   margin-right: 2rem;
 }
 
-form.book-search {
-  font-size: medium;
-  font-family: Arial, Helvetica, sans-serif;
+form.search-form, form.wish-form {
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
 }
 
-.search-label {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.search-input {
-  width: 12%;
-}
-
-button.book-search {
-  margin-left: 2rem;
-  padding: 5px;
-  border-radius: 5px;
+button.book-search, button.book-wish {
   width: 100px;
-  color: white;
-  background: skyblue;
-}
-
-button.book-search:hover {
-  background-color: blue;
 }
 
 @media screen and (max-width: 768px) {
@@ -75,7 +72,8 @@ button.book-search:hover {
     font-size: small;
   }
 
-  button.book-search {
+  button.book-search, button.book-wish {
+    margin: 5px;
     padding: 2px;
   }
 }

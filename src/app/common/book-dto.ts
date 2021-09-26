@@ -62,11 +62,12 @@ export interface BookComment {
   createTime: Date;
 }
 
-export interface BookWishList {
+export interface BookWish {
   _id: string;
   bookTitle: string;
-  readerID: string;
   language: string;
+  format: string;
+  creator: string;
   createTime: Date;
   status: string;
 }
@@ -86,15 +87,21 @@ export interface BookCommentDto {
   comment: string;
 }
 
-export interface CreateBookWishDto {
+export interface CreateWishDto {
   bookTitle: string;
-  readerID: string;
   language: string;
+  format: string;
+  creator: string;
 }
 
 export interface UpdateWishStatusDto {
-  WishID: string;
+  wishID: string;
   status: string;
+}
+
+export interface GetWishListDto {
+  format: string;
+  readerName: string;
 }
 
 export interface ReadRecordDto {

@@ -204,12 +204,16 @@ export class WorkshopListComponent implements OnInit, OnDestroy {
         if (result = workshopID) {
           this.logger.info(`Success delete the workshop ${workshopID}`);
           window.alert(`Success delete the workshop`);
-          location.reload();
+          this.reloadPage();
         } else {
           this.logger.warn(`Failed to delete the workshop ${workshopID}`)
         }
       })
     }
+  }
+
+  reloadPage() {
+    location.reload();
   }
 
   ngOnDestroy() {

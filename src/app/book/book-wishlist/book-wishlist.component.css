@@ -1,0 +1,16 @@
+div.bookwish-manage {
+  padding: 3%;
+}
+
+h2.title {
+  font-size: xx-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+h4.title {
+  font-size: medium;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
