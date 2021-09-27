@@ -59,7 +59,7 @@ export class ReaderSignedComponent implements OnInit {
       }
     })
     //Generate hot book list
-    this.bookService.findHotBooks(6).subscribe((bookList: Book[]) => {
+    this.bookService.findHotBooks(10).subscribe((bookList: Book[]) => {
       if (bookList && bookList.length > 0) {
         this.hotBookList = bookList;
         this.logger.info('Success get hot book list from server');

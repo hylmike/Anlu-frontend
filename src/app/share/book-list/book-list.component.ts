@@ -98,6 +98,8 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       let divCard = document.createElement('div');
       divCard.className = 'book-card';
       divCard.style.marginTop = '10px';
+      divCard.style.position = 'relative';
+      divCard.style.height = '280px';
       divCol.appendChild(divCard);
       let coverImg = document.createElement('img');
       coverImg.src = this.bookList[i].coverPic;
@@ -131,7 +133,7 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       bookAuthor.style.fontSize = 'medium';
       bookAuthor.style.position = 'absolute';
       bookAuthor.style.top = '240px';
-      bookAuthor.style.width = '13%';
+      bookAuthor.style.width = '100%';
       bookAuthor.style.overflow = 'hidden';
       bookAuthor.style.textOverflow = 'ellipsis';
       bookAuthor.style.whiteSpace = 'nowrap';
