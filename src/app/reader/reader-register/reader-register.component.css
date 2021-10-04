@@ -8,7 +8,10 @@
 .logo-img img{
   text-align: center;
   width: 120px;
-  height: 150px;
+  height: 100px;
+}
+.logo-img {
+  margin-bottom: 20px;
 }
 .register-heading{
   margin-top: -2%;

@@ -127,6 +127,7 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       bookTitle.style.lineHeight = '1.2';
       bookTitle.innerHTML = this.bookList[i].bookTitle;
       titleDiv.appendChild(bookTitle);
+      if (this.role === 'reader') {
       let bookAuthor = document.createElement('p');
       bookAuthor.className = 'book-author';
       bookAuthor.innerHTML = this.bookList[i].author;
@@ -138,6 +139,7 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       bookAuthor.style.textOverflow = 'ellipsis';
       bookAuthor.style.whiteSpace = 'nowrap';
       divCard.appendChild(bookAuthor);
+      }
       if (this.role === 'admin' || this.role === 'librarian') {
         let buttonDiv = document.createElement('div');
         buttonDiv.className = 'button-section';
