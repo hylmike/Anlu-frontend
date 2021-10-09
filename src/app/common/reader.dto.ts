@@ -66,7 +66,6 @@ export interface ChangePwdDto{
   username: string;
   currentPassword: string;
   newPassword: string;
-  confirmPassword: string;
 }
 
 export interface UpdateReaderDto {
@@ -86,5 +85,15 @@ export interface UpdateReaderDto {
 
 export interface FavorBookDto {
   bookID: string;
+}
+
+export interface ResetPwdDto {
+  username: string;
+  token: string;
+  newPassword: string;
+}
+
+export interface emailDto {
+  email: string;
 }
 

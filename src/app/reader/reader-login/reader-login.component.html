@@ -15,13 +15,11 @@
       <label for="floatingPassword">Password</label>
     </div>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!readerLoginForm.valid">Sign in</button>
   </form>
+  <div class="forgot-password">
+    <a href="/reader/forgotpwd">Forgot Password</a>
+  </div>
   <div class="create-account">
     <a href="/reader/register">Create My Account</a>
   </div>

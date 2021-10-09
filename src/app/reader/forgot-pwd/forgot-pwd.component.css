@@ -1,0 +1,21 @@
+div.account-verify {
+  width: 80%;
+  text-align: center;
+  margin-top: 5%;
+}
+
+div.form-item {
+  width: 300px;
+  margin: auto;
+}
+
+button.submit {
+  width: 150px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+div.return-link {
+  font-size: large;
+  margin-top: 20px;
+}

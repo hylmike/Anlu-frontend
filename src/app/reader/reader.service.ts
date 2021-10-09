@@ -5,7 +5,7 @@ import { catchError, shareReplay } from 'rxjs/operators';
 import { Book } from '../common/book-dto';
 
 import { HandleError, HttpErrorHandler } from '../common/http-error-handler.service';
-import { FavorBookDto, ReaderReadHistory } from '../common/reader.dto';
+import { emailDto, FavorBookDto, ReaderReadHistory, ResetPwdDto } from '../common/reader.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class ReaderService {
   constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler,
-  ) { 
+  ) {
     this.handleError = httpErrorHandler.createHandleError('ReaderService');
   }
 
@@ -52,7 +52,25 @@ export class ReaderService {
 
   getTopN(num): Observable<any> {
     return this.http.get<Book[]>(`/api/reader/gettopn/${num}`).pipe(
-      catchError((err)=>this.handleError('getTopNReader')(err)), shareReplay()
+      catchError((err) => this.handleError('getTopNReader')(err)), shareReplay()
+    )
+  }
+
+  verifyEmail(input: emailDto): Observable<any> {
+    return this.http.post('/api/reader/verifyemail', input).pipe(
+      catchError(this.handleError('verifyEmail')), shareReplay()
+    )
+  }
+
+  sendResetEmail(input: emailDto): Observable<any> {
+    return this.http.post('/api/emailer/sendresetmail', input).pipe(
+      catchError((err) => this.handleError('sendResetEmail')(err)), shareReplay()
+    )
+  }
+
+  resetPwd(resetPwdDto: ResetPwdDto): Observable<any> {
+    return this.http.patch('/api/reader/resetpwd', resetPwdDto).pipe(
+      catchError(this.handleError('resetPwd')), shareReplay()
     )
   }
 }

@@ -1,0 +1,24 @@
+<main class="container-fluid form-resetpwd">
+  <form [formGroup]="resetPwdForm" (ngSubmit)="resetPwd()">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png" alt="" width="120" height="120">
+    <h1 class="h3 mb-3 fw-normal">Reset Password</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" formControlName="username" placeholder="Username" readonly>
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="newPassword" formControlName="newPassword"
+        placeholder="Password">
+      <label for="newPassword">New Password</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+        placeholder="Password">
+      <label for="confirmPassword">Confirm Password</label>
+    </div>
+
+    <button class="submit btn btn-primary" type="submit" [disabled]="!resetPwdForm.valid">Submit</button>
+  </form>
+</main>
+

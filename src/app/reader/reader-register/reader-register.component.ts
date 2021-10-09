@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NGXLogger, NGXLogInterface } from 'ngx-logger';
+import { NGXLogger } from 'ngx-logger';
 
 import { ReaderAuthService } from '../../auth/reader-auth.service';
 import { RegisterReaderDto } from '../../common/reader.dto';

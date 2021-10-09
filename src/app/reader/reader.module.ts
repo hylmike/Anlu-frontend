@@ -22,6 +22,8 @@ import { FavorBookComponent } from './favor-book/favor-book.component';
 import { LibModule } from '../librarian/lib.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserModule } from '@angular/platform-browser';
+import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
+import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { BrowserModule } from '@angular/platform-browser';
     AccountManageComponent,
     LibEventsComponent,
     FavorBookComponent,
+    ForgotPwdComponent,
+    ResetPwdComponent,
   ],
   imports: [
     CommonModule,

@@ -10,7 +10,7 @@
     <h2>My Profile</h2>
     <a *ngIf="!isAdmin" href="/reader/updateprofile" class="btn btn-primary">Update Profile</a>
   </div>
-  <div class="form">
+  <div class="form" *ngIf="reader">
     <div class="basic-info">
       <div class="title padding">
         <h3>Basic Infomation</h3>

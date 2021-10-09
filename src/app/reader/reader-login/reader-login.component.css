@@ -27,7 +27,7 @@
   border-top-right-radius: 0;
 }
 
-div.create-account {
-  margin-top: 30px;
+div.forgot-password, div.create-account {
+  margin-top: 20px;
   font-size: large;
 }

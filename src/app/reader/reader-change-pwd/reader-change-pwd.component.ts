@@ -23,24 +23,31 @@ export class ReaderChangePwdComponent implements OnInit {
 
   changePwdForm = this.fb.group({
     username: [this.tokenService.getUsername()],
+    action: ['Change'],
     currentPassword: ['', Validators.required],
-    newPassword: ['', Validators.required],
-    confirmPassword: ['', Validators.required],
+    newPassword: ['', Validators.minLength(5)],
+    confirmPassword: ['', Validators.minLength(5)],
   })
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  get f() { return this.changePwdForm.controls }
 
   changePwd() {
     const val: ChangePwdDto = this.changePwdForm.value;
-    this.readerAuthService.changePwd(val).subscribe((data)=>{
-      if (data === val.username) {
-        this.logger.info(`Success changed password for ${val.username}`)
-        this.router.navigateByUrl('reader/login');
-      } else {
-        this.logger.warn(`Change password for ${val.username} failed`);
-        window.alert(`Changing password failed, try again later`)
-      }
-    });
+    if (this.f.newPassword.value === this.f.confirmPassword.value) {
+      this.readerAuthService.changePwd(val).subscribe((data) => {
+        if (data === val.username) {
+          this.logger.info(`Success changed password for ${val.username}`)
+          this.router.navigateByUrl('reader/login');
+        } else {
+          this.logger.warn(`Change password for ${val.username} failed`);
+          window.alert(`Changing password failed, try again later`)
+        }
+      });
+    } else {
+      window.alert('New passwords are not matched, please check');
+    }
   }
 
   cancel() {
