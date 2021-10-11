@@ -1,4 +1,9 @@
-<app-librarian-header></app-librarian-header>
+<div *ngIf="isAdmin; else elseBlock">
+  <app-admin-header></app-admin-header>
+</div>
+<ng-template #elseBlock>
+  <app-librarian-header></app-librarian-header>
+</ng-template>
 
 <div class="container container-fluid">
   <div *ngIf="bookSummary && bookSummary.length>0">

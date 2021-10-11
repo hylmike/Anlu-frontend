@@ -40,6 +40,11 @@ export class BookManageComponent implements OnInit {
     allEbookLink.click();
   }
 
+  clickInLibraryBook() {
+    const allHardbookLink = document.getElementById('allhardbook-link');
+    allHardbookLink.click();
+  }  
+
   clickAudiobook() {
     const allAbookLink = document.getElementById('allabook-link');
     allAbookLink.click();

@@ -33,6 +33,7 @@ export class EbookPortalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   searchForm = this.fb.group({
     format: ['eBook'],
+    bookType: ['Online'],
     category: [''],
     bookTitle: [''],
     author: [''],
@@ -84,6 +85,7 @@ export class EbookPortalComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       const searchDto = {
         format: 'eBook',
+        bookType: 'Online',
         category: categoryInput,
         bookTitle: '',
         author: '',

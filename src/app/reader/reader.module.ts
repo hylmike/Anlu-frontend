@@ -24,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserModule } from '@angular/platform-browser';
 import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
+import { HeroSectionComponent } from './hero-section/hero-section.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
     FavorBookComponent,
     ForgotPwdComponent,
     ResetPwdComponent,
+    HeroSectionComponent,
   ],
   imports: [
     CommonModule,

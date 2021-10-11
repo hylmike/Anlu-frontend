@@ -1,0 +1,75 @@
+div.lib-hero {
+  position: relative;
+}
+
+img.bg-pic {
+  height: 50vh;
+  width: 100vw;
+}
+
+div.lib-logo {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+}
+
+img.lib-logo {
+  width: 15vw;
+}
+
+div.workshop-area {
+  position: absolute;
+  opacity: 0.8;
+  top: 20px;
+  right: 20px;
+  height: 30vh;
+  width: 35vw;
+}
+
+div.donate-area {
+  position: absolute;
+  top: 36vh;
+  left: 10px;
+}
+
+button.donate-link {
+  background-color: #445c80;
+  color: white;
+  font-size: x-large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 160px;
+  border-radius: 10px;
+}
+
+/*
+ * Extra utilities
+ */
+
+.flex-equal>* {
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .flex-md-equal>* {
+    flex: 1;
+  }
+}
+
+div.key-links {
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  text-align: center;
+  font-size: large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+div.circle {
+  width: 80px;
+  height: 80px;
+  background-color: #fcd250;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  margin: auto;
+}

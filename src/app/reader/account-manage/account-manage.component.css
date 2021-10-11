@@ -22,6 +22,7 @@ p.list-content {
 div.page-control {
   text-align: center;
   padding-top: 30px;
+  color: white;
 }
 button.review-link, button.dea-link, button.act-link, button.del-link {
   text-align: center;

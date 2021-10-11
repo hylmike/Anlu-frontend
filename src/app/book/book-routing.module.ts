@@ -16,6 +16,7 @@ import { BookInfoComponent } from './book-info/book-info.component';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { PodcastPortalComponent } from './podcast-portal/podcast-portal.component';
 import { BookWishlistComponent } from './book-wishlist/book-wishlist.component';
+import { InlibraryPortalComponent } from './inlibrary-portal/inlibrary-portal.component';
 
 const bookRoutes: Routes = [
   {
@@ -72,6 +73,12 @@ const bookRoutes: Routes = [
     path: 'ebook',
     canActivate: [ReaderAuthGuard],
     component: EbookPortalComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'inlibrary',
+    canActivate: [ReaderAuthGuard],
+    component: InlibraryPortalComponent,
     pathMatch: 'full',
   },
   {

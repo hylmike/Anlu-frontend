@@ -1,21 +1,23 @@
 <app-reader-header></app-reader-header>
 
+
+
 <main class="container container-fluid">
-  <div *ngIf="readBookList.length>0" class="list-container position-relative overflow-hidden m-1 m-md-3 p-2 p-md-3 bg-light">
+  <app-hero-section></app-hero-section>
+
+  <div *ngIf="readBookList.length>0" class="list-container position-relative overflow-hidden">
     <h2 class="title">Recent Read Books</h2>
     <hr class="light">
     <app-book-list [bookList]="readBookList" [role]="role" [listName]="readBook"></app-book-list>
   </div>
 
-  <div *ngIf="favorBookList.length>0" class="list-container position-relative overflow-hidden m-1 m-md-3 p-2 p-md-3 bg-light">
-    <h2 class="title">Favourite Books</h2>
+  <div *ngIf="favorBookList.length>0" class="list-container position-relative overflow-hidden">
+    <h2 class="title">My Favourite Books</h2>
     <hr class="light">
     <app-book-list [bookList]="favorBookList" [role]="role" [listName]="favorBook"></app-book-list>
   </div>
 
-  <app-lib-events></app-lib-events>
-
-  <div class="list-container position-relative overflow-hidden m-1 m-md-3 p-2 p-md-3 bg-light">
+  <div class="list-container position-relative overflow-hidden">
     <h2 class="title">Hottest books in libarary</h2>
     <hr class="light">
     <div *ngIf="hotBookList">

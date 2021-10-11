@@ -1,12 +1,14 @@
 div.blog-list {
   padding: 3%;
+  font-size: large;
 }
 h2.title {
-  font-size: large;
+  font-size: x-large;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-top: 3%;
   font-weight: 600;
 }
 p.col-title {
-  font-size: medium;
+  font-size: large;
+  font-weight: 600;
 }

@@ -12,6 +12,7 @@ import { BookService } from '../book.service';
 export class BookDashboardComponent implements OnInit {
 
   bookSummary: [];
+  isAdmin = false;
 
   constructor(
     private commonService: CommonService,
@@ -22,8 +23,9 @@ export class BookDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     //Set the username in header
-    const libName = this.tokenService.getUsername().slice(3,);
-    this.commonService.setSubject(libName);
+    const name = this.tokenService.getUsername();
+    if (name.slice(0,3)==='$A_') this.isAdmin=true;
+    this.commonService.setSubject(name.slice(3,));
     //Get book summary data from server
     this.bookService.getInventorySum().subscribe((sumList: []) => {
       if (sumList.length > 0) {

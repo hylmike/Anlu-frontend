@@ -16,6 +16,9 @@
         <a class="nav-link active" data-bs-toggle="tab" href="#ebook" (click)="clickEbook()">eBook</a>
       </li>
       <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" href="#hardbook" (click)="clickInLibraryBook()">InLibraryBook</a>
+      </li>
+      <li class="nav-item" role="presentation">
         <a class="nav-link" data-bs-toggle="tab" href="#audiobook" (click)="clickAudiobook()">Audiobook</a>
       </li>
     </ul>
@@ -29,6 +32,17 @@
           <button class="book-dist btn btn-link" (click)="setBookList('eBook','MNOP')">M - P</button>
           <button class="book-dist btn btn-link" (click)="setBookList('eBook','QRST')">Q - T</button>
           <button class="book-dist btn btn-link" (click)="setBookList('eBook','UVWXYZ')">U - Z</button>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="hardbook" role="tabpanel" aria-labelledby="hardbook-tab">
+        <div class="link-area">
+          <button class="book-dist btn btn-link" id="allhardbook-link" (click)="setBookList('Hardcopy','All')">All</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','ABCD')">A - D</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','EFGH')">E - H</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','IJKL')">I - L</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','MNOP')">M - P</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','QRST')">Q - T</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','UVWXYZ')">U - Z</button>
         </div>
       </div>
       <div class="tab-pane fade" id="audiobook" role="tabpanel" aria-labelledby="audiobook-tab">
