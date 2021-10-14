@@ -20,10 +20,10 @@ img.lib-logo {
 div.workshop-area {
   position: absolute;
   opacity: 0.8;
-  top: 20px;
+  top: 15px;
   right: 20px;
   height: 30vh;
-  width: 35vw;
+  width: 45vw;
 }
 
 div.donate-area {
@@ -35,9 +35,9 @@ div.donate-area {
 button.donate-link {
   background-color: #445c80;
   color: white;
-  font-size: x-large;
+  font-size: large;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  width: 160px;
+  width: 30vw;
   border-radius: 10px;
 }
 
@@ -52,6 +52,15 @@ button.donate-link {
 @media (min-width: 768px) {
   .flex-md-equal>* {
     flex: 1;
+  }
+  button.donate-link {
+    font-size: x-large;
+    width: 12vw;
+  }
+  div.workshop-area {
+    top: 20px;
+    height: 30vh;
+    width: 30vw;
   }
 }
 

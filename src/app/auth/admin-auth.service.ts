@@ -33,7 +33,7 @@ export class AdminAuthService {
   isLoggedIn(): boolean {
     if (this.tokenService.getToken()) {
       const adminInd = this.tokenService.getUsername().slice(0,3);
-      if (moment().isBefore(this.tokenService.getExpiration()) && adminInd==='$A_') {
+      if (adminInd==='$A_') {
         return true;
       } else {
         return false;

@@ -96,7 +96,7 @@ export class ReaderAuthService {
       const roleInd = this.tokenService.getUsername().slice(0,3);
       if (roleInd === '$A_' || roleInd === '$L_') {
         return false
-      } else if (moment().isBefore(this.tokenService.getExpiration())) {
+      } else {
         return true;
       }
     } else {

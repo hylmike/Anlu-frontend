@@ -34,7 +34,7 @@ export class LibrarianAuthService {
 
   //Only admin can review the librarian profile
   getProfile(libID: string): Observable<any> {
-    return this.http.get(`api/lib/${libID}`).pipe(
+    return this.http.get(`api/lib/get/${libID}`).pipe(
       catchError(this.handleError('getLibProfile')), shareReplay()
     );
   }
@@ -94,7 +94,7 @@ export class LibrarianAuthService {
   isLoggedIn(): boolean {
     if (this.tokenService.getToken()) {
       const libInd = this.tokenService.getUsername().slice(0, 3);
-      if (moment().isBefore(this.tokenService.getExpiration()) && libInd === '$L_') {
+      if (libInd === '$L_') {
         return true;
       } else {
         return false;

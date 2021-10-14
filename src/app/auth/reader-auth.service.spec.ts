@@ -135,7 +135,6 @@ describe('AuthService', () => {
         username: readerStub().username,
         currentPassword: readerStub().password,
         newPassword: 'newPass',
-        confirmPassword: 'newPass',
       };
 
       readerAuthService.changePwd(changePwdDto).subscribe((result) => {

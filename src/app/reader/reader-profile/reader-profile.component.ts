@@ -38,8 +38,9 @@ export class ReaderProfileComponent implements OnInit {
     //Get reader info from backend
     const readerID = this.route.snapshot.paramMap.get('id');
     this.readerAuthService.getReader(readerID).subscribe((data) => {
-      if (data) {
+      if (data && data._id) {
         this.reader = data;
+        console.log(data);
         this.logger.info(`Success get reader ${readerID} profile from backend`);
       }
       else {
