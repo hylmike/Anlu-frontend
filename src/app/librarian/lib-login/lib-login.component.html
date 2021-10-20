@@ -1,6 +1,6 @@
 <main class="form-signin">
   <form [formGroup]="libLoginForm" (ngSubmit)="libLogin()">
-    <img class="mb-4" src="/assets/media/pic/library_logo.png" alt="" width="120" height="120">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png" alt="" width="120" height="80">
     <h1 class="h3 mb-3 fw-normal">Lib/Admin Sign In</h1>
 
     <div class="form-floating">
@@ -18,12 +18,6 @@
         <option value="Admin">Admin</option>
       </select>
       <label for="floatingSelect">Role</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!libLoginForm.valid">Sign in</button>
   </form>

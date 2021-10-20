@@ -1,4 +1,11 @@
 <div class="container-fluid text-center">
+  <a href="/" class="logo">
+    <img
+      class="logo"
+      src="/assets/media/pic/library_logo.png"
+      alt=""
+    />
+  </a>
   <h2 class="book-title">{{audioBook.format}}</h2>
   <h2 *ngIf="audioBook" class="book-title">{{audioBook.bookTitle}}</h2>
   <img *ngIf="audioBook" src={{audioBook.coverPic}} alt="cover-img" class="cover-img">
