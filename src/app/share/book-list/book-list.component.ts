@@ -42,7 +42,6 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       //Check the load button property and load the book list
       if (loadButton.disabled) loadButton.disabled = false;
       this.loadBook(0);
-      console.log('should load book list');
     } else {
       const p1 = document.createElement('p');
       p1.innerHTML = "Can't find any book ...";

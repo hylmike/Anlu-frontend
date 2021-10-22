@@ -81,7 +81,6 @@ describe('LibrarianLoginComponent', () => {
     });
     component.libLogin();
     fixture.detectChanges();
-    console.log()
     expect(adminLoginSpy).toHaveBeenCalledWith(libStub().username, libStub().password);
   })
 });

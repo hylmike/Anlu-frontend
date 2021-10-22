@@ -164,8 +164,7 @@ export class BookViewerComponent implements OnInit, OnDestroy {
     this.readInfo.endTime = new Date();
     const readTime =
       (this.readInfo.endTime.valueOf() - this.readInfo.startTime.valueOf()) /
-      1000;
-    window.alert('ReaderTime is ' + readTime + 's');  
+      1000; 
     const bookID = this.route.snapshot.paramMap.get('id');
     const readerID = this.readerAuthService.getReaderID();
     const readRecord = {
@@ -175,14 +174,12 @@ export class BookViewerComponent implements OnInit, OnDestroy {
       currentPage: this.pdfPara.currentPage,
       duration: readTime,
     };
-    console.log('Reader record is :' + readRecord )
     this.bookService.addReadRecord(readRecord).subscribe((record) => {
       if (record) {
-        console.log('Return read record is: ' + record);
         this.logger.info(`Success update read record for book ${bookID}`);
       } else {
         this.logger.warn(
-          `Can't find book ${bookID} or read record already exist`
+          `Read time too short or read record already exist`
         );
       }
     });

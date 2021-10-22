@@ -74,15 +74,13 @@ export class CreateWorkshopComponent implements OnInit {
   onPosterSelect(event) {
     const coverFile = event.target.files[0];
     if (coverFile) {
-      console.log(coverFile);
       this.workshopService.fileUpload(coverFile).subscribe((event) => {
         if (event.type === HttpEventType.UploadProgress) {
           this.uploadPosterProgress = Math.round(100 * (event.loaded / event.total));
         }
         if (event.type === HttpEventType.Response && event.status === 201) {
-          console.log("Workshop poster uploaded successfully");
+          this.logger.info("Workshop poster uploaded successfully");
           this.posterUploadUrl = event.body['fileUrl'];
-          console.log(this.posterUploadUrl);
           const posterFileInput = document.getElementById('poster');
           posterFileInput.className = 'form-control is-valid';
         }

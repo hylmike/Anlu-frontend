@@ -206,7 +206,6 @@ export class AccountManageComponent implements OnInit, OnDestroy {
       const libID = deleteLink.parentElement.parentElement.querySelector('p.id').innerHTML
       //Invoke backend api to delete user from database, then update account status
       this.libAuthService.deleteLib(libID).subscribe((data) => {
-        console.log(data);
         if (data) {
           deleteLink.parentElement.parentElement.querySelector('p.status').innerHTML = 'Deleted'
           deleteLink.style.visibility = 'hidden';

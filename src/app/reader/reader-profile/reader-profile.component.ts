@@ -40,7 +40,6 @@ export class ReaderProfileComponent implements OnInit {
     this.readerAuthService.getReader(readerID).subscribe((data) => {
       if (data && data._id) {
         this.reader = data;
-        console.log(data);
         this.logger.info(`Success get reader ${readerID} profile from backend`);
       }
       else {
