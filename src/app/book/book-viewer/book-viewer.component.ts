@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import * as pdfjs from 'pdfjs-dist/build/pdf';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
@@ -10,26 +10,27 @@ import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
 @Component({
   selector: 'app-book-viewer',
   templateUrl: './book-viewer.component.html',
-  styleUrls: ['./book-viewer.component.css']
+  styleUrls: ['./book-viewer.component.css'],
 })
 export class BookViewerComponent implements OnInit, OnDestroy {
   pdfPara = {
     pdf: null,
     currentPage: 1,
     scale: 1,
-  }
+  };
 
   readInfo = {
     startTime: new Date(),
     endTime: new Date(),
-  }
+  };
 
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
     private logger: NGXLogger,
     private readerAuthService: ReaderAuthService,
-  ) { }
+    private router: Router,
+  ) {}
 
   async ngOnInit(): Promise<void> {
     const bookID = this.route.snapshot.paramMap.get('id');
@@ -40,11 +41,12 @@ export class BookViewerComponent implements OnInit, OnDestroy {
         book = ebook;
         //This link is just for unit testing purpose
         //const urlLink = '/bookfile/Pro HTML5 Programming.pdf'
-        const urlLink = book.bookFile.slice(2,);
+        const urlLink = book.bookFile.slice(2);
         pdfjs.GlobalWorkerOptions.workerSrc = '/assets/pdf.worker.min.js';
         const pdfLoader = pdfjs.getDocument(urlLink);
         this.pdfPara.pdf = await pdfLoader.promise;
-        document.querySelector('#total-pages').textContent = this.pdfPara.pdf._pdfInfo.numPages;
+        document.querySelector('#total-pages').textContent =
+          this.pdfPara.pdf._pdfInfo.numPages;
         this.render();
         this.readInfo.startTime = new Date();
       } else {
@@ -63,12 +65,13 @@ export class BookViewerComponent implements OnInit, OnDestroy {
       viewport = page.getViewport({ scale: 1 });
     }
     //Apply page dimension to Canvas element
-    const container = document.getElementById('canvas-container');
+
+    const container = document.getElementById('canvas-container') as HTMLDivElement;
     const canvas = document.getElementById('pdf-content') as HTMLCanvasElement;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     //if set to autoscale, calculate the responsive view width and update viewport
     if (autoscale.checked === true) {
-      this.pdfPara.scale = container.clientWidth / viewport.width;
+      this.pdfPara.scale = container.clientWidth*0.8 / viewport.width;
       viewport = page.getViewport({ scale: this.pdfPara.scale });
     }
     canvas.height = viewport.height;
@@ -76,11 +79,12 @@ export class BookViewerComponent implements OnInit, OnDestroy {
     //Render the page into Canvas element
     const renderContext = {
       canvasContext: ctx,
-      background: 'rgba(0,0,0,0)',
+      background: 'rgba(255,255,255,1)',
       viewport: viewport,
     };
     await page.render(renderContext);
-    console.log('PDF page rendered.');
+    document.documentElement.scrollTop = 0;
+    this.logger.info('PDF page rendered.');
   }
 
   goPreviousClick() {
@@ -93,7 +97,10 @@ export class BookViewerComponent implements OnInit, OnDestroy {
   }
 
   goNextClick() {
-    if (this.pdfPara.pdf === null || this.pdfPara.currentPage >= this.pdfPara.pdf._pdfInfo.numPages) {
+    if (
+      this.pdfPara.pdf === null ||
+      this.pdfPara.currentPage >= this.pdfPara.pdf._pdfInfo.numPages
+    ) {
       return;
     }
     this.pdfPara.currentPage++;
@@ -126,8 +133,12 @@ export class BookViewerComponent implements OnInit, OnDestroy {
 
   autoscaleClick() {
     const autoscale = document.getElementById('autoscale') as HTMLInputElement;
-    const zoomInButton = document.getElementById('zoom-in') as HTMLButtonElement;
-    const zoomOutButton = document.getElementById('zoom-out') as HTMLButtonElement;
+    const zoomInButton = document.getElementById(
+      'zoom-in'
+    ) as HTMLButtonElement;
+    const zoomOutButton = document.getElementById(
+      'zoom-out'
+    ) as HTMLButtonElement;
     if (autoscale.checked === true) {
       zoomInButton.disabled = true;
       zoomOutButton.disabled = true;
@@ -145,9 +156,16 @@ export class BookViewerComponent implements OnInit, OnDestroy {
     }
   }
 
+  returnPortal() {
+    this.router.navigateByUrl('/ebook');
+  }
+
   ngOnDestroy() {
     this.readInfo.endTime = new Date();
-    const readTime = (this.readInfo.endTime.valueOf() - this.readInfo.startTime.valueOf())/1000;
+    const readTime =
+      (this.readInfo.endTime.valueOf() - this.readInfo.startTime.valueOf()) /
+      1000;
+    window.alert('ReaderTime is ' + readTime + 's');  
     const bookID = this.route.snapshot.paramMap.get('id');
     const readerID = this.readerAuthService.getReaderID();
     const readRecord = {
@@ -156,12 +174,16 @@ export class BookViewerComponent implements OnInit, OnDestroy {
       startTime: this.readInfo.startTime,
       currentPage: this.pdfPara.currentPage,
       duration: readTime,
-    }
-    this.bookService.addReadRecord(readRecord).subscribe((record)=>{
+    };
+    console.log('Reader record is :' + readRecord )
+    this.bookService.addReadRecord(readRecord).subscribe((record) => {
       if (record) {
+        console.log('Return read record is: ' + record);
         this.logger.info(`Success update read record for book ${bookID}`);
       } else {
-        this.logger.warn(`Can't find book ${bookID} or read record already exist`);
+        this.logger.warn(
+          `Can't find book ${bookID} or read record already exist`
+        );
       }
     });
   }

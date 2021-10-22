@@ -3,22 +3,37 @@
     <div id="navigation-control">
       <button id="go-previous" (click)="goPreviousClick()">Previous</button>
       <span class="page-info">
-        Page <input type="number" [value]="pdfPara.currentPage" (input)="currentPageInput($event)" id="current-page"> of
+        Page
+        <input
+          type="number"
+          [value]="pdfPara.currentPage"
+          (input)="currentPageInput($event)"
+          id="current-page"
+        />
+        of
         <span id="total-pages"></span>
       </span>
-      
+
       <button id="go-next" (click)="goNextClick()">Next</button>
     </div>
     <div class="go-portal">
-      <a href="/ebook/" class="book-portal">Return Portal</a>
+      <button (click)="returnPortal()" class="btn btn-primary book-portal">Return Portal</button>
     </div>
     <div id="scale-control">
-      Autoscale: <input type="checkbox" checked (click)="autoscaleClick()" id="autoscale">
+      Autoscale:
+      <input
+        type="checkbox"
+        checked
+        (click)="autoscaleClick()"
+        id="autoscale"
+      />
       <button id="zoom-in" (click)="zoomInClick()" disabled>+</button>
       <button id="zoom-out" (click)="zoomOutClick()" disabled>-</button>
     </div>
   </div>
-  <div id="canvas-container" (window:resize)="onResize()">
-    <canvas id="pdf-content"></canvas>
+  <div class="pdf-container text-center">
+    <div id="canvas-container" (window:resize)="onResize()">
+      <canvas id="pdf-content"></canvas>
+    </div>
   </div>
 </div>

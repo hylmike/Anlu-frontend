@@ -1,15 +1,25 @@
+.pdf-viewer {
+  text-align: center;
+  position: relative;
+}
+
 #control-panel{
-  margin: auto;
-  margin-top: 70px;
+  padding-top: 20px;
+  padding-bottom: 10px;
   width: 80%;
+  margin: 0px auto;
+  font-size: medium;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 9999;
+  background-color: #a1b3c9;
 }
 #navigation-control{
   float: left;
-  font-size: medium;
 }
 #scale-control{
   float: right;
-  font-size: medium;
 }
 input#current-page {
   width: 100px;
@@ -19,14 +29,12 @@ button{
   margin-right: 5px;
   border-radius: 5px;
 }
-#cavas-container{
-  width: 80%;
-  overflow: auto;
+
+div.pdf-container{
   margin: auto;
-  background-color: black;
-  text-align: center;
-  border: 3px solid black;
+  padding-top: 55px;
 }
+
 #autoscale{
   margin-right: 10px;
 }
@@ -35,5 +43,5 @@ div.go-portal {
   font-size: large;
   font-family: Arial, Helvetica, sans-serif;
   float: right;
-  margin-left: 30px;
+  margin-right: 10px;
 }
