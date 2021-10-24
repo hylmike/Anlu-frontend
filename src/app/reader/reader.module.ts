@@ -25,6 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { HeroSectionComponent } from './hero-section/hero-section.component';
     BrowserModule,
     LibModule,
     ReaderRoutingModule,
+    TranslateModule,
   ],
   providers: [ReaderService],
   exports: [

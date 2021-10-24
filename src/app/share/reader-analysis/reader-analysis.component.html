@@ -1,26 +1,34 @@
 <div class="block reader-analysis">
-  <h2 class="title text-center">Reader Quantity Analysis</h2>
-  <hr>
-  <div style="display: block;">
-    <canvas baseChart width="400" height="400" 
-    [datasets]="lineChartData"
-    [labels]="lineChartLabels"
-    [options]="lineChartOptions"
-    [colors]="lineChartColors"
-    [legend]="lineChartLegend"
-    [chartType]="lineChartType"
-    [plugins]="lineChartPlugins"></canvas>
+  <h2 class="title text-center">
+    {{ "readerAnalysis.readerChartTitle-1" | translate }}
+  </h2>
+  <hr />
+  <div style="display: block">
+    <canvas
+      baseChart
+      width="400"
+      height="400"
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins"
+    ></canvas>
   </div>
 </div>
 <div class="block top-reader">
-  <h2 class="title text-center">Top 10 Readers by Reader Score</h2>
-  <hr>
+  <h2 class="title text-center">
+    {{ "readerAnalysis.readerChartTitle-2" | translate }}
+  </h2>
+  <hr />
   <table class="table table-responsive table-condensed">
     <tr>
-      <th *ngFor="let label of topnHeader">{{label}}</th>
+      <th *ngFor="let label of topnHeader">{{ label }}</th>
     </tr>
-    <tr *ngFor="let item of topnData; let i=index">
-      <td *ngFor="let data of item; let j=index">{{data}}</td>
+    <tr *ngFor="let item of topnData; let i = index">
+      <td *ngFor="let data of item; let j = index">{{ data }}</td>
     </tr>
   </table>
 </div>

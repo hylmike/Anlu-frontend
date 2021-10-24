@@ -1,49 +1,126 @@
 <div id="nav-header">
-  <nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: #fcd250;" aria-label="Main navigation">
+  <nav
+    class="navbar navbar-expand-lg sticky-top navbar-light"
+    style="background-color: #fcd250"
+    aria-label="Main navigation"
+  >
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">{{titleName}}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-label="Toggle navigation" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+      <a class="navbar-brand" href="/">{{ titleName }}</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        aria-label="Toggle navigation"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-  
+
       <div class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" id="nav-myLibrary" href="/">My Library</a>
+            <a class="nav-link active" id="nav-myLibrary" href="/">
+              {{ "readerHeader.menu-1" | translate }}
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-inLibrary" href="/inlibrary">InLibrary-Book</a>
+            <a class="nav-link" id="nav-inLibrary" href="/inlibrary">{{
+              "readerHeader.menu-2" | translate
+            }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-ebook" href="/ebook">E-Book</a>
+            <a class="nav-link" id="nav-ebook" href="/ebook">{{
+              "readerHeader.menu-3" | translate
+            }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-audiobook" href="/audiobook">Audio Book</a>
+            <a class="nav-link" id="nav-audiobook" href="/audiobook">{{
+              "readerHeader.menu-4" | translate
+            }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-podcast" href="/podcast">Podcast</a>
+            <a class="nav-link" id="nav-podcast" href="/podcast">{{
+              "readerHeader.menu-5" | translate
+            }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-workshop" href="/workshop">Workshop</a>
+            <a class="nav-link" id="nav-workshop" href="/workshop">{{
+              "readerHeader.menu-6" | translate
+            }}</a>
           </li>
           <li class="nav-item" *ngIf="!isSignedIn">
-            <a class="nav-link" id="nav_signin" href="/reader/login">Sign In</a>
+            <a class="nav-link" id="nav_signin" href="/reader/login">{{
+              "readerHeader.menu-7" | translate
+            }}</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Manage Account</a>
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdown01"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ "readerHeader.menu-8" | translate }}</a
+            >
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="/reader/register">Register</a></li>
-              <li *ngIf="isSignedIn"><a class="dropdown-item" href={{profileUrl}}>My Profile</a></li>
-              <li *ngIf="isSignedIn"><a class="dropdown-item" href={{favorBookUrl}}>My Favor Book</a></li>
-              <li *ngIf="isSignedIn"><a class="dropdown-item" href="/reader/login">Switch Account</a></li>
-              <li *ngIf="isSignedIn"><a class="dropdown-item" id="link_signout" href="/reader/logout">Logout</a></li>
+              <li>
+                <a class="dropdown-item" href="/reader/register">{{
+                  "readerHeader.menu-8-1" | translate
+                }}</a>
+              </li>
+              <li *ngIf="isSignedIn">
+                <a class="dropdown-item" href="{{ profileUrl }}">{{
+                  "readerHeader.menu-8-2" | translate
+                }}</a>
+              </li>
+              <li *ngIf="isSignedIn">
+                <a class="dropdown-item" href="{{ favorBookUrl }}">{{
+                  "readerHeader.menu-8-3" | translate
+                }}</a>
+              </li>
+              <li *ngIf="isSignedIn">
+                <a class="dropdown-item" href="/reader/login">{{
+                  "readerHeader.menu-8-4" | translate
+                }}</a>
+              </li>
+              <li *ngIf="isSignedIn">
+                <a
+                  class="dropdown-item"
+                  id="link_signout"
+                  href="/reader/logout"
+                  >{{ "readerHeader.menu-8-5" | translate }}</a
+                >
+              </li>
             </ul>
           </li>
         </ul>
-        <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="searchForm.valid&&searchBook()" novalidate>
-          <label class="label_welcome">Welcome! {{userName}}</label>
-          <input class="form-control me-2" type="search" placeholder="Search" formControlName="searchValue">
-          <button class="search btn btn-outline-primary" type="submit">Search Book</button>
+        <form
+          class="d-flex bg-highlight"
+          [formGroup]="searchForm"
+          (ngSubmit)="searchForm.valid && searchBook()"
+          novalidate
+        >
+          <select #langSelect (change)="translate.use(langSelect.value)">
+            <option
+              *ngFor="let lang of translate.getLangs()"
+              [value]="lang"
+              [selected]="lang === translate.currentLang"
+            >
+              {{ lang }}
+            </option>
+          </select>
+          <label class="label_welcome">{{ "readerHeader.welcome" | translate }} {{ userName }}</label>
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="{{ 'readerHeader.searchLabel' | translate }}"
+            formControlName="searchValue"
+          />
+          <button class="search btn btn-outline-primary" type="submit">
+            {{ "readerHeader.searchButton" | translate }}
+          </button>
         </form>
       </div>
     </div>

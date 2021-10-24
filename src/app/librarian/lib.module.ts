@@ -14,7 +14,7 @@ import { ShareModule } from '../share/share.module';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
 import { ChangePwdComponent } from './change-password/change-password.component';
-import { ReaderModule } from '../reader/reader.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { ReaderModule } from '../reader/reader.module';
     ReactiveFormsModule,
     ShareModule,
     LibRoutingModule,
+    TranslateModule,
   ],
   exports: [
     LibrarianHeaderComponent,

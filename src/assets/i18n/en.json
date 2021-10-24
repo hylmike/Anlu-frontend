@@ -1,0 +1,99 @@
+{
+  "readerHeader": {
+    "titleName": "Anlu BiBlio",
+    "defaultName": "Our Guest",
+    "menu-1": "My Library",
+    "menu-2": "InLibrary-Book",
+    "menu-3": "E-Book",
+    "menu-4": "Audio Book",
+    "menu-5": "Podcast",
+    "menu-6": "Workshop",
+    "menu-7": "Sign In",
+    "menu-8": "Manage Account",
+    "menu-8-1": "Register",
+    "menu-8-2": "My Profile",
+    "menu-8-3": "My Favor Book",
+    "menu-8-4": "Switch Account",
+    "menu-8-5": "Logout",
+    "welcome": "Welcome!",
+    "searchLabel": "Search",
+    "searchButton": "Search Book"
+  },
+  "siteFooter": {
+    "title-1": "About Us",
+    "address-1": "Oyack (Carrefour Nyango)",
+    "address-2": "Douala3 (Cameroun)",
+    "title-2": "Operation Hours",
+    "operation-1": "Tue - Fri: 11am - 7pm",
+    "operation-2": "Sat & Sun: Invited activities",
+    "title-3": "Operation Hours",
+    "contact-1": "00237 652 07 74 45",
+    "contact-2": "anlubiblio237@gmail.com",
+    "donateLink": "I want to Donate"
+  },
+  "readerPortal": {
+    "hotTitle": "Hottest books in libarary"
+  },
+  "heroSection": {
+    "wsControl-1": "Previous",
+    "wsControl-2": "Next",
+    "supportLink": "To Support Our Library",
+    "keyLink-1": "Books in Library",
+    "keyLink-2": "Online eBooks",
+    "keyLink-3": "Audio Books",
+    "keyLink-4": "Podcasts",
+    "keyLink-5": "Workshops",
+    "keyLink-6": "Blogs & Updates"
+  },
+  "bookList": {
+    "emptyDesc": "Can't find any book ...",
+    "action-1": "Review",
+    "action-2": "Update",
+    "action-3": "Delete",
+    "delNotice-1": "Please confirm if you want to delete this book",
+    "delNotice-2": "Success delete the book {{id}} from database",
+    "loadMore": "Load More Books"
+  },
+  "adminHeader": {
+    "defaultName": "Admin",
+    "logoutFail": "Logout failed, please try again later",
+    "menu-1": "Admin Dashboard",
+    "menu-2": "Manage Account",
+    "menu-2-1": "Register Lib/Admin",
+    "menu-2-2": "Manage Lib/Admin",
+    "menu-2-3": "Manage Reader",
+    "menu-3": "Manage Inventory",
+    "menu-3-1": "Book Dashboard",
+    "menu-3-2": "Register Book",
+    "menu-3-3": "Manage Book",
+    "menu-4": "Logout"
+  },
+  "libHeader": {
+    "defaultName": "Librarian",
+    "menu-1": "Librarian Dashboard",
+    "menu-2": "Manage Book",
+    "menu-2-1": "Dashboard",
+    "menu-2-2": "Register Book",
+    "menu-2-3": "Manage Book Info",
+    "menu-2-4": "Manage Wish List",
+    "menu-3": "Manage Workshop",
+    "menu-3-1": "Manage Workshop",
+    "menu-3-2": "Create Workshop",
+    "menu-4": "Manage Blog",
+    "menu-4-1": "Manage Blog",
+    "menu-4-2": "Create Blog",
+    "menu-5": "Logout"
+  },
+  "libPortal": {
+    "topBookTitle": "Top10 Books by Popular Score"
+  },
+  "inventorySummary": {
+    "bookChartTitle-1": "Book Quantity Summary",
+    "bookChartTitle-2": "Book Distribution by Category"
+  },
+  "readerAnalysis": {
+    "readerChartTitle-1": "Reader Quantity Analysis",
+    "readerChartTitle-2": "Top 10 Readers by Reader Score"
+  }
+
+}

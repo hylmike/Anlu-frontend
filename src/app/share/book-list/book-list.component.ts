@@ -1,16 +1,26 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { Book } from '../../common/book-dto';
 import { BookService } from '../../book/book.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
+  styleUrls: ['./book-list.component.css'],
 })
-export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-
+export class BookListComponent
+  implements OnInit, OnChanges, AfterViewInit, OnDestroy
+{
   @Input() bookList: Book[] = [];
   @Input() role: string = 'reader';
   @Input() listName: string = '';
@@ -21,7 +31,8 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
   constructor(
     private logger: NGXLogger,
     private bookService: BookService,
-  ) { }
+    public translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     //Define the id of listContainer and loadButton
@@ -33,7 +44,9 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
 
   ngAfterViewInit() {
     const listContainer = document.getElementById(this.divID) as HTMLDivElement;
-    const loadButton = document.getElementById(this.buttonID) as HTMLButtonElement;
+    const loadButton = document.getElementById(
+      this.buttonID
+    ) as HTMLButtonElement;
     if (this.bookList && this.bookList.length > 0) {
       //Before updating the book list area, clear all the old elements
       while (listContainer.firstChild) {
@@ -44,20 +57,24 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       this.loadBook(0);
     } else {
       const p1 = document.createElement('p');
-      p1.innerHTML = "Can't find any book ...";
+      this.translate.stream('bookList.emptyDesc').subscribe((res) => {
+        p1.innerHTML = res;
+      });
       p1.className = 'empty-result';
       p1.style.color = 'gray';
       p1.style.fontSize = 'xx-large';
       p1.style.padding = '30px';
       listContainer.appendChild(p1);
       if (!loadButton.disabled) loadButton.disabled = true;
-      this.logger.warn("Can't find any book ...")
+      this.logger.warn("Can't find any book ...");
     }
   }
 
   ngOnChanges() {
     const listContainer = document.getElementById(this.divID) as HTMLDivElement;
-    const loadButton = document.getElementById(this.buttonID) as HTMLButtonElement;
+    const loadButton = document.getElementById(
+      this.buttonID
+    ) as HTMLButtonElement;
     if (listContainer) {
       while (listContainer.firstChild) {
         listContainer.removeChild(listContainer.firstChild);
@@ -68,7 +85,9 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
         this.loadBook(0);
       } else {
         const p1 = document.createElement('p');
-        p1.innerHTML = "Can't find any book ...";
+        this.translate.stream('bookList.emptyDesc').subscribe((res) => {
+          p1.innerHTML = res;
+        });
         p1.className = 'empty-result';
         p1.style.color = 'gray';
         p1.style.fontSize = 'xx-large';
@@ -88,8 +107,13 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
 
   loadBook(startNum: number) {
     const listContainer = document.getElementById(this.divID) as HTMLDivElement;
-    const loadButton = document.getElementById(this.buttonID) as HTMLButtonElement;
-    const endNum = this.bookList.length - startNum > 12 ? startNum + 12 : this.bookList.length
+    const loadButton = document.getElementById(
+      this.buttonID
+    ) as HTMLButtonElement;
+    const endNum =
+      this.bookList.length - startNum > 12
+        ? startNum + 12
+        : this.bookList.length;
     for (let i = startNum; i < endNum; i++) {
       let divCol = document.createElement('div');
       divCol.className = 'col-lg-2 col-sm-4 column';
@@ -127,17 +151,17 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
       bookTitle.innerHTML = this.bookList[i].bookTitle;
       titleDiv.appendChild(bookTitle);
       if (this.role === 'reader') {
-      let bookAuthor = document.createElement('p');
-      bookAuthor.className = 'book-author';
-      bookAuthor.innerHTML = this.bookList[i].author;
-      bookAuthor.style.fontSize = 'medium';
-      bookAuthor.style.position = 'absolute';
-      bookAuthor.style.top = '240px';
-      bookAuthor.style.width = '100%';
-      bookAuthor.style.overflow = 'hidden';
-      bookAuthor.style.textOverflow = 'ellipsis';
-      bookAuthor.style.whiteSpace = 'nowrap';
-      divCard.appendChild(bookAuthor);
+        let bookAuthor = document.createElement('p');
+        bookAuthor.className = 'book-author';
+        bookAuthor.innerHTML = this.bookList[i].author;
+        bookAuthor.style.fontSize = 'medium';
+        bookAuthor.style.position = 'absolute';
+        bookAuthor.style.top = '240px';
+        bookAuthor.style.width = '100%';
+        bookAuthor.style.overflow = 'hidden';
+        bookAuthor.style.textOverflow = 'ellipsis';
+        bookAuthor.style.whiteSpace = 'nowrap';
+        divCard.appendChild(bookAuthor);
       }
       if (this.role === 'admin' || this.role === 'librarian') {
         let buttonDiv = document.createElement('div');
@@ -153,7 +177,7 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
         reviewButton.style.marginTop = '5px';
         let updateButton = document.createElement('a');
         updateButton.className = 'btn btn-primary update-info';
-        updateButton.href = `/book/update/${this.bookList[i]._id}`
+        updateButton.href = `/book/update/${this.bookList[i]._id}`;
         updateButton.innerHTML = 'Update';
         updateButton.style.padding = '5px';
         updateButton.style.marginRight = '5px';
@@ -166,7 +190,10 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
           delButton.innerHTML = 'Delete';
           delButton.style.padding = '5px';
           delButton.style.marginTop = '5px';
-          delButton.addEventListener('click', this.delBook.bind(this, this.bookList[i]._id));
+          delButton.addEventListener(
+            'click',
+            this.delBook.bind(this, this.bookList[i]._id)
+          );
           buttonDiv.appendChild(delButton);
         }
       }
@@ -177,16 +204,21 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
   }
 
   delBook(bookID: string) {
-    if (window.confirm('Please confirm if you want to delete this book')) {
+    let delNotice1: string, delNotice2: string;
+    this.translate.stream(['bookList.delNotice-1', 'bookList.delNotice-2'], {id:bookID}).subscribe((res) => {
+      delNotice1 = res['bookList.delNotice-1'];
+      delNotice2 = res['bookList.delNotice-2'];
+    });
+    if (window.confirm(delNotice1)) {
       this.bookService.delBook(bookID).subscribe((data) => {
-        if (data = bookID) {
+        if ((data = bookID)) {
           this.logger.info(`Success delete the book ${bookID}`);
-          window.alert(`Success delete the book ${bookID} from database`);
+          window.alert(delNotice2);
           this.pageReload();
         } else {
           this.logger.warn(`Failed to delete book ${bookID} in service side`);
         }
-      })
+      });
     }
   }
 
@@ -202,8 +234,9 @@ export class BookListComponent implements OnInit, OnChanges, AfterViewInit, OnDe
           deleteButtons[i].replaceWith(deleteButtons[i].cloneNode(true));
         }
       }
-      this.logger.info('Success cleaned all eventListeners added by book-manage component');
+      this.logger.info(
+        'Success cleaned all eventListeners added by book-manage component'
+      );
     }
   }
-
 }

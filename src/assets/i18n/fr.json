@@ -1,0 +1,59 @@
+{
+  "readerHeader": {
+    "titleName": "French Title",
+    "defaultName": "Fname",
+    "menu-1": "French menu",
+    "menu-2": "French menu",
+    "menu-3": "French menu",
+    "menu-4": "French menu",
+    "menu-5": "French menu",
+    "menu-6": "French menu",
+    "menu-7": "French menu",
+    "menu-8": "French menu",
+    "menu-8-1": "French menu",
+    "menu-8-2": "French menu",
+    "menu-8-3": "French menu",
+    "menu-8-4": "French menu",
+    "menu-8-5": "French menu",
+    "welcome": "French",
+    "searchLabel": "French",
+    "searchButton": "Search French"
+  },
+  "siteFooter": {
+    "title-1": "frech-1",
+    "address-1": "Oyack (Carrefour Nyango)",
+    "address-2": "Douala3 (Cameroun)",
+    "title-2": "frech-2",
+    "operation-1": "Tue - Fri: 11am - 7pm",
+    "operation-2": "Sat & Sun: Invited activities",
+    "title-3": "frech-3",
+    "contact-1": "00237 652 07 74 45",
+    "contact-2": "anlubiblio237@gmail.com"
+  },
+  "readerPortal": {
+    "hotTitle": "french Hottest books"
+  },
+  "heroSection": {
+    "wsControl-1": "Previous",
+    "wsControl-2": "Next",
+    "supportLink": "To Support Our Library",
+    "keyLink-1": "Books in Library",
+    "keyLink-2": "Online eBooks",
+    "keyLink-3": "Audio Books",
+    "keyLink-4": "Podcasts",
+    "keyLink-5": "Workshops",
+    "keyLink-6": "Blogs & Updates"
+  },
+  "bookList": {
+    "emptyDesc": "Can't find any book ...",
+    "action-1": "Review",
+    "action-2": "Update",
+    "action-3": "Delete",
+    "delNotice-1": "frech confirm if you want to delete this book",
+    "delNotice-2": "frech delete the book {{id}} from database"
+  },
+  "inventorySummary": {
+    "bookChartTitle-1": "French Book Quantity",
+    "bookChartTitle-2": "French Book Distribution"
+  }
+}

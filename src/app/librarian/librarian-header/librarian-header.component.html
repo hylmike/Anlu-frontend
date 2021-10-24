@@ -1,46 +1,142 @@
 <div id="lib-header">
-  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" aria-label="Main navigation">
+  <nav
+    class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark"
+    aria-label="Main navigation"
+  >
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">{{titleName}}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-label="Toggle navigation" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+      <a class="navbar-brand" href="/">{{ titleName }}</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        aria-label="Toggle navigation"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-  
+
       <div class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/lib/lib-portal">Librarian Dashboard</a>
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="/lib/lib-portal"
+              >{{ "libHeader.menu-1" | translate }}
+            </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/book" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Manage Book</a>
+            <a
+              class="nav-link dropdown-toggle"
+              href="/book"
+              id="dropdown01"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ "libHeader.menu-2" | translate }}</a
+            >
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="/book/dashboard">Dashboard</a></li>
-              <li><a class="dropdown-item" href="/book/register">Register Book</a></li>
-              <li><a class="dropdown-item" href="/book/manage">Manage Book Info</a></li>
-              <li><a class="dropdown-item" href="/book/wishlist/manage">Manage Wish List</a></li>
+              <li>
+                <a class="dropdown-item" href="/book/dashboard">
+                  {{ "libHeader.menu-2-1" | translate }}
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/book/register">{{
+                  "libHeader.menu-2-2" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/book/manage">{{
+                  "libHeader.menu-2-3" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/book/wishlist/manage">{{
+                  "libHeader.menu-2-4" | translate
+                }}</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/workshop" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Manage Workshop</a>
+            <a
+              class="nav-link dropdown-toggle"
+              href="/workshop"
+              id="dropdown02"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ "libHeader.menu-3" | translate }}</a
+            >
             <ul class="dropdown-menu" aria-labelledby="dropdown02">
-              <li><a class="dropdown-item" href="/workshop/manage">Manage Workshop</a></li>
-              <li><a class="dropdown-item" href="/workshop/create">Create Workshop</a></li>
+              <li>
+                <a class="dropdown-item" href="/workshop/manage">{{
+                  "libHeader.menu-3-1" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/workshop/create">{{
+                  "libHeader.menu-3-2" | translate
+                }}</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/blog" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Blog</a>
+            <a
+              class="nav-link dropdown-toggle"
+              href="/blog"
+              id="dropdown03"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ "libHeader.menu-4" | translate }}</a
+            >
             <ul class="dropdown-menu" aria-labelledby="dropdown03">
-              <li><a class="dropdown-item" href="/blog/manage">Manage Blog</a></li>
-              <li><a class="dropdown-item" href="/blog/create">Create Blog</a></li>
+              <li>
+                <a class="dropdown-item" href="/blog/manage">{{
+                  "libHeader.menu-4-1" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/blog/create">{{
+                  "libHeader.menu-4-2" | translate
+                }}</a>
+              </li>
             </ul>
+          </li>
+
           <li class="nav-item">
-            <a class="nav-link logout" (click)="logout()">Logout</a>
+            <a class="nav-link logout" (click)="logout()">{{
+              "libHeader.menu-5" | translate
+            }}</a>
           </li>
         </ul>
-        <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="searchForm.valid&&searchBook()" novalidate>
-          <label class="label_welcome">Welcome! {{libName}}</label>
-          <input class="form-control me-2" type="search" placeholder="Search" formControlName="searchValue">
-          <button class="search btn btn-outline-success" type="submit">Search Book</button>
+        <form
+          class="d-flex"
+          [formGroup]="searchForm"
+          (ngSubmit)="searchForm.valid && searchBook()"
+          novalidate
+        >
+          <select #langSelect (change)="translate.use(langSelect.value)">
+            <option
+              *ngFor="let lang of translate.getLangs()"
+              [value]="lang"
+              [selected]="lang === translate.currentLang"
+            >
+              {{ lang }}
+            </option>
+          </select>
+          <label class="label_welcome"
+            >{{ "readerHeader.welcome" | translate }} {{ libName }}</label
+          >
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="{{ 'readerHeader.searchLabel' | translate }}"
+            formControlName="searchValue"
+          />
+          <button class="search btn btn-outline-success" type="submit">
+            {{ "readerHeader.searchButton" | translate }}
+          </button>
         </form>
       </div>
     </div>

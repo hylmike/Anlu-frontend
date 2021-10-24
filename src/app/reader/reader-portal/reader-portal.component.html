@@ -4,10 +4,14 @@
   <app-hero-section></app-hero-section>
 
   <div class="book-topn position-relative overflow-hidden">
-    <h2 class="title">Hottest books in libarary</h2>
-    <hr class="light">
+    <h2 class="title">{{ "readerPortal.hotTitle" | translate }}</h2>
+    <hr class="light" />
     <div *ngIf="hotBookList">
-      <app-book-list [bookList]="hotBookList" [role]="role" [listName]="hotBook"></app-book-list>
+      <app-book-list
+        [bookList]="hotBookList"
+        [role]="role"
+        [listName]="hotBook"
+      ></app-book-list>
     </div>
   </div>
 </main>
