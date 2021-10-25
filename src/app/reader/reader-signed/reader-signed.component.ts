@@ -7,6 +7,7 @@ import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
 import { Book } from 'src/app/common/book-dto';
 import { BookService } from 'src/app/book/book.service';
 import { ReaderService } from '../reader.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reader-signed',
@@ -32,6 +33,7 @@ export class ReaderSignedComponent implements OnInit {
     private bookService: BookService,
     private readerService: ReaderService,
     private route: ActivatedRoute,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

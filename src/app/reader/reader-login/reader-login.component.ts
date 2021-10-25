@@ -7,6 +7,7 @@ import { ReaderAuthService } from '../../auth/reader-auth.service';
 import { TokenStorageService } from '../../auth/token-storage.service';
 import { AccessToken } from '../../common/reader.dto';
 import { CommonService } from '../../common/common.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class ReaderLoginComponent implements OnInit {
     private tokenService: TokenStorageService,
     private commonService: CommonService,
     private logger: NGXLogger,
+    public translate: TranslateService,
   ) { }
 
   readerLoginForm = this.fb.group({

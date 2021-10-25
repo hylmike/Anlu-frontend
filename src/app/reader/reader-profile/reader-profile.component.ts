@@ -7,6 +7,7 @@ import { Reader } from '../../common/reader.dto';
 import { CommonService } from 'src/app/common/common.service';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { AdminAuthService } from 'src/app/auth/admin-auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reader-profile',
@@ -25,6 +26,7 @@ export class ReaderProfileComponent implements OnInit {
     private adminAuthService: AdminAuthService,
     private readerAuthService: ReaderAuthService,
     private commonService: CommonService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

@@ -6,19 +6,19 @@
   <app-hero-section></app-hero-section>
 
   <div *ngIf="readBookList.length>0" class="list-container position-relative overflow-hidden">
-    <h2 class="title">Recent Read Books</h2>
+    <h2 class="title">{{"readerSignPortal.readTitle"|translate}}</h2>
     <hr class="light">
     <app-book-list [bookList]="readBookList" [role]="role" [listName]="readBook"></app-book-list>
   </div>
 
   <div *ngIf="favorBookList.length>0" class="list-container position-relative overflow-hidden">
-    <h2 class="title">My Favourite Books</h2>
+    <h2 class="title">{{"readerSignPortal.favorTitle"|translate}}</h2>
     <hr class="light">
     <app-book-list [bookList]="favorBookList" [role]="role" [listName]="favorBook"></app-book-list>
   </div>
 
   <div class="list-container position-relative overflow-hidden">
-    <h2 class="title">Hottest books in libarary</h2>
+    <h2 class="title">{{"readerSignPortal.hotTitle"|translate}}</h2>
     <hr class="light">
     <div *ngIf="hotBookList">
       <app-book-list [bookList]="hotBookList" [role]="role" [listName]="hotBook"></app-book-list>

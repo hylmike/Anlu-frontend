@@ -1,117 +1,180 @@
 <div class="container text-center padding">
   <div class="logo-img">
     <a href="/" class="logo">
-      <img class="mb-4" src="/assets/media/pic/library_logo.png">
+      <img class="mb-4" src="/assets/media/pic/library_logo.png" />
     </a>
   </div>
-  <h2 class="title padding">Reader Profile Update Form</h2>
-  <hr>
+  <h2 class="title padding">{{ "readerUpdate.title" | translate }}</h2>
+  <hr />
   <div class="update-form padding">
-    <form class="needs-validation" [formGroup]="updateForm" (ngSubmit)="updateForm.valid&&update()" novalidate>
+    <form
+      class="needs-validation"
+      [formGroup]="updateForm"
+      (ngSubmit)="updateForm.valid && update()"
+      novalidate
+    >
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="uname">Username</label>
+          <label for="uname">{{ "readerUpdate.field-1" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="uname" formControlName="username" readonly />
+          <input
+            type="text"
+            class="form-control"
+            id="uname"
+            formControlName="username"
+            readonly
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="email">Email</label>
+          <label for="email">{{ "readerUpdate.field-2" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-        <input type="email" class="form-control" id="email" formControlName="email" required />
-        <div class="invalid-feedback">
-          Please provide valid email address.
-        </div>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            required
+          />
+          <div class="invalid-feedback">
+            {{ "readerUpdate.field-2-1" | translate }}
+          </div>
         </div>
       </div>
-
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="fname">First Name</label>
+          <label for="fname">{{ "readerUpdate.field-3" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="fname" formControlName="firstName" />
+          <input
+            type="text"
+            class="form-control"
+            id="fname"
+            formControlName="firstName"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="lname">Last Name</label>
+          <label for="lname">{{ "readerUpdate.field-4" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-        <input type="text" class="form-control" id="lname" formControlName="lastName" />
+          <input
+            type="text"
+            class="form-control"
+            id="lname"
+            formControlName="lastName"
+          />
         </div>
       </div>
-
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="bday">Birthday</label>
+          <label for="bday">{{ "readerUpdate.field-5" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="date" class="form-control" id="bday" formControlName="birthday" />
+          <input
+            type="date"
+            class="form-control"
+            id="bday"
+            formControlName="birthday"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="gender">Gender</label>
+          <label for="gender">{{ "readerUpdate.field-6" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
           <select class="form-control" formControlName="gender" id="gender">
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
+            <option>{{ "readerUpdate.field-6-1" | translate }}</option>
+            <option>{{ "readerUpdate.field-6-2" | translate }}</option>
+            <option>{{ "readerUpdate.field-6-3" | translate }}</option>
           </select>
         </div>
       </div>
-
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="pnumber">Phone Number</label>
+          <label for="pnumber">{{ "readerUpdate.field-7" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="pnumber" formControlName="phoneNumber" />
+          <input
+            type="text"
+            class="form-control"
+            id="pnumber"
+            formControlName="phoneNumber"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="address">Home Address</label>
+          <label for="address">{{ "readerUpdate.field-8" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-        <input type="text" class="form-control" id="address" formControlName="homeAddress" />
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            formControlName="homeAddress"
+          />
         </div>
       </div>
-
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="province">Province</label>
+          <label for="province">{{ "readerUpdate.field-9" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="province" formControlName="province" />
+          <input
+            type="text"
+            class="form-control"
+            id="province"
+            formControlName="province"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="postcode">Postcode</label>
+          <label for="postcode">{{
+            "readerUpdate.field-10" | translate
+          }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-        <input type="text" class="form-control" id="postcode" formControlName="postcode" />
+          <input
+            type="text"
+            class="form-control"
+            id="postcode"
+            formControlName="postcode"
+          />
         </div>
       </div>
-
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="squestion">Security Question</label>
+          <label for="squestion">{{
+            "readerUpdate.field-11" | translate
+          }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="squestion" formControlName="securityQuestion" />
+          <input
+            type="text"
+            class="form-control"
+            id="squestion"
+            formControlName="securityQuestion"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="sanswer">Security Answer</label>
+          <label for="sanswer">{{ "readerUpdate.field-12" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-        <input type="text" class="form-control" id="sanswer" formControlName="securityAnswer" />
+          <input
+            type="text"
+            class="form-control"
+            id="sanswer"
+            formControlName="securityAnswer"
+          />
         </div>
       </div>
-
       <div class="submit-button">
-      <input type="submit" class="btnupdate" value="Update" />
+        <input
+          type="submit"
+          class="btnupdate"
+          value="{{ 'readerUpdate.submitButton' | translate }}"
+        />
       </div>
       <div class="home-link">
-        <a href="/">Return Homepage</a>
+        <a href="/">{{ "readerUpdate.returnLink" | translate }}</a>
       </div>
-
     </form>
   </div>
 </div>

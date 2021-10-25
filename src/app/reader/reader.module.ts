@@ -14,10 +14,8 @@ import { ReaderSignedComponent } from './reader-signed/reader-signed.component';
 import { ReaderProfileComponent } from './reader-profile/reader-profile.component';
 import { ReaderChangePwdComponent } from './reader-change-pwd/reader-change-pwd.component';
 import { ShareModule } from '../share/share.module';
-import { ReaderDeleteComponent } from './reader-delete/reader-delete.component';
 import { AccountManageComponent } from './account-manage/account-manage.component';
 import { ReaderService } from './reader.service';
-import { LibEventsComponent } from './lib-events/lib-events.component';
 import { FavorBookComponent } from './favor-book/favor-book.component';
 import { LibModule } from '../librarian/lib.module';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -39,9 +37,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ReaderSignedComponent,
     ReaderProfileComponent,
     ReaderChangePwdComponent,
-    ReaderDeleteComponent,
     AccountManageComponent,
-    LibEventsComponent,
     FavorBookComponent,
     ForgotPwdComponent,
     ResetPwdComponent,

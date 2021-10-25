@@ -1,13 +1,13 @@
 <app-reader-header></app-reader-header>
 
 <div class="favorBook container container-fluid">
-  <h2 class="title">My Favorite Book Management</h2>
-  <hr>
-  <div class="favor-list">
-
-  </div>
+  <h2 class="title">{{ "favorBook.title" | translate }}</h2>
+  <hr />
+  <div class="favor-list"></div>
   <div class="load-more text-center padding">
-    <button class="btn btn-link load-link" (click)="loadMore()">Load More</button>
+    <button class="btn btn-link load-link" (click)="loadMore()">
+      {{ "favorBook.loadMore" | translate }}
+    </button>
   </div>
 </div>
 

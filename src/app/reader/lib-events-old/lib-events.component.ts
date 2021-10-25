@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { BlogService } from 'src/app/blog/blog.service';
 import { Blog } from 'src/app/common/blog.dto';
@@ -18,6 +19,7 @@ export class LibEventsComponent implements OnInit {
     private blogService: BlogService,
     private datePipe: DatePipe,
     private workshopService: WorkshopService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -69,8 +71,7 @@ export class LibEventsComponent implements OnInit {
     let index = 0;
     for (const workshop of wsList) {
       //Add carousel indicator for each workshop
-      const button1 = document.createElement('button');
-      button1.type = 'button';
+      const button1 = document.createElement('button') as HTMLButtonElement;
       button1.setAttribute('data-bs-target', "#workshop-carousel");
       button1.setAttribute('data-bs-slide-to', `${index}`);
       button1.setAttribute('aria-label', `Slide ${index}`);
