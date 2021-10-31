@@ -63,17 +63,25 @@ button.book-search, button.book-wish {
   width: 100px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
+  h2.title {
+    font-size: large;
+  }
+
   form.book-search {
     font-size: small;
   }
 
-  a.book-category {
+  button.book-category {
     font-size: small;
   }
 
   button.book-search, button.book-wish {
     margin: 5px;
     padding: 2px;
+  }
+  a.nav-link {
+    font-size: small;
+    padding: 0.5rem 1rem 0.5rem 1rem;
   }
 }

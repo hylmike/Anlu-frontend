@@ -32,7 +32,7 @@ button{
 
 div.pdf-container{
   margin: auto;
-  padding-top: 55px;
+  padding-top: 70px;
 }
 
 #autoscale{
@@ -44,4 +44,30 @@ div.go-portal {
   font-family: Arial, Helvetica, sans-serif;
   float: right;
   margin-right: 10px;
+}
+
+@media (max-width:576px) {
+  #control-panel{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    margin: 0px auto;
+    font-size: small;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 9999;
+    background-color: #a1b3c9;
+  }
+
+  div.go-portal {
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    float: right;
+    margin-right: 5px;
+  }
+
+  button{
+    padding: 0px 5px;
+  }
 }

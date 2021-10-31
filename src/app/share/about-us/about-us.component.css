@@ -27,3 +27,23 @@ p {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 576px) {
+  h1.title {
+    font-size: x-large;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  a.return-home {
+    font-size: large;
+    font-weight: 600;
+    display: block;
+    margin-top: 20px;
+  }
+
+  p {
+    font-size: medium;
+    margin-top: 5px;
+  }
+}

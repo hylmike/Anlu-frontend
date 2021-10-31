@@ -3,42 +3,28 @@ div.lib-hero {
 }
 
 img.bg-pic {
-  height: 50vh;
-  width: 100vw;
-}
-
-div.lib-logo {
-  position: absolute;
-  top: 20px;
-  left: 0px;
-}
-
-img.lib-logo {
-  width: 15vw;
+  width: 100%;
 }
 
 div.workshop-area {
-  position: absolute;
-  opacity: 0.8;
-  top: 15px;
-  right: 20px;
-  height: 30vh;
-  width: 45vw;
+  display: block;
+  border: 2px solid lightblue;
+  width: 100%;
 }
 
 div.donate-area {
   position: absolute;
-  top: 36vh;
-  left: 10px;
+  top: 2px;
+  left: 2px;
 }
 
 button.donate-link {
   background-color: #445c80;
   color: white;
-  font-size: large;
+  font-size: small;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  width: 30vw;
-  border-radius: 10px;
+  width: 18vw;
+  border-radius: 5px;
 }
 
 /*
@@ -49,18 +35,23 @@ button.donate-link {
   flex: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   .flex-md-equal>* {
     flex: 1;
   }
+  div.donate-area {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
   button.donate-link {
-    font-size: x-large;
+    font-size: large;
     width: 12vw;
   }
   div.workshop-area {
-    top: 20px;
-    height: 30vh;
-    width: 30vw;
+    border: 2px solid lightblue;
+    height: 50vh;
+    width: 100%;
   }
 }
 

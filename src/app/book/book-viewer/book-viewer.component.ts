@@ -71,7 +71,7 @@ export class BookViewerComponent implements OnInit, OnDestroy {
     const ctx = canvas.getContext('2d');
     //if set to autoscale, calculate the responsive view width and update viewport
     if (autoscale.checked === true) {
-      this.pdfPara.scale = container.clientWidth*0.8 / viewport.width;
+      this.pdfPara.scale = container.clientWidth*0.9 / viewport.width;
       viewport = page.getViewport({ scale: this.pdfPara.scale });
     }
     canvas.height = viewport.height;
