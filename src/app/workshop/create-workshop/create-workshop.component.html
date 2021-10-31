@@ -1,63 +1,128 @@
 <div class="container-fluid text-center">
-  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png">
-  <h2 class="register-heading">Create Workshop</h2>
+  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png" />
+  <h2 class="register-heading">{{ "createWs.title" | translate }}</h2>
 </div>
 <div class="container register">
-  <form class="needs-validation" [formGroup]="workshopRegForm" (ngSubmit)="workshopRegForm.valid&&workshopRegister()"
-    novalidate>
+  <form
+    class="needs-validation"
+    [formGroup]="workshopRegForm"
+    (ngSubmit)="workshopRegForm.valid && workshopRegister()"
+    novalidate
+  >
     <div class="row register-form">
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="text" class="form-control" id="topic" formControlName="topic" required />
-          <label for="topic">Topic of workshop *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="topic"
+            formControlName="topic"
+            required
+          />
+          <label for="topic">{{ "createWs.field-1" | translate }}*</label>
           <div class="invalid-feedback">
-            Please provide the topic of workshop.
+            {{ "createWs.field-1-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="organizer" formControlName="organizer" required />
-          <label for="organizer">Organizer of workshop *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="organizer"
+            formControlName="organizer"
+            required
+          />
+          <label for="organizer">{{ "createWs.field-2" | translate }}*</label>
           <div class="invalid-feedback">
-            Please provide the organizer of workshop.
+            {{ "createWs.field-2-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="duration" formControlName="duration" />
-          <label for="duration">Duration of workshop (unit:Hour)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="duration"
+            formControlName="duration"
+            required
+          />
+          <label for="duration">{{ "createWs.field-3" | translate }}*</label>
+          <div class="invalid-feedback">
+            {{ "createWs.field-3-1" | translate }}
+          </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="creator" formControlName="creator" readonly />
-          <label for="creator">Creator</label>
+          <input
+            type="text"
+            class="form-control"
+            id="creator"
+            formControlName="creator"
+            readonly
+          />
+          <label for="creator">{{ "createWs.field-4" | translate }}</label>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="text" class="form-control" id="startTime" formControlName="startTime" onfocus="(this.type='datetime-local')" required />
-          <label for="startTime">Start time of workshop *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="startTime"
+            formControlName="startTime"
+            onfocus="(this.type='datetime-local')"
+            required
+          />
+          <label for="startTime">{{ "createWs.field-5" | translate }}*</label>
           <div class="invalid-feedback">
-            Please provide the startTime of workshop.
+            {{ "createWs.field-5-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="place" formControlName="place" />
-          <label for="place">Place of workshop </label>
+          <input
+            type="text"
+            class="form-control"
+            id="place"
+            formControlName="place"
+          />
+          <label for="place">{{ "createWs.field-6" | translate }}</label>
         </div>
         <div class="form-floating">
-          <input type="file" class="form-control" id="poster" formControlName="poster" (change)="onPosterSelect($event)"required />
-          <label for="poster">Poster picture of workshop (.png/.jpeg) *</label>
+          <input
+            type="file"
+            class="form-control"
+            id="poster"
+            formControlName="poster"
+            (change)="onPosterSelect($event)"
+            required
+          />
+          <label for="poster">{{ "createWs.field-7" | translate }}*</label>
           <div class="invalid-feedback">
-            Please upload poster picture of workshop.
+            {{ "createWs.field-7-1" | translate }}
           </div>
-          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadPosterProgress"></mat-progress-bar>
+          <mat-progress-bar
+            [color]="color"
+            mode="determinate"
+            [value]="uploadPosterProgress"
+          ></mat-progress-bar>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="remark" formControlName="remark" />
-          <label for="remark">Remark</label>
+          <input
+            type="text"
+            class="form-control"
+            id="remark"
+            formControlName="remark"
+          />
+          <label for="remark">{{ "createWs.field-8" | translate }}</label>
         </div>
-        <input type="submit" class="btnRegister" value="Register" />
+        <input
+          type="submit"
+          class="btnRegister"
+          value="{{ 'createWs.button-1' | translate }}"
+        />
         <div class="button-floating">
-          <a class="goPortal" (click)="goPortal()">Return Portal</a>
+          <a class="goPortal" (click)="goPortal()">{{
+            "createWs.returnLink" | translate
+          }}</a>
         </div>
       </div>
     </div>

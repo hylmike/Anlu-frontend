@@ -1,26 +1,32 @@
 <div id="pdf-viewer">
   <div id="control-panel">
     <div id="navigation-control">
-      <button id="go-previous" (click)="goPreviousClick()">Previous</button>
+      <button id="go-previous" (click)="goPreviousClick()">
+        {{ "bookViewer.control-1" | translate }}
+      </button>
       <span class="page-info">
-        Page
+        {{ "bookViewer.text-1" | translate }}
         <input
           type="number"
           [value]="pdfPara.currentPage"
           (input)="currentPageInput($event)"
           id="current-page"
         />
-        of
+        {{ "bookViewer.text-2" | translate }}
         <span id="total-pages"></span>
       </span>
 
-      <button id="go-next" (click)="goNextClick()">Next</button>
+      <button id="go-next" (click)="goNextClick()">
+        {{ "bookViewer.control-2" | translate }}
+      </button>
     </div>
     <div class="go-portal">
-      <button (click)="returnPortal()" class="btn btn-primary book-portal">Return Portal</button>
+      <button (click)="returnPortal()" class="btn btn-primary book-portal">
+        {{ "bookViewer.returnLink" | translate }}
+      </button>
     </div>
     <div id="scale-control">
-      Autoscale:
+      {{ "bookViewer.control-3" | translate }}:
       <input
         type="checkbox"
         checked

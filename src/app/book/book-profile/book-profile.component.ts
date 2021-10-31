@@ -10,6 +10,7 @@ import { CommonService } from '../../common/common.service';
 import { ReaderService } from '../../reader/reader.service';
 import { ReaderAuthService } from '../../auth/reader-auth.service';
 import { ReaderReadHistory } from '../../common/reader.dto';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-profile',
@@ -30,6 +31,7 @@ export class BookProfileComponent implements OnInit {
     private commonService: CommonService,
     private readerAuthService: ReaderAuthService,
     private readerService: ReaderService,
+    public translate: TranslateService,
   ) { }
 
   commentForm = this.fb.group({
@@ -78,7 +80,9 @@ export class BookProfileComponent implements OnInit {
       } else {
         let p1 = document.createElement('p');
         p1.className = 'comment-item';
-        p1.innerHTML = 'Be the first person to write comments!';
+        this.translate.stream('bookProfile.emptyComment').subscribe((res)=>{
+          p1.innerHTML = res;
+        });
         p1.style.fontSize = 'large';
         p1.style.fontFamily = 'Times New Roman';
         existComments.appendChild(p1);

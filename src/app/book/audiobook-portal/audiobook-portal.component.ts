@@ -6,6 +6,7 @@ import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { CommonService } from 'src/app/common/common.service';
 import { BookService } from '../book.service';
 import { DatePipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-audiobook-portal',
@@ -27,6 +28,7 @@ export class AudiobookPortalComponent implements OnInit, AfterViewInit {
     private commonService: CommonService,
     private bookService: BookService,
     private datePipe: DatePipe,
+    private translate: TranslateService,
   ) { }
 
   searchForm = this.fb.group({
@@ -102,6 +104,10 @@ export class AudiobookPortalComponent implements OnInit, AfterViewInit {
   }
 
   searchBookList() {
+    let notice1: string;
+    this.translate.stream('notice-1').subscribe((res)=>{
+      notice1 = res;
+    })
     const searchInfo: SearchBookDto = this.searchForm.value;
     if (searchInfo.category !== '' || searchInfo.author !== '' || searchInfo.bookTitle !== '' || searchInfo.publishYear !== '') {
       this.bookService.findBookList(searchInfo).subscribe((searchList) => {
@@ -186,14 +192,18 @@ export class AudiobookPortalComponent implements OnInit, AfterViewInit {
           wishListDiv.appendChild(div5);
           const delBut = document.createElement('button');
           delBut.className = 'del-wish btn btn-link';
-          delBut.innerHTML = 'Delete';
+          this.translate.stream('abookPortal.delWish').subscribe((res)=>{
+            delBut.innerHTML = res;
+          });
           delBut.style.marginTop = '-10px';
           delBut.addEventListener('click', this.delWish.bind(this, item._id));
           div5.appendChild(delBut);
         }
       } else if (wishList && wishList.length === 0) {
         const emptyMessage = document.createElement('p');
-        emptyMessage.innerHTML = "You haven't submitted any wish yet!";
+        this.translate.stream('abookPortal.wishEmptyMessage').subscribe((res)=>{
+          emptyMessage.innerHTML = res;
+        });
         emptyMessage.style.textAlign = 'center';
         emptyMessage.style.fontSize = 'x-large';
         emptyMessage.style.color = 'gray';
@@ -215,7 +225,11 @@ export class AudiobookPortalComponent implements OnInit, AfterViewInit {
       }
       this.bookService.findBookList(searchDto).subscribe((bookList: Book[]) => {
         if (bookList && bookList.length > 0) {
-          window.alert(`Book ${wishVal.bookTitle} already exists, you can find it in Audiobook category - ${bookList[0].category}`);
+          let notice2: string;
+          this.translate.stream('abookPortal.notice-2', {bookTitle: wishVal.bookTitle, category: bookList[0].category}).subscribe((res)=>{
+            notice2 = res;
+          })
+          window.alert(notice2);
         } else if (bookList && bookList.length == 0) {
           this.bookService.createWish(wishVal).subscribe((wish: BookWish) => {
             if (wish && wish.bookTitle) {
@@ -229,7 +243,11 @@ export class AudiobookPortalComponent implements OnInit, AfterViewInit {
   }
 
   delWish(wishID: string) {
-    if (window.confirm('Please confirm if you want to delete this wish')) {
+    let notice3: string;
+    this.translate.stream('abookPortal.notice-3').subscribe((res)=>{
+      notice3 = res;
+    })
+    if (window.confirm(notice3)) {
       this.bookService.delWish(wishID).subscribe((id) => {
         if (id == wishID) {
           this.logger.info('Success delete the wish');

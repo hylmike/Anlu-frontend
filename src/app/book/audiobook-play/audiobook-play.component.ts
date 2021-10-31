@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { BookService } from '../book.service';
 import { Book } from 'src/app/common/book-dto';
 import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-audiobook-play',
@@ -22,9 +23,11 @@ export class AudiobookPlayComponent implements OnInit, OnDestroy {
 
   constructor(
     private logger: NGXLogger,
+    private router: Router,
     private route: ActivatedRoute,
     private bookService: BookService,
     private readerAuthService: ReaderAuthService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -46,9 +49,14 @@ export class AudiobookPlayComponent implements OnInit, OnDestroy {
         const bookAudio = document.getElementById('book-audio') as HTMLAudioElement;
         bookAudio.currentTime = currentTime;
       } else {
-        this.logger.warn(`Server can not find audiobook/podcast ${bookID}`);
+        this.logger.warn(`Can not find audiobook/podcast ${bookID} from server`);
       }
     });
+  }
+
+  returnProfile() {
+    const bookID = this.route.snapshot.paramMap.get('id');
+    this.router.navigateByUrl(`/book/profile/${bookID}`);
   }
 
   ngOnDestroy() {

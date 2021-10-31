@@ -88,7 +88,8 @@
   },
   "inventorySummary": {
     "bookChartTitle-1": "French Book Quantity",
-    "bookChartTitle-2": "French Book Distribution"
+    "bookChartTitle-2": "French Book Distribution",
+    "title": "French Book Inventory Summary"
   },
   "readerAnalysis": {
     "readerChartTitle-1": "Reader Quantity Analysis",

@@ -1,48 +1,146 @@
 <app-reader-header></app-reader-header>
 <div class="container-fluid container">
   <div class="portal-header">
-    <img src="/assets/media/pic/library_logo.png" alt="logo-img" class="logo">
-    <h2 class="title">eBook Library</h2>
+    <img src="/assets/media/pic/library_logo.png" alt="logo-img" class="logo" />
+    <h2 class="title">{{ "ebookPortal.title" | translate }}</h2>
   </div>
   <div class="book-container">
     <ul class="nav nav-tabs" id="bookTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" data-bs-toggle="tab" href="#home" (click)="clickHome()">Category</a>
+        <a
+          class="nav-link active"
+          data-bs-toggle="tab"
+          href="#home"
+          (click)="clickHome()"
+          >{{ "ebookPortal.tab-1" | translate }}</a
+        >
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" href="#search" (click)="clickSearch()">Search</a>
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          href="#search"
+          (click)="clickSearch()"
+          >{{ "ebookPortal.tab-2" | translate }}</a
+        >
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" href="#wish" (click)="clickWish()">My Wish</a>
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          href="#wish"
+          (click)="clickWish()"
+          >{{ "ebookPortal.tab-3" | translate }}</a
+        >
       </li>
     </ul>
     <div class="tab-content" id="bookTab-content">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div
+        class="tab-pane fade show active"
+        id="home"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+      >
         <div class="link-area">
-          <button class="book-category btn btn-link" id="allLink" (click)="setBookList('All')">All</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Romance')">Romance</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Politics')">Politics</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Press')">Press</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Essay')">Essay</button>
-          <button class="book-category btn btn-link"
-            (click)="setBookList('Information Technology')">Information_Technology</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Comic')">Comic</button>
-          <button class="book-category btn btn-link" (click)="setBookList('History')">History</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Geography')">Geography</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Dissertation')">Dissertation</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Art')">Art</button>
-          <button class="book-category btn btn-link" (click)="setBookList('Sport')">Sport</button>
+          <button
+            class="book-category btn btn-link"
+            id="allLink"
+            (click)="setBookList('All')"
+          >
+            {{ "ebookPortal.cat-all" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Romance')"
+          >
+            {{ "ebookPortal.cat-1" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Politics')"
+          >
+            {{ "ebookPortal.cat-2" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Press')"
+          >
+            {{ "ebookPortal.cat-3" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Essay')"
+          >
+            {{ "ebookPortal.cat-4" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Information Technology')"
+          >
+            {{ "ebookPortal.cat-5" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Comic')"
+          >
+            {{ "ebookPortal.cat-6" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('History')"
+          >
+            {{ "ebookPortal.cat-7" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Geography')"
+          >
+            {{ "ebookPortal.cat-8" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Dissertation')"
+          >
+            {{ "ebookPortal.cat-9" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Art')"
+          >
+            {{ "ebookPortal.cat-10" | translate }}
+          </button>
+          <button
+            class="book-category btn btn-link"
+            (click)="setBookList('Sport')"
+          >
+            {{ "ebookPortal.cat-11" | translate }}
+          </button>
         </div>
       </div>
-      <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="search-tab">
+      <div
+        class="tab-pane fade"
+        id="search"
+        role="tabpanel"
+        aria-labelledby="search-tab"
+      >
         <div class="search-area">
-          <form class="search-form" [formGroup]="searchForm" (ngSubmit)="searchBookList()">
+          <form
+            class="search-form"
+            [formGroup]="searchForm"
+            (ngSubmit)="searchBookList()"
+          >
             <div class="row">
               <div class="col-md-3">
-                <label class="col-form-label" for="category">Book Category</label>
+                <label class="col-form-label" for="category">{{
+                  "ebookPortal.search-1" | translate
+                }}</label>
               </div>
               <div class="col-md-3">
-                <select class="form-control" formControlName="category" id="category">
+                <select
+                  class="form-control"
+                  formControlName="category"
+                  id="category"
+                >
                   <option value="" selected>Null</option>
                   <option>Romance</option>
                   <option>Politics</option>
@@ -68,47 +166,96 @@
                 </select>
               </div>
               <div class="col-md-2">
-                <label class="col-form-label" for="bookTitle">& Book Title</label>
+                <label class="col-form-label" for="bookTitle"
+                  >& {{ "ebookPortal.search-2" | translate }}</label
+                >
               </div>
               <div class="col-md-4">
-                <input class="form-control" type="text" formControlName="bookTitle" id="bookTitle" placeholder="Null" />
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="bookTitle"
+                  id="bookTitle"
+                  placeholder="Null"
+                />
               </div>
               <div class="col-md-2">
-                <label class="col-form-label" for="author">& Author</label>
+                <label class="col-form-label" for="author"
+                  >& {{ "ebookPortal.search-3" | translate }}</label
+                >
               </div>
               <div class="col-md-2">
-                <input class="form-control" type="text" formControlName="author" id="author" placeholder="Null" />
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="author"
+                  id="author"
+                  placeholder="Null"
+                />
               </div>
               <div class="col-md-3">
-                <label class="col-form-label" for="year">& Publish Year</label>
+                <label class="col-form-label" for="year"
+                  >& {{ "ebookPortal.search-4" | translate }}</label
+                >
               </div>
               <div class="col-md-2">
-                <input class="form-control" type="text" formControlName="publishYear" id="year" placeholder="Null" />
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="publishYear"
+                  id="year"
+                  placeholder="Null"
+                />
               </div>
               <div class="col-md-2">
-                <button class="btn btn-primary book-search" type="submit">Search</button>
+                <button class="btn btn-primary book-search" type="submit">
+                  {{ "ebookPortal.searchButton" | translate }}
+                </button>
               </div>
             </div>
           </form>
         </div>
       </div>
-      <div class="tab-pane fade" id="wish" role="tabpanel" aria-labelledby="wish-tab">
+      <div
+        class="tab-pane fade"
+        id="wish"
+        role="tabpanel"
+        aria-labelledby="wish-tab"
+      >
         <div class="wish-area">
-          <p class="guide-text">Can't find what you want? Let's submit your wish here!</p>
-          <hr>
-          <form class="wish-form" [formGroup]="wishForm" (ngSubmit)="createWish()">
+          <p class="guide-text">{{ "ebookPortal.wishTitle-1" | translate }}</p>
+          <hr />
+          <form
+            class="wish-form"
+            [formGroup]="wishForm"
+            (ngSubmit)="createWish()"
+          >
             <div class="row">
               <div class="col-md-2">
-                <label class="col-form-label" for="bookTitle">Book Title</label>
+                <label class="col-form-label" for="bookTitle">{{
+                  "ebookPortal.wishField-1" | translate
+                }}</label>
               </div>
               <div class="col-md-3">
-                <input class="form-control" type="text" formControlName="bookTitle" id="bookTitle" required />
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="bookTitle"
+                  id="bookTitle"
+                  required
+                />
               </div>
               <div class="col-md-1">
-                <label class="col-form-label" for="lang">Language</label>
+                <label class="col-form-label" for="lang">{{
+                  "ebookPortal.wishField-2" | translate
+                }}</label>
               </div>
               <div class="col-md-2">
-                <select class="form-control" formControlName="language" id="lang">
+                <select
+                  class="form-control"
+                  formControlName="language"
+                  id="lang"
+                >
                   <option value="English" selected>English</option>
                   <option>French</option>
                   <option>Spanish</option>
@@ -116,44 +263,66 @@
                 </select>
               </div>
               <div class="col-md-1">
-                <label class="col-form-label" for="creator">Creator</label>
+                <label class="col-form-label" for="creator">{{
+                  "ebookPortal.wishField-3" | translate
+                }}</label>
               </div>
               <div class="col-md-2">
-                <input class="form-control" type="text" formControlName="creator" id="creator" readonly />
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="creator"
+                  id="creator"
+                  readonly
+                />
               </div>
               <div class="col-md-1">
-                <button class="btn btn-primary book-wish" type="submit">Submit</button>
+                <button class="btn btn-primary book-wish" type="submit">
+                  {{ "ebookPortal.wishButton" | translate }}
+                </button>
               </div>
             </div>
           </form>
           <div class="submitted-wish">
-            <h3 class="title">My Existing Book Wish</h3>
-            <hr>
+            <h3 class="title">{{ "ebookPortal.wishTitle-2" | translate }}</h3>
+            <hr />
             <div class="row">
               <div class="col-md-2">
-                <h4 class="title">Create Time</h4>
+                <h4 class="title">
+                  {{ "ebookPortal.wishField-4" | translate }}
+                </h4>
               </div>
               <div class="col-md-2">
-                <h4 class="title">Book Title</h4>
+                <h4 class="title">
+                  {{ "ebookPortal.wishField-5" | translate }}
+                </h4>
               </div>
               <div class="col-md-2">
-                <h4 class="title">Language</h4>
+                <h4 class="title">
+                  {{ "ebookPortal.wishField-6" | translate }}
+                </h4>
               </div>
               <div class="col-md-2">
-                <h4 class="title">Current Status</h4>
+                <h4 class="title">
+                  {{ "ebookPortal.wishField-7" | translate }}
+                </h4>
               </div>
               <div class="col-md-4 text-center">
-                <h4 class="title">Operation</h4>
+                <h4 class="title">
+                  {{ "ebookPortal.wishField-8" | translate }}
+                </h4>
               </div>
             </div>
-            <div class="row wish-list">
-
-            </div>
+            <div class="row wish-list"></div>
           </div>
         </div>
       </div>
       <div class="list-area" *ngIf="listBlock">
-        <app-book-list [bookList]="ebookList" [role]="role" [listName]="listName"></app-book-list>
+        <app-book-list
+          [bookList]="ebookList"
+          [role]="role"
+          [listName]="listName"
+        ></app-book-list>
       </div>
     </div>
   </div>

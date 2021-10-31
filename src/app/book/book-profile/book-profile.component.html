@@ -2,42 +2,81 @@
 <div class="container container-fluid">
   <div class="section brief-container row">
     <div *ngIf="book" class="col-md-5 profile-left">
-      <img src={{book.coverPic}} alt="book-cover" class="book-cover">
+      <img src="{{ book.coverPic }}" alt="book-cover" class="book-cover" />
     </div>
     <div *ngIf="book" class="col-md-7 profile-right">
-      <h2 class="book-title">{{book.bookTitle}}</h2>
-      <p class="book-profile">Author: {{book.author}}</p>
-      <p class="book-profile">Publisher: {{book.publisher}}</p>
-      <p class="book-profile">Publish Date: {{book.publishDate}}</p>
-      <p class="book-profile" *ngIf="book.isbnCode">ISBN: {{book.isbnCode}}</p>
-      <button class="book-read" *ngIf="book.format=='eBook'" (click)="readBook()">Read</button>
-      <button class="book-play" *ngIf="book.format=='Audiobook'||book.format=='Podcast'" (click)="playBook()">Play</button>
-      <button class="add-favorites" (click)="addFavorBook()"><i class="bi bi-heart-fill">Add to Favorites</i></button>
+      <h2 class="book-title">{{ book.bookTitle }}</h2>
+      <p class="book-profile">
+        {{ "bookProfile.field-1" | translate }}: {{ book.author }}
+      </p>
+      <p class="book-profile">
+        {{ "bookProfile.field-2" | translate }}: {{ book.publisher }}
+      </p>
+      <p class="book-profile">
+        {{ "bookProfile.field-3" | translate }}: {{ book.publishDate }}
+      </p>
+      <p class="book-profile" *ngIf="book.isbnCode">
+        ISBN: {{ book.isbnCode }}
+      </p>
+      <button
+        class="book-read"
+        *ngIf="book.format == 'eBook'"
+        (click)="readBook()"
+      >
+        {{ "bookProfile.button-1" | translate }}
+      </button>
+      <button
+        class="book-play"
+        *ngIf="book.format == 'Audiobook' || book.format == 'Podcast'"
+        (click)="playBook()"
+      >
+        {{ "bookProfile.button-2" | translate }}
+      </button>
+      <button class="add-favorites" (click)="addFavorBook()">
+        <i class="bi bi-heart-fill">{{ "bookProfile.button-3" | translate }}</i>
+      </button>
     </div>
   </div>
   <div class="section book-desc">
-    <h3 class="section-title">Brief Description</h3>
-    <hr>
+    <h3 class="section-title">{{ "bookProfile.subTitle-1" | translate }}</h3>
+    <hr />
     <p *ngIf="book" class="desc">
-      {{book.desc}}
+      {{ book.desc }}
     </p>
   </div>
   <div class="section book-comments">
     <div class="existing-comments">
-      <h3 class="section-title">Comments</h3>
-      <hr>
+      <h3 class="section-title">{{ "bookProfile.subTitle-2" | translate }}</h3>
+      <hr />
     </div>
     <div class="new-comment">
-      <h3 class="section-title">Write your comments</h3>
-      <hr>
-      <form class="create-comment" [formGroup]="commentForm" (ngSubmit)="commentForm.valid&&createComment()">
+      <h3 class="section-title">{{ "bookProfile.subTitle-3" | translate }}</h3>
+      <hr />
+      <form
+        class="create-comment"
+        [formGroup]="commentForm"
+        (ngSubmit)="commentForm.valid && createComment()"
+      >
         <div class="comment-item">
-          <input class="comment-title" type="text" formControlName="title" placeholder="Title">
+          <input
+            class="comment-title"
+            type="text"
+            formControlName="title"
+            placeholder="{{ 'bookProfile.input-1' | translate }}"
+          />
         </div>
         <div class="comment-item">
-          <textarea class="comment-content" formControlName="comment" id="comment" placeholder="Comments" required></textarea>
+          <textarea
+            class="comment-content"
+            formControlName="comment"
+            id="comment"
+            placeholder="{{ 'bookProfile.input-2' | translate }}"
+            required
+          ></textarea>
         </div>
-        <button class="book-submit" type="submit">Submit</button>
+        <button class="book-submit" type="submit">
+          {{ "bookProfile.button-4" | translate }}
+        </button>
       </form>
     </div>
   </div>

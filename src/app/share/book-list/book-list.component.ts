@@ -164,6 +164,12 @@ export class BookListComponent
         divCard.appendChild(bookAuthor);
       }
       if (this.role === 'admin' || this.role === 'librarian') {
+        let action1: string, action2: string, action3: string;
+        this.translate.stream(['bookList.action-1', 'bookList.action-2', 'bookList.action-3']).subscribe((res)=>{
+          action1 = res['bookList.action-1'];
+          action2 = res['bookList.action-2'];
+          action3 = res['bookList.action-3'];
+        })
         let buttonDiv = document.createElement('div');
         buttonDiv.className = 'button-section';
         buttonDiv.style.fontSize = 'small';
@@ -171,14 +177,14 @@ export class BookListComponent
         let reviewButton = document.createElement('a');
         reviewButton.className = 'btn btn-primary review-info';
         reviewButton.href = `/book/reviewinfo/${this.bookList[i]._id}`;
-        reviewButton.innerHTML = 'Review';
+        reviewButton.innerHTML = action1;
         reviewButton.style.padding = '5px';
         reviewButton.style.marginRight = '5px';
         reviewButton.style.marginTop = '5px';
         let updateButton = document.createElement('a');
         updateButton.className = 'btn btn-primary update-info';
         updateButton.href = `/book/update/${this.bookList[i]._id}`;
-        updateButton.innerHTML = 'Update';
+        updateButton.innerHTML = action2;
         updateButton.style.padding = '5px';
         updateButton.style.marginRight = '5px';
         updateButton.style.marginTop = '5px';
@@ -187,7 +193,7 @@ export class BookListComponent
         if (this.role === 'admin') {
           let delButton = document.createElement('button');
           delButton.className = 'btn btn-primary del-link';
-          delButton.innerHTML = 'Delete';
+          delButton.innerHTML = action3;
           delButton.style.padding = '5px';
           delButton.style.marginTop = '5px';
           delButton.addEventListener(

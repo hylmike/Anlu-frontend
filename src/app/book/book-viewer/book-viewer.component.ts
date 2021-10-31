@@ -6,6 +6,7 @@ import { NGXLogger } from 'ngx-logger';
 import { BookService } from '../book.service';
 import { Book } from '../../common/book-dto';
 import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-viewer',
@@ -30,6 +31,7 @@ export class BookViewerComponent implements OnInit, OnDestroy {
     private logger: NGXLogger,
     private readerAuthService: ReaderAuthService,
     private router: Router,
+    public translate: TranslateService,
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -39,7 +41,7 @@ export class BookViewerComponent implements OnInit, OnDestroy {
     this.bookService.getBook(bookID).subscribe(async (ebook) => {
       if (ebook) {
         book = ebook;
-        //This link is just for unit testing purpose
+        //This link is just for pre-testing purpose
         //const urlLink = '/bookfile/Pro HTML5 Programming.pdf'
         const urlLink = book.bookFile.slice(2);
         pdfjs.GlobalWorkerOptions.workerSrc = '/assets/pdf.worker.min.js';
