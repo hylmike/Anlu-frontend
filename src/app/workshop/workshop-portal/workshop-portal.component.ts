@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ReaderAuthService } from '../../auth/reader-auth.service';
 import { TokenStorageService } from '../../auth/token-storage.service';
 import { CommonService } from '../../common/common.service';
@@ -13,6 +14,7 @@ export class WorkshopPortalComponent implements OnInit, AfterViewInit {
   constructor(
     private commonService: CommonService,
     private tokenService: TokenStorageService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

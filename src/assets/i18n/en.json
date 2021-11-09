@@ -31,6 +31,14 @@
     "contact-2": "anlubiblio237@gmail.com",
     "donateLink": "I want to Donate"
   },
+  "aboutUs": {
+    "title": "About Us",
+    "desc-1": "ANLU is an ancestral practice of the Kom community in the North-West of Cameroon. It is a practice with which women acted to bring justice against transgressions of the social order. Thus, our library aims to be a space of encounter, knowledge sharing and learning that will contribute to questioning our individual and common relationship to history in order to make us proud African citizens.",
+    "desc-2": "Our objectives:",
+    "desc-3": "- To promote African thoughts and perspectives through the African cultural and intellectual heritage;",
+    "desc-4": "- to involve young people in the African intellectual debate on Africa, to decolonise the collective memory;",
+    "desc-5": "- to build with African youth a free African society independent of neo-colonialism."
+  },
   "readerPortal": {
     "hotTitle": "Hottest books in libarary"
   },
@@ -555,6 +563,211 @@
     "field-7-1": "Please upload poster picture of workshop.",
     "field-8": "Remark",
     "button-1": "Register",
+    "returnLink": "Return Portal"
+  },
+  "updateWs": {
+    "notice-1": "You have not changed anything yet!",
+    "title": "Workshop Update Form",
+    "field-1": "Topic",
+    "field-2": "Place",
+    "field-3": "Start time",
+    "field-4": "Organizer",
+    "field-5": "Duration(unit:Hour)",
+    "field-6": "Poster picture",
+    "field-7": "Remark",
+    "field-8": "Update poster here",
+    "button-1": "Update",
+    "returnLink": "Return Portal"
+  },
+  "wsInfo": {
+    "updateLink": "Update",
+    "title": "Workshop Information",
+    "field-1": "Topic",
+    "field-2": "Place",
+    "field-3": "Start time",
+    "field-4": "Duration(unit:Hour)",
+    "field-5": "Organizer",
+    "field-6": "Poster File",
+    "field-7": "Creator",
+    "field-8": "Create Time",
+    "field-9": "Remark",
+    "field-10": "Subscriber List"
+  },
+  "wsList": {
+    "notice-1": "Nothing was planned yet, please wait ...",
+    "unitText-1": "hours",
+    "unitText-2": "hour",
+    "timeText-1": "Time",
+    "timeText-2": "Duration",
+    "placeText": "Place",
+    "action-1": "Subscribe",
+    "action-2": "Unsubscribe",
+    "button-1": "Review",
+    "button-2": "Update",
+    "button-3": "Delete",
+    "notice-2": "Please login before subscribe the workshop",
+    "title-1": "Coming Workshop",
+    "title-2": "Finished Workshop"
+  },
+  "wsManage": {
+    "title": "Workshop Management" 
+  },
+  "wsPortal": {
+    "title": "Welcome to Anlu Bibliothèque Workshop!",
+    "desc": "Anlu Bibliothèque located in Cameroon. Locally, we provide book and transfer knowledge to locals. For our friends around the world, we've set up this online library with our book and knowledge collection so we can share our love for miniatures with you!"
+  },
+  "pageNotFound": {
+    "title": "Sorry! Page Not Found!"
+  },
+  "errorHandler": {
+    "notice-1": "Incorrect username or password, please check",
+    "notice-2": "Inactive reader, need contact support team to activate account first",
+    "notice-3": "Need login to access the contents."
+  },
+  "blogInfo": {
+    "title": "Blog Information",
+    "field-1": "Topic",
+    "field-2": "Category",
+    "field-3": "Content",
+    "field-4": "Creator",
+    "field-5": "Create Time",
+    "field-6": "Keywords"
+  },
+  "blogList": {
+    "action-1": "Review",
+    "action-2": "Update",
+    "action-3": "Delete",
+    "notice-1": "Please confirm if you want to delete this blog",
+    "notice-2": "Success delete the blog",
+    "field-1": "ID",
+    "field-2": "Topic",
+    "field-3": "Category",
+    "field-4": "Create Time",
+    "field-5": "Operation"
+  },
+  "blogManage": {
+    "title": "Existing Blog Management"
+  },
+  "blogPortal": {
+    "title-1": "News",
+    "field-1": "Topic",
+    "field-2": "Create Time",
+    "title-2": "Information",
+    "title-3": "System Notice"
+  }, 
+  "createBlog": {
+    "notice-1": "Success create new blog - {{topic}}",
+    "title": "Create Blog",
+    "field-1": "Topic",
+    "field-1-1": "Please provide the topic of blog",
+    "field-2": "Category",
+    "field-2-1": "Please select category of blog",
+    "field-3": "Creator",
+    "field-4": "Content of blog",
+    "field-4-1": "Please provide the content of blog",
+    "field-5": "Keywords",
+    "button-1": "Create",
+    "returnLink": "Return Portal"
+  },
+  "readBlog": {
+    "returnLink": "Return Home"
+  },
+  "updateBlog": {
+    "title": "Blog Update Form",
+    "field-1": "Topic",
+    "field-2": "Category",
+    "field-3": "Content",
+    "field-4": "Creator",
+    "field-5": "Keywords",
+    "button-1": "Update",
+    "returnLink": "Return Portal"
+  },
+  "accountManage": {
+    "text-1": "Active",
+    "text-2": "Inactive",
+    "action-1": "Review Profile",
+    "action-2": "Update Profile",
+    "action-3": "Delete",
+    "notice-1": "Do you relly want to delete this account?",
+    "notice-2": "Success deleted the librarian account",
+    "title": "Existing Admin & Librarian Account Management",
+    "subTitle-1": "Admin",
+    "field-1": "ID",
+    "field-2": "Username",
+    "field-3": "Create Date",
+    "field-4": "Status",
+    "field-5": "Operation",
+    "subTitle-2": "Librarian"
+  },
+  "adminPortal": {
+    "subTitle": "Top10 Books by Popular Score"
+  },
+  "changePwd": {
+    "notice-1": "Success changed the password for {{username}}",
+    "notice-2": "Changing password for {{username}} failed, try again later",
+    "title": "Change Password",
+    "field-1": "Username",
+    "field-2": "Current Password",
+    "field-3": "New Password",
+    "field-4": "Confirm Password",
+    "button-1": "Submit",
+    "button-2": "Cancel"
+  },
+  "libLogin": {
+    "notice-1": "User does not have librarian authentication, login failed",
+    "notice-2": "User does not have admin authentication, login failed",
+    "title": "Lib/Admin Sign In",
+    "field-1": "Username",
+    "field-2": "Password",
+    "role-1": "Librarian",
+    "role-2": "Admin",
+    "field-3": "role",
+    "button": "Sign In"
+  },
+  "libProfile": {
+    "title": "Librarian/Admin Profile",
+    "button-1": "Update Profile",
+    "field-1": "Username",
+    "field-2": "Password",
+    "field-2-1": "Change Password",
+    "field-3": "Role",
+    "field-4": "Email",
+    "field-5": "First Name",
+    "field-6": "Last Name",
+    "field-7": "Phone Number",
+    "field-8": "Register Time",
+    "field-9": "Active Status"
+  },
+  "libReg": {
+    "notice-1": "The username {{username}} already exists, please choose another one",
+    "notice-2": "Success registered {{role}} {{username}}",
+    "notice-3": "Passwords are not matched, please check",
+    "title": "Librarian/Admin Registration Form",
+    "field-1": "Username",
+    "field-1-1": "Username must have 3 chars or more, start with letter/number/'_'",
+    "field-2": "Password",
+    "field-2-1": "Password length must be 5 or longer",
+    "field-3": "Confirm Password",
+    "field-4": "Please select role",
+    "field-4-3": "Please select role of account",
+    "field-5": "Email",
+    "field-5-1": "Please provide valid email address",
+    "field-6": "First Name",
+    "field-7": "Last Name",
+    "field-8": "Phone Number",
+    "button-1": "Register",
+    "returnLink": "Return Portal"
+  },
+  "libUpdate": {
+    "title": "Librarian/Admin Update Form",
+    "field-1": "Username",
+    "field-2": "Email",
+    "field-3": "Role",
+    "field-4": "Phone Number",
+    "field-5": "First Name",
+    "field-6": "Last Name",
+    "field-7": "Active Status",
+    "button-1": "Update",
     "returnLink": "Return Portal"
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { LibrarianAuthService } from 'src/app/auth/librarian-auth.service';
@@ -24,6 +25,7 @@ export class LibProfileComponent implements OnInit {
     private libAuthService: LibrarianAuthService,
     private tokenService: TokenStorageService,
     private commonService: CommonService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

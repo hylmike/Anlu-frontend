@@ -8,6 +8,7 @@ import { TokenStorageService } from '../../auth/token-storage.service';
 import { AccessToken } from '../../common/lib.dto';
 import { CommonService } from '../../common/common.service';
 import { AdminAuthService } from '../../auth/admin-auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-librarian-login',
@@ -24,6 +25,7 @@ export class LibLoginComponent implements OnInit {
     private tokenStorageService: TokenStorageService,
     private commonService: CommonService,
     private logger: NGXLogger,
+    public translate: TranslateService,
   ) { }
 
   libLoginForm = this.fb.group({
@@ -36,6 +38,11 @@ export class LibLoginComponent implements OnInit {
   }
 
   libLogin() {
+    let notice1: string, notice2: string;
+    this.translate.stream(['libLogin.notice-1', 'libLogin.notice-2']).subscribe((res)=>{
+      notice1 = res['libLogin.notice-1'];
+      notice2 = res['libLogin.notice-2'];
+    })
     const val = this.libLoginForm.value;
     if (val.username && val.password) {
       if (val.role === 'Librarian') {
@@ -53,7 +60,7 @@ export class LibLoginComponent implements OnInit {
               }
             } else {
               this.logger.warn('Role mismatch, librarian login failed.');
-              window.alert(`User does not have librarian authentication, login failed`);
+              window.alert(notice1);
             }
           })
       } else if (val.role === 'Admin') {
@@ -71,7 +78,7 @@ export class LibLoginComponent implements OnInit {
               }
             } else {
               this.logger.warn('Role mismatch, admin login failed.');
-              window.alert(`User does not have admin authentication, login failed`);
+              window.alert(notice2);
             }
           })
       }

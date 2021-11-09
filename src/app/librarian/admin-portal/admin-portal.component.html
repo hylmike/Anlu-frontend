@@ -12,7 +12,7 @@
 
     <div class="kpi-section" *ngIf="topBookList">
       <div class="block topn-book">
-        <h2 class="title text-center">Top10 Books by Popular Score</h2>
+        <h2 class="title text-center">{{"adminPortal.subTitle"|translate}}</h2>
         <hr>
         <app-book-list [bookList]="topBookList" [role]="role" [listName]="listName"></app-book-list>
       </div>

@@ -1,11 +1,12 @@
 <app-librarian-header></app-librarian-header>
 
 <div class="container-fluid blog-manage">
-  <h2 class="title padding text-center">Existing Blog Management</h2>
-  <hr>
+  <h2 class="title padding text-center">
+    {{ "blogManage.title" | translate }}
+  </h2>
+  <hr />
 
   <app-blog-list [blogList]="blogList"></app-blog-list>
-
 </div>
 
 <app-site-footer></app-site-footer>

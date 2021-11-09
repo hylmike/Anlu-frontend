@@ -24,6 +24,7 @@ import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ForgotPwdComponent,
     ResetPwdComponent,
     HeroSectionComponent,
+    AboutUsComponent,
   ],
   imports: [
     CommonModule,

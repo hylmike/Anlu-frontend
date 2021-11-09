@@ -1,21 +1,30 @@
 <div class="container text-center padding">
   <div class="logo-img">
-    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png" />
   </div>
-  <h2 class="title padding">Blog Update Form</h2>
-  <hr>
+  <h2 class="title padding">{{ "updateBlog.title" | translate }}</h2>
+  <hr />
   <div class="update-form padding">
-    <form class="needs-validation" [formGroup]="blogUpdateForm" (ngSubmit)="blogUpdateForm.valid&&updateBlog()"
-      novalidate>
+    <form
+      class="needs-validation"
+      [formGroup]="blogUpdateForm"
+      (ngSubmit)="blogUpdateForm.valid && updateBlog()"
+      novalidate
+    >
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="topic">Topic</label>
+          <label for="topic">{{ "updateBlog.field-1" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="topic" formControlName="topic" />
+          <input
+            type="text"
+            class="form-control"
+            id="topic"
+            formControlName="topic"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="category">Category</label>
+          <label for="category">{{ "updateBlog.field-2" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
           <select id="category" class="form-control" formControlName="category">
@@ -25,30 +34,50 @@
           </select>
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="content">Content</label>
+          <label for="content">{{ "updateBlog.field-3" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="content" formControlName="content" />
+          <input
+            type="text"
+            class="form-control"
+            id="content"
+            formControlName="content"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="creator">Creator</label>
+          <label for="creator">{{ "updateBlog.field-4" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="creator" formControlName="creator" readonly />
+          <input
+            type="text"
+            class="form-control"
+            id="creator"
+            formControlName="creator"
+            readonly
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="keywords">Keywords</label>
+          <label for="keywords">{{ "updateBlog.field-5" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="keywords" formControlName="keywords" />
+          <input
+            type="text"
+            class="form-control"
+            id="keywords"
+            formControlName="keywords"
+          />
         </div>
       </div>
 
       <div class="submit-button">
-        <input type="submit" class="btnupdate" value="Update" />
+        <input
+          type="submit"
+          class="btnupdate"
+          value="{{ 'updateBlog.button-1' | translate }}"
+        />
       </div>
       <div class="portal-link">
-        <a href="/blog/manage">Return Manage Portal</a>
+        <a href="/blog/manage">{{ "updateBlog.returnLink" | translate }}</a>
       </div>
     </form>
   </div>

@@ -1,65 +1,65 @@
 <app-admin-header></app-admin-header>
 <div class="container">
   <div class="title padding">
-    <h2>Librarian/Admin Profile</h2>
-    <a href={{libUpdateUrl}} class="btn btn-primary">Update Profile</a>
+    <h2>{{"libProfile.title"|translate}}</h2>
+    <a href={{libUpdateUrl}} class="btn btn-primary">{{"libProfile.button-1"|translate}}</a>
   </div>
   <div class="form" *ngIf="libProfile">
     <hr class='padding'>
     <div class="row">
       <div class="col-sm-6 col-md-3">
-        <p class="title">Username</p>
+        <p class="title">{{"libProfile.field-1"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.username}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Password</p>
+        <p class="title">{{"libProfile.field-2"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>********
-          <a href={{libChangePwdUrl}} class='change-password btn btn-primary'>Change Password</a>
+          <a href={{libChangePwdUrl}} class='change-password btn btn-primary'>{{"libProfile.field-2-1"|translate}}</a>
         </p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Role</p>
+        <p class="title">{{"libProfile.field-3"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.role}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Email</p>
+        <p class="title">{{"libProfile.field-4"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.email}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">First Name</p>
+        <p class="title">{{"libProfile.field-5"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.firstName}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Last Name</p>
+        <p class="title">{{"libProfile.field-6"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.lastName}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Phone Number</p>
+        <p class="title">{{"libProfile.field-7"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.phoneNumber}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Register Date</p>
+        <p class="title">{{"libProfile.field-8"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.registerDate| date:'longDate'}}</p>
       </div>
 
       <div class="col-sm-6 col-md-3">
-        <p class="title">Active Status</p>
+        <p class="title">{{"libProfile.field-9"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{libProfile.isActive===true?'Active':'Inactive'}}</p>

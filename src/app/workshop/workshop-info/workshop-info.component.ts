@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { CommonService } from 'src/app/common/common.service';
@@ -23,6 +24,7 @@ export class WorkshopInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private tokenService: TokenStorageService,
     private commonService: CommonService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

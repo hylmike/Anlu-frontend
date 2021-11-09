@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { UpdateWorkshopDto, Workshop } from 'src/app/common/workshop.dto';
 import { WorkshopService } from '../workshop.service';
@@ -28,6 +29,7 @@ export class UpdateWorkshopComponent implements OnInit {
     private fb: FormBuilder,
     private datePipe: DatePipe,
     private router: Router,
+    public translate: TranslateService,
   ) { }
 
   wsUpdateForm = this.fb.group({
@@ -95,9 +97,10 @@ export class UpdateWorkshopComponent implements OnInit {
           }
         })
       } else {
-        window.alert('You have not changed anything yet!');
+        this.translate.stream("updateWs.notice-1").subscribe((res)=>{
+          window.alert(res);
+        })
       }
-      
     }
   }
 

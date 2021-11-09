@@ -1,51 +1,88 @@
 <div class="container-fluid text-center">
-  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png">
-  <h2 class="create-heading">Create Blog</h2>
+  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png" />
+  <h2 class="create-heading">{{ "createBlog.title" | translate }}</h2>
 </div>
 <div class="container register">
-  <form class="needs-validation" [formGroup]="blogRegForm" (ngSubmit)="blogRegForm.valid&&createBlog()"
-    novalidate>
+  <form
+    class="needs-validation"
+    [formGroup]="blogRegForm"
+    (ngSubmit)="blogRegForm.valid && createBlog()"
+    novalidate
+  >
     <div class="row register-form">
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="text" class="form-control" id="topic" formControlName="topic" required />
-          <label for="topic">Topic of Blog *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="topic"
+            formControlName="topic"
+            required
+          />
+          <label for="topic">{{ "createBlog.field-1" | translate }} *</label>
           <div class="invalid-feedback">
-            Please provide the topic of blog.
+            {{ "createBlog.field-1-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <select class="form-select" formControlName="category" id="category" required >
+          <select
+            class="form-select"
+            formControlName="category"
+            id="category"
+            required
+          >
             <option>News</option>
             <option>Information</option>
             <option>System Notice</option>
           </select>
-          <label for="category">Categiry of Blog *</label>
+          <label for="category">{{ "createBlog.field-2" | translate }} *</label>
           <div class="invalid-feedback">
-            Please select category of blog.
+            {{ "createBlog.field-2-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="creator" formControlName="creator" readonly />
-          <label for="creator">Creator</label>
+          <input
+            type="text"
+            class="form-control"
+            id="creator"
+            formControlName="creator"
+            readonly
+          />
+          <label for="creator">{{ "createBlog.field-3" | translate }}</label>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-floating">
-          <textarea class="form-control" id="content" formControlName="content" required ></textarea>
-          <label for="content">Content of blog *</label>
+          <textarea
+            class="form-control"
+            id="content"
+            formControlName="content"
+            required
+          ></textarea>
+          <label for="content">{{ "createBlog.field-4" | translate }} *</label>
           <div class="invalid-feedback">
-            Please provide the content of blog.
+            {{ "createBlog.field-4-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="keywords" formControlName="keywords" />
-          <label for="keywords">Keywords of blog</label>
+          <input
+            type="text"
+            class="form-control"
+            id="keywords"
+            formControlName="keywords"
+          />
+          <label for="keywords">{{ "createBlog.field-5" | translate }}</label>
         </div>
-        <input type="submit" class="btnRegister" value="Create Blog" />
+        <input
+          type="submit"
+          class="btnRegister"
+          value="{{ 'createBlog.button-1' | translate }}"
+        />
         <div class="button-floating">
-          <a class="goPortal" (click)="goPortal()">Return Portal</a>
+          <a class="goPortal" (click)="goPortal()">{{
+            "createBlog.returnLink" | translate
+          }}</a>
         </div>
       </div>
     </div>
