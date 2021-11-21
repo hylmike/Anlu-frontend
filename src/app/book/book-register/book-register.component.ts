@@ -48,7 +48,7 @@ export class BookRegisterComponent implements OnInit {
     keywords: [''],
     initialScore: [''],
     creator: [this.tokenService.getUsername().slice(3)],
-    isActive: ['True'],
+    isActive: ['Active'],
   });
 
   ngOnInit(): void {
