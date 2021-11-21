@@ -77,3 +77,33 @@ input.comment-title, textarea.comment-content {
   width: 100%;
   padding: 5px;
 }
+
+@media screen and (max-width: 576px) {
+  h2.book-title {
+    font-size: large;
+    margin-bottom: 2%;
+  }
+
+  p.desc, p.comment-item {
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    word-spacing: 2px;
+    line-height: 80%;
+  }
+
+  .section-title {
+    font-size: medium;
+  }
+
+  button.book-read, button.book-play {
+    position: relative;
+    top: 0px;
+    left: 10px;
+  }
+  
+  button.add-favorites {
+    position: relative;
+    top: 0px;
+    left: 30px;
+  }
+}

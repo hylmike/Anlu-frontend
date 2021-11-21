@@ -1,53 +1,53 @@
 @media (max-width: 768px) {
-  nav.navbar {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  a.nav-link {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    font-size: 0.8rem;
-    color: #6c757d;
-  }
-  
-  .nav-link:hover {
-    color: #007bff;
-  }
-  
-  .nav-underline .active {
-    font-weight: 500;
-    color: #343a40;
-  }
-  
-  .label_welcome{
-    margin-top: 0.25em;
-    margin-right: 0.5em;
-    font-size: 0.9em;
-    text-align: center;
-  }
-  }
-  
-  label.label_welcome{
-    color: purple;
-    margin-top: 0.25px;
-    margin-right: 0.5px;
-    font-size: 1.1em;
-    text-align: center;
-  }
-  
-  button.search {
-    width: 180px;
-    color: #6c757d;
-  }
-  
-  button.search:hover {
-    background-color: skyblue;
-    color: white;
-  }
+nav.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+a.nav-link {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.label_welcome{
+  margin-top: 0.25em;
+  margin-right: 0.5em;
+  font-size: 0.9em;
+  text-align: center;
+}
+}
+
+label.label_welcome{
+  color: purple;
+  margin-top: 0.25px;
+  margin-right: 0.5px;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+button.search {
+  width: 180px;
+  color: #6c757d;
+}
+
+button.search:hover {
+  background-color: skyblue;
+  color: white;
+}
