@@ -1,65 +1,85 @@
 <app-admin-header></app-admin-header>
 
 <div class="container-fluid account-manage">
-  <h2 class="title padding text-center">Existing Reader Account Management</h2>
-  <hr>
-  <div class="reader-block" *ngIf="readerList && readerList.length>0">
+  <h2 class="title padding text-center">{{ "readerManage.title" | translate }}</h2>
+  <hr />
+  <div class="reader-block" *ngIf="readerList && readerList.length > 0">
     <div class="row">
       <div class="col-md-2">
-        <p class="col-title">ID</p>
+        <p class="col-title">{{ "readerManage.field-1" | translate }}</p>
       </div>
       <div class="col-md-2">
-        <p class="col-title">Username</p>
+        <p class="col-title">{{ "readerManage.field-2" | translate }}</p>
       </div>
       <div class="col-md-2">
-        <p class="col-title">Create Date</p>
+        <p class="col-title">{{ "readerManage.field-3" | translate }}</p>
       </div>
       <div class="col-md-2">
-        <p class="col-title">Read Score</p>
+        <p class="col-title">{{ "readerManage.field-4" | translate }}</p>
       </div>
       <div class="col-md-1">
-        <p class="col-title">Status</p>
+        <p class="col-title">{{ "readerManage.field-5" | translate }}</p>
       </div>
       <div class="col-md-3">
-        <p class="col-title">Operation</p>
+        <p class="col-title">{{ "readerManage.field-6" | translate }}</p>
       </div>
     </div>
-    <div *ngFor="let item of readerList | paginate: { itemsPerPage: 20, currentPage: p }">
+    <div
+      *ngFor="
+        let item of readerList | paginate: { itemsPerPage: 20, currentPage: p }
+      "
+    >
       <div class="row reader-list">
         <div class="col-md-2">
-          <p class="list-content">{{item._id}}</p>
+          <p class="list-content">{{ item._id }}</p>
         </div>
         <div class="col-md-2">
-          <p class="list-content">{{item.username}}</p>
+          <p class="list-content">{{ item.username }}</p>
         </div>
         <div class="col-md-2">
-          <p class="list-content">{{item.registerDate | date:'longDate'}}</p>
+          <p class="list-content">{{ item.registerDate | date: "longDate" }}</p>
         </div>
         <div class="col-md-2">
-          <p class="list-content">{{item.readerProfile.score}}</p>
+          <p class="list-content">{{ item.readerProfile.score }}</p>
         </div>
         <div class="col-md-1">
-          <p class="list-content">{{item.isActive?'Active':'Inactive'}}</p>
+          <p class="list-content">
+            {{ item.isActive ? "Active" : "Inactive" }}
+          </p>
         </div>
         <div class="col-md-1">
-          <button class="btn btn-link review-link" (click)="reviewAccount(item._id)">Review</button>
+          <button
+            class="btn btn-link review-link"
+            (click)="reviewAccount(item._id)"
+          >
+          {{ "readerManage.action-1" | translate }}
+          </button>
         </div>
         <div class="col-md-1" *ngIf="item.isActive">
-          <button class="btn btn-link dea-link" (click)="deaAccount(item._id)">Deactivate</button>
+          <button class="btn btn-link dea-link" (click)="deaAccount(item._id)">
+            {{ "readerManage.action-2" | translate }}
+          </button>
         </div>
         <div class="col-md-1" *ngIf="!item.isActive">
-          <button class="btn btn-link act-link" (click)="actAccount(item._id)">Activate</button>
+          <button class="btn btn-link act-link" (click)="actAccount(item._id)">
+            {{ "readerManage.action-3" | translate }}
+          </button>
         </div>
         <div class="col-md-1">
-          <button class="btn btn-link del-link" (click)="delAccount(item._id)">Delete</button>
+          <button class="btn btn-link del-link" (click)="delAccount(item._id)">
+            {{ "readerManage.action-4" | translate }}
+          </button>
         </div>
       </div>
     </div>
     <div class="page-control">
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls
+        (pageChange)="p = $event"
+        previousLabel="{{ 'readerManage.preLabel' | translate }}"
+        nextLabel="{{ 'readerManage.nextLabel' | translate }}"
+      ></pagination-controls>
     </div>
   </div>
-
 </div>
 
 <app-site-footer></app-site-footer>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
@@ -33,6 +34,7 @@ export class AdminPortalComponent implements OnInit {
     private tokenService: TokenStorageService,
     private bookService: BookService,
     private logger: NGXLogger,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

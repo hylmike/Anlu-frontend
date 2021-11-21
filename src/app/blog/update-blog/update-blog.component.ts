@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { Blog } from 'src/app/common/blog.dto';
 import { BlogService } from '../blog.service';
@@ -19,7 +20,7 @@ export class UpdateBlogComponent implements OnInit {
     private router: Router,
     private blogService: BlogService,
     private fb: FormBuilder,
-    private datePipe: DatePipe,
+    public translate: TranslateService,
   ) { }
 
   blogUpdateForm = this.fb.group({

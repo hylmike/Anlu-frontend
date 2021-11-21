@@ -2,23 +2,31 @@
 
 <div class="lib-portal container container-fluid">
   <div class="overflow-hidden">
-    <div class="kpi-section" *ngIf="bookInventory && bookInventory.length>0">
-      <app-inventory-summary [bookSummary]="bookInventory"></app-inventory-summary>
+    <div class="kpi-section" *ngIf="bookInventory && bookInventory.length > 0">
+      <app-inventory-summary
+        [bookSummary]="bookInventory"
+      ></app-inventory-summary>
     </div>
 
     <div class="kpi-section" *ngIf="readerSummary">
-      <app-reader-analysis [readerAnalysis]="readerSummary"></app-reader-analysis>
+      <app-reader-analysis
+        [readerAnalysis]="readerSummary"
+      ></app-reader-analysis>
     </div>
 
     <div class="kpi-section" *ngIf="topBookList">
       <div class="block topn-book">
-        <h2 class="title text-center">Top10 Books by Popular Score</h2>
-        <hr>
-        <app-book-list [bookList]="topBookList" [role]="role" [listName]="listName"></app-book-list>
+        <h2 class="title text-center">
+          {{ "libPortal.topBookTitle" | translate }}
+        </h2>
+        <hr />
+        <app-book-list
+          [bookList]="topBookList"
+          [role]="role"
+          [listName]="listName"
+        ></app-book-list>
       </div>
     </div>
-
-    
   </div>
 </div>
 

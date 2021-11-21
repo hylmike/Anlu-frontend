@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { Blog } from 'src/app/common/blog.dto';
 import { BlogService } from '../blog.service';
@@ -16,6 +17,7 @@ export class BlogListComponent implements OnInit, OnChanges {
     private logger: NGXLogger,
     private blogService: BlogService,
     private datePipe: DatePipe,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -77,7 +79,9 @@ export class BlogListComponent implements OnInit, OnChanges {
         let a1 = document.createElement('a');
         a1.className = 'col-content';
         a1.href = `/blog/reviewinfo/${blog._id}`;
-        a1.innerHTML = 'Review';
+        this.translate.stream('blogList.action-1').subscribe((res)=>{
+          a1.innerHTML = res;
+        })
         colDiv5.appendChild(a1);
         rowDiv.appendChild(colDiv5);
 
@@ -87,7 +91,9 @@ export class BlogListComponent implements OnInit, OnChanges {
         let a2 = document.createElement('a');
         a2.className = 'col-content';
         a2.href = `/blog/update/${blog._id}`;
-        a2.innerHTML = 'Update';
+        this.translate.stream('blogList.action-2').subscribe((res)=>{
+          a2.innerHTML = res;
+        })
         colDiv6.appendChild(a2);
         rowDiv.appendChild(colDiv6);
 
@@ -97,7 +103,9 @@ export class BlogListComponent implements OnInit, OnChanges {
         let a3 = document.createElement('a');
         a3.className = 'col-content delete-link';
         a3.addEventListener('click', this.delBlog.bind(this, blog._id));
-        a3.innerHTML = 'Delete';
+        this.translate.stream('blogList.action-3').subscribe((res)=>{
+          a3.innerHTML = res;
+        })
         colDiv7.appendChild(a3);
         rowDiv.appendChild(colDiv7);
       }
@@ -105,11 +113,16 @@ export class BlogListComponent implements OnInit, OnChanges {
   }
 
   delBlog(blogID: string) {
-    if(window.confirm('Please confirm if you want to delete this blog')) {
+    let notice1: string, notice2: string;
+    this.translate.stream(['blogList.notice-1', 'blogList.notice-2']).subscribe((res)=>{
+      notice1 = res['blogList.notice-1'];
+      notice2 = res['blogList.notice-2'];
+    })
+    if(window.confirm(notice1)) {
       this.blogService.delBlog(blogID).subscribe((result)=>{
         if (result == blogID) {
           this.logger.info(`Success delete blog ${blogID}`);
-          window.alert('Success delete the blog');
+          window.alert(notice2);
           location.reload();
         } else {
           this.logger.warn(`Failed to delete blog ${blogID}`);

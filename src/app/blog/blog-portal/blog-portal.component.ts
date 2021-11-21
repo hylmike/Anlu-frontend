@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { Blog } from 'src/app/common/blog.dto';
@@ -19,6 +20,7 @@ export class BlogPortalComponent implements OnInit {
     private tokenService: TokenStorageService,
     private commonService: CommonService,
     private datePipe: DatePipe,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -80,6 +82,7 @@ export class BlogPortalComponent implements OnInit {
       listContainer.appendChild(divTopic);
       const aTopic = document.createElement('a');
       aTopic.className = 'topic';
+      aTopic.href=`/blog/read/${blog._id}`
       aTopic.innerHTML = blog.topic;
       divTopic.appendChild(aTopic);
       const divTime = document.createElement('div');

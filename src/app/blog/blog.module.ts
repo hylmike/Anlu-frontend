@@ -13,6 +13,7 @@ import { LibModule } from '../librarian/lib.module';
 import { BlogManageComponent } from './blog-manage/blog-manage.component';
 import { ReaderModule } from '../reader/reader.module';
 import { ReadBlogComponent } from './read-blog/read-blog.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ReadBlogComponent } from './read-blog/read-blog.component';
     ShareModule,
     ReaderModule,
     LibModule,
-    BlogRoutingModule
+    BlogRoutingModule,
+    TranslateModule,
   ]
 })
 export class BlogModule { }

@@ -2,44 +2,44 @@
 
 <div class="container container-fluid">
   <div class="title padding">
-    <h2>Blog Information</h2>
+    <h2>{{"blogInfo.title"|translate}}</h2>
     <a href={{updateUrl}} class="btn btn-primary">Update</a>
   </div>
   <div class="form" *ngIf="blog">
     <hr class='padding'>
     <div class="row">
       <div class="col-sm-6 col-md-3">
-        <p class="title">Topic</p>
+        <p class="title">{{"blogInfo.field-1"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{blog.topic}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Category</p>
+        <p class="title">{{"blogInfo.field-2"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{blog.category}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Content</p>
+        <p class="title">{{"blogInfo.field-3"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{blog.content}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Creator</p>
+        <p class="title">{{"blogInfo.field-4"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{blog.creator}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Create Time</p>
+        <p class="title">{{"blogInfo.field-5"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{blog.createTime | date:'short'}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Keywords</p>
+        <p class="title">{{"blogInfo.field-6"|translate}}</p>
       </div>
       <div class="col-sm-6 col-md-3">
         <p>{{blog.keywords}}</p>

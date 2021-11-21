@@ -8,14 +8,14 @@ import { HttpEventType } from '@angular/common/http';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { ThemePalette } from '@angular/material/core';
 import { RegisterWorkshopDto } from 'src/app/common/workshop.dto';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-workshop',
   templateUrl: './create-workshop.component.html',
-  styleUrls: ['./create-workshop.component.css']
+  styleUrls: ['./create-workshop.component.css'],
 })
 export class CreateWorkshopComponent implements OnInit {
-
   uploadPosterProgress: number;
   posterUploadUrl = '';
   color: ThemePalette = 'accent';
@@ -27,7 +27,8 @@ export class CreateWorkshopComponent implements OnInit {
     private router: Router,
     private workshopService: WorkshopService,
     private tokenService: TokenStorageService,
-  ) { }
+    public translate: TranslateService
+  ) {}
 
   workshopRegForm = this.fb.group({
     topic: [''],
@@ -38,10 +39,10 @@ export class CreateWorkshopComponent implements OnInit {
     poster: [''],
     creator: [''],
     remark: [''],
-  })
+  });
 
   ngOnInit(): void {
-    this.libName = this.tokenService.getUsername().slice(3,);
+    this.libName = this.tokenService.getUsername().slice(3);
     this.workshopRegForm.setValue({
       topic: '',
       place: '',
@@ -55,20 +56,23 @@ export class CreateWorkshopComponent implements OnInit {
     // Disable form submissions if there are invalid fields
     (function () {
       // Fetch all forms we want to apply custom validation styles to
-      var forms = document.querySelectorAll('.needs-validation')
+      var forms = document.querySelectorAll('.needs-validation');
 
       // Loop over them and prevent submission
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          'submit',
+          function (event) {
             if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
+              event.preventDefault();
+              event.stopPropagation();
             }
-            form.classList.add('was-validated')
-          }, false)
-        })
-    })()
+            form.classList.add('was-validated');
+          },
+          false
+        );
+      });
+    })();
   }
 
   onPosterSelect(event) {
@@ -76,37 +80,51 @@ export class CreateWorkshopComponent implements OnInit {
     if (coverFile) {
       this.workshopService.fileUpload(coverFile).subscribe((event) => {
         if (event.type === HttpEventType.UploadProgress) {
-          this.uploadPosterProgress = Math.round(100 * (event.loaded / event.total));
+          this.uploadPosterProgress = Math.round(
+            100 * (event.loaded / event.total)
+          );
         }
         if (event.type === HttpEventType.Response && event.status === 201) {
-          this.logger.info("Workshop poster uploaded successfully");
+          this.logger.info('Workshop poster uploaded successfully');
           this.posterUploadUrl = event.body['fileUrl'];
           const posterFileInput = document.getElementById('poster');
           posterFileInput.className = 'form-control is-valid';
         }
-      })
+      });
     }
   }
 
   workshopRegister() {
+    const workshopInfo: RegisterWorkshopDto = this.workshopRegForm.value;
+    let notice1: string, notice2: string, notice3: string;
+    this.translate
+      .stream(['createWs.notice-1', 'createWs.notice-2', 'createWs.notice-3'], {
+        topic: workshopInfo.topic,
+      })
+      .subscribe((res) => {
+        notice1 = res['createWs.notice-1'];
+        notice2 = res['createWs.notice-2'];
+        notice3 = res['createWs.notice-3'];
+      });
     //Check if poster picture was already uploaded
     if (this.posterUploadUrl === '') {
-      window.alert('Please upload poster picture first.');
+      window.alert(notice1);
       return null;
     }
-    const workshopInfo: RegisterWorkshopDto = this.workshopRegForm.value;
     workshopInfo.poster = this.posterUploadUrl;
     this.workshopService.register(workshopInfo).subscribe((data) => {
       //Check if workshop already exist in database, return null means existed
       if (!data) {
         this.logger.warn(`The workshop topic ${workshopInfo.topic} exists`);
-        window.alert(`The workshop topic ${workshopInfo.topic} exists, please choose another one`)
+        window.alert(notice2);
         return null;
       }
-      this.logger.info(`Workshop ${workshopInfo.topic} already successfully registered in system.`);
-      window.alert(`Success registered workshop ${workshopInfo.topic} in system.`);
+      this.logger.info(
+        `Workshop ${workshopInfo.topic} already successfully registered in system.`
+      );
+      window.alert(notice3);
       this.reloadPage();
-    })
+    });
   }
 
   goPortal() {

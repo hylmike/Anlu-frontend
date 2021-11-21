@@ -2,8 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import { NGXLogger } from 'ngx-logger';
-import { BookService } from '../../book/book.service';
+import { TranslateService } from '@ngx-translate/core';
 
 interface BookInventory {
   category: string;
@@ -25,7 +24,7 @@ export class InventorySummaryComponent implements OnInit, OnChanges {
     // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{ ticks: { min: 0, max: 10 } }] },
     title: {
-      text: 'Book Quantity Summary',
+      text: this.translate.instant('inventorySummary.bookChartTitle-1'),
       fontSize: 24,
       fontFamily: 'Arial',
       display: true,
@@ -52,7 +51,7 @@ export class InventorySummaryComponent implements OnInit, OnChanges {
       position: 'bottom',
     },
     title: {
-      text: 'Book Distribution by Category ',
+      text: this.translate.instant('inventorySummary.bookChartTitle-2'),
       fontSize: 24,
       fontFamily: 'Arial',
       display: true,
@@ -74,8 +73,7 @@ export class InventorySummaryComponent implements OnInit, OnChanges {
   public pieChartPlugins = [pluginDataLabels];
 
   constructor(
-    private logger: NGXLogger,
-    private bookService: BookService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
@@ -22,6 +23,7 @@ export class BookManageComponent implements OnInit {
     private bookService: BookService,
     private tokenService: TokenStorageService,
     private commonService: CommonService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,11 @@ export class BookManageComponent implements OnInit {
   clickAudiobook() {
     const allAbookLink = document.getElementById('allabook-link');
     allAbookLink.click();
+  }
+
+  clickPodcast() {
+    const allPodcastLink = document.getElementById('allpodcast-link');
+    allPodcastLink.click();
   }
 
   setBookList(format: string, scope: string) {

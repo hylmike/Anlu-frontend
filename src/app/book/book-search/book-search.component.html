@@ -9,7 +9,8 @@
 </div>
 
 <div class="search-result" *ngIf="bookList">
-  <h3 class="title">Search Results: Total {{bookList.length}} {{bookList.length>1?'books':'book'}} found</h3>
+  <h3 class="title" *ngIf="bookList.length===1">{{"bookSearch.text-1"|translate:param}}</h3>
+  <h3 class="title" *ngIf="bookList.length>1">{{"bookSearch.text-2"|translate:param}}</h3>
   <hr>
   <app-book-list [bookList]="bookList" [role]='role' [listName]="listName"></app-book-list>
 </div>

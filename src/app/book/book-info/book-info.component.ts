@@ -6,6 +6,7 @@ import { Book } from 'src/app/common/book-dto';
 import { BookService } from '../book.service';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { CommonService } from 'src/app/common/common.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-info',
@@ -24,6 +25,7 @@ export class BookInfoComponent implements OnInit {
     private bookService: BookService,
     private tokenService: TokenStorageService,
     private commonService: CommonService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

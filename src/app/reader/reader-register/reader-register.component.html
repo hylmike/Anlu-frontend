@@ -1,101 +1,195 @@
 <div class="register text-center">
   <div class="logo-img">
     <a href="" class="logo">
-      <img class="mb-4" src="/assets/media/pic/library_logo.png">
+      <img class="mb-4" src="/assets/media/pic/library_logo.png" />
     </a>
   </div>
-  <h2 class="register-heading">Reader Registration Form</h2>
-  <form class="needs-validation" [formGroup]="registerForm" (ngSubmit)="registerForm.valid&&register()" novalidate>
+  <h2 class="register-heading">{{ "readerReg.title" | translate }}</h2>
+  <form
+    class="needs-validation"
+    [formGroup]="registerForm"
+    (ngSubmit)="registerForm.valid && register()"
+    novalidate
+  >
     <div class="row register-form">
       <div class="col-md-6">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="User Name *" formControlName="username" value="" required
-            minlength="3" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-1' | translate }} *"
+            formControlName="username"
+            value=""
+            required
+            minlength="3"
+          />
           <div class="invalid-feedback">
             Username must have 3 chars or more, start with letter/number/'_'.
           </div>
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" placeholder="Your Email *" formControlName="email" value="" required />
+          <input
+            type="email"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-2' | translate }} *"
+            formControlName="email"
+            value=""
+            required
+          />
           <div class="invalid-feedback">
-            Please provide valid email address.
+            {{ "readerReg.field-2-1" | translate }}
           </div>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password *" formControlName="password" value=""
-            required minlength="5" />
+          <input
+            type="password"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-3' | translate }} *"
+            formControlName="password"
+            value=""
+            required
+            minlength="5"
+          />
           <div class="invalid-feedback">
-            Password length must be 5 or longer.
+            {{ "readerReg.field-3-1" | translate }}
           </div>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Confirm Password *" formControlName="confirmPassword"
-            value="" required minlength="5" />
+          <input
+            type="password"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-4' | translate }} *"
+            formControlName="confirmPassword"
+            value=""
+            required
+            minlength="5"
+          />
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Home Address" formControlName="homeAddress" value="" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-5' | translate }}"
+            formControlName="homeAddress"
+            value=""
+          />
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Province" formControlName="province" value="" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-6' | translate }}"
+            formControlName="province"
+            value=""
+          />
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Postcode" formControlName="postcode" value="" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-7' | translate }}"
+            formControlName="postcode"
+            value=""
+          />
         </div>
         <div class="form-group">
           <div class="gender-item">
             <label class="radio inline">
-              <input type="radio" formControlName="gender" value="Male" checked>
-              <span>Male</span>
+              <input
+                type="radio"
+                formControlName="gender"
+                value="Male"
+                checked
+              />
+              <span>{{ "readerReg.field-8-1" | translate }}</span>
             </label>
             <label class="radio inline">
-              <input type="radio" formControlName="gender" value="Female">
-              <span>Female</span>
+              <input type="radio" formControlName="gender" value="Female" />
+              <span>{{ "readerReg.field-8-2" | translate }}</span>
             </label>
             <label class="radio inline">
-              <input type="radio" formControlName="gender" value="Other">
-              <span>Other</span>
+              <input type="radio" formControlName="gender" value="Other" />
+              <span>{{ "readerReg.field-8-3" | translate }}</span>
             </label>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" value="" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-9' | translate }}"
+            formControlName="firstName"
+            value=""
+          />
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" value="" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-10' | translate }}"
+            formControlName="lastName"
+            value=""
+          />
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Date of Birth" onfocus="(this.type='date')" formControlName="birthday"
-            value="00-00-00" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-11' | translate }}"
+            onfocus="(this.type='date')"
+            formControlName="birthday"
+            value="00-00-00"
+          />
         </div>
         <div class="form-group">
-          <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Phone Number" value="" />
+          <input
+            type="text"
+            formControlName="phoneNumber"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-12' | translate }}"
+            value=""
+          />
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter Your Security Question *"
-            formControlName="securityQuestion" value="" required />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-13' | translate }} *"
+            formControlName="securityQuestion"
+            value=""
+            required
+          />
           <div class="invalid-feedback">
-            Please input a security question.
+            {{ "readerReg.field-13-1" | translate }}
           </div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter Your Answer *" formControlName="securityAnswer"
-            value="" required />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'readerReg.field-14' | translate }} *"
+            formControlName="securityAnswer"
+            value=""
+            required
+          />
           <div class="invalid-feedback">
-            Please provide answer for your security question.
+            {{ "readerReg.field-14-1" | translate }}
           </div>
         </div>
 
-        <input type="submit" class="btnRegister" value="Register" />
+        <input
+          type="submit"
+          class="btnRegister"
+          value="{{ 'readerReg.submitButton' | translate }}"
+        />
 
         <div class="home-link">
-          <a href="/">Return Homepage</a>
+          <a href="/">{{ "readerReg.returnLink" | translate }}</a>
         </div>
-
       </div>
     </div>
   </form>
-
 </div>

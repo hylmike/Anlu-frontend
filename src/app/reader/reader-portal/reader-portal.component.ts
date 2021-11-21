@@ -15,7 +15,6 @@ export class ReaderPortalComponent implements OnInit {
 
   hotBookList: Book[];
   role = 'reader';
-
   hotBook = 'hotBook';
 
   constructor(

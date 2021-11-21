@@ -15,3 +15,14 @@ img.logo {
   height: 80px;
   margin-top: 50px;
 }
+
+button.return-link {
+  font-size: large;
+  margin-top: 20px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+button.return-link:hover {
+  background-color: skyblue;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { Blog } from 'src/app/common/blog.dto';
@@ -19,6 +20,7 @@ export class CreateBlogComponent implements OnInit {
     private fb: FormBuilder,
     private tokenService: TokenStorageService,
     private router: Router,
+    public translate: TranslateService,
   ) { }
 
   blogRegForm = this.fb.group({
@@ -63,7 +65,9 @@ export class CreateBlogComponent implements OnInit {
     this.blogService.create(blogInfo).subscribe((blog: Blog)=>{
       if (blog && blog.topic) {
         this.logger.info('Success create new blog');
-        window.alert(`Success create new blog - ${blogInfo.topic}`);
+        this.translate.stream('createBlog.notice-1', {topic: blogInfo.topic}).subscribe((res)=>{
+          window.alert(res);
+        })
         location.reload();
       } else {
         this.logger.warn('Failed to create blog in backend');

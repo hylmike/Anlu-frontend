@@ -1,28 +1,32 @@
-<div class="block inventory-summary" *ngIf="bookSummary.length>0">
-  <h2 class="title text-center">Book Inventory Summary</h2>
-  <hr>
+<div class="block inventory-summary" *ngIf="bookSummary.length > 0">
+  <h2 class="title text-center">{{ "inventorySummary.title" | translate }}</h2>
+  <hr />
   <div class="row">
     <div class="col-md-6">
       <div style="display: block">
-        <canvas baseChart 
-        [datasets]="barChartData" 
-        [labels]="barChartLabels" 
-        [options]="barChartOptions"
-        [plugins]="barChartPlugins" 
-        [legend]="barChartLegend" 
-        [chartType]="barChartType">
+        <canvas
+          baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+        >
         </canvas>
       </div>
     </div>
     <div class="col-md-6">
       <div style="display: block">
-        <canvas baseChart
+        <canvas
+          baseChart
           [data]="pieChartData"
           [labels]="pieChartLabels"
           [chartType]="pieChartType"
           [options]="pieChartOptions"
           [plugins]="pieChartPlugins"
-          [legend]="pieChartLegend">
+          [legend]="pieChartLegend"
+        >
         </canvas>
       </div>
     </div>

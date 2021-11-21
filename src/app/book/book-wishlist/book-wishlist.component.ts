@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { BookWish } from 'src/app/common/book-dto';
@@ -9,20 +10,20 @@ import { BookService } from '../book.service';
 @Component({
   selector: 'app-book-wishlist',
   templateUrl: './book-wishlist.component.html',
-  styleUrls: ['./book-wishlist.component.css']
+  styleUrls: ['./book-wishlist.component.css'],
 })
 export class BookWishlistComponent implements OnInit, OnDestroy {
-
   constructor(
     private logger: NGXLogger,
     private tokenService: TokenStorageService,
     private bookService: BookService,
     private commonService: CommonService,
     private datePipe: DatePipe,
-  ) { }
+    public translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
-    const libName = this.tokenService.getUsername().slice(3,);
+    const libName = this.tokenService.getUsername().slice(3);
     this.commonService.setSubject(libName);
     this.renderWishList();
     this.logger.info('Success load and render unfulfulled wishlist');
@@ -33,6 +34,20 @@ export class BookWishlistComponent implements OnInit, OnDestroy {
     while (wishListDiv.firstChild) {
       wishListDiv.removeChild(wishListDiv.firstChild);
     }
+    let action1: string, action2: string, action3: string, notice: string;
+    this.translate
+      .stream([
+        'bookWishlist.action-1',
+        'bookWishlist.action-2',
+        'bookWishlist.action-3',
+        'bookWishlist.notice',
+      ])
+      .subscribe((res) => {
+        action1 = res['bookWishlist.action-1'];
+        action2 = res['bookWishlist.action-2'];
+        action3 = res['bookWishlist.action-3'];
+        notice = res['bookWishlist.notice'];
+      });
     //Add wishlist based on server data
     this.bookService.getUnfulfilWishList().subscribe((wishList: BookWish[]) => {
       if (wishList && wishList.length > 0) {
@@ -85,9 +100,12 @@ export class BookWishlistComponent implements OnInit, OnDestroy {
           wishListDiv.appendChild(div7);
           const approveLink = document.createElement('button');
           approveLink.className = 'approve-wish btn btn-link';
-          approveLink.innerHTML = 'Approve';
+          approveLink.innerHTML = action1;
           approveLink.style.marginTop = '-10px';
-          approveLink.addEventListener('click', this.changeWishStatus.bind(this, item._id, 'Approved'));
+          approveLink.addEventListener(
+            'click',
+            this.changeWishStatus.bind(this, item._id, 'Approved')
+          );
           div7.appendChild(approveLink);
 
           const div8 = document.createElement('div');
@@ -95,9 +113,12 @@ export class BookWishlistComponent implements OnInit, OnDestroy {
           wishListDiv.appendChild(div8);
           const fulfilLink = document.createElement('button');
           fulfilLink.className = 'fulfil-wish btn btn-link';
-          fulfilLink.innerHTML = 'Fulfil';
+          fulfilLink.innerHTML = action2;
           fulfilLink.style.marginTop = '-10px';
-          fulfilLink.addEventListener('click', this.changeWishStatus.bind(this, item._id, 'Fulfilled'));
+          fulfilLink.addEventListener(
+            'click',
+            this.changeWishStatus.bind(this, item._id, 'Fulfilled')
+          );
           div8.appendChild(fulfilLink);
 
           const div9 = document.createElement('div');
@@ -105,12 +126,15 @@ export class BookWishlistComponent implements OnInit, OnDestroy {
           wishListDiv.appendChild(div9);
           const rejectLink = document.createElement('button');
           rejectLink.className = 'reject-wish btn btn-link';
-          rejectLink.innerHTML = 'Reject';
+          rejectLink.innerHTML = action3;
           rejectLink.style.marginTop = '-10px';
-          rejectLink.addEventListener('click', this.changeWishStatus.bind(this, item._id, 'Rejected'));
+          rejectLink.addEventListener(
+            'click',
+            this.changeWishStatus.bind(this, item._id, 'Rejected')
+          );
           div9.appendChild(rejectLink);
 
-          if (item.status==='Under Review') {
+          if (item.status === 'Under Review') {
             fulfilLink.disabled = true;
           } else {
             approveLink.disabled = true;
@@ -118,28 +142,32 @@ export class BookWishlistComponent implements OnInit, OnDestroy {
         }
       } else if (wishList && wishList.length === 0) {
         const emptyMessage = document.createElement('p');
-        emptyMessage.innerHTML = "You haven't submitted any wish yet!";
+        emptyMessage.innerHTML = notice;
         emptyMessage.style.textAlign = 'center';
         emptyMessage.style.fontSize = 'x-large';
         emptyMessage.style.color = 'gray';
         emptyMessage.style.marginTop = '50px';
         wishListDiv.appendChild(emptyMessage);
       }
-    })
+    });
   }
 
   changeWishStatus(wishID: string, newStatus: string) {
-    const updateStatusDto = {wishID: wishID, status: newStatus};
-    this.bookService.updateWishStatus(updateStatusDto).subscribe((id)=>{
-      if (id && id==wishID) {
-        this.logger.info(`Success update wish ${wishID} status to ${newStatus}`);
+    const updateStatusDto = { wishID: wishID, status: newStatus };
+    this.bookService.updateWishStatus(updateStatusDto).subscribe((id) => {
+      if (id && id == wishID) {
+        this.logger.info(
+          `Success update wish ${wishID} status to ${newStatus}`
+        );
         this.renderWishList();
       }
-    })
+    });
   }
 
   ngOnDestroy() {
-    const delLinks = document.querySelectorAll('button.approve-wish, fulfil-wish, reject-wish');
+    const delLinks = document.querySelectorAll(
+      'button.approve-wish, fulfil-wish, reject-wish'
+    );
     if (delLinks && delLinks.length > 0) {
       for (let i = 0; i < delLinks.length; i++) {
         delLinks[i].replaceWith(delLinks[i].cloneNode(true));

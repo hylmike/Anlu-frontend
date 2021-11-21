@@ -1,29 +1,52 @@
 <div class="container-fluid text-center">
-  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png">
-  <h2 class="register-heading">Book Registration</h2>
+  <img class="mb-4 logo" src="/assets/media/pic/library_logo.png" />
+  <h2 class="register-heading">{{ "bookReg.title" | translate }}</h2>
 </div>
 <div class="container register">
-  <form class="needs-validation" [formGroup]="bookRegisterForm" (ngSubmit)="bookRegisterForm.valid&&bookRegister()"
-    novalidate>
+  <form
+    class="needs-validation"
+    [formGroup]="bookRegisterForm"
+    (ngSubmit)="bookRegisterForm.valid && bookRegister()"
+    novalidate
+  >
     <div class="row register-form">
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="text" class="form-control" id="bookTitle" formControlName="bookTitle" required />
-          <label for="bookTitle">Title of Book *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookTitle"
+            formControlName="bookTitle"
+            required
+          />
+          <label for="bookTitle">{{ "bookReg.field-1" | translate }}*</label>
           <div class="invalid-feedback">
-            Please provide an unique book title.
+            {{ "bookReg.field-1-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="isbn" formControlName="isbnCode" />
-          <label for="isbn">ISBN Code of Book</label>
+          <input
+            type="text"
+            class="form-control"
+            id="isbn"
+            formControlName="isbnCode"
+          />
+          <label for="isbn">{{ "bookReg.field-2" | translate }}</label>
           <div class="invalid-feedback">
-            Please provide valid book ISBN Code.
+            {{ "bookReg.field-2-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <select class="form-select" formControlName="category" id="category" aria-label="Category of book" required>
-            <option value="" class="hidden" selected disabled>Category of book *</option>
+          <select
+            class="form-select"
+            formControlName="category"
+            id="category"
+            aria-label="Category of book"
+            required
+          >
+            <option value="" class="hidden" selected disabled>
+              {{ "bookReg.field-3" | translate }}*
+            </option>
             <option>Romance</option>
             <option>Politics</option>
             <option>Press</option>
@@ -46,137 +69,217 @@
             <option>Sport_tennis</option>
             <option>Sport_boxing</option>
           </select>
-          <label for="category">Category of Book</label>
+          <label for="category">{{ "bookReg.field-3" | translate }}*</label>
           <div class="invalid-feedback">
-            Please select an book category.
+            {{ "bookReg.field-3-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <select class="form-select" formControlName="format" id="format" aria-label="Format of book" required>
-            <option value="" class="hidden" selected disabled>Format of book *</option>
+          <select
+            class="form-select"
+            formControlName="format"
+            id="format"
+            aria-label="Format of book"
+            required
+          >
+            <option value="" class="hidden" selected disabled>
+              {{ "bookReg.field-4" | translate }}*
+            </option>
             <option>eBook</option>
             <option>Hardcopy</option>
             <option>Audiobook</option>
             <option>Podcast</option>
           </select>
-          <label for="format">Format of book</label>
+          <label for="format">{{ "bookReg.field-4" | translate }}*</label>
           <div class="invalid-feedback">
-            Please select the book format.
+            {{ "bookReg.field-4-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="publisher" formControlName="publisher" />
-          <label for="publisher">Book Publisher</label>
+          <input
+            type="text"
+            class="form-control"
+            id="publisher"
+            formControlName="publisher"
+          />
+          <label for="publisher">{{ "bookReg.field-5" | translate }}</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="publishDate"
+            onfocus="(this.type='date')"
+            formControlName="publishDate"
+          />
+          <label for="publishDate">{{ "bookReg.field-6" | translate }}</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="iscore"
+            formControlName="initialScore"
+          />
+          <label for="iscore">{{ "bookReg.field-7" | translate }}</label>
           <div class="invalid-feedback">
-            Please provide book publisher.
+            {{ "bookReg.field-7-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="publishDate" onfocus="(this.type='date')"
-            formControlName="publishDate" />
-          <label for="publishDate">Book Published Date</label>
-          <div class="invalid-feedback">
-            Please provide book publish date.
-          </div>
-        </div>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="iscore" formControlName="initialScore" />
-          <label for="iscore">Initial Score</label>
-          <div class="invalid-feedback">
-            Please provide book initial popular score based on its pupularity.
-          </div>
-        </div>
-        <div class="form-floating">
-          <select class="form-select" id="isactive" formControlName="isActive" aria-label="Active status" required>
-            <option value="Active" selected>Active</option>
+          <select
+            class="form-select"
+            id="isactive"
+            formControlName="isActive"
+            aria-label="Active status"
+            required
+          >
+            <option value="True" selected>Active</option>
             <option>Inactive</option>
           </select>
-          <label for="isactive">Status</label>
+          <label for="isactive">{{ "bookReg.field-8" | translate }}*</label>
           <div class="invalid-feedback">
-            Please choose active status of book.
+            {{ "bookReg.field-8-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="creator" formControlName="creator" readonly/>
-          <label for="creator">Creator *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="creator"
+            formControlName="creator"
+            readonly
+          />
+          <label for="creator">{{ "bookReg.field-9" | translate }}</label>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-floating">
-          <input type="text" class="form-control" id="author" formControlName="author" required />
-          <label for="author">Author of Book, comma to seperate *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="author"
+            formControlName="author"
+            required
+          />
+          <label for="author">{{ "bookReg.field-10" | translate }}*</label>
           <div class="invalid-feedback">
-            Please provide author of book, comma to seperate
+            {{ "bookReg.field-10-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <select class="form-select" id="lang" formControlName="language" aria-label="language of book" required>
-            <option value="" class="hidden" selected disabled>Language of Book *</option>
+          <select
+            class="form-select"
+            id="lang"
+            formControlName="language"
+            aria-label="language of book"
+            required
+          >
+            <option value="" class="hidden" selected disabled>
+              {{ "bookReg.field-11" | translate }}*
+            </option>
             <option>English</option>
             <option>French</option>
             <option>Spanish</option>
             <option>Other</option>
           </select>
-          <label for="lang">Language of Book</label>
+          <label for="lang">{{ "bookReg.field-11" | translate }}*</label>
           <div class="invalid-feedback">
-            Please choose the language of book.
+            {{ "bookReg.field-11-1" | translate }}
           </div>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="purchaseDate" onfocus="(this.type='date')" formControlName="purchaseDate" />
-          <label for="purchaseDate">Book Purchased Date</label>
-          <div class="invalid-feedback">
-            Please provide book purchase date.
-          </div>
-        </div>
-
-        <div class="form-floating">
-          <input type="file" class="form-control" id="cover" placeholder="Book Cover Picture *"
-            formControlName="coverPic" (change)="onCoverSelect($event)" required />
-          <label for="cover">Book Cover Picture (png or jpeg file)</label>
-          <div class="invalid-feedback">
-            Please select book cover picture.
-          </div>
-          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadCoverProgress"></mat-progress-bar>
+          <input
+            type="text"
+            class="form-control"
+            id="purchaseDate"
+            onfocus="(this.type='date')"
+            formControlName="purchaseDate"
+          />
+          <label for="purchaseDate">{{ "bookReg.field-12" | translate }}</label>
         </div>
 
         <div class="form-floating">
-          <input type="file" class="form-control" id="bookFile" placeholder="Book file *" formControlName="bookFile"
-            (change)="onBookSelect($event)" required />
-          <label for="bookFile">Book File (pdf for eBook, mp3 for Audiobook)</label>
+          <input
+            type="file"
+            class="form-control"
+            id="cover"
+            placeholder="Book Cover Picture *"
+            formControlName="coverPic"
+            (change)="onCoverSelect($event)"
+            required
+          />
+          <label for="cover">{{ "bookReg.field-13" | translate }}</label>
           <div class="invalid-feedback">
-            Please provide book file (eg. PDF/mp3).
+            {{ "bookReg.field-13-1" | translate }}
           </div>
-          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadBookProgress"></mat-progress-bar>
+          <mat-progress-bar
+            [color]="color"
+            mode="determinate"
+            [value]="uploadCoverProgress"
+          ></mat-progress-bar>
         </div>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="price" placeholder="Price of Book" formControlName="price" />
-          <label for="price">Price of Book</label>
+          <input
+            type="file"
+            class="form-control"
+            id="bookFile"
+            placeholder="Book file *"
+            formControlName="bookFile"
+            (change)="onBookSelect($event)"
+            required
+          />
+          <label for="bookFile">{{ "bookReg.field-14" | translate }}</label>
           <div class="invalid-feedback">
-            Please provide price of book.
+            {{ "bookReg.field-14-1" | translate }}.
+          </div>
+          <mat-progress-bar
+            [color]="color"
+            mode="determinate"
+            [value]="uploadBookProgress"
+          ></mat-progress-bar>
+        </div>
+
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="Price of Book"
+            formControlName="price"
+          />
+          <label for="price">{{ "bookReg.field-15" | translate }}</label>
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="keywords"
+              placeholder="Keywords of Book"
+              formControlName="keywords"
+            />
+            <label for="keywords">{{ "bookReg.field-16" | translate }}</label>
           </div>
           <div class="form-floating">
-            <input type="text" class="form-control" id="keywords" placeholder="Keywords of Book"
-              formControlName="keywords" />
-            <label for="keywords">Keywords of book, comma to seperate</label>
-            <div class="invalid-feedback">
-              Please provide keywords of book.
-            </div>
-          </div>
-          <div class="form-floating">
-            <textarea class="form-control" id="desc" formControlName="desc"
-              aria-label="Brief Book Description"></textarea>
-            <label for="desc">Book Brief Description</label>
-            <div class="invalid-feedback">
-              Please provide brief description of Book.
-            </div>
+            <textarea
+              class="form-control"
+              id="desc"
+              formControlName="desc"
+              aria-label="Brief Book Description"
+            ></textarea>
+            <label for="desc">{{ "bookReg.field-17" | translate }}</label>
           </div>
         </div>
-        <input type="submit" class="btnRegister" value="Register" />
+        <input
+          type="submit"
+          class="btnRegister"
+          value="{{ 'bookReg.button-1' | translate }}"
+        />
         <div class="button-floating">
-          <a class="goPortal" (click)="goPortal()">Return Portal</a>
+          <a class="goPortal" (click)="goPortal()">{{
+            "bookReg.returnLink" | translate
+          }}</a>
         </div>
       </div>
     </div>

@@ -9,49 +9,65 @@
   </div> -->
   
   <div class="donate-area">
-    <button class="donate-link btn" [routerLink]="'/donate'">To Support Our Library</button>
+    <button class="donate-link btn" [routerLink]="'/donate'">
+      {{ "heroSection.supportLink" | translate }}
+    </button>
   </div>
   <div class="key-links row">
     <a href="/inlibrary" class="key-link col-4 col-md-2">
       <div class="circle"></div>
-      Books in Library
+      {{ "heroSection.keyLink-1" | translate }}
     </a>
     <a href="/ebook" class="key-link col-4 col-md-2">
       <div class="circle"></div>
-      Online eBooks
+      {{ "heroSection.keyLink-2" | translate }}
     </a>
     <a href="/audiobook" class="key-link col-4 col-md-2">
       <div class="circle"></div>
-      Audio Books
+      {{ "heroSection.keyLink-3" | translate }}
     </a>
     <a href="/podcast" class="key-link col-4 col-md-2">
       <div class="circle"></div>
-      Podcasts
+      {{ "heroSection.keyLink-4" | translate }}
     </a>
     <a href="/workshop" class="key-link col-4 col-md-2">
       <div class="circle"></div>
-      Workshops
+      {{ "heroSection.keyLink-5" | translate }}
     </a>
     <a href="/blog" class="key-link col-4 col-md-2">
       <div class="circle"></div>
-      Blogs & Updates
+      {{ "heroSection.keyLink-6" | translate }}
     </a>
   </div>
   <div class="workshop-area bg-light">
-    <div id="workshop-carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-
-      </div>
-      <div class="carousel-inner">
-
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#workshop-carousel" data-bs-slide="prev">
+    <div
+      id="workshop-carousel"
+      class="carousel carousel-dark slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators"></div>
+      <div class="carousel-inner"></div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#workshop-carousel"
+        data-bs-slide="prev"
+      >
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="visually-hidden">{{
+          "heroSection.wsControl-1" | translate
+        }}</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#workshop-carousel" data-bs-slide="next">
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#workshop-carousel"
+        data-bs-slide="next"
+      >
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="visually-hidden">{{
+          "heroSection.wsControl-2" | translate
+        }}</span>
       </button>
     </div>
   </div>

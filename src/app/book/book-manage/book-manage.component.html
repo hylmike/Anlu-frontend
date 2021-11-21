@@ -7,53 +7,255 @@
 
 <div class="container-fluid container">
   <div class="portal-header">
-    <img src="/assets/media/pic/library_logo.png" alt="logo-img" class="logo">
-    <h2 class="title">Book Management</h2>
+    <img src="/assets/media/pic/library_logo.png" alt="logo-img" class="logo" />
+    <h2 class="title">{{ "bookManage.title" | translate }}</h2>
   </div>
   <div class="book-container">
     <ul class="nav nav-tabs" id="bookTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" data-bs-toggle="tab" href="#ebook" (click)="clickEbook()">eBook</a>
+        <a
+          class="nav-link active"
+          data-bs-toggle="tab"
+          href="#ebook"
+          (click)="clickEbook()"
+          >{{ "bookManage.tab-1" | translate }}</a
+        >
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" href="#hardbook" (click)="clickInLibraryBook()">InLibraryBook</a>
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          href="#hardbook"
+          (click)="clickInLibraryBook()"
+          >{{ "bookManage.tab-2" | translate }}</a
+        >
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" href="#audiobook" (click)="clickAudiobook()">Audiobook</a>
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          href="#audiobook"
+          (click)="clickAudiobook()"
+          >{{ "bookManage.tab-3" | translate }}</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          href="#poscast"
+          (click)="clickPodcast()"
+          >{{ "bookManage.tab-4" | translate }}</a
+        >
       </li>
     </ul>
     <div class="tab-content" id="bookTab-content">
-      <div class="tab-pane fade show active" id="ebook" role="tabpanel" aria-labelledby="ebook-tab">
+      <div
+        class="tab-pane fade show active"
+        id="ebook"
+        role="tabpanel"
+        aria-labelledby="ebook-tab"
+      >
         <div class="link-area">
-          <button class="book-dist btn btn-link" id="allebook-link" (click)="setBookList('eBook','All')">All</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('eBook','ABCD')">A - D</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('eBook','EFGH')">E - H</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('eBook','IJKL')">I - L</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('eBook','MNOP')">M - P</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('eBook','QRST')">Q - T</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('eBook','UVWXYZ')">U - Z</button>
+          <button
+            class="book-dist btn btn-link"
+            id="allebook-link"
+            (click)="setBookList('eBook', 'All')"
+          >
+          {{ "bookManage.cat-all" | translate }}
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('eBook', 'ABCD')"
+          >
+            A - D
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('eBook', 'EFGH')"
+          >
+            E - H
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('eBook', 'IJKL')"
+          >
+            I - L
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('eBook', 'MNOP')"
+          >
+            M - P
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('eBook', 'QRST')"
+          >
+            Q - T
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('eBook', 'UVWXYZ')"
+          >
+            U - Z
+          </button>
         </div>
       </div>
-      <div class="tab-pane fade" id="hardbook" role="tabpanel" aria-labelledby="hardbook-tab">
+      <div
+        class="tab-pane fade"
+        id="hardbook"
+        role="tabpanel"
+        aria-labelledby="hardbook-tab"
+      >
         <div class="link-area">
-          <button class="book-dist btn btn-link" id="allhardbook-link" (click)="setBookList('Hardcopy','All')">All</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','ABCD')">A - D</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','EFGH')">E - H</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','IJKL')">I - L</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','MNOP')">M - P</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','QRST')">Q - T</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Hardcopy','UVWXYZ')">U - Z</button>
+          <button
+            class="book-dist btn btn-link"
+            id="allhardbook-link"
+            (click)="setBookList('Hardcopy', 'All')"
+          >
+            All
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Hardcopy', 'ABCD')"
+          >
+            A - D
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Hardcopy', 'EFGH')"
+          >
+            E - H
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Hardcopy', 'IJKL')"
+          >
+            I - L
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Hardcopy', 'MNOP')"
+          >
+            M - P
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Hardcopy', 'QRST')"
+          >
+            Q - T
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Hardcopy', 'UVWXYZ')"
+          >
+            U - Z
+          </button>
         </div>
       </div>
-      <div class="tab-pane fade" id="audiobook" role="tabpanel" aria-labelledby="audiobook-tab">
+      <div
+        class="tab-pane fade"
+        id="audiobook"
+        role="tabpanel"
+        aria-labelledby="audiobook-tab"
+      >
         <div class="link-area">
-          <button class="book-dist btn btn-link" id="allabook-link" (click)="setBookList('Audiobook','All')">All</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','ABCD')">A - D</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','EFGH')">E - H</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','IJKL')">I - L</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','MNOP')">M - P</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','QRST')">Q - T</button>
-          <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','UVWXYZ')">U - Z</button>
+          <button
+            class="book-dist btn btn-link"
+            id="allabook-link"
+            (click)="setBookList('Audiobook', 'All')"
+          >
+            All
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Audiobook', 'ABCD')"
+          >
+            A - D
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Audiobook', 'EFGH')"
+          >
+            E - H
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Audiobook', 'IJKL')"
+          >
+            I - L
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Audiobook', 'MNOP')"
+          >
+            M - P
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Audiobook', 'QRST')"
+          >
+            Q - T
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Audiobook', 'UVWXYZ')"
+          >
+            U - Z
+          </button>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="podcast"
+        role="tabpanel"
+        aria-labelledby="podcast-tab"
+      >
+        <div class="link-area">
+          <button
+            class="book-dist btn btn-link"
+            id="allpodcast-link"
+            (click)="setBookList('Podcast', 'All')"
+          >
+            All
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Podcast', 'ABCD')"
+          >
+            A - D
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Podcast', 'EFGH')"
+          >
+            E - H
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Podcast', 'IJKL')"
+          >
+            I - L
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Podcast', 'MNOP')"
+          >
+            M - P
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Podcast', 'QRST')"
+          >
+            Q - T
+          </button>
+          <button
+            class="book-dist btn btn-link"
+            (click)="setBookList('Podcast', 'UVWXYZ')"
+          >
+            U - Z
+          </button>
         </div>
       </div>
       <div class="list-area">

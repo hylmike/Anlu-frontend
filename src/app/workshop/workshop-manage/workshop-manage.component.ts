@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { CommonService } from 'src/app/common/common.service';
 
@@ -12,6 +13,7 @@ export class WorkshopManageComponent implements OnInit {
   constructor(
     private tokenService: TokenStorageService,
     private commonServie: CommonService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

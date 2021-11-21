@@ -1,24 +1,54 @@
 <main class="form-signin">
   <form [formGroup]="libLoginForm" (ngSubmit)="libLogin()">
-    <img class="mb-4" src="/assets/media/pic/library_logo.png" alt="" width="120" height="80">
-    <h1 class="h3 mb-3 fw-normal">Lib/Admin Sign In</h1>
+    <img
+      class="mb-4"
+      src="/assets/media/pic/library_logo.png"
+      alt=""
+      width="120"
+      height="80"
+    />
+    <h1 class="h3 mb-3 fw-normal">{{ "libLogin.title" | translate }}</h1>
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" formControlName="username" placeholder="User Name">
-      <label for="floatingInput">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        formControlName="username"
+        placeholder="User Name"
+      />
+      <label for="floatingInput">{{ "libLogin.field-1" | translate }}</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" formControlName="password"
-        placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <label for="floatingPassword">{{ "libLogin.field-2" | translate }}</label>
     </div>
     <div class="form-floating">
-      <select class="form-select" id="roleSelect" aria-label="Role" formControlName="role">
-        <option selected value="Librarian">Librarian</option>
-        <option value="Admin">Admin</option>
+      <select
+        class="form-select"
+        id="roleSelect"
+        aria-label="Role"
+        formControlName="role"
+      >
+        <option selected value="Librarian">
+          {{ "libLogin.role-1" | translate }}
+        </option>
+        <option value="Admin">{{ "libLogin.role-2" | translate }}</option>
       </select>
-      <label for="floatingSelect">Role</label>
+      <label for="floatingSelect">{{ "libLogin.field-3" | translate }}</label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!libLoginForm.valid">Sign in</button>
+    <button
+      class="w-100 btn btn-lg btn-primary"
+      type="submit"
+      [disabled]="!libLoginForm.valid"
+    >
+      {{ "libLogin.button" | translate }}
+    </button>
   </form>
 </main>

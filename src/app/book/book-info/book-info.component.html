@@ -7,121 +7,127 @@
 
 <div class="container">
   <div class="title padding">
-    <h2>Book Information</h2>
-    <a href={{updateBookUrl}} class="btn btn-primary">Update</a>
+    <h2>{{ "bookInfo.title" | translate }}</h2>
+    <a href="{{ updateBookUrl }}" class="btn btn-primary">{{
+      "bookInfo.updateLink" | translate
+    }}</a>
   </div>
   <div class="book-info" *ngIf="book">
-    <hr class='padding'>
+    <hr class="padding" />
     <div class="row">
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Book Title</p>
+        <p class="field-name">{{ "bookInfo.field-1" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.bookTitle}}</p>
+        <p class="field-content">{{ book.bookTitle }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">ISBN Code</p>
+        <p class="field-name">{{ "bookInfo.field-2" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.isbnCode}}</p>
-      </div>
-
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Category</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.category}}</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Author</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.author}}</p>
+        <p class="field-content">{{ book.isbnCode }}</p>
       </div>
 
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Language</p>
+        <p class="field-name">{{ "bookInfo.field-3" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.language}}</p>
+        <p class="field-content">{{ book.category }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Format</p>
+        <p class="field-name">{{ "bookInfo.field-4" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.format}}</p>
-      </div>
-
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Publisher</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.publisher}}</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Published Date</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.purchaseDate| date:'longDate'}}</p>
+        <p class="field-content">{{ book.author }}</p>
       </div>
 
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Purchase Date</p>
+        <p class="field-name">{{ "bookInfo.field-5" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.purchaseDate| date:'longDate'}}</p>
+        <p class="field-content">{{ book.language }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Price</p>
+        <p class="field-name">{{ "bookInfo.field-6" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.price}}</p>
-      </div>
-
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Cover Picture</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.coverPic.slice(13,-1)}}</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Book File</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.bookFile.slice(13,-1)}}</p>
+        <p class="field-content">{{ book.format }}</p>
       </div>
 
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Book Description</p>
+        <p class="field-name">{{ "bookInfo.field-7" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.desc}}</p>
+        <p class="field-content">{{ book.publisher }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Keywords</p>
+        <p class="field-name">{{ "bookInfo.field-8" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.keywords}}</p>
-      </div>
-
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Initial Score</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.initialScore}}</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-name">Active Status</p>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.isActive===true?'Active':'Inactive'}}</p>
+        <p class="field-content">{{ book.purchaseDate | date: "longDate" }}</p>
       </div>
 
       <div class="col-sm-6 col-md-3">
-        <p class="field-name">Creator</p>
+        <p class="field-name">{{ "bookInfo.field-9" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="field-content">{{book.creator}}</p>
+        <p class="field-content">{{ book.purchaseDate | date: "longDate" }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-10" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{ book.price }}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-11" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">
+          {{ book.coverPic.slice(13) }}
+        </p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-12" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{ book.bookFile.slice(13) }}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-13" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{ book.desc }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-14" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{ book.keywords }}</p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-15" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{ book.initialScore }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-16" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">
+          {{ book.isActive === true ? "Active" : "Inactive" }}
+        </p>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <p class="field-name">{{ "bookInfo.field-17" | translate }}</p>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <p class="field-content">{{ book.creator }}</p>
       </div>
     </div>
   </div>

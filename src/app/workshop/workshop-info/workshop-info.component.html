@@ -2,73 +2,76 @@
 
 <div class="container container-fluid">
   <div class="title padding">
-    <h2>Workshop Information</h2>
-    <a href={{wsUpdateUrl}} class="btn btn-primary">Update</a>
+    <h2>{{ "wsInfo.title" | translate }}</h2>
+    <a href="{{ wsUpdateUrl }}" class="btn btn-primary">{{
+      "wsInfo.updateLink" | translate
+    }}</a>
   </div>
   <div class="form" *ngIf="workshop">
-    <hr class='padding'>
+    <hr class="padding" />
     <div class="row">
       <div class="col-sm-6 col-md-3">
-        <p class="title">Topic</p>
+        <p class="title">{{ "wsInfo.field-1" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.topic}}</p>
+        <p>{{ workshop.topic }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Place</p>
+        <p class="title">{{ "wsInfo.field-2" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.place}}</p>
+        <p>{{ workshop.place }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Start Time</p>
+        <p class="title">{{ "wsInfo.field-3" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.startTime | date:'short'}}</p>
+        <p>{{ workshop.startTime | date: "short" }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Duration</p>
+        <p class="title">{{ "wsInfo.field-4" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.duration}} {{workshop.duration>1?'Hours':'Hour'}}</p>
+        <p>
+          {{ workshop.duration }} {{ workshop.duration > 1 ? "Hours" : "Hour" }}
+        </p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Organizer</p>
+        <p class="title">{{ "wsInfo.field-5" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.organizer}}</p>
+        <p>{{ workshop.organizer }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Poster File</p>
+        <p class="title">{{ "wsInfo.field-6" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.poster}}</p>
+        <p>{{ workshop.poster }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Creator</p>
+        <p class="title">{{ "wsInfo.field-7" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.creator}}</p>
+        <p>{{ workshop.creator }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p class="title">Create Time</p>
+        <p class="title">{{ "wsInfo.field-8" | translate }}</p>
       </div>
       <div class="col-sm-6 col-md-3">
-        <p>{{workshop.createTime | date:'short'}}</p>
+        <p>{{ workshop.createTime | date: "short" }}</p>
       </div>
       <div class="col-sm-3">
-        <p class="title">Remark</p>
+        <p class="title">{{ "wsInfo.field-9" | translate }}</p>
       </div>
       <div class="col-sm-9">
-        <p>{{workshop.remark}}</p>
+        <p>{{ workshop.remark }}</p>
       </div>
       <div class="col-sm-3">
-        <p class="title">Subscriber List</p>
+        <p class="title">{{ "wsInfo.field-10" | translate }}</p>
       </div>
       <div class="col-sm-9">
-        <p>{{subList.toString()}}</p>
+        <p>{{ subList.toString() }}</p>
       </div>
-      
     </div>
   </div>
 </div>

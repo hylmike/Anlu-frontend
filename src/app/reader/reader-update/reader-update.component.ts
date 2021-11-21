@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 
 import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
 import { Reader, UpdateReaderDto } from 'src/app/common/reader.dto';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-update',
@@ -20,6 +21,7 @@ export class ReaderUpdateComponent implements OnInit {
     private readerAuthService: ReaderAuthService,
     private logger: NGXLogger,
     private datePipe: DatePipe,
+    public translate: TranslateService,
   ) { }
 
   updateForm = this.fb.group({
@@ -76,19 +78,24 @@ export class ReaderUpdateComponent implements OnInit {
   }
 
   update() {
+    let notice1: string, notice2: string;
+    this.translate.stream(['readerUpdate.notice-1', 'readerUpdate.notice-2']).subscribe((res)=>{
+      notice1 = res['readerUpdate.notice-1'];
+      notice2 = res['readerUpdate.notice-2'];
+    })
     const val: UpdateReaderDto = this.updateForm.value;
     if (this.updateForm.dirty) {
       this.readerAuthService.updateProfile(val).subscribe((data) => {
         if (typeof data!=='string') {
           this.logger.warn(`Update ${val.username} profile failed`);
-          window.alert(`Update profile failed, please check and update again`)
+          window.alert(notice1)
           return null;
         }
         this.logger.info(`Success updated reader ${data} profile.`);
         this.router.navigateByUrl(`/reader/profile/${data}`);
       })
     } else {
-      window.alert('You have not update anything yet!');
+      window.alert(notice2);
     }
   }
 

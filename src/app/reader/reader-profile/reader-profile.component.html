@@ -7,41 +7,41 @@
 
 <div class="container">
   <div class="title padding">
-    <h2>My Profile</h2>
-    <a *ngIf="!isAdmin" href="/reader/updateprofile" class="btn btn-primary">Update Profile</a>
+    <h2>{{"readerProfile.title"|translate}}</h2>
+    <a *ngIf="!isAdmin" href="/reader/updateprofile" class="btn btn-primary">{{"readerProfile.updateLink"|translate}}</a>
   </div>
   <div class="form" *ngIf="reader">
     <div class="basic-info">
       <div class="title padding">
-        <h3>Basic Infomation</h3>
+        <h3>{{"readerProfile.subTitle-1"|translate}}</h3>
       </div>
       <hr class='padding'>
       <div class="row">
         <div class="col-sm-6 col-md-3">
-          <p>Username</p>
+          <p>{{"readerProfile.field-1"|translate}}</p>
         </div>
         <div class="col-sm-6 col-md-3">
           <p>{{reader.username}}</p>
         </div>
         <div class="col-sm-6 col-md-3">
-          <p>Password</p>
+          <p>{{"readerProfile.field-2"|translate}}</p>
         </div>
         <div class="col-sm-6 col-md-3">
           <p>********
-          <a *ngIf="!isAdmin" href="/reader/changepwd" class='change-password btn btn-primary'>Change Password</a>
+          <a *ngIf="!isAdmin" href="/reader/changepwd" class='change-password btn btn-primary'>{{"readerProfile.changePwdLink"|translate}}</a>
           </p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-6 col-md-3">
-          <p>Email</p>
+          <p>{{"readerProfile.field-3"|translate}}</p>
         </div>
         <div class="col-sm-6 col-md-3">
           <p>{{reader.email}}</p>
         </div>
         <div class="col-sm-6 col-md-3">
-          <p>Register Date</p>
+          <p>{{"readerProfile.field-4"|translate}}</p>
         </div>
         <div class="col-sm-6 col-md-3">
           <p>{{reader.registerDate | date:'longDate'}}</p>
@@ -50,18 +50,18 @@
 
       <div class="reader-profile">
         <div class="title padding">
-          <h3>Detailed Profile</h3>
+          <h3>{{"readerProfile.subTitle-2"|translate}}</h3>
         </div>
         <hr class="padding">
         <div class="row">
           <div class="col-sm-6 col-md-3">
-            <p>First Name</p>
+            <p>{{"readerProfile.field-5"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.firstName}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
-            <p>Last Name</p>
+            <p>{{"readerProfile.field-6"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.lastName}}</p>
@@ -70,13 +70,13 @@
 
         <div class="row">
           <div class="col-sm-6 col-md-3">
-            <p>Gender</p>
+            <p>{{"readerProfile.field-7"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.gender}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
-            <p>Birthday</p>
+            <p>{{"readerProfile.field-8"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.birthday | date:'longDate'}}</p>
@@ -85,13 +85,13 @@
 
         <div class="row">
           <div class="col-sm-6 col-md-3">
-            <p>Address</p>
+            <p>{{"readerProfile.field-9"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.address.homeAddress}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
-            <p>Province & PostCode</p>
+            <p>{{"readerProfile.field-10"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.address.province}} / {{reader.readerProfile.address.postcode}}</p>
@@ -100,13 +100,13 @@
 
         <div class="row">
           <div class="col-sm-6 col-md-3">
-            <p>Security Question</p>
+            <p>{{"readerProfile.field-11"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.securityQuestion}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
-            <p>Security Answer</p>
+            <p>{{"readerProfile.field-12"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.securityAnswer}}</p>
@@ -115,25 +115,25 @@
 
         <div class="row" *ngIf="isAdmin">
           <div class="col-sm-6 col-md-3">
-            <p>Read Times</p>
+            <p>{{"readerProfile.field-13"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.readTimes}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
-            <p>Read Duration</p>
+            <p>{{"readerProfile.field-14"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.readDuration}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
-            <p>Read Score</p>
+            <p>{{"readerProfile.field-15"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.readerProfile.score}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
-            <p>Active Status</p>
+            <p>{{"readerProfile.field-16"|translate}}</p>
           </div>
           <div class="col-sm-6 col-md-3">
             <p>{{reader.isActive?'Active':'Inactive'}}</p>

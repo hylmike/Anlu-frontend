@@ -1,74 +1,128 @@
 <div class="container text-center padding">
   <div class="logo-img">
-    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png" />
   </div>
-  <h2 class="title padding">Workshop Update Form</h2>
-  <hr>
+  <h2 class="title padding">{{ "updateWs.title" | translate }}</h2>
+  <hr />
   <div class="update-form padding">
-    <form class="needs-validation" [formGroup]="wsUpdateForm" (ngSubmit)="wsUpdateForm.valid&&updateWorkshop()"
-      novalidate>
+    <form
+      class="needs-validation"
+      [formGroup]="wsUpdateForm"
+      (ngSubmit)="wsUpdateForm.valid && updateWorkshop()"
+      novalidate
+    >
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="topic">Topic</label>
+          <label for="topic">{{ "updateWs.field-1" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="topic" formControlName="topic" readonly />
+          <input
+            type="text"
+            class="form-control"
+            id="topic"
+            formControlName="topic"
+            readonly
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="place">Place</label>
+          <label for="place">{{ "updateWs.field-2" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="place" formControlName="place" />
+          <input
+            type="text"
+            class="form-control"
+            id="place"
+            formControlName="place"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="stime">Start Time</label>
+          <label for="stime">{{ "updateWs.field-3" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="datetime-local" class="form-control" id="stime" formControlName="startTime" />
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="stime"
+            formControlName="startTime"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="organizer">Organizer</label>
+          <label for="organizer">{{ "updateWs.field-4" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="organizer" formControlName="organizer" />
+          <input
+            type="text"
+            class="form-control"
+            id="organizer"
+            formControlName="organizer"
+          />
         </div>
 
         <div class="col-sm-6 col-md-3">
-          <label for="duration">Duration</label>
+          <label for="duration">{{ "updateWs.field-5" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="duration" formControlName="duration" />
+          <input
+            type="text"
+            class="form-control"
+            id="duration"
+            formControlName="duration"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="cposter">Poster Picture</label>
+          <label for="cposter">{{ "updateWs.field-6" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="cposter" value={{posterFileUrl}} name="" readonly/>
+          <input
+            type="text"
+            class="form-control"
+            id="cposter"
+            value="{{ posterFileUrl }}"
+            name=""
+            readonly
+          />
         </div>
 
         <div class="col-sm-6 col-md-3">
-          <label for="remark">Remark</label>
+          <label for="remark">{{ "updateWs.field-7" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="remark" formControlName="remark" />
+          <input
+            type="text"
+            class="form-control"
+            id="remark"
+            formControlName="remark"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="postPic">Update Poster here =></label>
+          <label for="postPic">{{ "updateWs.field-8" | translate }} =></label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="file" class="form-control" id="postPic" formControlName="poster"
-            (change)="onPosterSelect($event)" />
-          <mat-progress-bar [color]="color" mode="determinate" [value]="uploadPosterProgress"></mat-progress-bar>
+          <input
+            type="file"
+            class="form-control"
+            id="postPic"
+            formControlName="poster"
+            (change)="onPosterSelect($event)"
+          />
+          <mat-progress-bar
+            [color]="color"
+            mode="determinate"
+            [value]="uploadPosterProgress"
+          ></mat-progress-bar>
         </div>
       </div>
 
       <div class="submit-button">
-        <input type="submit" class="btnupdate" value="Update" />
+        <input
+          type="submit"
+          class="btnupdate"
+          value="{{ 'updateWs.button-1' | translate }}"
+        />
       </div>
       <div class="portal-link">
-        <a href="/workshop/manage">Return Manage Portal</a>
+        <a href="/workshop/manage">{{ "updateWs.returnLink" | translate }}</a>
       </div>
-
     </form>
   </div>
 </div>

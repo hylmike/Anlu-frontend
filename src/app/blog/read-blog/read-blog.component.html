@@ -1,12 +1,13 @@
 <app-reader-header></app-reader-header>
 
 <div class="blog container container-fluid" *ngIf="blog">
-  <a href="/reader/" class="home-link">Return Home</a>
-  <h2 class="blog-title">{{blog.topic}}</h2>
-  <p class="sub-title">{{blog.createTime | date:"short"}}</p>
-  <hr>
-  <p class="blog-content">[{{blog.category}}]  {{blog.content}}</p>
-
+  <a href="/reader/" class="home-link">{{
+    "readBlog.returnLink" | translate
+  }}</a>
+  <h2 class="blog-title">{{ blog.topic }}</h2>
+  <p class="sub-title">{{ blog.createTime | date: "short" }}</p>
+  <hr />
+  <p class="blog-content">[{{ blog.category }}] {{ blog.content }}</p>
 </div>
 
 <app-site-footer></app-site-footer>

@@ -6,6 +6,7 @@ import { CommonService } from '../../common/common.service';
 import { LibrarianAuthService } from '../../auth/librarian-auth.service';
 import { TokenStorageService } from '../../auth/token-storage.service';
 import { FormBuilder } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -15,9 +16,8 @@ import { FormBuilder } from '@angular/forms';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  titleName = 'Anlu Biblio';
-
-  adminName = 'Admin';
+  titleName : string;
+  adminName : string;
 
   constructor(
     private commonService: CommonService,
@@ -26,6 +26,7 @@ export class AdminHeaderComponent implements OnInit {
     private tokenService: TokenStorageService,
     private fb: FormBuilder,
     private router: Router,
+    public translate: TranslateService,
   ) { }
 
   searchForm = this.fb.group({
@@ -33,13 +34,25 @@ export class AdminHeaderComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.translate.stream('readerHeader.titleName').subscribe((res: string) => {
+      this.titleName = res;
+    });
     this.commonService.usernameUpdate.subscribe((username) => {
       this.adminName = username;
     });
+    if (!this.adminName) {
+      this.translate.stream('adminHeader.defaultName').subscribe((res:string)=>{
+        this.adminName = res;
+      })
+    }
   }
 
   logout() {
     const libID = this.libAuthService.getLibID();
+    let failMessage: string;
+    this.translate.stream('adminHeader.logoutFail').subscribe((res)=>{
+      failMessage = res;
+    })
     this.libAuthService.signOut().subscribe((data) => {
       if (data == libID) {
         this.tokenService.clearToken();
@@ -47,7 +60,7 @@ export class AdminHeaderComponent implements OnInit {
         this.router.navigateByUrl('/lib/login');
       } else {
         this.logger.warn(`Something happen in server, admin logout failed`);
-        window.alert('Logout failed, please try again later');
+        window.alert(failMessage);
       }
     });
   }

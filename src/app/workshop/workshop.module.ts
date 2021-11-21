@@ -13,6 +13,7 @@ import { WorkshopManageComponent } from './workshop-manage/workshop-manage.compo
 import { WorkshopInfoComponent } from './workshop-info/workshop-info.component';
 import { WorkshopListComponent } from './workshop-list/workshop-list.component';
 import { LibModule } from '../librarian/lib.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LibModule } from '../librarian/lib.module';
     LibModule,
     WorkshopRoutingModule,
     ReaderModule,
+    TranslateModule,
   ]
 })
 export class WorkshopModule { }

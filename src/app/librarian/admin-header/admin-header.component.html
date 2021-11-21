@@ -1,30 +1,84 @@
 <div id="lib-header">
-  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" aria-label="Main navigation">
+  <nav
+    class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark"
+    aria-label="Main navigation"
+  >
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">{{titleName}}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-label="Toggle navigation" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+      <a class="navbar-brand" href="/">{{ titleName }}</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        aria-label="Toggle navigation"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-  
+
       <div class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/lib/admin-portal">Admin Dashboard</a>
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="/lib/admin-portal"
+              >{{ "adminHeader.menu-1" | translate }}</a
+            >
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/book" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Manage Account</a>
+            <a
+              class="nav-link dropdown-toggle"
+              href="/book"
+              id="dropdown01"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ "adminHeader.menu-2" | translate }}</a
+            >
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="/lib/register">Register Lib/Admin</a></li>
-              <li><a class="dropdown-item" href="/lib/account-manage">Manage Lib/Admin</a></li>
-              <li><a class="dropdown-item" href="/reader/account-manage">Manage Reader</a></li>
+              <li>
+                <a class="dropdown-item" href="/lib/register">{{
+                  "adminHeader.menu-2-1" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/lib/account-manage">{{
+                  "adminHeader.menu-2-2" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/reader/account-manage">{{
+                  "adminHeader.menu-2-3" | translate
+                }}</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/book" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Manage Inventory</a>
+            <a
+              class="nav-link dropdown-toggle"
+              href="/book"
+              id="dropdown02"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >{{ "adminHeader.menu-3" | translate }}</a
+            >
             <ul class="dropdown-menu" aria-labelledby="dropdown02">
-              <li><a class="dropdown-item" href="/book/dashboard">Book Dashboard</a></li>
-              <li><a class="dropdown-item" href="/book/register">Register Book</a></li>
-              <li><a class="dropdown-item" href="/book/manage">Manage Book</a></li>
+              <li>
+                <a class="dropdown-item" href="/book/dashboard">{{
+                  "adminHeader.menu-3-1" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/book/register">{{
+                  "adminHeader.menu-3-2" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/book/manage">{{
+                  "adminHeader.menu-3-3" | translate
+                }}</a>
+              </li>
             </ul>
           </li>
           <!-- <li class="nav-item dropdown">
@@ -35,16 +89,40 @@
             </ul>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link" (click)="logout()">Logout</a>
+            <a class="nav-link" (click)="logout()">{{
+              "adminHeader.menu-4" | translate
+            }}</a>
           </li>
         </ul>
-        <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="searchForm.valid&&searchBook()" novalidate>
-          <label class="label_welcome">Welcome! {{adminName}}</label>
-          <input class="form-control me-2" type="search" placeholder="Search" formControlName="searchValue">
-          <button class="search btn btn-outline-success" type="submit">Search Book</button>
+        <form
+          class="d-flex"
+          [formGroup]="searchForm"
+          (ngSubmit)="searchForm.valid && searchBook()"
+          novalidate
+        >
+          <select #langSelect (change)="translate.use(langSelect.value)">
+            <option
+              *ngFor="let lang of translate.getLangs()"
+              [value]="lang"
+              [selected]="lang === translate.currentLang"
+            >
+              {{ lang }}
+            </option>
+          </select>
+          <label class="label_welcome"
+            >{{ "readerHeader.welcome" | translate }} {{ adminName }}</label
+          >
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="{{ 'readerHeader.searchLabel' | translate }}"
+            formControlName="searchValue"
+          />
+          <button class="search btn btn-outline-success" type="submit">
+            {{ "readerHeader.searchButton" | translate }}
+          </button>
         </form>
       </div>
     </div>
   </nav>
 </div>
-

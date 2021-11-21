@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { ReaderAuthService } from 'src/app/auth/reader-auth.service';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
@@ -17,6 +18,7 @@ export class BookSearchComponent implements OnInit {
   bookList: Book[];
   role = 'reader';
   listName = 'searchBook';
+  param = {length: 0};
 
   constructor(
     private logger: NGXLogger,
@@ -25,6 +27,7 @@ export class BookSearchComponent implements OnInit {
     private bookService: BookService,
     private tokenService: TokenStorageService,
     private commonService: CommonService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +36,9 @@ export class BookSearchComponent implements OnInit {
     if (this.role === 'admin' || this.role === 'librarian') {
       username = username.slice(3,);
     } else if (!this.readerAuthService.isLoggedIn()) {
-      username = 'Our Guest';
+      this.translate.stream('bookSearch.guestName').subscribe((res)=>{
+        username = res;
+      })
     }
     if (username) {
       this.commonService.setSubject(username);
@@ -44,6 +49,7 @@ export class BookSearchComponent implements OnInit {
       this.bookService.searchBook(searchValue).subscribe((bookList: Book[]) => {
         if (bookList && bookList.length > 0) {
           this.bookList = bookList;
+          this.param.length = bookList.length;
           this.logger.info('Success generate book list with search condition')
         } else {
           this.bookList = [];

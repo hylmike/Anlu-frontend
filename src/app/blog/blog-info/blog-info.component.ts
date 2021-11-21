@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { Blog } from 'src/app/common/blog.dto';
@@ -22,6 +23,7 @@ export class BlogInfoComponent implements OnInit {
     private tokenService: TokenStorageService,
     private commonService: CommonService,
     private route: ActivatedRoute,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

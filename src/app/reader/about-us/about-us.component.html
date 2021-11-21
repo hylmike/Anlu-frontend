@@ -1,15 +1,19 @@
+<app-reader-header></app-reader-header>
+
 <div class="about-us container">
-  <a href="/" class="return-home">Home</a>
-  <h1 class="title">About Us</h1>
-  <p>ANLU is an ancestral practice of the Kom community in the North-West of Cameroon. It is a practice with which women
-    acted to bring justice against transgressions of the social order. Thus, our library aims to be a space of
-    encounter, knowledge sharing and learning that will contribute to questioning our individual and common relationship
-    to history in order to make us proud African citizens.</p>
+  <h1 class="title">{{ "aboutUs.title" | translate }}</h1>
+  <p>{{ "aboutUs.desc-1" | translate }}</p>
   <p>
-    Our objectives :<br>
-    - To promote African thoughts and perspectives through the African cultural and intellectual heritage;<br>
-    - to involve young people in the African intellectual debate on Africa, to decolonise the collective memory;<br>
-    - to build with African youth a free African society independent of neo-colonialism.
+    {{ "aboutUs.desc-2" | translate }}<br />
+    {{ "aboutUs.desc-3" | translate }}<br />
+    {{ "aboutUs.desc-4" | translate }}<br />
+    {{ "aboutUs.desc-5" | translate }}
   </p>
-  <img src="/assets/media/pic/anluLogo.png" alt="Library logo" class="lib-logo" />
+  <img
+    src="/assets/media/pic/anluLogo.png"
+    alt="Library logo"
+    class="lib-logo"
+  />
 </div>
+
+<app-site-footer></app-site-footer>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { LibrarianAuthService } from 'src/app/auth/librarian-auth.service';
 import { Librarian } from 'src/app/common/lib.dto';
@@ -18,6 +19,7 @@ export class LibUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private libAuthService: LibrarianAuthService,
     private fb: FormBuilder,
+    public translate: TranslateService,
   ) { }
 
   libUpdateForm = this.fb.group({

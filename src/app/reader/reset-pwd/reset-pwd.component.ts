@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { ChangePwdDto, ResetPwdDto } from 'src/app/common/reader.dto';
 import { ReaderService } from '../reader.service';
@@ -18,6 +19,7 @@ export class ResetPwdComponent implements OnInit {
     private route: ActivatedRoute,
     private readerService: ReaderService,
     private logger: NGXLogger,
+    public translate: TranslateService,
   ) { }
 
   resetPwdForm = this.fb.group({
@@ -41,6 +43,11 @@ export class ResetPwdComponent implements OnInit {
   get f() { return this.resetPwdForm.controls }
 
   resetPwd() {
+    let notice1: string, notice2: string;
+    this.translate.stream(['resetPwd.notice-1', 'resetPwd.notice-2']).subscribe((res)=>{
+      notice1 = res['resetPwd.notice-1'];
+      notice2 = res['resetPwd.notice-2'];
+    })
     const val: ResetPwdDto = this.resetPwdForm.value;
     if (this.f.confirmPassword.value === this.f.newPassword.value) {
       this.readerService.resetPwd(val).subscribe((data) => {
@@ -49,11 +56,11 @@ export class ResetPwdComponent implements OnInit {
           this.router.navigateByUrl('reader/login');
         } else {
           this.logger.warn(`Reset password for ${val.username} failed`);
-          window.alert(`Reset password failed, try again later`);
+          window.alert(notice1);
         }
       });
     } else {
-      window.alert('New passwords are not matched, please check');
+      window.alert(notice2);
     }
   }
 }

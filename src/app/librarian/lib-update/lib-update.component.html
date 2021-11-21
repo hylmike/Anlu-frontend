@@ -1,57 +1,98 @@
 <div class="container text-center padding">
   <div class="logo-img">
-    <img class="mb-4" src="/assets/media/pic/library_logo.png">
+    <img class="mb-4" src="/assets/media/pic/library_logo.png" />
   </div>
-  <h2 class="title padding">Librarian/Admin Update Form</h2>
-  <hr>
+  <h2 class="title padding">{{ "libUpdate.title" | translate }}</h2>
+  <hr />
   <div class="update-form padding">
-    <form class="needs-validation" [formGroup]="libUpdateForm" (ngSubmit)="libUpdateForm.valid&&updateLib()"
-      novalidate>
+    <form
+      class="needs-validation"
+      [formGroup]="libUpdateForm"
+      (ngSubmit)="libUpdateForm.valid && updateLib()"
+      novalidate
+    >
       <div class="row form-row">
         <div class="col-sm-6 col-md-3">
-          <label for="uname">Username</label>
+          <label for="uname">{{ "libUpdate.field-1" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="uname" formControlName="username" readonly />
+          <input
+            type="text"
+            class="form-control"
+            id="uname"
+            formControlName="username"
+            readonly
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="email">Email</label>
+          <label for="email">{{ "libUpdate.field-2" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="email" formControlName="email" />
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="role">Role</label>
+          <label for="role">{{ "libUpdate.field-3" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <select class="form-select" formControlName="role" id="role" aria-label="role">
+          <select
+            class="form-select"
+            formControlName="role"
+            id="role"
+            aria-label="role"
+          >
             <option>Librarian</option>
             <option>Admin</option>
           </select>
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="pnumber">Phone Number</label>
+          <label for="pnumber">{{ "libUpdate.field-4" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="pnumber" formControlName="phoneNumber" />
+          <input
+            type="text"
+            class="form-control"
+            id="pnumber"
+            formControlName="phoneNumber"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="fname">First Name</label>
+          <label for="fname">{{ "libUpdate.field-5" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="fname" formControlName="firstName" />
+          <input
+            type="text"
+            class="form-control"
+            id="fname"
+            formControlName="firstName"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="lname">Last Name</label>
+          <label for="lname">{{ "libUpdate.field-6" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <input type="text" class="form-control" id="lname" formControlName="lastName" />
+          <input
+            type="text"
+            class="form-control"
+            id="lname"
+            formControlName="lastName"
+          />
         </div>
         <div class="col-sm-6 col-md-3">
-          <label for="isactive">Active Status</label>
+          <label for="isactive">{{ "libUpdate.field-7" | translate }}</label>
         </div>
         <div class="col-sm-6 col-md-3">
-          <select class="form-select" id="isactive" formControlName="isActive" aria-label="Active status" required>
+          <select
+            class="form-select"
+            id="isactive"
+            formControlName="isActive"
+            aria-label="Active status"
+            required
+          >
             <option>Active</option>
             <option>Inactive</option>
           </select>
@@ -59,12 +100,15 @@
       </div>
 
       <div class="submit-button">
-        <input type="submit" class="btnupdate" value="Update" />
+        <input
+          type="submit"
+          class="btnupdate"
+          value="{{ 'libUpdate.button-1' | translate }}"
+        />
       </div>
       <div class="portal-link">
-        <a href="/lib/admin-portal">Return Portal</a>
+        <a href="/lib/admin-portal">{{ "libUpdate.returnLink" | translate }}</a>
       </div>
-
     </form>
   </div>
 </div>

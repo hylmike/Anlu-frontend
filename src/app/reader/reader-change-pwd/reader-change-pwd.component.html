@@ -9,7 +9,7 @@
         height="120"
       />
     </a>
-    <h1 class="h3 mb-3 fw-normal">Change Password</h1>
+    <h1 class="h3 mb-3 fw-normal">{{ "readerChangePwd.title" | translate }}</h1>
 
     <div class="form-floating">
       <input
@@ -20,7 +20,9 @@
         placeholder="User Name"
         readonly
       />
-      <label for="floatingInput">Username</label>
+      <label for="floatingInput">{{
+        "readerChangePwd.uname" | translate
+      }}</label>
     </div>
     <div class="form-floating">
       <input
@@ -30,7 +32,9 @@
         formControlName="currentPassword"
         placeholder="Password"
       />
-      <label for="oldPassword">Current Password</label>
+      <label for="oldPassword">{{
+        "readerChangePwd.currentPwd" | translate
+      }}</label>
     </div>
     <div class="form-floating">
       <input
@@ -40,7 +44,9 @@
         formControlName="newPassword"
         placeholder="Password"
       />
-      <label for="newPassword">New Password</label>
+      <label for="newPassword">{{
+        "readerChangePwd.newPwd" | translate
+      }}</label>
     </div>
     <div class="form-floating">
       <input
@@ -50,7 +56,9 @@
         formControlName="confirmPassword"
         placeholder="Password"
       />
-      <label for="confirmPassword">Confirm Password</label>
+      <label for="confirmPassword">{{
+        "readerChangePwd.confirmPwd" | translate
+      }}</label>
     </div>
 
     <button
@@ -58,8 +66,10 @@
       type="submit"
       [disabled]="!changePwdForm.valid"
     >
-      Submit
+      {{ "readerChangePwd.submitButton" | translate }}
     </button>
-    <button class="cancel btn btn-primary" (click)="cancel()">Cancel</button>
+    <button class="cancel btn btn-primary" (click)="cancel()">
+      {{ "readerChangePwd.cancelButton" | translate }}
+    </button>
   </form>
 </main>

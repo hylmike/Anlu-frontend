@@ -1,6 +1,10 @@
-<div class="book-list row container" id="{{divID}}">
-  
-</div>
+<div class="book-list row container" id="{{ divID }}"></div>
 <div class="load-more text-center padding">
-  <button class="btn btn-link load-link" (click)="loadMore()" id="{{buttonID}}">Load More Books</button>
+  <button
+    class="btn btn-link load-link"
+    (click)="loadMore()"
+    id="{{ buttonID }}"
+  >
+    {{ "bookList.loadMore" | translate }}
+  </button>
 </div>
