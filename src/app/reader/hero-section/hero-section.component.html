@@ -1,18 +1,41 @@
 <div class="lib-hero overflow-hidden">
   <div class="bg-pic">
     <img
-      src="/assets/media/pic/wallpaper-library.jpg"
+      src="/assets/media/pic/AnluPortalPic_en.png"
       alt="Background picture"
       class="bg-pic"
     />
   </div>
-  <div class="lib-logo">
-    <a href="/aboutus">
-      <img
-        src="/assets/media/pic/anluLogo.png"
-        alt="Library logo"
-        class="lib-logo"
-      />
+
+  <div class="donate-area">
+    <button class="donate-link btn" [routerLink]="'/donate'">
+      {{ "heroSection.supportLink" | translate }}
+    </button>
+  </div>
+  <div class="key-links row">
+    <a href="/inlibrary" class="key-link col-4 col-md-2">
+      <div class="circle"></div>
+      {{ "heroSection.keyLink-1" | translate }}
+    </a>
+    <a href="/ebook" class="key-link col-4 col-md-2">
+      <div class="circle"></div>
+      {{ "heroSection.keyLink-2" | translate }}
+    </a>
+    <a href="/audiobook" class="key-link col-4 col-md-2">
+      <div class="circle"></div>
+      {{ "heroSection.keyLink-3" | translate }}
+    </a>
+    <a href="/podcast" class="key-link col-4 col-md-2">
+      <div class="circle"></div>
+      {{ "heroSection.keyLink-4" | translate }}
+    </a>
+    <a href="/workshop" class="key-link col-4 col-md-2">
+      <div class="circle"></div>
+      {{ "heroSection.keyLink-5" | translate }}
+    </a>
+    <a href="/blog" class="key-link col-4 col-md-2">
+      <div class="circle"></div>
+      {{ "heroSection.keyLink-6" | translate }}
     </a>
   </div>
   <div class="workshop-area bg-light">
@@ -46,36 +69,5 @@
         }}</span>
       </button>
     </div>
-  </div>
-  <div class="donate-area">
-    <button class="donate-link btn" [routerLink]="'/donate'">
-      {{ "heroSection.supportLink" | translate }}
-    </button>
-  </div>
-  <div class="key-links row">
-    <a href="/inlibrary" class="key-link col-4 col-md-2">
-      <div class="circle"></div>
-      {{ "heroSection.keyLink-1" | translate }}
-    </a>
-    <a href="/ebook" class="key-link col-4 col-md-2">
-      <div class="circle"></div>
-      {{ "heroSection.keyLink-2" | translate }}
-    </a>
-    <a href="/audiobook" class="key-link col-4 col-md-2">
-      <div class="circle"></div>
-      {{ "heroSection.keyLink-3" | translate }}
-    </a>
-    <a href="/podcast" class="key-link col-4 col-md-2">
-      <div class="circle"></div>
-      {{ "heroSection.keyLink-4" | translate }}
-    </a>
-    <a href="/workshop" class="key-link col-4 col-md-2">
-      <div class="circle"></div>
-      {{ "heroSection.keyLink-5" | translate }}
-    </a>
-    <a href="/blog" class="key-link col-4 col-md-2">
-      <div class="circle"></div>
-      {{ "heroSection.keyLink-6" | translate }}
-    </a>
   </div>
 </div>
