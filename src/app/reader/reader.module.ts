@@ -25,6 +25,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { DonateComponent } from './donate/donate.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { HeroSectionComponent } from './hero-section/hero-section.component';
     ForgotPwdComponent,
     ResetPwdComponent,
     HeroSectionComponent,
+    AboutUsComponent,
+    DonateComponent
   ],
   imports: [
     CommonModule,
