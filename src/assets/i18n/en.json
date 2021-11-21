@@ -610,7 +610,7 @@
     "title-2": "Finished Workshop"
   },
   "wsManage": {
-    "title": "Workshop Management" 
+    "title": "Workshop Management"
   },
   "wsPortal": {
     "title": "Welcome to Anlu Bibliothèque Workshop!",
@@ -769,5 +769,11 @@
     "field-7": "Active Status",
     "button-1": "Update",
     "returnLink": "Return Portal"
+  },
+  "donation": {
+    "title": "Donation Guide",
+    "desc-1": "Thank you for your interest in our project!",
+    "desc-2": "To support our project, please make a deposit via Mobile Money to this number 00237 652 07 74 45.",
+    "desc-3": "It is thanks to the support of people like you that we are active. Thank you for your support!"
   }
 }

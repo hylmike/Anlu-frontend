@@ -769,12 +769,5 @@
     "field-7": "Statut Actif",
     "button-1": "Actualiser",
     "returnLink": "Retour au portail"
-  },
-  "donation": {
-    "title": "Guide de Don",
-    "desc-1": "Merci pour l'intérêt que vous accordez à notre Projet!",
-    "desc-2": "Pour soutenir notre projet faites nous un dépôt via Mobile Money à ce numéro 00237 652 07 74 45.",
-    "desc-3": "C'est grâce aux soutiens des personnes comme vous que sommes actif. Merci!"
   }
 }
-

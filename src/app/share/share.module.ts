@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home/home.component';
 import { SiteFooterComponent } from './site-footer/site-footer.component';
-import { DonateComponent } from './donate/donate.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { ChartsModule } from 'ng2-charts';
 import { InventorySummaryComponent } from './inventory-summary/inventory-summary.component';
@@ -14,7 +13,6 @@ import { TranslateModule } from '@ngx-translate/core';
   declarations: [
     HomeComponent,
     SiteFooterComponent,
-    DonateComponent,
     BookListComponent,
     InventorySummaryComponent,
     ReaderAnalysisComponent,

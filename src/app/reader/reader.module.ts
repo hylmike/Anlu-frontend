@@ -25,7 +25,7 @@ import { ResetPwdComponent } from './reset-pwd/reset-pwd.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { AboutUsComponent } from './about-us/about-us.component';
-
+import { DonateComponent } from './donate/donate.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +44,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     ResetPwdComponent,
     HeroSectionComponent,
     AboutUsComponent,
+    DonateComponent
   ],
   imports: [
     CommonModule,
