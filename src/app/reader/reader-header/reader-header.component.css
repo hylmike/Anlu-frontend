@@ -43,7 +43,9 @@ label.label_welcome{
 }
 
 button.search {
-  width: 180px;
+  display: inline-block;
+  width: fit-content;
+  white-space: nowrap;
   color: #6c757d;
 }
 

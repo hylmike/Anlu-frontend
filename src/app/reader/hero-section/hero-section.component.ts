@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
 import { Workshop } from 'src/app/common/workshop.dto';
 import { WorkshopService } from 'src/app/workshop/workshop.service';
@@ -14,6 +15,7 @@ export class HeroSectionComponent implements OnInit {
   constructor(
     private logger: NGXLogger,
     private workshopService: WorkshopService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {

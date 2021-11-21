@@ -1,6 +1,9 @@
 <div class="lib-hero overflow-hidden">
-  <div class="bg-pic">
+  <div class="bg-pic" *ngIf="translate.currentLang==='en'">
     <img src="/assets/media/pic/AnluPortalPic_en.png" alt="Background picture" class="bg-pic">
+  </div>
+  <div class="bg-pic" *ngIf="translate.currentLang==='fr'">
+    <img src="/assets/media/pic/AnluPortalPic_fr.png" alt="Background picture" class="bg-pic">
   </div>
   <!-- <div class="lib-logo">
     <a href="/aboutus">
