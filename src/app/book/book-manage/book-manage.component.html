@@ -21,6 +21,9 @@
       <li class="nav-item" role="presentation">
         <a class="nav-link" data-bs-toggle="tab" href="#audiobook" (click)="clickAudiobook()">Audiobook</a>
       </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" href="#podcast" (click)="clickPodcast()">Podcast</a>
+      </li>
     </ul>
     <div class="tab-content" id="bookTab-content">
       <div class="tab-pane fade show active" id="ebook" role="tabpanel" aria-labelledby="ebook-tab">
@@ -54,6 +57,17 @@
           <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','MNOP')">M - P</button>
           <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','QRST')">Q - T</button>
           <button class="book-dist btn btn-link" (click)="setBookList('Audiobook','UVWXYZ')">U - Z</button>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="podcast" role="tabpanel" aria-labelledby="podcast-tab">
+        <div class="link-area">
+          <button class="book-dist btn btn-link" id="allpodcast-link" (click)="setBookList('Podcast','All')">All</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Podcast','ABCD')">A - D</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Podcast','EFGH')">E - H</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Podcast','IJKL')">I - L</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Podcast','MNOP')">M - P</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Podcast','QRST')">Q - T</button>
+          <button class="book-dist btn btn-link" (click)="setBookList('Podcast','UVWXYZ')">U - Z</button>
         </div>
       </div>
       <div class="list-area">

@@ -40,7 +40,7 @@ export class AccountManageComponent implements OnInit {
   }
 
   reviewAccount(readerID: string) {
-    this.router.navigateByUrl(`/reader/mprofile/${readerID}`);
+    this.router.navigateByUrl(`/lib/reviewreader/${readerID}`);
   }
 
   deaAccount(readerID: string) {
