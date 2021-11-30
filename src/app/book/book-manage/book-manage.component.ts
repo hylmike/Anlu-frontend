@@ -58,16 +58,24 @@ export class BookManageComponent implements OnInit {
   }
 
   setBookList(format: string, scope: string) {
-    if (scope === 'All') {
-      this.bookService.findAllBook(format).subscribe((books: Book[]) => {
-        if (books && books.length > 0) {
-          this.bookList = books;
-          this.logger.info(`Success find all ${format} book from server`);
-        } else {
-          this.logger.warn(`Failed to find all ${format} book from server`);
+    this.bookService.findAllBook(format).subscribe((books: Book[]) => {
+      if (books && books.length > 0) {
+        this.bookList = books;
+        this.logger.info(`Success fetched all ${format} book from server`);
+        switch (scope) {
+          case 'All':
+            this.bookList = [...books];
+            break;
+          default:
+            const scopeList = scope.split('');
+            this.bookList = books.filter((book) =>
+              scopeList.includes(book.bookTitle[0].toUpperCase())
+            );
         }
-      })
-    }
+      } else {
+        this.logger.warn(`Failed to fetch all ${format} book from server`);
+      }
+    });
   }
 
 }
